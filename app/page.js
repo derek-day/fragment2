@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-4">
       <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-16 object-contain" />
-        <h1 className="text-4xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Hunter"</h1>
+        <h1 className="text-4xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1>
       <div className="p-6 sm:p-8 rounded shadow-md w-full max-w-sm sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>
           {!authMode ? (

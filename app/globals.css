@@ -17,6 +17,21 @@ h1 {
     font-style: normal;
 }
 
+input {
+    font-family: "segoe-ui", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid white;
+    color: white;
+}
+
+button {
+    font-family: "segoe-ui", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
 .login {
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid white;

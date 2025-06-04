@@ -54,8 +54,8 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-4">
       <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-16 object-contain" />
-        <h1 className="text-4xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1>
-      <div className="rounded shadow-md w-full max-w-sm sm:max-w-xs text-center">
+        <h1 className="text-3xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1>
+      <div className="rounded shadow-md w-full max-w-xs sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>
           {!authMode ? (
             <motion.div
@@ -102,7 +102,7 @@ export default function Home() {
                 />
                 <button
                   onClick={handleSubmit}
-                  className="login text-2xl tracking-wide w-full text-white py-3 mb-4"
+                  className="login text-xl tracking-wide w-full text-white py-3 mb-4"
                 >
                   Submit
                 </button>

@@ -55,7 +55,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-4">
       <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-16 object-contain" />
         <h1 className="text-4xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1>
-      <div className="p-6 sm:p-8 rounded shadow-md w-full max-w-sm sm:max-w-xs text-center">
+      <div className="rounded shadow-md w-full max-w-sm sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>
           {!authMode ? (
             <motion.div
@@ -86,31 +86,33 @@ export default function Home() {
               animate="visible"
               exit="exit"
             >
-              <h1 className="text-2xl tracking-wider mb-4 capitalize text-white">{authMode}</h1>
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full p-2 border mb-3"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full p-2 border mb-3"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button
-                onClick={handleSubmit}
-                className="login text-2xl tracking-wide w-full text-white py-3 mb-4"
-              >
-                Submit
-              </button>
-              <button
-                onClick={() => setAuthMode(null)}
-                className="text-sm text-gray-600 hover:underline text-white"
-              >
-                Back
-              </button>
+              <div className="login-div">
+                <h1 className="text-2xl tracking-wider mb-4 capitalize text-white">{authMode}</h1>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full p-2 border mb-3"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="w-full p-2 border mb-3"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  onClick={handleSubmit}
+                  className="login text-2xl tracking-wide w-full text-white py-3 mb-4"
+                >
+                  Submit
+                </button>
+                <button
+                  onClick={() => setAuthMode(null)}
+                  className="text-sm text-gray-600 hover:underline text-white"
+                >
+                  Back
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

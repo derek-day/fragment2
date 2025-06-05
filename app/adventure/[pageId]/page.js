@@ -25,10 +25,10 @@ export default function AdventurePage() {
 
 
   return (
-    <div className="min-h-screen bg-cover bg-center text-white p-6" style={{ backgroundImage: `url(${page.src})`}}>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6" style={{ backgroundImage: `url(${page.src})`}}>
       {/* <h1 className="text-3xl font-bold mb-4">{page.title}</h1> */}
-      <div className="story-text">
-        <div className="mb-6 space-y-2">
+      <div className="story-text p-2 mb-6 w-1/2">
+        <div className="space-y-2 m-2">
             {page.text.split("\n\n").map((para, idx) => (
             <p key={idx} className="text-lg">{para}</p>
             ))}
@@ -39,7 +39,7 @@ export default function AdventurePage() {
         {page.choices.map((choice, index) => (
           <button
             key={index}
-            className={`block w-full px-4 py-2 rounded hover:bg-blue-800 ${selectedChoice === choice ? 'bg-blue-700' : 'bg-blue-600'}`}
+            className={`block choice-button w-64 px-4 py-2 rounded text-md ${selectedChoice === choice ? 'selected-choice' : 'bg-blue-600'}`}
             onClick={() => setSelectedChoice(choice)}
           >
             {choice.label}
@@ -48,7 +48,7 @@ export default function AdventurePage() {
 
         {selectedChoice && (
           <button
-            className="mt-4 bg-green-600 px-4 py-2 rounded hover:bg-green-800"
+            className="mt-4 float-right bg-green-600 px-4 py-2 rounded hover:bg-green-800"
             onClick={() => router.push(`/adventure/${selectedChoice.next}`)}
           >
             Continue

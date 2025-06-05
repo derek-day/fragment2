@@ -11,6 +11,9 @@
     background-image: url('/assets/background.webp');
 }
 
+.logo {
+}
+
 h1 {
     font-family: "ivypresto-headline", serif;
     font-weight: 300;

@@ -59,3 +59,8 @@ button {
   padding: 1.5rem 2rem;
   box-shadow: inset 0 0 10px #76DCEA;
 }
+
+.story-text {
+    background-color: rgba(29, 27, 48, 0.5);
+    border: 1px solid white;
+}

@@ -116,8 +116,8 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-10">
-      <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-12 object-contain logo" />
-      <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1>
+      <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-16 object-contain logo" />
+      {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}
       <div className="rounded shadow-md w-full max-w-xs sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>
           {!authMode ? (

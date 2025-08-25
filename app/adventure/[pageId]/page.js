@@ -38,7 +38,7 @@ export default function AdventurePage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6" style={{ backgroundImage: `url(${page.src})`}}>
-      <button onClick={handleLogout} className="bg-red-600 px-3 py-1 rounded hover:bg-red-800">Logout</button>
+      <button onClick={handleLogout} className="bg-red-600 px-3 py-1 mb-5 rounded hover:bg-red-800">Logout</button>
 
       {/* <h1 className="text-3xl font-bold mb-4">{page.title}</h1> */}
       <div className="story-text p-2 mb-6 w-1/2">

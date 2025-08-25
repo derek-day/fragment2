@@ -17,6 +17,13 @@ export default function Home() {
   const [successMessage, setSuccessMessage] = useState("");
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
+      {successMessage && (
+        <div style={{ color: 'green', marginTop: '10px' }}>
+            {successMessage}
+        </div>
+    )}
+
+
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
   //     if (user) router.push("/dashboard");
@@ -177,6 +184,7 @@ useEffect(() => {
           {successMessage && (
             <motion.div
               className="mt-4 text-white-700 font-semibold"
+              style={{ color: 'white', marginTop: '15px' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >

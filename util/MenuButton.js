@@ -39,7 +39,7 @@ export default function MenuButton() {
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <button onClick={() => setOpen(!open)} style={{ padding: '10px 15px' }} className="choice-button">
+      <button onClick={() => setOpen(!open)} style={{ padding: '10px 15px' }} className="choice-button mb-4">
         ☰ Menu
       </button>
 

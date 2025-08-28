@@ -13,10 +13,11 @@ export const adventurePages = {
     title: "Forest Battle",
     src: "../assets/portal.webp",
     text: "All your life, you longed for adventure, and the moment is finally here. What will it feel like when step into this shimmering superfluid? Will you emerge on the other side a different person? Will you finally be the hero you always saw yourself as?\n\nYou know the life behind you. Ahead, there is only possibility.\n\nYou step forward, prepared to enter, when a strong hand grabs your wrist.",
-    choices: [
-      { label: "Fight the beast", next: "battle" },
-      { label: "Flee back to the edge", next: "page_1" },
-    ],
+    next: "page_3",
+    // choices: [
+    //   { label: "Fight the beast", next: "battle" },
+    //   { label: "Flee back to the edge", next: "page_1" },
+    // ],
   },
   page_3: {
     title: "The Village",

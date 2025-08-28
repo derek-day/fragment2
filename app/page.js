@@ -96,14 +96,13 @@ useEffect(() => {
         setSuccessMessage("Welcome back, operator!");
       }
 
-      // Wait 2 seconds before redirecting
       setTimeout(async () => {
         const userRef = doc(db, "users", userCred.user.uid);
         const userDoc = await getDoc(userRef);
         const page = userDoc.exists() ? userDoc.data().currentPage : "page_1";
         router.push(`/adventure/${page}`);
         // router.push(`/adventure/1`);
-      }, 2000);
+      }, 1000);
     } catch (err) {
       alert(err.message);
     }

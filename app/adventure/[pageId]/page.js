@@ -35,22 +35,70 @@ export default function AdventurePage() {
       }
     };
 
-  return (
+    function handleContinue() {
+      if (selectedChoice) {
+        router.push(`/adventure/${selectedChoice.next}`);
+        setSelectedChoice(null);
+      } else if (page.next) {
+        router.push(`/adventure/${page.next}`);
+      }
+    }
+
+    useEffect(() => {
+      if (page?.title) {
+        document.title = page.title + " | The Fragment Protocol";
+      }
+    }, [page]);
+
+
+
+  return (      
     <div className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6" style={{ backgroundImage: `url(${page.src})`}}>
       <MenuButton />
-      <button onClick={handleLogout} className="bg-red-600 px-3 py-1 mb-5 rounded hover:bg-red-800">Logout</button>
+      {/* <button onClick={handleLogout} className="bg-red-600 px-3 py-1 mb-5 rounded hover:bg-red-800">Logout</button> */}
 
       {/* <h1 className="text-3xl font-bold mb-4">{page.title}</h1> */}
       <div className="story-text p-2 mb-6">
         <div className="space-y-2 m-2">
             {page.text.split("\n\n").map((para, idx) => (
-            <p key={idx} className="text-lg">{para}</p>
+            <p key={idx} className="text-base">{para}</p>
             ))}
         </div>
       </div>
 
       <div className="space-y-4">
-        {page.choices.map((choice, index) => (
+
+      {page.choices &&
+        page.choices.map((choice, i) => (
+          <button
+            key={i}
+            className={`block choice-button w-64 px-4 py-2 rounded text-md ${
+              selectedChoice?.next === choice.next
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setSelectedChoice(choice)}
+          >
+            {choice.label}
+          </button>
+        ))}
+
+      {/* Continue button enabled only if a choice was picked */}
+      {(page.choices || page.next) && (
+        <button
+          className={`mt-4 float-right bg-green-600 px-4 py-2 rounded ${
+            selectedChoice || page.next ? "bg-green-600 text-white hover:bg-green-800" : "bg-gray-400 text-gray-700"
+          }`}
+          onClick={handleContinue}
+          disabled={!selectedChoice && !page.next}
+        >
+          Continue
+        </button>
+      )}
+
+
+
+        {/* {page.choices.map((choice, index) => (
           <button
             key={index}
             className={`block choice-button w-64 px-4 py-2 rounded text-md ${selectedChoice === choice ? 'selected-choice' : 'bg-blue-600'}`}
@@ -67,7 +115,7 @@ export default function AdventurePage() {
           >
             Continue
           </button>
-        )}
+        )} */}
       </div>
 
 
@@ -83,6 +131,5 @@ export default function AdventurePage() {
         ))}
       </div> */}
     </div>
-
   );
 }

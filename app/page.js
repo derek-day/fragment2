@@ -17,12 +17,11 @@ export default function Home() {
   const [successMessage, setSuccessMessage] = useState("");
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
-      {successMessage && (
-        <div style={{ color: 'green', marginTop: '10px' }}>
-            {successMessage}
-        </div>
-    )}
-
+  {successMessage && (
+    <div style={{ color: 'green', marginTop: '10px' }}>
+      {successMessage}
+    </div>
+  )}
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -88,12 +87,12 @@ useEffect(() => {
           currentPage: "page_1",
           createdAt: new Date(),
         });
-        setSuccessMessage("Account created! Starting your hunt...");
+        setSuccessMessage("Protocol generating...");
       } else {
         userCred = await signInWithEmailAndPassword(auth, email, password);
         const docSnap = await getDoc(doc(db, "users", userCred.user.uid));
         const savedPage = docSnap.exists() ? docSnap.data().currentPage : "page_1";
-        setSuccessMessage("Welcome back, operator!");
+        setSuccessMessage(`Welcome back, ${userProfile?.characterName || "Gatebreaker"}!`);
       }
 
       setTimeout(async () => {
@@ -118,7 +117,7 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-10">
-      <img src="assets/logo.png" alt="Fragment Protocol Logo" className="mb-16 object-contain logo" />
+      <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
       {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}
       <div className="rounded shadow-md w-full max-w-xs sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>

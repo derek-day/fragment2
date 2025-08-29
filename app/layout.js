@@ -12,8 +12,8 @@ import "./globals.css";
 // });
 
 export const metadata = {
-  title: "The Fragment Protocol",
-  description: "The Chosen Operator",
+  title: "The Gatebreaker Protocol",
+  description: "A choose your own adventure by Andrew Akers, Derek Day, and Tye Sheets",
 };
 
 export default function RootLayout({ children }) {

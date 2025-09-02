@@ -2,7 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { auth, db } from "@/lib/firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { adventurePages } from "../pages";
 import MenuButton from "@/util/MenuButton";
@@ -18,6 +18,9 @@ export default function AdventurePage() {
   const [user, setUser] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [characterName, setCharacterName] = useState("");
+
+  const [allocatedStats, setAllocatedStats] = useState(null);
+  const [pointsRemaining, setPointsRemaining] = useState(10);
 
   useEffect(() => {
     const loadUser = async () => {
@@ -52,6 +55,28 @@ export default function AdventurePage() {
       return;
     }
 
+    if (page.type === "stats" && user) {
+      const ref = doc(db, "users", user.uid);
+      await updateDoc(ref, {
+        stats: allocatedStats,   // save all stats
+      });
+
+      await setDoc(ref, { allocatedStats }, { merge: true });
+
+      let className = "";
+
+      if (allocatedStats.Intelligence >= 14) className = "Mage";
+      if (allocatedStats.Strength >= 14 || allocatedStats.Constitution >= 14) className = "Warrior";
+      if (allocatedStats.Charisma >= 14 || allocatedStats.Wisdom >= 14) className = "Summoner";
+      if (!className) className = "Undecided / Mixed";
+
+      await updateDoc(ref, { className }, { merge: true });
+
+      router.push(`/adventure/${page.next}`);
+      return;
+    }
+
+
     if (selectedChoice) {
       router.push(`/adventure/${selectedChoice.next}`);
       setSelectedChoice(null);
@@ -84,7 +109,6 @@ export default function AdventurePage() {
       </div>
 
       <div className="space-y-4">
-        {/* Name Input Page */}
         {page.type === "input" && (
           <NameInput
             label={page.input.label}
@@ -93,10 +117,14 @@ export default function AdventurePage() {
           />
         )}
 
-        {/* Stats Page */}
         {page.type === "stats" && (
-          <PageStats page={page} user={user} router={router} />
+          <PageStats onStatsChange={(stats, pointsRemaining) => {
+            setAllocatedStats(stats);
+            setPointsRemaining(pointsRemaining);
+          }} />
         )}
+
+
 
         {/* Choices */}
         {page.choices &&
@@ -114,29 +142,26 @@ export default function AdventurePage() {
             </button>
           ))}
 
-        {/* Continue button */}
-        {(page.type === "input" ||
-          page.type === "stats" ||
-          page.choices ||
-          page.next) && (
+        {(page.type === "stats" || page.type === "input" || page.choices || page.next) && (
           <button
             className={`mt-4 float-right px-4 py-2 rounded ${
-              selectedChoice ||
-              page.next ||
-              (page.type === "input" && inputValue.trim() !== "")
-                ? "bg-green-600 text-white hover:bg-green-800"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+              (page.type === "stats" && pointsRemaining > 0) ||
+              (page.type === "input" && inputValue.trim() === "") ||
+              (page.choices && !selectedChoice)
+                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                : "bg-green-600 text-white hover:bg-green-800"
             }`}
             onClick={handleContinue}
             disabled={
-              !selectedChoice &&
-              !page.next &&
-              !(page.type === "input" && inputValue.trim() !== "")
+              (page.type === "stats" && pointsRemaining > 0) ||
+              (page.type === "input" && inputValue.trim() === "") ||
+              (page.choices && !selectedChoice)
             }
           >
             Continue
           </button>
         )}
+
       </div>
     </div>
   );

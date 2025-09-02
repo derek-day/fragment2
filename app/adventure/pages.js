@@ -141,7 +141,14 @@ export const adventurePages = {
       Charisma: 10,
       points: 10
     },
-    next: "class-confirmation",
+    next: "class_confirmation",
+  },
+  class_confirmation: {
+    id: "class-confirmation",
+    type: "text",
+    src: "../assets/portal.webp",
+    text: "Distribute your stat points. Choose wisely, as your future depends on it.",
+    next: "f",
   },
   back_to_team: {
     title: "Back to the Team",

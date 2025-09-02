@@ -36,6 +36,14 @@ export default function AdventurePage() {
       return;
     }
 
+    if (page.type === "stats" && user) {
+    const ref = doc(db, "users", user.uid);
+    await updateDoc(ref, { stats: allocatedStats });
+    router.push(`/adventure/${page.next}`);
+    return;
+  }
+
+
     // Handle choices
     if (selectedChoice) {
       router.push(`/adventure/${selectedChoice.next}`);

@@ -2,7 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { auth, db } from "@/lib/firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { adventurePages } from "../pages";
 import MenuButton from "@/util/MenuButton";
@@ -13,38 +13,22 @@ export default function AdventurePage() {
   const { pageId } = useParams();
   const router = useRouter();
   const page = adventurePages[pageId];
-
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [user, setUser] = useState(null);
-  const [inputValue, setInputValue] = useState("");
-  const [characterName, setCharacterName] = useState("");
 
   useEffect(() => {
-    const loadUser = async () => {
-      const user = auth.currentUser;
-      if (!user) return;
-      const snap = await getDoc(doc(db, "users", user.uid));
-      if (snap.exists()) {
-        setCharacterName(snap.data().characterName || "");
-      }
-    };
-
-    loadUser();
-  }, []);
-
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
-    return () => unsubscribe();
+    const unsub = onAuthStateChanged(auth, (u) => setUser(u));
+    return () => unsub();
   }, []);
 
   useEffect(() => {
     if (!page) router.push("/adventure/page_1");
-  }, [page]);
+  }, [page, router]);
 
   if (!page) return null;
 
-  async function handleContinue() {
+  async function handleContinue(inputValue) {
+    // Handle input-type pages (like name entry)
     if (page.type === "input" && user) {
       const ref = doc(db, "users", user.uid);
       await setDoc(ref, { [page.input.field]: inputValue }, { merge: true });
@@ -52,53 +36,53 @@ export default function AdventurePage() {
       return;
     }
 
+    // Handle choices
     if (selectedChoice) {
       router.push(`/adventure/${selectedChoice.next}`);
       setSelectedChoice(null);
-    } else if (page.next) {
+    }
+    // Handle plain next-page progression
+    else if (page.next) {
       router.push(`/adventure/${page.next}`);
     }
   }
 
   useEffect(() => {
     if (page?.title) {
-      document.title = page.title + " | The Gatebreaker Protocol";
+      document.title = `${page.title} | The Gatebreaker Protocol`;
     }
   }, [page]);
-
-  const renderText = page.text.replace(/{{characterName}}/g, characterName);
 
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6"
       style={{ backgroundImage: `url(${page.src})` }}
     >
-      <MenuButton />
+      {/* Menu and optional stats */}
+      <div className="w-full flex justify-between mb-4">
+        <MenuButton />
+        {user && <PageStats user={user} />}
+      </div>
 
-      <div className="story-text p-2 mb-6">
+      {/* Story text */}
+      <div className="story-text p-2 mb-6 max-w-2xl">
         <div className="space-y-2 m-3">
-          {renderText.split("\n\n").map((para, idx) => (
+          {page.text.split("\n\n").map((para, idx) => (
             <p key={idx} className="text-base">{para}</p>
           ))}
         </div>
       </div>
 
       <div className="space-y-4">
-        {/* Name Input Page */}
+        {/* Input page handler */}
         {page.type === "input" && (
           <NameInput
             label={page.input.label}
-            value={inputValue}
-            onChange={setInputValue}
+            onSubmit={(val) => handleContinue(val)}
           />
         )}
 
-        {/* Stats Page */}
-        {page.type === "stats" && (
-          <PageStats page={page} user={user} router={router} />
-        )}
-
-        {/* Choices */}
+        {/* Choices handler */}
         {page.choices &&
           page.choices.map((choice, i) => (
             <button
@@ -114,28 +98,27 @@ export default function AdventurePage() {
             </button>
           ))}
 
-        {/* Continue button */}
-        {(page.type === "input" ||
-          page.type === "stats" ||
-          page.choices ||
-          page.next) && (
+        {/* Continue button (only if needed and not input-type, since NameInput handles that) */}
+        {page.type !== "input" && (selectedChoice || page.next) && (
           <button
-            className={`mt-4 float-right px-4 py-2 rounded ${
-              selectedChoice ||
-              page.next ||
-              (page.type === "input" && inputValue.trim() !== "")
-                ? "bg-green-600 text-white hover:bg-green-800"
-                : "bg-gray-400 text-gray-700 cursor-not-allowed"
-            }`}
-            onClick={handleContinue}
-            disabled={
-              !selectedChoice &&
-              !page.next &&
-              !(page.type === "input" && inputValue.trim() !== "")
-            }
+            className="mt-4 float-right bg-green-600 px-4 py-2 rounded text-white hover:bg-green-800"
+            onClick={() => handleContinue()}
           >
             Continue
           </button>
+        )}
+
+        {page.type === "stats" && stats && (
+        <PageStats
+            stats={stats}
+            onSave={async (newStats) => {
+            if (user) {
+                const ref = doc(db, "users", user.uid);
+                await setDoc(ref, { stats: newStats }, { merge: true });
+            }
+            router.push(`/adventure/${page.next}`);
+            }}
+        />
         )}
       </div>
     </div>

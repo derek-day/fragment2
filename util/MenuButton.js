@@ -52,6 +52,49 @@ export default function MenuButton() {
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
           zIndex: 1000
         }}>
+          {/* <ul style={{ listStyle: 'none', margin: 0, padding: '0px' }}>
+            <li>
+              <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Resume</button>
+            </li>
+            <li>
+              <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Character</button>
+            </li>
+            <li>
+              <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Settings</button>
+            </li>
+            <li>
+              <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Support</button>
+            </li>
+            <li>
+              <button onClick={handleLogout} style={menuItemStyle}>Logout</button>
+            </li>
+            <li>
+              <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Last Saved: {}</button>
+            </li>
+          </ul> */}
+
+          {/* Inside of Character
+          - Inventory
+          - Skills/Talent Tree
+          - Stats
+          - Map
+
+          Inside of Settings
+          - 🔊 Audio: mute/unmute, volume sliders for music & sound effects.
+          - 🎨 Theme / Accessibility: font size, contrast, dyslexia-friendly font, light/dark mode.
+          - ⏩ Text Speed / Auto-Advance (if you add dialogue-like sequences).
+          - 🌐 Language (if localized).
+
+          Inside of Support
+          - “How to Play” or tutorial recap.
+          - Contact / feedback link.
+          - Credits.
+
+          Possible addins
+          - Achievements
+          - Journal (shows choices made and npc names/locations/images)
+          - User Profiles */}
+
           <ul style={{ listStyle: 'none', margin: 0, padding: '0px' }}>
             <li>
               <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Home</button>

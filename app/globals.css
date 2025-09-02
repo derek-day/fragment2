@@ -69,8 +69,22 @@ button {
     font-family: "ivypresto-headline", serif;
     font-weight: 300;
     font-style: normal;
+    width: 50dvw;
 
     p {
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem !important;
+    }
+}
+
+.stat-box {
+    background-color: rgba(9, 9, 19, 0.8);
+    border: 1px solid white;
+    font-family: "ivypresto-headline", serif;
+    font-weight: 300;
+    font-style: normal;
+
+    span {
         letter-spacing: 0.5px;
     }
 }

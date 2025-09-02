@@ -86,6 +86,15 @@ useEffect(() => {
           email: userCred.user.email,
           currentPage: "page_1",
           createdAt: new Date(),
+          name: "",
+          stats: {
+            Strength: 10,
+            Dexterity: 10,
+            Constitution: 10,
+            Intelligence: 10,
+            Wisdom: 10,
+            Charisma: 10,
+          },
         });
         setSuccessMessage("Protocol generating...");
       } else {

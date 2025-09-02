@@ -1,0 +1,8 @@
+- set new page when with team for seperate text for each class
+    - need to see when to hit equipment/map/menu
+    - need to see how to plan out when to choose warrior/mage/summoner and undecided/mixed
+- send to equipment/map/menu when alone
+    - when is name chosen?
+- figure out battle scene
+    - will need rpg based and dice roller
+- for dice roller, may need to break down additions based on stat, similar to dnd

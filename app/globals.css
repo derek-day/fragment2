@@ -77,6 +77,12 @@ button {
     }
 }
 
+button {
+    letter-spacing: 0.5px;
+    font-family: "ivypresto-headline", serif;
+
+}
+
 .stat-box {
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;
@@ -84,15 +90,21 @@ button {
     font-weight: 300;
     font-style: normal;
 
-    span {
+    span, h2, p {
         letter-spacing: 0.5px;
+    }
+
+    span {
+        margin-right: 1rem;
     }
 }
 
 .choice-button {
     font-family: "segoe-ui", sans-serif;
+    font-family: "ivypresto-headline", serif;
     font-weight: 300;
     font-style: normal;
+    letter-spacing: 0.5px;
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;
     transition: text-shadow .6s, box-shadow .3s;

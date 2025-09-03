@@ -150,19 +150,19 @@ export default function PageStats({ onStatsChange }) {
 
       <div className="grid grid-cols-2 gap-3">
         {Object.entries(stats).map(([stat, value]) => (
-          <div key={stat} className="flex items-center justify-between bg-gray-800 px-3 py-2 rounded">
+          <div key={stat} className="flex items-center justify-between bg-gray-800 px-3 py-2">
             <span>{stat}: {value}</span>
             <div className="space-x-2">
               <button
                 onClick={() => handleStatChange(stat, -1)}
-                className="bg-red-500 px-2 py-1 rounded"
+                className="bg-red-500 px-2 py-1"
                 disabled={value <= 1}
               >
                 -
               </button>
               <button
                 onClick={() => handleStatChange(stat, +1)}
-                className="bg-green-500 px-2 py-1 rounded"
+                className="bg-green-500 px-2 py-1"
                 disabled={pointsRemaining <= 0}
               >
                 +

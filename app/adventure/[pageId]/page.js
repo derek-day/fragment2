@@ -131,7 +131,7 @@ export default function AdventurePage() {
           page.choices.map((choice, i) => (
             <button
               key={i}
-              className={`block choice-button w-64 px-4 py-2 rounded text-md ${
+              className={`block choice-button w-64 px-4 py-2 text-md ${
                 selectedChoice?.next === choice.next
                   ? "bg-blue-600 text-white"
                   : "bg-gray-200"
@@ -144,7 +144,7 @@ export default function AdventurePage() {
 
         {(page.type === "stats" || page.type === "input" || page.choices || page.next) && (
           <button
-            className={`mt-4 float-right px-4 py-2 rounded ${
+            className={`mt-4 float-right px-4 py-2 ${
               (page.type === "stats" && pointsRemaining > 0) ||
               (page.type === "input" && inputValue.trim() === "") ||
               (page.choices && !selectedChoice)

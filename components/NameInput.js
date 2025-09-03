@@ -33,7 +33,7 @@ export default function NameInput({ label, value, onChange }) {
       <label className="block mb-2">{label}</label>
       <input
         type="text"
-        className="border p-2 w-full mb-4 text-black"
+        className="border p-2 w-full mb-4 text-white"
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />

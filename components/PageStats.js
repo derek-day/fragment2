@@ -145,12 +145,12 @@ export default function PageStats({ onStatsChange }) {
 
   return (
     <div className="p-4 stat-box">
-      <h2 className="text-xl font-bold mb-2 justify-self-center">Allocate Your Stats</h2>
-      <p className="mb-4 justify-self-center">Points Remaining: {pointsRemaining}</p>
+      {/* <h2 className="text-xl font-bold mb-2 justify-self-center">Allocate Your Stats</h2> */}
+      <h2 className="text-lg mb-4 justify-self-center">Points Remaining: {pointsRemaining}</h2>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3 stat-page">
         {Object.entries(stats).map(([stat, value]) => (
-          <div key={stat} className="flex items-center justify-between bg-gray-800 px-3 py-2">
+          <div key={stat} className="flex items-center justify-between bg-gray-800 px-3 py-2 stat-div">
             <span>{stat}: {value}</span>
             <div className="space-x-2">
               <button

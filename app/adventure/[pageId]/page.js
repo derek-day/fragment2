@@ -8,6 +8,9 @@ import { adventurePages } from "../pages";
 import MenuButton from "@/util/MenuButton";
 import PageStats from "@/components/PageStats";
 import NameInput from "@/components/NameInput";
+import BattlePage from "@/components/BattlePage";
+import RollPage from "@/components/RollPage";
+
 
 export default function AdventurePage() {
   const { pageId } = useParams();
@@ -48,15 +51,17 @@ export default function AdventurePage() {
   if (!page) return null;
 
   async function handleContinue() {
+    const ref = doc(db, "users", user.uid);
+
     if (page.type === "input" && user) {
-      const ref = doc(db, "users", user.uid);
+      // const ref = doc(db, "users", user.uid);
       await setDoc(ref, { [page.input.field]: inputValue }, { merge: true });
       router.push(`/adventure/${page.input.next}`);
       return;
     }
 
     if (page.type === "stats" && user) {
-      const ref = doc(db, "users", user.uid);
+      // const ref = doc(db, "users", user.uid);
       await updateDoc(ref, {
         stats: allocatedStats,   // save all stats
       });
@@ -76,6 +81,19 @@ export default function AdventurePage() {
       return;
     }
 
+    if (page.type === "classRedirect") {
+      const userSnap = await getDoc(ref);
+      const userData = userSnap.data();
+      const className = userData?.className || "Adventurer";
+
+      let nextPageId = page.next;
+
+      console.log(page.classNext, "team_" + className);
+      nextPageId = page.classNext[className] || page.next;
+      console.log("Redirecting to:", nextPageId);
+      router.push(`/adventure/${nextPageId}`);
+      return;
+    }
 
     if (selectedChoice) {
       router.push(`/adventure/${selectedChoice.next}`);
@@ -124,7 +142,13 @@ export default function AdventurePage() {
           }} />
         )}
 
+        {page.type === "roll" && (
+          <RollPage page={page} router={router} />
+        )}
 
+        {page.type === "battle" && (
+          <BattlePage page={page} router={router} />
+        )}
 
         {/* Choices */}
         {page.choices &&
@@ -142,7 +166,7 @@ export default function AdventurePage() {
             </button>
           ))}
 
-        {(page.type === "stats" || page.type === "input" || page.choices || page.next) && (
+        {(page.type === "stats" || page.type === "input" || page.type === "classRedirect" || page.type === "roll" || page.type === "battle" || page.choices || page.next) && (
           <button
             className={`mt-4 float-right px-4 py-2 ${
               (page.type === "stats" && pointsRemaining > 0) ||

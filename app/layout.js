@@ -18,7 +18,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    // <html lang="en">
+    <html lang="en" style={{backgroundImage: "url('../assets/portal.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
       <body>
         {children}
       </body>

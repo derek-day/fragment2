@@ -25,6 +25,22 @@ export default function AdventurePage() {
   const [allocatedStats, setAllocatedStats] = useState(null);
   const [pointsRemaining, setPointsRemaining] = useState(10);
 
+  const [userStats, setUserStats] = useState(null);
+
+  useEffect(() => {
+  const unsub = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        setUserStats(snap.data().stats || {});
+      }
+    }
+  });
+  return () => unsub();
+}, []);
+
+
   useEffect(() => {
     const loadUser = async () => {
       const user = auth.currentUser;
@@ -143,7 +159,8 @@ export default function AdventurePage() {
         )}
 
         {page.type === "roll" && (
-          <RollPage page={page} router={router} />
+          <RollPage userStats={userStats} enemyAC={12} page={page} />
+          // <RollPage page={page} router={router} />
         )}
 
         {page.type === "battle" && (
@@ -166,7 +183,7 @@ export default function AdventurePage() {
             </button>
           ))}
 
-        {(page.type === "stats" || page.type === "input" || page.type === "classRedirect" || page.type === "roll" || page.type === "battle" || page.choices || page.next) && (
+        {(page.type === "stats" || page.type === "input" || page.type === "classRedirect" || page.type === "battle" || page.choices || page.next) && (
           <button
             className={`mt-4 float-right px-4 py-2 ${
               (page.type === "stats" && pointsRemaining > 0) ||

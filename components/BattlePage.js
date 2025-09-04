@@ -90,12 +90,12 @@ export default function BattlePage({ page, router }) {
       <p>Your HP: {player.hp}</p>
 
       {turn === "player" && (
-        <button onClick={handleAttack} className="bg-red-600 px-4 py-2 rounded">
+        <button onClick={handleAttack} className="bg-red-600 px-4 py-2">
           Attack
         </button>
       )}
 
-      <div className="mt-4 bg-gray-800 p-3 rounded max-h-64 overflow-y-auto">
+      <div className="mt-4 bg-gray-800 p-3 max-h-64 overflow-y-auto">
         {log.map((entry, i) => <p key={i}>{entry}</p>)}
       </div>
     </div>

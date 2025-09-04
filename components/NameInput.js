@@ -29,7 +29,7 @@
 
 export default function NameInput({ label, value, onChange }) {
   return (
-    <div>
+    <div className="stat-box p-4 w-full max-w-md text-white">
       <label className="block mb-2">{label}</label>
       <input
         type="text"

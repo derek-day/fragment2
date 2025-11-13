@@ -76,6 +76,17 @@ export default function AdventurePage() {
       return;
     }
 
+    if (page.type === "route" && user) {
+      let route = page.route;
+
+      await updateDoc(ref, { route }, { merge: true });
+
+      console.log("route:", route);
+
+      router.push(`/adventure/${page.next}`);
+      return;
+    }
+
     if (page.type === "stats" && user) {
       // const ref = doc(db, "users", user.uid);
       await updateDoc(ref, {
@@ -101,14 +112,29 @@ export default function AdventurePage() {
       const userSnap = await getDoc(ref);
       const userData = userSnap.data();
       const className = userData?.className || "Adventurer";
+      const route = userData?.route || "team";
 
-      let nextPageId = page.next;
+      const classBranch = page.classNext[className];
 
-      console.log(page.classNext, "team_" + className);
-      nextPageId = page.classNext[className] || page.next;
+      // let nextPageId = page.next;
+        
+      if (!classBranch) {
+        console.warn("Missing class entry. Using fallback.");
+        router.push(`/adventure/${page.next}`);
+        return;
+      }
+
+      const nextPageId = classBranch[route];
+
       console.log("Redirecting to:", nextPageId);
       router.push(`/adventure/${nextPageId}`);
       return;
+
+      // console.log(page.classNext, "team_" + className);
+      // nextPageId = page.classNext[className] || page.next;
+      // console.log("Redirecting to:", nextPageId);
+      // router.push(`/adventure/${nextPageId}`);
+      // return;
     }
 
     if (selectedChoice) {

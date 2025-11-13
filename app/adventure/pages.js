@@ -30,7 +30,8 @@ export const adventurePages = {
   pull_away_portal: {
     title: "Enter the Portal",
     src: "../assets/portal.webp",
-    type: "text",
+    type: "route",
+    route: "alone",
     text: "\"Dumbass,\" Threx hisses as you pull free and enter the portal anyway.\n\nWho is he to stand in the way of your destiny?\n\nYou emerge on the other side, in another world. The rules are different here, like in most portals. Gravity is heavier;  the air has less oxygen.",
     next: "portal_entrance",
   },
@@ -78,7 +79,8 @@ export const adventurePages = {
   },
   return_to_entrance: {
     title: "Return to the Entrance",
-    type: "text",
+    type: "route",
+    route: "team",
     text: "Better play it safe. This is your first time being so close to one of these, after all.\n\nYour new companions welcome you back. A few smile as you approach. Others are aloof and watch the portal with nervous or excited expressions.\n\nOne sneers at your arrival. This is the only person you know here. His name is Ronin Balore, and the two of you have never gotten along.",
     next: "team_intro",
   },
@@ -149,12 +151,43 @@ export const adventurePages = {
     src: "../assets/portal.webp",
     text: "It's hard to believe that was only a week ago. In retrospect, it felt so formative...\n\nAs if the Protocol had been with you all along.\n\nYou tell the others what your selection was on the digital readout, careful not to mentioned your un-ranked status or the fact you're not activated.\n\nThey'd know anyway, if they already read your file.",
     classNext: {
-      Warrior: "team_Warrior",
-      Mage: "team_Mage",
-      Summoner: "team_Summoner",
-      Undecided: "team_Undecided",
-      Mixed: "team_Mixed",
+      Warrior: {
+        team: "team_Warrior",
+        alone: "alone_equipment",
+      },
+      Mage: {
+        team: "team_Mage",
+        alone: "alone_equipment",
+      },
+      Summoner: {
+        team: "team_Summoner",
+        alone: "alone_equipment",
+      },
+      Undecided: {
+        team: "team_Undecided",
+        alone: "alone_equipment",
+      },
+      Mixed: {
+        team: "team_Mixed",
+        alone: "alone_equipment",
+      },
     },
+  },
+  alone_equipment: {
+    title: "Equipment",
+    type: "equipment",
+    text: "",
+    next: "portal_spot",
+  },
+  portal_spot: {
+    title: "Portal Spot",
+    type: "text",
+    next: "portal_encounter",
+    text: "Just as you finish reviewing your gear, something small and quick darts at you from the nearest tuft of fauna.\n\nYou try to react, but the strain of this place makes you sluggish.\n\nYou raise your weapon just in time to defend yourself, but you know this fight will be harder than you hoped.",
+  },
+  portal_encounter: {
+    title: "First Battle",
+    type: "battle",
   },
   team_Warrior: {
     title: "Warrior",

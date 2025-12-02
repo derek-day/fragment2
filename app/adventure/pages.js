@@ -175,7 +175,8 @@ export const adventurePages = {
   },
   alone_equipment: {
     title: "Equipment",
-    type: "equipment",
+    // type: "equipment",
+    type: "text",
     text: "",
     next: "portal_spot",
   },
@@ -188,6 +189,16 @@ export const adventurePages = {
   portal_encounter: {
     title: "First Battle",
     type: "battle",
+    enemy: {
+      name: "Critter",
+      maxHP: 100,      // Enemy health
+      ac: 10,          // Armor Class (difficulty to hit)
+      attack: 12,      // Attack bonus
+      magic: 10        // Magic attack bonus
+    },
+    text: "",
+    fail: "death",
+    next: "portal_victory",
   },
   team_Warrior: {
     title: "Warrior",

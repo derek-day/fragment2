@@ -47,7 +47,7 @@ export default function AdventurePage() {
       if (!user) return;
       const snap = await getDoc(doc(db, "users", user.uid));
       if (snap.exists()) {
-        setCharacterName(snap.data().characterName || "");
+        setCharacterName(snap.data().characterName || "Yib");
       }
     };
 
@@ -80,6 +80,10 @@ export default function AdventurePage() {
       let route = page.route;
 
       await updateDoc(ref, { route }, { merge: true });
+
+      if (page.route === "alone") {
+        await setDoc(ref, { characterName: "Yib" }, { merge: true });
+      }
 
       console.log("route:", route);
 
@@ -151,7 +155,7 @@ export default function AdventurePage() {
     }
   }, [page]);
 
-  const renderText = page.text.replace(/{{characterName}}/g, characterName);
+  const renderText = page.text.replace(/{{characterName}}/g, characterName) || "Yib";
 
   return (
     <div
@@ -190,7 +194,7 @@ export default function AdventurePage() {
         )}
 
         {page.type === "battle" && (
-          <BattlePage page={page} router={router} />
+          <BattlePage userStats={userStats} page={page} />
         )}
 
         {/* Choices */}

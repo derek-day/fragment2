@@ -37,27 +37,28 @@ export const adventurePages = {
   },
   portal_entrance: {
     title: "Portal Entrance",
-    src: "../assets/portal.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "Shit, you think. You had been hoping for a world less punishing than your own; on one of those, you would have felt stronger.  On this one, you must fight for every breath and every step.\n\nOn the bright side, nothing here attacks you right away. That gives you the opportunity to take in your new surroundings.",
     next: "portal_view",
   },
   portal_view: {
     title: "Portal View",
-    src: "../assets/portal.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "Not only are the physical laws here slightly different from what you're used to, the visual cues induce vertigo, too. You have heard that anything is possible inside a portal; the sight before you confirms it.\n\nThe land stretches out and up, culminating in an inverted sphere at least fifty miles in diameter. Spindly purple fauna obscures most of the ground itself... and whatever creatures lurk beneath.",
     next: "portal_streams",
   },
   portal_streams: {
     title: "Portal Streams",
-    src: "../assets/portal.webp",
+    src: "../assets/stream.webp",
     type: "text",
     text: "Crystal clear streams vein between the fauna, breaking it up into a patchwork of assorted purples. The liquid of the streams reflects the ground opposite it, and streams there do the same.\n\nThe result is a muted kaleidoscope.\n\nIt's beautiful, but it can also be brain breaking.",
     next: "portal_index",
   },
   portal_index: {
     title: "Portal Index",
+    src: "../assets/stream.webp",
     type: "text",
     text: "More importantly, the lack of an immediate threat gives you the chance to strategize. You take a moment to index your gear and think back on the training you have done in preparation for this adventure.\n\nIt also makes you think back on your experience in the Awakening Chamber. It was hard to believe it was only a week ago...",
     next: "protocol_intro",
@@ -109,17 +110,20 @@ export const adventurePages = {
   protocol_intro: {
     title: "Meet the Protocol",
     type: "text",
+    src: "../assets/lab.webp",
     text: "\"Please don't be alarmed,\" the androgenous artificial intelligence told you. Over two dozen needles pointed toward where you stood in the vertical MRI-looking machine.\n\nSurrounding you in the circular room were the technicians and Essence Analysists of the Global Protocol Authority, their faces lit by computer screens and flashing medical equipment.\n\nYou had followed a line of other potential operatives in here, and most had run out screaming.\n\nYeah, you remember thinking. No reason to be alarmed at all.",
     next: "failed_to_connect",
   },
   failed_to_connect: {
     title: "Failed to Connect",
+    src: "../assets/lab.webp",
     type: "text",
     text: "The needles plunged into you; the machine whirred to life; the technicians and analysts took their readings.\n\nThis was when the Protocol activated most operatives. This was when its augmented-reality messages appeared, and their hopes of becoming a hero were realized.\n\nYou did not activate.\n\n\"The Protocol has failed to connect,\" the AI said.\n\nYour clothes were handed back, and you were escorted outside.",
     next: "not_over_yet",
   },
   not_over_yet: {
     title: "Not Over Yet",
+    src: "../assets/lab.webp",
     type: "text",
     text: "\"It doesn't have to be over,\" the technician who escorted you said. You don't remember her name.\n\nShe handed you a physical device-- a digital readout tailored to your time in the chamber.\n\n\"Sometimes, the Protocol needs a little prompting. Enter your information as though you had been activated, raid a gate or two. Who knows,\" she smiled, \"maybe you'll be one of the lucky ones.\"\n\nYou had entered your information.",
     next: "stat_intro",
@@ -132,9 +136,10 @@ export const adventurePages = {
   stat_intro: {
     id: "stat-allocation",
     type: "stats",
-    src: "../assets/portal.webp",
+    src: "../assets/lab.webp",
     text: "Distribute your stat points. Choose wisely, as your future depends on it.",
     stats: {
+      HP: 20,
       Strength: 10,
       Dexterity: 10,
       Constitution: 10,
@@ -148,7 +153,7 @@ export const adventurePages = {
   class_confirmation: {
     id: "class-confirmation",
     type: "classRedirect",
-    src: "../assets/portal.webp",
+    src: "../assets/lab.webp",
     text: "It's hard to believe that was only a week ago. In retrospect, it felt so formative...\n\nAs if the Protocol had been with you all along.\n\nYou tell the others what your selection was on the digital readout, careful not to mentioned your un-ranked status or the fact you're not activated.\n\nThey'd know anyway, if they already read your file.",
     classNext: {
       Warrior: {
@@ -182,19 +187,21 @@ export const adventurePages = {
   },
   portal_spot: {
     title: "Portal Spot",
+    src: "../assets/stream.webp",
     type: "text",
     next: "portal_encounter",
     text: "Just as you finish reviewing your gear, something small and quick darts at you from the nearest tuft of fauna.\n\nYou try to react, but the strain of this place makes you sluggish.\n\nYou raise your weapon just in time to defend yourself, but you know this fight will be harder than you hoped.",
   },
   portal_encounter: {
     title: "First Battle",
+    src: "../assets/stream.webp",
     type: "battle",
     enemy: {
       name: "Critter",
-      maxHP: 100,      // Enemy health
+      maxHP: 10,      // Enemy health
       ac: 10,          // Armor Class (difficulty to hit)
-      attack: 12,      // Attack bonus
-      magic: 10        // Magic attack bonus
+      attack: 2,      // Attack bonus
+      magic: 1        // Magic attack bonus
     },
     text: "",
     fail: "death",

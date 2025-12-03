@@ -1,4 +1,33 @@
 @import url("https://use.typekit.net/ehk1fgw.css");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+
+@font-face {
+    font-family: 'Junicode';
+    src: url('/assets/fonts/Junicode.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GapSans';
+    src: url('/assets/fonts/GapSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TerminalGrotesque';
+    src: url('/assets/fonts/TerminalGrotesque.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BluuNext';
+    src: url('/assets/fonts/BluuNext.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* @import "tailwindcss"; */
 
@@ -42,7 +71,8 @@ button {
     border: 1px solid white;
     /* border: 1px solid #76DCEA; */
     font-family: "segoe-ui", sans-serif;
-    font-weight: 300;
+    font-family: "major mono display", monospace;
+    font-weight: 100;
     /* font-family: "futura-pt", sans-serif; */
     font-style: normal;
     text-shadow: 0 0 1px #fff, 0 0 3px #76DCEA;
@@ -52,6 +82,7 @@ button {
 .login:hover, .login:focus {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #76DCEA, 0 0 20px #76DCEA, 0 0 25px #76DCEA;
     box-shadow: inset 0 0 8px white;
+    font-weight: 700;
 }
 
 .login-div {

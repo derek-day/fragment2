@@ -6,6 +6,7 @@ import { auth, db } from "../lib/firebase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
+import { ShineButton, ShineInput } from '@/components/ShineComponents';
 
 
 export default function Home() {
@@ -142,14 +143,19 @@ useEffect(() => {
                 className="login text-xl tracking-wide w-full text-white py-3 mb-4"
                 onClick={() => setAuthMode("login")}
               >
-                Login
+                loGin
               </button>
               <button
                 className="login text-xl tracking-wide w-full text-white py-3"
                 onClick={() => setAuthMode("register")}
               >
-                Register
+                reGisteR
               </button>
+
+              <ShineButton className="m-2" variant="primary" onClick={() => setAuthMode("login")}>
+                Click Me
+              </ShineButton>
+
             </motion.div>
           ) : (
             <motion.div

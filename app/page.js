@@ -6,9 +6,9 @@ import { auth, db } from "../lib/firebase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShineButton, ShineInput } from '@/components/ShineComponents';
-import StarBorder from '@/components/StarBorder'
-import DarkVeil from '@/components/DarkVeil';
+import anime from "animejs";
+import { animate, waapi, eases, spring } from 'animejs';
+
 
 const PARTICLE_COUNT = 40;
 
@@ -67,7 +67,7 @@ export default function Home() {
       };
     });
   }, []);
-
+  
 
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -132,6 +132,10 @@ useEffect(() => {
             Intelligence: 10,
             Wisdom: 10,
             Charisma: 10,
+            HP: 20,
+            MaxHP: 20,
+            XP: 0,
+            Level: 1,
           },
         });
         setSuccessMessage("Protocol generating...");
@@ -174,6 +178,7 @@ useEffect(() => {
               height: `${p.size}px`,
               left: `${p.left}%`,
               top: `${p.top}%`,
+              filter: 'blur(0.8px) saturate(1.1) contrast(1.1)',
               animationDuration: `${p.duration}s`,
               animationDelay: `${p.delay}s`
             }}
@@ -230,7 +235,7 @@ useEffect(() => {
               animate="visible"
               exit="exit"
             >
-              <div className="login-div">
+              <div className="login-div box">
                 <h1 className="text-2xl tracking-wider mb-4 capitalize text-white">{authMode}</h1>
                 <label>Email</label>
                 <input
@@ -254,7 +259,7 @@ useEffect(() => {
                 </button> */}
                 <button
                   onClick={handleSubmit}
-                  className="login text-lg tracking-wide w-full text-white py-3 mb-4"
+                  className="login tracking-wide w-full text-white py-3 mb-4"
                 >
                   SIGN IN
                 </button>

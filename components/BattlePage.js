@@ -731,7 +731,7 @@ const BattleSystem = ({ userStats, page }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-4 md:p-6">
+    <div className="box min-h-screen bg-gradient-to-b text-white p-4 md:p-6">
       <div className="max-w-5xl mx-auto space-y-4">
         <h1 className="text-2xl md:text-3xl font-bold text-center">{page.title}</h1>
         
@@ -880,6 +880,9 @@ const BattleSystem = ({ userStats, page }) => {
         </div>
       </div>
     </div>
+
+
+
   );
 };
 

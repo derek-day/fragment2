@@ -1,34 +1,5 @@
 @import url("https://use.typekit.net/ehk1fgw.css");
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
-
-@font-face {
-    font-family: 'Junicode';
-    src: url('/assets/fonts/Junicode.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'GapSans';
-    src: url('/assets/fonts/GapSans.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TerminalGrotesque';
-    src: url('/assets/fonts/TerminalGrotesque.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'BluuNext';
-    src: url('/assets/fonts/BluuNext.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* @import "tailwindcss"; */
 
@@ -40,6 +11,14 @@
   --accent: #7ff5ff;
   --accent-soft: rgba(127, 245, 255, 0.55);
   --bg-dark: #02050a;
+  --panel-bg: rgba(0, 0, 0, 0.35);
+  --panel-border: rgba(255, 255, 255, 0.4);
+  --button-bg: rgba(0, 0, 0, 0.55);
+  --button-hover-bg: rgba(0, 0, 0, 0.75);
+  --button-border: rgba(255, 255, 255, 0.35);
+  --text-color: #fff;
+  --font-body: 'Urbanist', sans-serif;
+  --trans-fast: 140ms ease-out;
 }
 
 * {
@@ -51,6 +30,8 @@
 body, html {
   height: 100%;
   background: #020309;
+  font-family: var(--font-body);
+  color: var(--text-color);
 }
 
 .hero {
@@ -162,6 +143,7 @@ button {
     padding: 13px 0;
     letter-spacing: 1.5px;
     transition: 0.3s;
+    font-size: 1rem;
 }
 
 .login:hover, .login:focus {
@@ -175,18 +157,19 @@ button {
     cursor: pointer;
 }
 
-.login-div {
-  /* border: 1px solid #76DCEA40; */
+.box {
   border: 1px solid rgba(140, 230, 255, 0.35);
-  /* background-color: #f3f3f409; */
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 2rem;
   justify-self: center;
-  width: 420px;
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.2),
     inset 0 0 20px rgba(0, 180, 255, 0.1);
+}
+
+.login-div {
+  width: 420px;
 
   h1,label {
     text-align: left;
@@ -237,10 +220,15 @@ label {
 .story-text {
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;
-    /* font-family: "ivypresto-headline", serif;
-    font-weight: 300; */
-    font-weight: 400;
-    font-family: "Urbanist", sans-serif;
+    border: 1px solid rgba(140, 230, 255, 0.35);
+    /* background-color: rgba(0,0,0,0.5); */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    font-family: "ivypresto-headline", serif;
+    font-weight: 300;
+    /* font-weight: 400; */
+    /* font-family: "Urbanist", sans-serif; */
     font-style: normal;
     width: 50dvw;
 
@@ -276,22 +264,33 @@ button {
     /* font-family: "segoe-ui", sans-serif;
     font-family: "ivypresto-headline", serif; */
     font-weight: 400;
+    font-weight: 300;
     font-family: "Urbanist", sans-serif;
+    font-family: "Cinzel", serif;
+    font-family: "ivypresto-headline", serif;
     font-style: normal;
     /* letter-spacing: 0.5px; */
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;
-    transition: text-shadow .6s, box-shadow .3s;
+    border: 1px solid rgba(140, 230, 255, 0.35);
+    /* background-color: rgba(0,0,0,0.5); */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: .3s;
 }
 
 .choice-button:hover, .choice-button:focus {
     text-shadow: 0 0 5px #fff, 0 0 10px #76DCEA, 0 0 20px #76DCEA;
-    box-shadow: inset 0 0 6px white;
+    /* box-shadow: inset 0 0 6px white; */
+    border: 1px solid rgba(0, 220, 255, 0.7);
+    box-shadow: 0 0 8px rgba(0, 220, 255, 0.35);
 }
 
 .selected-choice {
     text-shadow: 0 0 5px #fff, 0 0 10px #76DCEA, 0 0 20px #76DCEA;
-    box-shadow: inset 0 0 6px white;
+    /* box-shadow: inset 0 0 6px white; */
+    border: 1px solid rgba(0, 220, 255, 0.7);
+    box-shadow: 0 0 8px rgba(0, 220, 255, 0.35);
 }
 
 @media (max-width: 1250px) {
@@ -310,11 +309,44 @@ button {
 
 
 
-.darkveil-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  mix-blend-mode: color;
-  z-index: -1;
-  position: fixed;
+/* Base continue button styles */
+.continue-btn {
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.2s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: inline-block;
+  font-family: "Cinzel", serif;
+}
+
+/* Enabled State — Solo Leveling Glow */
+.continue-btn.enabled {
+  background: rgba(0, 255, 170, 0.25);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.4),
+              inset 0 0 8px rgba(0, 255, 150, 0.4);
+}
+
+.continue-btn.enabled:hover {
+  background: rgba(0, 255, 170, 0.35);
+  box-shadow: 0 0 14px rgba(0, 255, 170, 0.75),
+              inset 0 0 12px rgba(0, 255, 150, 0.5);
+}
+
+.continue-btn.enabled:active {
+  transform: scale(0.95);
+}
+
+/* Disabled State — Shut Off Neon */
+.continue-btn.disabled {
+  background: rgba(150, 150, 150, 0.25);
+  color: rgba(200, 200, 200, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  box-shadow: none;
 }

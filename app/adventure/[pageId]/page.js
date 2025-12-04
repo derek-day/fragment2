@@ -215,12 +215,12 @@ export default function AdventurePage() {
 
         {(page.type === "stats" || page.type === "input" || page.type === "classRedirect" || page.type === "battle" || page.choices || page.next) && (
           <button
-            className={`mt-4 float-right px-4 py-2 ${
+            className={`mt-4 float-right px-4 py-2 continue ${
               (page.type === "stats" && pointsRemaining > 0) ||
               (page.type === "input" && inputValue.trim() === "") ||
               (page.choices && !selectedChoice)
-                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                : "bg-green-600 text-white hover:bg-green-800"
+                ? "bg-gray-400 text-gray-700 cursor-not-allowed continue unselect"
+                : "bg-green-600 text-white hover:bg-green-800 continue select"
             }`}
             onClick={handleContinue}
             disabled={
@@ -232,6 +232,25 @@ export default function AdventurePage() {
             Continue
           </button>
         )}
+
+        <button
+          className={`continue-btn ${
+            (page.type === "stats" && pointsRemaining > 0) ||
+            (page.type === "input" && inputValue.trim() === "") ||
+            (page.choices && !selectedChoice)
+              ? "disabled"
+              : "enabled"
+          }`}
+          onClick={handleContinue}
+          disabled={
+            (page.type === "stats" && pointsRemaining > 0) ||
+            (page.type === "input" && inputValue.trim() === "") ||
+            (page.choices && !selectedChoice)
+          }
+        >
+          Continue
+        </button>
+
 
       </div>
     </div>

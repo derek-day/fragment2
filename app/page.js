@@ -7,6 +7,8 @@ import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndP
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShineButton, ShineInput } from '@/components/ShineComponents';
+import StarBorder from '@/components/StarBorder'
+import DarkVeil from '@/components/DarkVeil';
 
 
 export default function Home() {
@@ -23,6 +25,35 @@ export default function Home() {
       {successMessage}
     </div>
   )}
+
+    useEffect(() => {
+    // Generate screen particles on mount
+    const container = document.getElementById("screenParticles");
+    if (!container) return;
+
+    const PARTICLE_COUNT = 40;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const dot = document.createElement("span");
+      const size = Math.random() * 2.2 + 1;
+      const duration = Math.random() * 18 + 14;
+      const delay = Math.random() * -duration;
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+
+      dot.style.width = size + "px";
+      dot.style.height = size + "px";
+      dot.style.left = left + "%";
+      dot.style.top = top + "%";
+      dot.style.animationDuration = duration + "s";
+      dot.style.animationDelay = delay + "s";
+
+      container.appendChild(dot);
+    }
+
+    return () => (container.innerHTML = "");
+  }, []);
+
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -81,7 +112,7 @@ useEffect(() => {
     try {
       let userCred;
 
-      if (authMode === "register") {
+      if (authMode === "create account") {
         userCred = await createUserWithEmailAndPassword(auth, email, password);
         await setDoc(doc(db, "users", userCred.user.uid), {
           email: userCred.user.email,
@@ -126,7 +157,14 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-10">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-10 hero">
+
+      <div className="screen-particles" id="screenParticles"></div>
+
+      {/* <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: "-1", mixBlendMode: 'lighten', top: 0, left: 0 }}>
+        <DarkVeil />
+      </div> */}
+
       <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
       {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}
       <div className="rounded shadow-md w-full max-w-xs sm:max-w-xs text-center">
@@ -143,18 +181,23 @@ useEffect(() => {
                 className="login text-xl tracking-wide w-full text-white py-3 mb-4"
                 onClick={() => setAuthMode("login")}
               >
-                loGin
+                Login
               </button>
               <button
                 className="login text-xl tracking-wide w-full text-white py-3"
-                onClick={() => setAuthMode("register")}
+                onClick={() => setAuthMode("create account")}
               >
-                reGisteR
+                Create Account
               </button>
 
-              <ShineButton className="m-2" variant="primary" onClick={() => setAuthMode("login")}>
-                Click Me
-              </ShineButton>
+              {/* <StarBorder
+                as="button"
+                className="custom-class"
+                color="cyan"
+                speed="5s"
+              >
+                // content
+              </StarBorder> */}
 
             </motion.div>
           ) : (
@@ -167,23 +210,31 @@ useEffect(() => {
             >
               <div className="login-div">
                 <h1 className="text-2xl tracking-wider mb-4 capitalize text-white">{authMode}</h1>
+                <label>Email</label>
                 <input
                   type="email"
-                  placeholder="Email"
-                  className="w-full p-2 border mb-3"
+                  placeholder="Enter your email address"
+                  className="w-full border mb-3"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                <label>Password</label>
                 <input
                   type="password"
-                  placeholder="Password"
-                  className="w-full p-2 border mb-3"
+                  placeholder="Enter your password"
+                  className="w-full border mb-3"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
+                {/* <button
                   onClick={handleSubmit}
                   className="login text-xl tracking-wide w-full text-white py-3 mb-4"
                 >
-                  Submit
+                  Create an account
+                </button> */}
+                <button
+                  onClick={handleSubmit}
+                  className="login text-lg tracking-wide w-full text-white py-3 mb-4"
+                >
+                  SIGN IN
                 </button>
                 <button
                   onClick={() => setAuthMode(null)}

@@ -8,6 +8,7 @@ import { signOut } from "firebase/auth";
 import { useParams } from "next/navigation";
 import { adventurePages } from '@/app/adventure/pages';
 
+
 export default function MenuButton() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function MenuButton() {
         }
       };
   
+
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -109,6 +111,8 @@ export default function MenuButton() {
         </div>
       )}
     </div>
+
+    
   );
 }
 

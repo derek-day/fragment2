@@ -161,9 +161,9 @@ useEffect(() => {
 
       <div className="screen-particles" id="screenParticles"></div>
 
-      {/* <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: "-1", mixBlendMode: 'lighten', top: 0, left: 0 }}>
+      <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: "-1", mixBlendMode: 'lighten', top: 0, left: 0 }}>
         <DarkVeil />
-      </div> */}
+      </div>
 
       <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
       {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}

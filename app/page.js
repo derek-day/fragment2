@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db } from "../lib/firebase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -10,6 +10,7 @@ import { ShineButton, ShineInput } from '@/components/ShineComponents';
 import StarBorder from '@/components/StarBorder'
 import DarkVeil from '@/components/DarkVeil';
 
+const PARTICLE_COUNT = 40;
 
 export default function Home() {
   const [authMode, setAuthMode] = useState(null); // "login" or "register"
@@ -26,42 +27,47 @@ export default function Home() {
     </div>
   )}
 
-    useEffect(() => {
-    // Generate screen particles on mount
-    const container = document.getElementById("screenParticles");
-    if (!container) return;
+  //   useEffect(() => {
+  //   const container = document.getElementById("screenParticles");
+  //   if (!container) return;
 
-    const PARTICLE_COUNT = 40;
+  //   const PARTICLE_COUNT = 40;
 
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const dot = document.createElement("span");
-      const size = Math.random() * 2.5 + 1;
-      const duration = Math.random() * 18 + 14;
-      const delay = Math.random() * -duration;
-      const left = Math.random() * 100;
-      const top = Math.random() * 100;
+  //   for (let i = 0; i < PARTICLE_COUNT; i++) {
+  //     const dot = document.createElement("span");
+  //     const size = Math.random() * 2.5 + 1;
+  //     const duration = Math.random() * 18 + 14;
+  //     const delay = Math.random() * -duration;
+  //     const left = Math.random() * 100;
+  //     const top = Math.random() * 100;
 
-      dot.style.width = size + "px";
-      dot.style.height = size + "px";
-      dot.style.left = left + "%";
-      dot.style.top = top + "%";
-      dot.style.animationDuration = duration + "s";
-      dot.style.animationDelay = delay + "s";
+  //     dot.style.width = size + "px";
+  //     dot.style.height = size + "px";
+  //     dot.style.left = left + "%";
+  //     dot.style.top = top + "%";
+  //     dot.style.animationDuration = duration + "s";
+  //     dot.style.animationDelay = delay + "s";
 
-      container.appendChild(dot);
-    }
+  //     container.appendChild(dot);
+  //   }
 
-    return () => (container.innerHTML = "");
+  //   return () => (container.innerHTML = "");
+  // }, []);
+
+    const particles = useMemo(() => {
+    return Array.from({ length: PARTICLE_COUNT }, (_, i) => {
+      const duration = Math.random() * 18 + 14; // 14–32s
+      return {
+        id: i,
+        size: Math.random() * 2.5 + 1,      // 1–3.2px
+        left: Math.random() * 100,          // %
+        top: Math.random() * 100,           // %
+        duration,
+        delay: Math.random() * -duration    // negative for staggered starts
+      };
+    });
   }, []);
 
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) router.push("/dashboard");
-  //     else setLoading(false);
-  //   });
-  //   return () => unsubscribe();
-  // }, []);
 
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -159,11 +165,27 @@ useEffect(() => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-auth px-10 hero">
 
-      <div className="screen-particles" id="screenParticles"></div>
-
-      <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: "-1", mixBlendMode: 'lighten', top: 0, left: 0 }}>
-        <DarkVeil />
+      <div className="screen-particles">
+        {particles.map(p => (
+          <span
+            key={p.id}
+            style={{
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              left: `${p.left}%`,
+              top: `${p.top}%`,
+              animationDuration: `${p.duration}s`,
+              animationDelay: `${p.delay}s`
+            }}
+          />
+        ))}
       </div>
+
+      {/* <div className="screen-particles" id="screenParticles"></div> */}
+
+      {/* <div style={{ width: '100%', height: '600px', position: 'fixed', zIndex: "-1", mixBlendMode: 'lighten', top: 0, left: 0 }}>
+        <DarkVeil />
+      </div> */}
 
       <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
       {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}

@@ -35,7 +35,7 @@ export default function Home() {
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       const dot = document.createElement("span");
-      const size = Math.random() * 2.2 + 1;
+      const size = Math.random() * 2.5 + 1;
       const duration = Math.random() * 18 + 14;
       const delay = Math.random() * -duration;
       const left = Math.random() * 100;

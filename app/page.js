@@ -6,7 +6,6 @@ import { auth, db } from "../lib/firebase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import anime from "animejs";
 import { animate, waapi, eases, spring } from 'animejs';
 
 

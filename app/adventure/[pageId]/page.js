@@ -159,7 +159,7 @@ export default function AdventurePage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6"
+      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
       style={{ backgroundImage: `url(${page.src})` }}
     >
       <MenuButton />

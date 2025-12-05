@@ -40,7 +40,7 @@ export default function MenuButton() {
 
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
+    <div style={{ position: 'relative', display: 'inline-block', zIndex: 1 }}>
       <button onClick={() => setOpen(!open)} style={{ padding: '10px 15px' }} className="choice-button mb-4">
         ☰ Menu
       </button>
@@ -97,7 +97,7 @@ export default function MenuButton() {
           - Journal (shows choices made and npc names/locations/images)
           - User Profiles */}
 
-          <ul style={{ listStyle: 'none', margin: 0, padding: '0px' }}>
+          <ul style={{ listStyle: 'none', margin: 0, padding: '0px', zIndex: 1000, position: 'relative' }}>
             <li>
               <button onClick={() => handleNavigation('/')} style={menuItemStyle}>Home</button>
             </li>

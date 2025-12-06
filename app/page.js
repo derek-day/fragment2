@@ -191,7 +191,8 @@ useEffect(() => {
         <DarkVeil />
       </div> */}
 
-      <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
+      <img src="assets/logo2.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" />
+      {/* <img src="assets/logo.png" alt="Gatebreaker Protocol Logo" className="mb-16 object-contain logo" /> */}
       {/* <h1 className="text-2xl tracking-wider mb-16 text-white drop-shadow-lg">"The Chosen Operator"</h1> */}
       <div className="rounded shadow-md w-full max-w-xs sm:max-w-xs text-center">
         <AnimatePresence mode="wait" initial={false}>

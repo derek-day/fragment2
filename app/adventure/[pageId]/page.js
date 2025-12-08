@@ -5,6 +5,7 @@ import { auth, db } from "@/lib/firebase";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { adventurePages } from "../pages";
+import StatLayout from "@/util/StatLayout";
 import MenuButton from "@/util/MenuButton";
 import PageStats from "@/components/PageStats";
 import NameInput from "@/components/NameInput";
@@ -162,6 +163,7 @@ export default function AdventurePage() {
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
       style={{ backgroundImage: `url(${page.src})` }}
     >
+      <StatLayout />
       <MenuButton />
 
       <div className="story-text p-2 mb-6">

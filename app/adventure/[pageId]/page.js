@@ -1,16 +1,16 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { auth, db } from "@/lib/firebase";
+import { auth, db } from "../../../lib/firebase";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { adventurePages } from "../pages";
-import StatLayout from "@/util/StatLayout";
-import MenuButton from "@/util/MenuButton";
-import PageStats from "@/components/PageStats";
-import NameInput from "@/components/NameInput";
-import BattlePage from "@/components/BattlePage";
-import RollPage from "@/components/RollPage";
+import StatLayout from "../../../util/StatLayout";
+import MenuButton from "../../../util/MenuButton";
+import PageStats from "../../../components/PageStats";
+import NameInput from "../../../components/NameInput";
+import BattlePage from "../../../components/BattlePage";
+import RollPage from "../../../components/RollPage";
 
 
 export default function AdventurePage() {

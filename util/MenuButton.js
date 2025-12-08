@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // For Pages Router
-import { auth, db } from "@/lib/firebase";
+import { auth, db } from "../lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useParams } from "next/navigation";
-import { adventurePages } from '@/app/adventure/pages';
+import { adventurePages } from '../app/adventure/pages';
 
 
 export default function MenuButton() {

@@ -473,8 +473,10 @@ const BattleSystem = ({ userStats, page }) => {
 
     const dice = new DiceBox("#dice-box", {
       assetPath: "/dice-box-assets/",
-      scale: 15,
-      size: 6,
+      // scale: 15,
+      scale: 20,
+      // size: 6,
+      size: 8,
       gravity: 9.8,
       lightIntensity: 1,
       perspective: true,

@@ -18,7 +18,6 @@
 // interface PageData {
 //   id: string;
 //   title: string;
-//   // type: 'battle' | 'story' | 'choice';
 //   type: 'battle' | 'choice' | 'input' | 'text' | 'roll' | 'route' | 'stats' | 'equipment' | 'death';
 //   text: string;
 //   chapter?: string;
@@ -119,7 +118,7 @@
 //     setEditingPage({
 //       id: '',
 //       title: '',
-//       type: 'story',
+//       type: 'text',
 //       text: '',
 //       chapter: selectedChapter !== 'all' ? selectedChapter : 'chapter1',
 //       section: selectedSection !== 'all' ? selectedSection : 'main',
@@ -220,9 +219,16 @@
 //                 <div className="flex-1">
 //                   <div className="flex items-center gap-3 mb-2">
 //                     <h2 className="text-xl font-bold">{page.title}</h2>
-//                     <span className={`px-2 py-1 rounded text-xs ${
+//                     <span className={`px-2 py-1 rounded text-xs font-semibold ${
 //                       page.type === 'battle' ? 'bg-red-600' :
 //                       page.type === 'choice' ? 'bg-blue-600' :
+//                       page.type === 'text' ? 'bg-gray-600' :
+//                       page.type === 'input' ? 'bg-cyan-600' :
+//                       page.type === 'roll' ? 'bg-purple-600' :
+//                       page.type === 'route' ? 'bg-yellow-600' :
+//                       page.type === 'stats' ? 'bg-green-600' :
+//                       page.type === 'equipment' ? 'bg-orange-600' :
+//                       page.type === 'death' ? 'bg-black' :
 //                       'bg-gray-600'
 //                     }`}>
 //                       {page.type}
@@ -309,7 +315,7 @@
 //         attack: prev.enemy?.attack || 10,
 //         magic: prev.enemy?.magic || 10,
 //         points: prev.enemy?.points || 0,
-//         item: prev.enemy?.item || "",
+//         item: prev.enemy?.item || '',
 //         [field]: value
 //       }
 //     }));
@@ -324,8 +330,8 @@
 //         ac: 15,
 //         attack: 10,
 //         magic: 10,
-//         points: 0,
-//         item: ''
+//         points: 5,
+//         item: 'Random Item'
 //       }
 //     }));
 //   };
@@ -436,9 +442,15 @@
 //               onChange={(e) => updateField('type', e.target.value as PageData['type'])}
 //               className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"
 //             >
-//               <option value="story">Story</option>
-//               <option value="battle">Battle</option>
-//               <option value="choice">Choice</option>
+//               <option value="text">Text (Story/Narrative)</option>
+//               <option value="battle">Battle (Combat)</option>
+//               <option value="choice">Choice (Multiple Options)</option>
+//               <option value="input">Input (Text Entry)</option>
+//               <option value="roll">Roll (Dice Check)</option>
+//               <option value="route">Route (Path Selection)</option>
+//               <option value="stats">Stats (Character Sheet)</option>
+//               <option value="equipment">Equipment (Inventory)</option>
+//               <option value="death">Death (Game Over)</option>
 //             </select>
 //           </div>
 
@@ -532,8 +544,8 @@
 //             </div>
 //           )}
 
-//           {/* Navigation - Story Type */}
-//           {formData.type === 'story' && (
+//           {/* Navigation - Text Type */}
+//           {formData.type === 'text' && (
 //             <div className="border-t border-gray-700 pt-6">
 //               <h3 className="text-xl font-bold mb-4">Navigation</h3>
 //               <div>
@@ -548,6 +560,26 @@
 //                   placeholder="chapter1.forest_path"
 //                 />
 //                 <p className="text-xs text-gray-400 mt-1">Format: chapter.page_id</p>
+//               </div>
+//             </div>
+//           )}
+
+//           {/* Navigation - Other Simple Types (roll, input, route, stats, equipment, death) */}
+//           {(formData.type === 'roll' || formData.type === 'input' || formData.type === 'route' || 
+//             formData.type === 'stats' || formData.type === 'equipment' || formData.type === 'death') && (
+//             <div className="border-t border-gray-700 pt-6">
+//               <h3 className="text-xl font-bold mb-4">Navigation</h3>
+//               <div>
+//                 <label className="block text-sm font-bold mb-2">
+//                   Next Page ID
+//                 </label>
+//                 <input
+//                   type="text"
+//                   value={formData.next || ''}
+//                   onChange={(e) => updateField('next', e.target.value)}
+//                   className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"
+//                   placeholder="chapter1.next_page"
+//                 />
 //               </div>
 //             </div>
 //           )}
@@ -685,8 +717,28 @@
 
 
 
+
 // ============================================
 // FILE: app/admin/page-editor/page.tsx
+// 
+// IMPORTANT: Update your Firestore Security Rules first!
+// Go to Firebase Console > Firestore Database > Rules
+// Replace with:
+//
+// rules_version = '2';
+// service cloud.firestore {
+//   match /databases/{database}/documents {
+//     match /pages/{pageId} {
+//       allow read: if true;
+//       allow write: if request.auth != null;
+//     }
+//     match /users/{userId} {
+//       allow read, write: if request.auth != null && request.auth.uid == userId;
+//     }
+//   }
+// }
+//
+// Then click "Publish"
 // ============================================
 "use client";
 
@@ -944,6 +996,60 @@ export default function PageEditorAdmin() {
                       Choices: {page.choices.length} options
                     </div>
                   )}
+
+                  {/* Navigation Info */}
+                  <div className="mt-3 pt-3 border-t border-gray-700">
+                    <div className="flex flex-wrap gap-2 text-xs">
+                      {page.next && (
+                        <span className="bg-green-900/50 text-green-300 px-2 py-1 rounded border border-green-700">
+                          → {page.next}
+                        </span>
+                      )}
+                      {page.fail && (
+                        <span className="bg-red-900/50 text-red-300 px-2 py-1 rounded border border-red-700">
+                          ✕ {page.fail}
+                        </span>
+                      )}
+                      {page.flee && (
+                        <span className="bg-yellow-900/50 text-yellow-300 px-2 py-1 rounded border border-yellow-700">
+                          ⎋ {page.flee}
+                        </span>
+                      )}
+                      {page.choices?.map((choice, idx) => (
+                        <span key={idx} className="bg-blue-900/50 text-blue-300 px-2 py-1 rounded border border-blue-700">
+                          {idx + 1}→ {choice.next}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Pages that link TO this page */}
+                    {(() => {
+                      const incomingPages = pages.filter(p => 
+                        p.next === page.id || 
+                        p.fail === page.id || 
+                        p.flee === page.id ||
+                        p.choices?.some(c => c.next === page.id)
+                      );
+                      
+                      if (incomingPages.length > 0) {
+                        return (
+                          <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                            <span className="text-gray-500">From:</span>
+                            {incomingPages.map(p => (
+                              <button
+                                key={p.id}
+                                onClick={() => setEditingPage(p)}
+                                className="bg-gray-900/50 text-gray-400 px-2 py-1 rounded border border-gray-600 hover:border-gray-500 hover:text-gray-300"
+                              >
+                                ← {p.id}
+                              </button>
+                            ))}
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
+                  </div>
                 </div>
                 
                 <div className="flex gap-2">
@@ -990,6 +1096,43 @@ function PageEditor({
   onCancel: () => void;
 }) {
   const [formData, setFormData] = useState<PageData>(page);
+  const [allPages, setAllPages] = useState<PageData[]>([]);
+
+  // Load all pages for navigation preview
+  useEffect(() => {
+    const loadAllPages = async () => {
+      try {
+        const pagesCollection = collection(db, 'pages');
+        const snapshot = await getDocs(pagesCollection);
+        const pagesData = snapshot.docs.map(docSnap => ({
+          id: docSnap.id,
+          ...docSnap.data()
+        } as PageData));
+        setAllPages(pagesData);
+      } catch (error) {
+        console.error('Error loading pages:', error);
+      }
+    };
+    loadAllPages();
+  }, []);
+
+  // Find pages that link to this page
+  const incomingPages = allPages.filter(p => 
+    p.next === formData.id || 
+    p.fail === formData.id || 
+    p.flee === formData.id ||
+    p.choices?.some(c => c.next === formData.id)
+  );
+
+  // Find pages this page links to
+  const outgoingPageIds = [
+    formData.next,
+    formData.fail,
+    formData.flee,
+    ...(formData.choices?.map(c => c.next) || [])
+  ].filter(Boolean);
+
+  const outgoingPages = allPages.filter(p => outgoingPageIds.includes(p.id));
 
   const updateField = (field: keyof PageData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -1004,7 +1147,7 @@ function PageEditor({
         ac: prev.enemy?.ac || 15,
         attack: prev.enemy?.attack || 10,
         magic: prev.enemy?.magic || 10,
-        points: prev.enemy?.points || 0,
+        points: prev.enemy?.points || 5,
         item: prev.enemy?.item || '',
         [field]: value
       }
@@ -1068,6 +1211,45 @@ function PageEditor({
             </button>
           </div>
         </div>
+
+        {/* Navigation Preview */}
+        {!isCreating && (
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {/* Incoming Pages */}
+            <div className="bg-gray-800 rounded-lg p-4 border-2 border-gray-700">
+              <h3 className="text-sm font-bold text-gray-400 mb-3">← Pages Leading Here ({incomingPages.length})</h3>
+              <div className="space-y-2 max-h-40 overflow-y-auto">
+                {incomingPages.length > 0 ? (
+                  incomingPages.map(p => (
+                    <div key={p.id} className="bg-gray-900 p-2 rounded text-xs">
+                      <div className="font-bold text-blue-400">{p.id}</div>
+                      <div className="text-gray-500">{p.title}</div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-gray-500 text-xs">No pages link to this one</div>
+                )}
+              </div>
+            </div>
+
+            {/* Outgoing Pages */}
+            <div className="bg-gray-800 rounded-lg p-4 border-2 border-gray-700">
+              <h3 className="text-sm font-bold text-gray-400 mb-3">Pages This Leads To → ({outgoingPages.length})</h3>
+              <div className="space-y-2 max-h-40 overflow-y-auto">
+                {outgoingPages.length > 0 ? (
+                  outgoingPages.map(p => (
+                    <div key={p.id} className="bg-gray-900 p-2 rounded text-xs">
+                      <div className="font-bold text-green-400">{p.id}</div>
+                      <div className="text-gray-500">{p.title}</div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-gray-500 text-xs">This page doesn't link anywhere yet</div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="space-y-6 bg-gray-800 rounded-lg p-6 border-2 border-gray-700">
           {/* Basic Info */}

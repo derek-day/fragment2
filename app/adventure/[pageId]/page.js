@@ -1,5 +1,5 @@
 import { getPageData } from '../../../lib/pageService';
-import PageClient from './PageClient';
+import PageClient from './pageClient';
 
 export default async function AdventurePage({ params }) {
   const pageId = params.pageId;

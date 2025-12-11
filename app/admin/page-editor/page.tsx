@@ -760,6 +760,7 @@ interface Enemy {
 interface PageData {
   id: string;
   title: string;
+  src: string;
   type: 'battle' | 'choice' | 'input' | 'text' | 'roll' | 'route' | 'stats' | 'equipment' | 'death';
   text: string;
   chapter?: string;
@@ -860,6 +861,7 @@ export default function PageEditorAdmin() {
     setEditingPage({
       id: '',
       title: '',
+      src: '',
       type: 'text',
       text: '',
       chapter: selectedChapter !== 'all' ? selectedChapter : 'chapter1',
@@ -1278,7 +1280,7 @@ function PageEditor({
               placeholder="chapter1"
             />
             <p className="text-xs text-gray-400 mt-1">
-              Main chapter grouping (e.g., "chapter1", "prologue", "epilogue")
+              Main chapter grouping (e.g., "chapter1", "chapter2", "chapter3")
             </p>
           </div>
 
@@ -1292,7 +1294,7 @@ function PageEditor({
               placeholder="main"
             />
             <p className="text-xs text-gray-400 mt-1">
-              Sub-section within chapter (e.g., "forest", "castle", "sidequest")
+              Sub-section within chapter (e.g., "section1", "section2", "section3")
             </p>
           </div>
 
@@ -1305,6 +1307,20 @@ function PageEditor({
               className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"
               placeholder="The Dark Forest"
             />
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold mb-2">Background Image</label>
+            <input
+              type="text"
+              value={formData.src}
+              onChange={(e) => updateField('src', e.target.value)}
+              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"
+              placeholder="../assets/portal.webp"
+            />
+            <p className="text-xs text-gray-400 mt-1">
+              Background image art (e.g., "../assets/portal.webp", "../assets/lab.webp")
+            </p>
           </div>
 
           <div>

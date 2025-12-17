@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../../../lib/firebase";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-//import { adventurePages } from "../pages";
-//import { getPageData } from '../../../lib/pageService';
+import { adventurePages } from "../pages";
+import { getPageData } from '../../../lib/pageService';
 import StatLayout from "../../../util/StatLayout";
 import MenuButton from "../../../util/MenuButton";
 import PageStats from "../../../components/PageStats";
@@ -14,11 +14,11 @@ import BattlePage from "../../../components/BattlePage";
 import RollPage from "../../../components/RollPage";
 
 
-//export default function AdventurePage() {
-export default function AdventurePage({page, pageId }) {
-  //const { pageId } = useParams();
+export default function AdventurePage() {
+// export default function AdventurePage({page, pageId }) {
+  const { pageId } = useParams();
   const router = useRouter();
-  //const page = adventurePages[pageId];
+  const page = adventurePages[pageId];
   //const page = await getPageData(pageId);
 
   const [selectedChoice, setSelectedChoice] = useState(null);

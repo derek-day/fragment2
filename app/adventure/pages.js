@@ -814,12 +814,12 @@ export const adventurePages = {
     src: "../assets/stream.webp",
     type: "battle",
     enemy: {
-      name: "Cotton Candy Creature",
+      name: "Minion",
       maxHP: 20,      // Enemy health
       ac: 12,          // Armor Class (difficulty to hit)
       attack: 4,      // Attack bonus
       magic: 3,
-      points: 10,
+      points: 5,
       item: ""        // Magic attack bonus
     },
     text: "",

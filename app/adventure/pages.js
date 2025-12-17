@@ -654,6 +654,7 @@ export const adventurePages = {
     title: "Warn The Group",
     type: "text",
     text: "\"I saw something moving behind us,\" you report.\n\nThe group stops.\n\n\"Where?\" Threx asks.\n\nYou point to your rear and describe the shimmering.\n\n\"He's always been skittish,\" Ronin teases. \"It was probably just a tree or an eye floater or something.\"\n\nThrex looks at you a moment longer.",
+    //need to come back and set next page based on previous choices
     next: "",
   },
   keep_guard: {
@@ -713,14 +714,6 @@ export const adventurePages = {
       points: 15,
       item: ""        // Magic attack bonus
     },
-    team: [
-      { name: "Akemi", maxHP: 15, ac: 12, attack: 3, magic: 5 },
-      { name: "Harla", maxHP: 20, ac: 14, attack: 4, magic: 2 },
-      { name: "Kaelion", maxHP: 18, ac: 13, attack: 5, magic: 3 },
-      { name: "Sheemie", maxHP: 12, ac: 11, attack: 2, magic: 6 },
-      { name: "Mitzi", maxHP: 14, ac: 12, attack: 3, magic: 4 },
-      { name: "Aleth", maxHP: 16, ac: 13, attack: 4, magic: 3 },
-    ],
     text: "",
     fail: "forest_clearing_encounter_fail",
     next: "forest_encounter_success",
@@ -773,6 +766,72 @@ export const adventurePages = {
       { label: "See what Threx decides", next: "threx_decides" },
     ],
   },
+  head_to_boss: {
+    title: "Head To The Boss",
+    type: "text",
+    text: "\"I say we go for the boss first,\" you state confidently. \"If we can take it down quickly, the minions might lose their will to fight.\"\n\nThrex nods slowly. \"Alright. Let's move out. Stay sharp, everyone.\"\n\nYou steel yourself for the battle ahead, hoping your plan pays off.",
+    //next depends on if player failed any previous encounters or rolls, alone or with group
+    next: "",
+  },
+  clear_minions: {
+    title: "Clear The Minions",
+    type: "text",
+    text: "\"I agree with Kaelion and Mitzi,\" you say. \"Better to face what we know before facing what we don't.\"",
+    next: "forest_encounter_prepare",
+  },
+  threx_decides: {
+    title: "Threx Decides",
+    type: "text",
+    text: "After taking a moment to reflect, Threx says, \"I agree with Mitzi and Ronin. We already know we can face the minions easily enough; better to do it early.\"",
+    next: "forest_encounter_prepare",
+  },
+  forest_encounter_prepare: {
+    title: "Forest Encounter Preparation",
+    type: "text",
+    text: "\"Everyone, tighten up. Aleth, cover our rear with {{characterName}}. Roland, I want you and Akemi on the right flank. Mitzi, you and Ronin take the left.\"",
+    next: "forest_encounter_prepare2",
+  },
+  forest_encounter_prepare2: {
+    title: "Forest Encounter Preparation",
+    type: "text",
+    text: "\"Harla, you're in the center. Keep an eye open for whoever might need healing.\" The C-Class Breaker draws his warhammer. \"And I'll strike down anything stupid enough to come at us head-on.\"\n\nThe forest is silent in the wake of this formation, sans the occasional groan of a tree-thing.\n\n\"I told you so,\" Ronin offers meekly. \"{{characterName}} is afraid of his own shadow.\"\n\nThrex ignores him. \"We're moving. Keep your guard up.\"",
+    next: "forest_encounter_prepare3",
+  },
+  forest_encounter_prepare3: {
+    title: "Forest Encounter Preparation",
+    type: "text",
+    text: "He leads you through the forest. There's a wide and well-defined footpath next to you, but he takes you along a slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come, the ridge protects your flank.\n\n\"Good call, freelancer,\" Threx yells as the horde of creatures screams your way. \"We would have been surrounded if you hadn't said something.\"\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Reverse phalanx!\" Threx commands.",
+    next: "forest_encounter_prepare4",
+  },
+  forest_encounter_prepare4: {
+    title: "Forest Encounter Preparation",
+    type: "text",
+    text: "The graduates of the Ramsey Academy loosen their grouping and quickly form a reverse V. You and Ronin trade a confused glance, then form up where there's room.\n\nThe creatures are funneled to the group's strongest member. Threx bats three of them aside with ease.\n\nRealizing their mistake too late, the beasts panic. With the deadliest threat at their front and more of their ilk pushing at their rear, they desperately lash out wherever they can.\n\nTwo come after you.",
+    next: "forest_prepare_encounter",
+  },
+    forest_prepare_encounter: {
+    title: "Forest Encounter",
+    src: "../assets/stream.webp",
+    type: "battle",
+    enemy: {
+      name: "Cotton Candy Creature",
+      maxHP: 20,      // Enemy health
+      ac: 12,          // Armor Class (difficulty to hit)
+      attack: 4,      // Attack bonus
+      magic: 3,
+      points: 10,
+      item: ""        // Magic attack bonus
+    },
+    text: "",
+    fail: "forest_encounter_fail",
+    next: "forest_prepare_encounter_success",
+  },
+  forest_prepare_encounter_success: {
+    title: "Forest Encounter Success",
+    type: "text",
+    text: "Both beasts fall into pieces. Around you, the rest are similarly dispatched. Sheemie and Mitzi are injured, but Harla quickly sets them right with her healing magic. The healer also has one or two new dents in her armor.\n\n\"Good call, {{characterName}},\" Threx says again. \"One of us could have gone down if these things had ambushed us.\"",
+    next: "threx_sweat",
+  },
   keep_to_yourself: {
     title: "Keep It To Yourself",
     type: "text",
@@ -798,14 +857,6 @@ export const adventurePages = {
       points: 10,
       item: ""        // Magic attack bonus
     },
-    team: [
-      { name: "Akemi", maxHP: 15, ac: 12, attack: 3, magic: 5 },
-      { name: "Harla", maxHP: 20, ac: 14, attack: 4, magic: 2 },
-      { name: "Kaelion", maxHP: 18, ac: 13, attack: 5, magic: 3 },
-      { name: "Sheemie", maxHP: 12, ac: 11, attack: 2, magic: 6 },
-      { name: "Mitzi", maxHP: 14, ac: 12, attack: 3, magic: 4 },
-      { name: "Aleth", maxHP: 16, ac: 13, attack: 4, magic: 3 },
-    ],
     text: "",
     fail: "forest_encounter_fail",
     next: "forest_encounter_success",
@@ -874,17 +925,98 @@ export const adventurePages = {
       { label: "Remain silent", next: "remain_silent" },
     ],
   },
-  forest_keep_moving: {
-    title: "Keep Moving",
-    type: "roll",
-    text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery.",
-    roll: {
-      stat: "Wisdom",
-      dc: 14,
-      successText: "Your strike is quick, powerful, and straight to the point. It hits Threx clean across the face, eliciting a grunt from the big man and a gasp from the others. Even Ronin seems impressed.",
-      failText: "Threx has been fighting for a long time, and against creatures far more powerful than you. He easily ducks your fist and retorts with a strike of his own.\n\nA moment later, you're looking up at the man who hit you.",
-      nextSuccess: "threx_hits",
-      nextFail: "threx_miss",
-    },
+  remain_silent: {
+    title: "Remain Silent",
+    type: "text",
+    text: "You keep quiet, unsure how to talk to Tethered Beings.\n\n\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" the wannabee knight yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"\n\n\"We have a better chance fighting this thing together!\" Ronin protests. \"I--\"\n\n\"Now!\"\n\nThe C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Ronin stops arguing and files behind Threx with you and the others. Behind all of you, Kaelion drops the last of his armor and begins his sprint to the exit.",
+    next: "camper_hunt",
+  },
+  camper_hunt: {
+    title: "Camper Hunt",
+    src: "../assets/forest_clearing.webp",
+    type: "text",
+    text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the **other** thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
+    //if they haven't cleared out the previous minions, there is another page before the battle
+    next: "",
+  },
+  send_a_runner: {
+    title: "Send A Runner",
+    type: "text",
+    text: "\"Mitzi,\" you whisper. \"Run back to the gate and get us some help. Aleth is right; something about this feels off.\"\n\nThe woman blinks at you. \"Excuse me? If you're so worried about it, why don't you go? I'm here to get stronger. I can't do that if I'm running away, can I?\"\n\n\"Mitzi,\" Threx hisses. \"Do what he's telling you. Inform the GPA that our Tethered Being is a Camper.\"\n\n\"A what?\" Mitsi is incredulous. \"No way! I'm not going anywhere.\"\n\n\"Now!\"",
+    next: "send_a_runner2",
+  },
+  send_a_runner2: {
+    title: "Send A Runner",
+    type: "text",
+    text: "The C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Mitzi stops arguing and spins around. She's moving at a full sprint before the creature speaks again.\n\n\"Good,\" it rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
+    next: "send_a_runner3",
+  },
+  send_a_runner3: {
+    title: "Send A Runner",
+    type: "text",
+    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has **become** null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
+    //if they haven't cleared out the previous minions, there is another page before the battle
+    next: "",
+  },
+  speak_to_creature: {
+    title: "Speak To The Creature",
+    type: "text",
+    text: "\"They tried to kill us first,\" you say. Your companions turn, dumbstruck.",
+    next: "speak_to_creature2",
+  },
+  speak_to_creature2: {
+    title: "Speak To The Creature",
+    type: "text",
+    text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The **what?**\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class Breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
+    next: "speak_to_creature3",
+  },
+  speak_to_creature3: {
+    title: "Speak To The Creature",
+    type: "choice",
+    text: "\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" Kaelion yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"",
+    choices: [
+      { label: "Keep talking to the Camper", next: "continue_talking" },
+      { label: "Get behind Threx", next: "behind_threx" },
+    ],
+  },
+  behind_threx: {
+    title: "Get Behind Threx",
+    type: "text",
+    text: "You file behind the group leader with the others. Threx takes a step forward and angles his warhammer sideways.",
+    next: "threx_ahead",
+  },
+  threx_ahead: {
+    title: "Threx Ahead",
+    type: "text",
+    text: "For the first time since you've met him, the C-Class Breaker reveals his full power. It dwarfs the rest of you.\n\nKaelion drops the last of his armor and begins his sprint to the exit.",
+    next: "camper_hunt",
+  },
+  continue_talking: {
+    title: "Continue Talking",
+    type: "choice",
+    text: "You step forward, putting  the group leader at your back.\n\n\"I want to know more about you,\" you say. \"Where are you from, originally? How long have you been here?\"\n\nThe thing cocks its head, amused. \"I know some things about the world you come from. Tell me: does a human converse with an insect before stepping on it?\"",
+    choices: [
+      { label: "Sometimes", next: "sometimes_camper" },
+      { label: "No", next: "no_camper" },
+    ],
+  },
+  sometimes_camper: {
+    title: "Sometimes",
+    type: "text",
+    text: "You shrug. \"That depends on the human, I guess. Some people are lonelier than others.\"\n\nBehind you, Kaelion drops the last of his armor and begins his sprint to the portal.\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
+    next: "sometimes_camper2",
+  },
+  sometimes_camper2: {
+    title: "Sometimes",
+    type: "text",
+    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
+    //if they haven't cleared out the previous minions, there is another page before the battle
+    next: "",
+  },
+  no_camper: {
+    title: "No",
+    type: "text",
+    text: "You take a step back, realizing your folly in trying to reason with this thing. Threx grabs your wrist and pulls you behind him.\n\n\"Dumbass,\" he says.",
+    next: "",
   },
 };

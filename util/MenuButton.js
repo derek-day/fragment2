@@ -105,6 +105,9 @@ export default function MenuButton() {
               <button onClick={() => handleNavigation('/stats')} style={menuItemStyle}>Stats</button>
             </li>
             <li>
+              <button onClick={() => handleNavigation('/stats')} style={menuItemStyle}>Data Packet</button>
+            </li>
+            <li>
               <button onClick={handleLogout} style={menuItemStyle}>Logout</button>
             </li>
           </ul>

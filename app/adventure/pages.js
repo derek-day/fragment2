@@ -608,7 +608,7 @@ export const adventurePages = {
     next: "guild_no_preference2",
   },
   guild_no_preference2: {
-    title: "Keep Moving",
+    title: "No Preference",
     type: "text",
     text: "You do know most people never activate, right?\" Harla says, clear eavesdropping. \"You're subjecting yourself to more danger than the rest of us by being here. We at least know Aleth can take care of himself.\n\nYou remain silent. Cale, Crixon, and Ryke need you to succeed. For the sake of your siblings, the risks are worth it.\n\n\"Well,\" Akemi says after flashing Harla a death stare, \"when you activate, I'd love to tell you about the guild I plan to start. Maybe you can be the first member!\"\n\nBefore you can ask about it, a stern voice calls out from ahead of you.",
     next: "keep_moving",
@@ -629,11 +629,49 @@ export const adventurePages = {
       { label: "Keep moving", next: "forest_keep_moving" },
     ],
   },
+  forest_keep_moving: {
+    title: "Keep Moving",
+    type: "roll",
+    text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery.",
+    roll: {
+      stat: "Wisdom",
+      dc: 14,
+      successText: "You pull your eyes from the carvings and take in the forest beyond the trees. There is a layout to the woods themselves, as though it's been painstakingly designed.Following the converging lines of the purple tree-things, you notice a shimmer in the distance.\n\nIt's only there for a moment, then it disappears.",
+      failText: "This place is strange, but it doesn't feel threatening. You look for movement beyond the trees, but find nothing.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
+      nextSuccess: "moving_success",
+      nextFail: "forest_deeper",
+    },
+  },
+  moving_success: {
+    title: "Keep Moving Success",
+    type: "choice",
+    text: "\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
+    choices: [
+      { label: "Warn the group about the shimmer", next: "warn_shimmer" }, 
+      { label: "Keep it to yourself and keep your guard up", next: "keep_guard" },]
+  },
+  warn_shimmer: {
+    title: "Warn The Group",
+    type: "text",
+    text: "\"I saw something moving behind us,\" you report.\n\nThe group stops.\n\n\"Where?\" Threx asks.\n\nYou point to your rear and describe the shimmering.\n\n\"He's always been skittish,\" Ronin teases. \"It was probably just a tree or an eye floater or something.\"\n\nThrex looks at you a moment longer.",
+    next: "",
+  },
+  keep_guard: {
+    title: "Keep Your Guard Up",
+    type: "text",
+    text: "You decide to keep your observations to yourself for now. Better to stay alert and see what happens next.\n\nThe rest of the journey through the forest is tense, but uneventful.",
+    next: "forest_aftermath",
+  },
+  moving_fail: {
+    title: "Keep Moving Fail",
+    type: "text",
+    text: "The others already think you're a weak link for not attending the academy with them. You don't want them to think you're scared of every eye floater or shifting tree-thing.",
+    next: "inspect_fail",
+  },
   tree_inspect: {
     title: "Inspect the Carvings",
     type: "roll",
     text: "You take a moment to admire them. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes? ",
-    next: "forest_keep_moving",
     roll: {
       stat: "Wisdom",
       dc: 14,
@@ -642,6 +680,74 @@ export const adventurePages = {
       nextSuccess: "inspect_success",
       nextFail: "inspect_fail",
     },
+  },
+  inspect_fail: {
+    title: "Inspect Fail",
+    type: "text",
+    text: "It's difficult to tell.\n\nYou stare at the carvings a moment longer, admiring their beauty before continuing on.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
+    next: "forest_deeper",
+  },
+  forest_deeper: {
+    title: "Deeper In The Forest",
+    type: "text",
+    text: "Threx leads you deeper into the forest, following a wide and well-defined footpath.\n\n\"It's weird nothing else has tried to kill us,\" Mitzi says.\n\n The party leader nods. \"I agree. This place isn't very large, and we definitely stand out against all the purple.\"\n\n\"I hate purple.\"\n\n\"You hate everything.\"\n\nMitzi smirks. \"True.\"\n\nAt last, the path leads into a clearing. For the first time since entering the gate, you see a color other than purple.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment, and you have to agree.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.",
+    next: "forest_clearing",
+  },
+  forest_clearing: {
+    title: "Forest Clearing",
+    src: "../assets/forest_clearing.webp",
+    type: "text",
+    text: "You feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.\n\n\"It's like something out of a fantasy,\" Mitzi says, smiling. \"I... don't hate this.\"\n\nUnfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"",
+    next: "forest_clearing_encounter",
+  },
+  forest_clearing_encounter: {
+    title: "Forest Clearing Encounter",
+    src: "../assets/stream.webp",
+    type: "battle",
+    enemy: {
+      name: "Cotton Candy Creature",
+      maxHP: 40,      // Enemy health
+      ac: 13,          // Armor Class (difficulty to hit)
+      attack: 7,      // Attack bonus
+      magic: 5,
+      points: 15,
+      item: ""        // Magic attack bonus
+    },
+    team: [
+      { name: "Akemi", maxHP: 15, ac: 12, attack: 3, magic: 5 },
+      { name: "Harla", maxHP: 20, ac: 14, attack: 4, magic: 2 },
+      { name: "Kaelion", maxHP: 18, ac: 13, attack: 5, magic: 3 },
+      { name: "Sheemie", maxHP: 12, ac: 11, attack: 2, magic: 6 },
+      { name: "Mitzi", maxHP: 14, ac: 12, attack: 3, magic: 4 },
+      { name: "Aleth", maxHP: 16, ac: 13, attack: 4, magic: 3 },
+    ],
+    text: "",
+    fail: "forest_clearing_encounter_fail",
+    next: "forest_encounter_success",
+  },
+  forest_clearing_encounter_fail: {
+    title: "Forest Encounter Defeat",
+    type: "text",
+    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks rag you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
+    next: "forest_clearing_encounter_fail2",
+  },
+  forest_clearing_encounter_fail2: {
+    title: "---",
+    type: "text",
+    text: "\"Go back,\" a voice says. \"I'm not ready for you yet.\"",
+    next: "forest_clearing_encounter_fail3",
+  },
+  forest_clearing_encounter_fail3: {
+    title: "!!!",
+    type: "text",
+    text: "You scream and realize your vocal cords are once again intact. You grasp your throat; the flesh has regrown.",
+    next: "forest_clearing_encounter_fail4",
+  },
+  forest_clearing_encounter_fail4: {
+    title: "Revived",
+    type: "text",
+    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\n\"Sheemie,\" Threx says. \"Is the gate stabilizer still intact after that hit you took?\"\n\nAlready back to full strength, the plant aficionado pulls a grey sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
+    next: "gate_stabilizer_check",
   },
   inspect_success: {
     title: "Inspect Success",
@@ -719,7 +825,13 @@ export const adventurePages = {
   forest_encounter_fail3: {
     title: "!!!",
     type: "text",
-    text: "You scream and realize your vocal cords are once again intact. You grasp your throat; the flesh has regrown.\n\n\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\nA strong hand grabs your shoulder.\n\n\"You did good with that warning,\" Threx says. \"We would have lost more people if we had walked into that ambush. Maybe permanently.\"",
+    text: "You scream and realize your vocal cords are once again intact. You grasp your throat; the flesh has regrown.",
+    next: "forest_encounter_fail4",
+  },
+  forest_encounter_fail4: {
+    title: "Revieved",
+    type: "text",
+    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\nA strong hand grabs your shoulder.\n\n\"You did good with that warning,\" Threx says. \"We would have lost more people if we had walked into that ambush. Maybe permanently.\"",
     next: "threx_sweat",
   },
   threx_sweat: {

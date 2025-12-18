@@ -76,6 +76,9 @@
 import { useEffect, useRef, useState } from "react";
 import DiceBox from "@3d-dice/dice-box";
 import { useRouter } from "next/navigation";
+import { recordRollFailure } from "../lib/progressService";
+import { auth } from "../lib/firebase";
+
 
 export default function RollPage({ userStats, page }) {
   const diceBoxRef = useRef(null);

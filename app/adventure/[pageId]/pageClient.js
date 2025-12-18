@@ -6,6 +6,18 @@ import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { adventurePages } from "../pages";
 import { getPageData } from '../../../lib/pageService';
+// import { recordPageVisit } from '../../../progressService';
+import { 
+  recordPageVisit, 
+  recordCombatFailure, 
+  recordRollFailure,
+  recordDeath,
+  recordWentAlone,
+  recordNPCMeeting,
+  recordNPCDeath,
+  recordToldTeam,
+  getPlayerProgress
+} from '../../../lib/progressService';
 import StatLayout from "../../../util/StatLayout";
 import MenuButton from "../../../util/MenuButton";
 import PageStats from "../../../components/PageStats";
@@ -65,12 +77,20 @@ export default function AdventurePage() {
   }, []);
 
   useEffect(() => {
-    if (!page) router.push("/adventure/page_1");
+    if (page?.title) {
+      document.title = page.title + " | The Gatebreaker Protocol";
+    }
   }, [page]);
 
-  if (!page) return null;
+  // useEffect(() => {
+  //   if (!page) router.push("/adventure/page_1");
+  // }, [page]);
+
+  // if (!page) return null;
 
   async function handleContinue() {
+    if (!user) return;
+
     const ref = doc(db, "users", user.uid);
 
     if (page.type === "input" && user) {
@@ -194,9 +214,13 @@ export default function AdventurePage() {
         )}
 
         {page.type === "roll" && (
+          <RollPage userStats={userStats} page={page} onSuccess={handleContinue} />
+        )}
+
+        {/* {page.type === "roll" && (
           <RollPage userStats={userStats} enemyAC={12} page={page} />
           // <RollPage page={page} router={router} />
-        )}
+        )} */}
 
         {page.type === "battle" && (
           <BattlePage userStats={userStats} page={page} />

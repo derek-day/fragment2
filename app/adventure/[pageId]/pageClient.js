@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { auth, db } from "../../../lib/firebase";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -38,6 +38,23 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [userStats, setUserStats] = useState(null);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const [isPageChanging, setIsPageChanging] = useState(false);
+
+  const PARTICLE_COUNT = 40;
+
+  const particles = useMemo(() => {
+      return Array.from({ length: PARTICLE_COUNT }, (_, i) => {
+        const duration = Math.random() * 18 + 14;
+        return {
+          id: i,
+          size: Math.random() * 2 + 1,
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          duration,
+          delay: Math.random() * -duration
+        };
+      });
+  }, []);
+  
 
   // Check if page exists
   if (!page) {
@@ -312,6 +329,24 @@ export default function PageClient({ page: initialPage, pageId }) {
         className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
         style={{ backgroundImage: page.src ? `url(${page.src})` : 'none' }}
       >
+
+        <div className="screen-particles">
+          {particles.map(p => (
+            <span
+              key={p.id}
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                left: `${p.left}%`,
+                top: `${p.top}%`,
+                filter: 'blur(0.8px) saturate(1.1) contrast(1.1)',
+                animationDuration: `${p.duration}s`,
+                animationDelay: `${p.delay}s`
+              }}
+            />
+          ))}
+        </div>
+
         <StatLayout />
         <MenuButton />
         {/* <DebugPanel pageId={pageId} page={page} /> */}

@@ -284,6 +284,7 @@ button {
     font-family: "ivypresto-headline", serif;
     font-weight: 400;
     font-style: normal;
+    justify-self: center;
 
     span, h2, p {
         letter-spacing: 0.5px;

@@ -174,14 +174,14 @@ export const adventurePages = {
   },
   portal_spot: {
     title: "Portal Spot",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     next: "portal_encounter",
     text: "Something small and quick darts at you from the nearest tuft of fauna, pulling you from the past. You try to react, but the strain of this place makes you sluggish.\n\nYou raise your weapon just in time to defend yourself, but you already know this fight will be more challenging than you hoped.",
   },
   portal_encounter: {
     title: "First Battle",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "battle",
     enemy: {
       name: "Critter",
@@ -494,7 +494,7 @@ export const adventurePages = {
   },
   team_portal_encounter_take: {
     title: "What Is That?",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "choice",
     text: "Something small and quick darts at you from the nearest tuft of fauna. You react quickly to the threat, beating your companions to the punch.",
     choices: [
@@ -504,7 +504,7 @@ export const adventurePages = {
   },
   team_portal_battle: {
     title: "First Battle",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "battle",
     enemy: {
       name: "Critter",
@@ -529,56 +529,56 @@ export const adventurePages = {
   },
   team_portal_dive: {
     title: "Dive For Cover",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "Aleth addresses the threat, stilling it with a throwing knife to the face.\n\n\"Not bad for someone who hasn't been activated,\" Threx says, patting him on the back. \"Mark my words: the Protocol will notice you yet!\"",
     next: "team_portal_battle_finish",
   },
   team_portal_encounter_hold: {
     title: "What Is That?",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "Something small and quick darts at you from the nearest tuft of fauna. You try to react, but the strain of this place makes you sluggish.\n\nLuckily, you're not here alone. Aleth addresses the threat, stilling it with a throwing knife to the face.\n\n\"Not bad for someone who hasn't been activated,\" Threx says, patting him on the back. \"Mark my words: the Protocol will notice you yet!\"",
     next: "team_portal_battle_finish",
   },
   team_portal_battle_finish: {
     title: "Critter Defeated",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"That's not fair!\" Ronin yells, arriving with his own blade a moment too late. \"Unactivated people only get pretend points. I'm activated, like most of you. Why wasn't it split between us evenly?\"\n\n\"The Protocol registers assists somehow,\" Akemi explains. \"It knows who put the work in. There's nothing 'pretend' about that.\"\n\n\"You just need to be faster, my friend,\" Kaelion says, flashing Ronin a playful grin.\"",
     next: "team_portal_victory",
   },
   team_portal_victory: {
     title: "Breaker Points?",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who **doesn't** love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
     next: "team_portal_victory2",
   },
   team_portal_victory2: {
     title: "Guilds?",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join The Silhouettes once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either **The Silhouettes** or **Protocol Null**.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
     next: "team_portal_victory3",
   },
   team_portal_victory3: {
     title: "Destroy The Protocol?",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"How can one be so ambivalent toward the Protocol?\" Kaelion Virehart asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"\n\nMitzi shrugged. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If The Silhouettes or Protocol Null get me closer to an answer, then that's where I'm heading.\"",
     next: "team_portal_victory4",
   },
   team_portal_victory4: {
     title: "Guilds and Factions",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"You could always join the **Veil Cult**,\" Harla offers. \"They claim to have all the answers.\"\n\nMitzi rolls her eyes.\n\nAkemi turns to you. \"How about you, {{characterName}}. Are there any factions or guilds you have your eye on?\"",
     next: "team_portal_victory5",
   },
   team_portal_victory5: {
     title: "Guild Opinion",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "choice",
     text: "You've thought about this question a lot. Who hasn't? There are few people alive who haven't fantasized about fighting alongside the heroes of the **Global Protocol Authority (GPA)**, or experimenting with the exciting tech of the **Epoch Corporation**.\n\nBut there are plenty of smaller guilds, too. The **Thomur Guild** specializes in niche markets. The **Silk Road** specializes in trade. You know of at least a dozen guilds that most people would kill to be a member of.\n\nThen again, there's a certain coolness factor of remaining freelance, too.\n\nYou realize Akemi is still staring at you, waiting for an answer.",
     choices: [
@@ -758,7 +758,7 @@ export const adventurePages = {
   },
   forest_clearing_encounter: {
     title: "Forest Clearing Encounter",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "battle",
     enemy: {
       name: "Cotton Candy Creature",
@@ -866,7 +866,7 @@ export const adventurePages = {
   },
     forest_prepare_encounter: {
     title: "Forest Encounter",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "battle",
     enemy: {
       name: "Minion",
@@ -901,7 +901,7 @@ export const adventurePages = {
   },
   forest_encounter: {
     title: "Forest Encounter",
-    src: "../assets/stream.webp",
+    src: "../assets/forest.webp",
     type: "battle",
     enemy: {
       name: "Cotton Candy Creature",

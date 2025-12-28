@@ -92,6 +92,7 @@ export const adventurePages = {
     text: "\"Nice to meet you, {{characterName}}.\" Akemi smiles. \"The rest of us went to the Ramsey Training Academy together. I'll introduce you.\" She pushes past Ronin and gestures for the others to gather around.\n\n\"What's your class and ranking?\" She whispers before the others are in earshot. \"I don't remember seeing your name on the docket for today.\"\n\n\You nod. She wouldn't have. You signed up for this Break last minute and only after long days of soul-searching.\n\nThe question makes you think back to your experience in the Activation Chamber at the GPA. Your time there wasn't exactly what you were expecting...",
     next: "protocol_intro",
     npcPresent: "Akemi",
+    npcDescription: "Akemi",
   },
   protocol_intro: {
     title: "Meet the Protocol",
@@ -99,7 +100,6 @@ export const adventurePages = {
     src: "../assets/lab.webp",
     text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI-looking machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
     next: "failed_to_connect",
-    npcPresent: "Protocol",
   },
   failed_to_connect: {
     title: "Failed to Connect",

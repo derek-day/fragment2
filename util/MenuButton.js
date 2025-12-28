@@ -7,6 +7,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useParams } from "next/navigation";
 import { adventurePages } from '../app/adventure/pages';
+//import Journal from '../components/Journal';
 
 
 export default function MenuButton() {
@@ -106,6 +107,9 @@ export default function MenuButton() {
             </li>
             <li>
               <button onClick={() => handleNavigation('/stats')} style={menuItemStyle}>Data Packet</button>
+            </li>
+            <li>
+              <button onClick={() => handleNavigation('/journal')} style={menuItemStyle}>Journal</button>
             </li>
             <li>
               <button onClick={handleLogout} style={menuItemStyle}>Logout</button>

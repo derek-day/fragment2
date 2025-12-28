@@ -1,6 +1,6 @@
 import { getPageData } from '../../../lib/pageService';
-import { recordPageVisit } from '../../../lib/progressService';
-import { auth } from '../../../lib/firebase';
+// import { recordPageVisit } from '../../../lib/progressService';
+// import { auth } from '../../../lib/firebase';
 import PageClient from './pageClient';
 
 export default async function AdventurePage({ params }) {
@@ -21,10 +21,10 @@ export default async function AdventurePage({ params }) {
     );
   }
 
-  const user = auth.currentUser;
-  if (user) {
-    await recordPageVisit(user.uid, pageId);
-  }
+  // const user = auth.currentUser;
+  // if (user) {
+  //   await recordPageVisit(user.uid, pageId);
+  // }
   
   // Pass data to client component
   return <PageClient page={page} pageId={pageId} />;

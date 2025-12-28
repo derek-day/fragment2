@@ -202,7 +202,24 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-auth">
+      <div className="min-h-screen flex items-center justify-center bg-auth hero">
+        <div className="screen-particles">
+          {particles.map(p => (
+            <span
+              key={p.id}
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                left: `${p.left}%`,
+                top: `${p.top}%`,
+                filter: 'blur(0.8px) saturate(1.1) contrast(1.1)',
+                animationDuration: `${p.duration}s`,
+                animationDelay: `${p.delay}s`
+              }}
+            />
+          ))}
+        </div>
+
         <p className="text-white text-xl">Loading...</p>
       </div>
     );

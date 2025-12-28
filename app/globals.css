@@ -258,7 +258,6 @@ label {
     /* background-color: rgba(0,0,0,0.5); */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-
     font-family: "ivypresto-headline", serif;
     font-weight: 300;
     /* font-weight: 400; */
@@ -346,6 +345,10 @@ button {
 
     .stat-div {
         margin-bottom: 0.5rem;
+    }
+
+    .story-text p {
+        font-size: 0.9rem;
     }
 }
 

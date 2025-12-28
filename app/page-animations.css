@@ -1,0 +1,254 @@
+/* Page Transition Animations */
+
+/* Background fade transition */
+.story-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* Add overlay for better text readability during transitions */
+.story-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.story-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Text box fade-in animation */
+.story-text {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Choice button animations */
+.choice-button {
+  animation: fadeInSlide 0.5s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.choice-button:nth-child(1) { animation-delay: 0.1s; }
+.choice-button:nth-child(2) { animation-delay: 0.2s; }
+.choice-button:nth-child(3) { animation-delay: 0.3s; }
+.choice-button:nth-child(4) { animation-delay: 0.4s; }
+.choice-button:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Continue button animation */
+.continue-btn {
+  animation: fadeInScale 0.6s ease-out 0.4s backwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover effects for interactive elements */
+.choice-button:hover:not(:disabled) {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.continue-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Disabled state animations */
+.continue-btn:disabled {
+  animation: none;
+}
+
+/* Page transition overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-transition-overlay.active {
+  opacity: 1;
+}
+
+/* Loading spinner for page transitions */
+.page-loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-loading-spinner.active {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Smooth background image loading */
+.bg-image-loading {
+  background-color: #1a1a1a;
+  background-image: none !important;
+}
+
+.bg-image-loaded {
+  animation: backgroundFadeIn 0.8s ease-in-out;
+}
+
+@keyframes backgroundFadeIn {
+  from {
+    filter: blur(10px) brightness(0.5);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+  }
+}
+
+/* Stagger animation for multiple paragraphs */
+.story-text p {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.story-text p:nth-child(1) { animation-delay: 0.1s; }
+.story-text p:nth-child(2) { animation-delay: 0.2s; }
+.story-text p:nth-child(3) { animation-delay: 0.3s; }
+.story-text p:nth-child(4) { animation-delay: 0.4s; }
+.story-text p:nth-child(5) { animation-delay: 0.5s; }
+
+/* Input field animations */
+input, textarea {
+  animation: fadeInUp 0.5s ease-out 0.3s backwards;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Stats allocation animations */
+.stat-container {
+  animation: fadeInSlide 0.5s ease-out backwards;
+}
+
+.stat-container:nth-child(1) { animation-delay: 0.1s; }
+.stat-container:nth-child(2) { animation-delay: 0.15s; }
+.stat-container:nth-child(3) { animation-delay: 0.2s; }
+.stat-container:nth-child(4) { animation-delay: 0.25s; }
+.stat-container:nth-child(5) { animation-delay: 0.3s; }
+.stat-container:nth-child(6) { animation-delay: 0.35s; }
+
+/* Smooth transitions for all interactive elements */
+button, a, input, select, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade out animation when leaving page */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.page-exit {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+/* Battle and roll page animations */
+.battle-container,
+.roll-container {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+/* Pulse animation for important buttons */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-on-ready {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Glow effect for enabled continue button */
+.continue-btn:not(:disabled) {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+  }
+}

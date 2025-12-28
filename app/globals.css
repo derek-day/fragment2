@@ -352,6 +352,12 @@ button {
     }
 }
 
+@media (max-width: 700px) {
+  .stat-layout {
+    display: none;
+  }
+}
+
 
 
 /* Base continue button styles */

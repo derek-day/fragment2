@@ -73,7 +73,7 @@ export default function StatLayout() {
 
   return (
     <motion.div 
-      className="fixed top-4 left-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-4 shadow-2xl border-2 border-gray-700 z-40"
+      className="stat-layout fixed top-4 left-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-4 shadow-2xl border-2 border-gray-700 z-40"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

@@ -320,11 +320,29 @@ export const adventurePages = {
     text: "You sway from one foot to another, excited to take this first step toward activating and realizing your true potential.\n\nBy the time you clear this gate, the Protocol will want you.",
     next: "excited2",
   },
-    nervous: {
+    excited2: {
+    title: "Excited",
+    chapter: "chapter1",
+    section: "section1",
+    src: "../assets/portal.webp",
+    type: "text",
+    text: "\"These gates appeared three years ago,\" the party leader begins, citing common knowledge. \"They can lead us anywhere, and can lead anything to us. If a gate isn't cleared in time, it opens a rift in our world. We do not want a rift.\"",
+    next: "excited3",
+  },
+  excited3: {
+    title: "Excited",
+    chapter: "chapter1",
+    section: "section1",
+    src: "../assets/portal.webp",
+    type: "text",
+    text: "\"The world before this one was complacent. We cannot be complacent.\n\nThe world before this one failed. We cannot fail.\n\nWe have two things the old world did not. The first is the Protocol. Without it, we would be the weak, biologically-damned beings of our ancestors. Without it, we'd be no match for most of what's in these gates.\n\nThe second things is each other.\n\nNow, let's check our gear a final time and then kick some ass.\"",
+    next: "threx_brief2",
+  },
+  nervous: {
     title: "Nervous",
     type: "text",
     src: "../assets/portal.webp",
-    text: "You sway from one foot to another, nervous to take this first step into a world that can kill you.\n\nWhat if, after everything you face in there, the Protocol **still** doesn't activate you?",
+    text: "You sway from one foot to another, nervous to take this first step into a world that can kill you.\n\nWhat if, after everything you face in there, the Protocol *still* doesn't activate you?",
     next: "threx_brief2",
   },
   threx_brief2: {

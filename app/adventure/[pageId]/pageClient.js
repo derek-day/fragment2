@@ -54,7 +54,9 @@ export default function PageClient({ page: initialPage, pageId }) {
         };
       });
   }, []);
-  
+
+
+  //NEED TO MIGRATE PAGES TO FIREBASE
 
   // Check if page exists
   if (!page) {

@@ -290,7 +290,7 @@ export const adventurePages = {
     title: "Introduce Ronin",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"That's Ronin,\" you say. \"He's usually a lot friendlier than this. He just **really** doesn't like me.\"\n\n\"Why doesn't he like you?\" Harla asks. She is leaning forward, hungry for gossip.",
+    text: "\"That's Ronin,\" you say. \"He's usually a lot friendlier than this. He just *really* doesn't like me.\"\n\n\"Why doesn't he like you?\" Harla asks. She is leaning forward, hungry for gossip.",
     next: "threx_brief",
   },
   nothing_ronin: {
@@ -320,7 +320,7 @@ export const adventurePages = {
     text: "You sway from one foot to another, excited to take this first step toward activating and realizing your true potential.\n\nBy the time you clear this gate, the Protocol will want you.",
     next: "excited2",
   },
-    excited2: {
+  excited2: {
     title: "Excited",
     chapter: "chapter1",
     section: "section1",
@@ -348,8 +348,10 @@ export const adventurePages = {
   threx_brief2: {
     title: "Threx Briefing",
     type: "text",
+    chapter: "chapter1",
+    section: "section1",
     src: "../assets/portal.webp",
-    text: "\"These gates appeared three years ago,\" the party leader begins, citing common knowledge. \"They can lead us anywhere, and can lead anything to us. If a gate isn't cleared in time, it opens a rift in our world. We do **not** want a rift.\"",
+    text: "\"These gates appeared three years ago,\" the party leader begins, citing common knowledge. \"They can lead us anywhere, and can lead anything to us. If a gate isn't cleared in time, it opens a rift in our world. We do *not* want a rift.\"",
     next: "threx_brief3",
   },
   threx_brief3: {
@@ -363,7 +365,7 @@ export const adventurePages = {
     title: "Waste of Time",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"These gates appeared three years ago,\" the party leader begins, citing common knowledge. \"They can lead us anywhere, and can lead anything to us. If a gate isn't cleared in time, it opens a rift in our world. We do **not** want a rift.\"",
+    text: "\"These gates appeared three years ago,\" the party leader begins, citing common knowledge. \"They can lead us anywhere, and can lead anything to us. If a gate isn't cleared in time, it opens a rift in our world. We do *not* want a rift.\"",
     next: "waste2",
   },
   waste2: {
@@ -377,14 +379,14 @@ export const adventurePages = {
     title: "Waste of Time",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"I'm sorry, am I boring you?\" He looks between you and Ronin. \"I was worried about you two freelancers before, but now I'm **concerned**.\"\n\n\"Don't lump me in with him!\" Ronin snaps. \"I'm paying attention. I have my gear. I'm ready to do this thing. Besides,\" he squares up with the C-Class Breaker, \"Silas Knorrs is freelance. Ember Naes, too. Give us more credit!\"",
+    text: "\"I'm sorry, am I boring you?\" He looks between you and Ronin. \"I was worried about you two freelancers before, but now I'm *concerned*.\"\n\n\"Don't lump me in with him!\" Ronin snaps. \"I'm paying attention. I have my gear. I'm ready to do this thing. Besides,\" he squares up with the C-Class Breaker, \"Silas Knorrs is freelance. Ember Naes, too. Give us more credit!\"",
     next: "waste4",
   },
   waste4: {
     title: "Waste of Time",
     type: "choice",
     src: "../assets/portal.webp",
-    text: "\"That's true. Half of our top hunters **are** freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
+    text: "\"That's true. Half of our top hunters *are* freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
     choices: [
       { label: "Go home", next: "go_home" },
       { label: "Punch Threx in the face", next: "punch_threx" },
@@ -475,7 +477,7 @@ export const adventurePages = {
     title: "Team Portal Inside",
     src: "../assets/forest.webp",
     type: "choice",
-    text: "You emerge on the other side, in another world. The rules are different here, like in most portals. Gravity is heavier; the air has less oxygen.\n\n**Shit**, you think. You had been hoping for a world less punishing than your own; on one of those, you would have felt stronger. On this one, you must fight for every breath and every step.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    text: "You emerge on the other side, in another world. The rules are different here, like in most portals. Gravity is heavier; the air has less oxygen.\n\n*Shit*, you think. You had been hoping for a world less punishing than your own; on one of those, you would have felt stronger. On this one, you must fight for every breath and every step.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "take_vial" },
       { label: "Hold off for now", next: "hold_vial" },
@@ -499,7 +501,6 @@ export const adventurePages = {
     title: "Team Portal View",
     src: "../assets/forest.webp",
     type: "text",
-    src: "../assets/forest.webp",
     text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple fauna obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
     next: "team_portal_encounter_take",
   },
@@ -570,14 +571,14 @@ export const adventurePages = {
     title: "Breaker Points?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who **doesn't** love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
+    text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
     next: "team_portal_victory2",
   },
   team_portal_victory2: {
     title: "Guilds?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join The Silhouettes once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either **The Silhouettes** or **Protocol Null**.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
+    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join The Silhouettes once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either *The Silhouettes* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
     next: "team_portal_victory3",
   },
   team_portal_victory3: {
@@ -591,14 +592,14 @@ export const adventurePages = {
     title: "Guilds and Factions",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"You could always join the **Veil Cult**,\" Harla offers. \"They claim to have all the answers.\"\n\nMitzi rolls her eyes.\n\nAkemi turns to you. \"How about you, {{characterName}}. Are there any factions or guilds you have your eye on?\"",
+    text: "\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to have all the answers.\"\n\nMitzi rolls her eyes.\n\nAkemi turns to you. \"How about you, {{characterName}}. Are there any factions or guilds you have your eye on?\"",
     next: "team_portal_victory5",
   },
   team_portal_victory5: {
     title: "Guild Opinion",
     src: "../assets/forest.webp",
     type: "choice",
-    text: "You've thought about this question a lot. Who hasn't? There are few people alive who haven't fantasized about fighting alongside the heroes of the **Global Protocol Authority (GPA)**, or experimenting with the exciting tech of the **Epoch Corporation**.\n\nBut there are plenty of smaller guilds, too. The **Thomur Guild** specializes in niche markets. The **Silk Road** specializes in trade. You know of at least a dozen guilds that most people would kill to be a member of.\n\nThen again, there's a certain coolness factor of remaining freelance, too.\n\nYou realize Akemi is still staring at you, waiting for an answer.",
+    text: "You've thought about this question a lot. Who hasn't? There are few people alive who haven't fantasized about fighting alongside the heroes of the *Global Protocol Authority (GPA)*, or experimenting with the exciting tech of the *Epoch Corporation*.\n\nBut there are plenty of smaller guilds, too. The *Thomur Guild* specializes in niche markets. The *Silk Road* specializes in trade. You know of at least a dozen guilds that most people would kill to be a member of.\n\nThen again, there's a certain coolness factor of remaining freelance, too.\n\nYou realize Akemi is still staring at you, waiting for an answer.",
     choices: [
       { label: "Global Protocol Authority", next: "guild_gpa" },
       { label: "The Epoch Corporation", next: "guild_epoch" },
@@ -626,7 +627,7 @@ export const adventurePages = {
   guild_silhouette: {
     title: "The Silhouette",
     type: "text",
-    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included **the Silhouette**, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halycon Refract-- where they are strongest-- is close to home.",
+    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included *the Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halycon Refract-- where they are strongest-- is close to home.",
     next: "keep_moving",
   },
   guild_protocol_null: {
@@ -638,7 +639,7 @@ export const adventurePages = {
   guild_veil_cult: {
     title: "The Veil Cult",
     type: "text",
-    text: "To admit interest in the Veil Cult could make you a target of ridicule for most people. Akemi doesn't seem like the judgmental sort, though.\n\n\"I... think these gates are the most beautiful thing to ever grace humanity.\" You look around, taking this world in again. \"It's...**divine**, even.\"\n\n\"Yeah, I...Oh!\" Akemi grasps your meaning and stumbles through a response. \"I actually haven't, uh, met any members of the...\" she pauses. \"Is it offensive to use the name? I mean, do **you**--\"\n\n\"They call themselves the Scribes,\" you say, smiling. \"But, honestly, I haven't even met any of them yet. Maybe one day, though.\"\n\n \"That's fascinating. I think a lot of people find divinity in the gates and the Protocol; I wish they talked about it more.\"\n\n\"Yes!\" you exclaim. That was your thought exactly.\n\n**She gets it.**",
+    text: "To admit interest in the Veil Cult could make you a target of ridicule for most people. Akemi doesn't seem like the judgmental sort, though.\n\n\"I... think these gates are the most beautiful thing to ever grace humanity.\" You look around, taking this world in again. \"It's...*divine*, even.\"\n\n\"Yeah, I...Oh!\" Akemi grasps your meaning and stumbles through a response. \"I actually haven't, uh, met any members of the...\" she pauses. \"Is it offensive to use the name? I mean, do *you*--\"\n\n\"They call themselves the Scribes,\" you say, smiling. \"But, honestly, I haven't even met any of them yet. Maybe one day, though.\"\n\n \"That's fascinating. I think a lot of people find divinity in the gates and the Protocol; I wish they talked about it more.\"\n\n\"Yes!\" you exclaim. That was your thought exactly.\n\n*She gets it.*",
     next: "keep_moving",
   },
   guild_silk_road: {
@@ -665,7 +666,7 @@ export const adventurePages = {
   anything_new_choice: {
     title: "Anything New",
     type: "text",
-    text: "\"I'm willing to consider anything I feel has promise,\" you reply. \"Though... I have a long way to go before I'll need to think about it.\"\n\n \"I plan to start a guild of my own once I'm strong enough. Maybe you can be my first member.\" She winks. \"**If** you see promise in it.\"",
+    text: "\"I'm willing to consider anything I feel has promise,\" you reply. \"Though... I have a long way to go before I'll need to think about it.\"\n\n \"I plan to start a guild of my own once I'm strong enough. Maybe you can be my first member.\" She winks. \"*If* you see promise in it.\"",
     next: "keep_moving",
   },
   guild_freelance: {
@@ -914,7 +915,7 @@ export const adventurePages = {
   keep_to_yourself2: {
     title: "Keep It To Yourself",
     type: "text",
-    text: "Two geysers of blood answer her as the creatures beneath the flowers howl in anguish. Already, two of your enemies are out of the fight.\n\nAll at once, the field becomes chaos. Ten more creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"\n\nYou smile, already charging into the fight. While the others take their time to regroup, you prepare to add more notches to your belt.\n\nThe Protocol will **have** to activate you after today.",
+    text: "Two geysers of blood answer her as the creatures beneath the flowers howl in anguish. Already, two of your enemies are out of the fight.\n\nAll at once, the field becomes chaos. Ten more creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"\n\nYou smile, already charging into the fight. While the others take their time to regroup, you prepare to add more notches to your belt.\n\nThe Protocol will *have* to activate you after today.",
     next: "forest_encounter",
   },
   forest_encounter: {
@@ -985,13 +986,13 @@ export const adventurePages = {
   gate_stabilizer_check2: {
     title: "Gate Stabilizer Check",
     type: "text",
-    text: "\"**After,**\" Threx says, already following the most well-defined path of the creatures. \"We can't afford to let our guards down yet.\"\n\nIt doesn't take long to reach the lair of the gate's Tethered Being. The tracks of your former attackers take you along the path of least resistance. When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\n\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.",
+    text: "\"*After,*\" Threx says, already following the most well-defined path of the creatures. \"We can't afford to let our guards down yet.\"\n\nIt doesn't take long to reach the lair of the gate's Tethered Being. The tracks of your former attackers take you along the path of least resistance. When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\n\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.",
     next: "forest_shack",
   },
   forest_shack: {
     title: "Forest Shack",
     type: "choice",
-    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint **tsk tsk tsk** that comes from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
+    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* that comes from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
     choices: [
       { label: "Speak to the creature", next: "speak_to_creature" },
       { label: "Send a runner back through the gate for help", next: "send_a_runner" },
@@ -1008,7 +1009,7 @@ export const adventurePages = {
     title: "Camper Hunt",
     src: "../assets/forest_clearing.webp",
     type: "text",
-    text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the **other** thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
+    text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
     next: "",
   },
@@ -1027,7 +1028,7 @@ export const adventurePages = {
   send_a_runner3: {
     title: "Send A Runner",
     type: "text",
-    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has **become** null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
+    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has *become* null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
     next: "",
   },
@@ -1040,7 +1041,7 @@ export const adventurePages = {
   speak_to_creature2: {
     title: "Speak To The Creature",
     type: "text",
-    text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The **what?**\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class Breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
+    text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The *what?*\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class Breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
     next: "speak_to_creature3",
   },
   speak_to_creature3: {
@@ -1093,3 +1094,41 @@ export const adventurePages = {
     next: "",
   },
 };
+
+
+// if (typeof window !== 'undefined') {
+//   // Browser environment - run checks
+//   const checkPages = () => {
+//     console.log('🔍 Checking critical pages:');
+    
+//     const criticalPages = ['excited3', 'nervous', 'threx_brief2', 'threx_brief3'];
+    
+//     criticalPages.forEach(pageId => {
+//       const exists = adventurePages.hasOwnProperty(pageId);
+//       console.log(`${exists ? '✅' : '❌'} ${pageId}`, exists ? adventurePages[pageId].next : 'MISSING');
+//     });
+    
+//     // Check the chain
+//     console.log('\n🔗 Checking navigation chain:');
+//     let current = 'excited3';
+//     let depth = 0;
+//     const maxDepth = 10;
+    
+//     while (current && depth < maxDepth) {
+//       if (!adventurePages[current]) {
+//         console.log(`❌ BROKEN: ${current} not found!`);
+//         break;
+//       }
+      
+//       const page = adventurePages[current];
+//       console.log(`${depth}. ${current} → ${page.next || 'END'}`);
+      
+//       if (!page.next) break;
+//       current = page.next;
+//       depth++;
+//     }
+//   };
+  
+//   // Run check after a short delay
+//   setTimeout(checkPages, 100);
+// }

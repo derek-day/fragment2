@@ -1,3 +1,5 @@
+import { m } from "framer-motion";
+
 export const adventurePages = {
   page_1: {
     title: "My First Raid",
@@ -93,6 +95,14 @@ export const adventurePages = {
     next: "protocol_intro",
     npcPresent: "Akemi",
     npcDescription: "Akemi",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   protocol_intro: {
     title: "Meet the Protocol",
@@ -185,14 +195,107 @@ export const adventurePages = {
     type: "battle",
     enemy: {
       name: "Critter",
-      maxHP: 10,      // Enemy health
+      maxHP: 500,      // Enemy health
       ac: 10,          // Armor Class (difficulty to hit)
       attack: 2,      // Attack bonus
       magic: 1        // Magic attack bonus
     },
     text: "",
-    fail: "death",
+    fail: "critter_death",
     next: "portal_victory",
+  },
+  critter_death: {
+    title: "---",
+    type: "text",
+    text: "Your world goes black, but there is a single light in the darkness...\n\nYou approach it, and it feels... good. Comforting...\n\nYou reach for it, but rough hands pull you back...",
+    next: "welcome_back"
+  },
+  welcome_back: {
+    title: "Welcome Back",
+    type: "text",
+    text: "\"Welcome back to the world of the living, dumbass.\"\n\nThrex and seven others are standing around you, unimpressed.\n\n\"You're lucky we have a healer,\" Ronin says from the back. He's the only person you know from this group, and he hates your guts.",
+    next: "welcome_back2"
+  },
+  welcome_back2: {
+    title: "Welcome Back",
+    type: "choice",
+    text: "Standing from where she had been kneeling over your corpse, a large black woman in dented armor wipes her hands.\n\n\"That might be a record,\" she says. \"I don't think I ever had to heal someone mere seconds after entering a gate before.\"\n\n\"Don't be rude, Harla!\" chastises a woman next to her. \"He was just a little overzealous. We've all been there.\" She steps forward and offers you a hand up. \"I'm Akemi.\"",
+    choices: [
+      { label: "Take hand and offer name", next: "friendly_return" },
+      { label: "Stand on your own and offer your name", next: "neutral_return" },
+      { label: "Ignore the hand and stand up", next: "bad_return" },
+    ],
+  },
+  friendly_return: {
+    title: "Take Hand",
+    type: "text",
+    text: "You take the hand being offered to you, a little embarrassed. You had seen things going a little differently here.",
+    action: "akemi_nice",
+    next: "good_name"
+  },
+  good_name: {
+    title: "Who Are You?",
+    src: "../assets/portal.webp",
+    text: "Before you can proceed, you need to choose a name for yourself. This name will be your identity in the game world.",
+    type: "input",
+    input: {
+      field: "characterName", 
+      label: "Enter your name:",
+      next: "good_intro"
+    }
+  },
+  good_intro: {
+    title: "Akemi Intro",
+    type: "text",
+    text: "\"Well, I think it's very nice to meet you {{characterName}}. I also think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
+    next: "threx_collar"
+  },
+  neutral_return: {
+    title: "Stand Up",
+    type: "text",
+    text: "You ignore the hand and struggle to your feet.",
+    action: "akemi_mean",
+    next: "bad_name"
+  },
+  bad_name: {
+    title: "Who Are You?",
+    src: "../assets/portal.webp",
+    text: "Before you can proceed, you need to choose a name for yourself. This name will be your identity in the game world.",
+    type: "input",
+    input: {
+      field: "characterName", 
+      label: "Enter your name:",
+      next: "bad_intro"
+    }
+  },
+  bad_intro: {
+    title: "Akemi Intro",
+    type: "text",
+    text: "\"Well, I think it's very nice to meet you {{characterName}},\" Akemi says, trying to ignore the slight. \"I also think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
+    next: "threx_collar"
+  },
+  bad_return: {
+    title: "Ignored",
+    type: "text",
+    text: "You ignore both the hand and the question, returning to your feet on your own terms.\n\nAkemi gafaws.\n\n\"I told you, Ronin says. \"Yib is an asshole.\"\n\nBefore you can reply, strong hands grab the collar of your shirt.\n\n\"Asshole or not,\" Threx says, \"you're going to listen to me now. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
+    action: "add_name",
+    next: "what_going_be",
+  },
+  threx_collar: {
+    title: "Threx Collar",
+    type: "text",
+    next: "what_going_be",
+    text: "Before you can answer, strong hands grab the collar of your shirt.\n\n\"She's right,\" Threx hisses. \"And you need to realize your place on that team. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
+  },
+  what_going_be: {
+    title: "What's it going to be?",
+    type: "choice",
+    text: "What's it going to be?",
+    choices: [
+      { label: "Stay and listen", next: "stay" },
+      { label: "Leave", next: "leave" },
+      { label: "Leave, then sneak back in", next: "leave_sneak" },
+    ]
   },
   team_Warrior: {
     title: "Warrior",
@@ -237,6 +340,14 @@ export const adventurePages = {
     next: "team_intro2",
     npcPresent: "Harla",
     npcDescription: "Healer",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   team_intro2: {
     title: "Kaelion",
@@ -246,6 +357,14 @@ export const adventurePages = {
     next: "team_intro3",
     npcPresent: "Kaelion",
     npcDescription: "Warrior",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   team_intro3: {
     title: "Team Intro",
@@ -255,6 +374,14 @@ export const adventurePages = {
     next: "team_intro4",
     npcPresent: "Sheemie",
     npcDescription: "Mage",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   team_intro4: {
     title: "Team Intro",
@@ -264,6 +391,14 @@ export const adventurePages = {
     next: "team_intro5",
     npcPresent: "Mitzi",
     npcDescription: "Mage",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   team_intro5: {
     title: "Aleth",
@@ -273,12 +408,28 @@ export const adventurePages = {
     next: "ronin_intro",
     npcPresent: "Aleth",
     npcDescription: "Samurai",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
   },
   ronin_intro: {
     title: "Ronin",
     type: "choice",
     npcPresent: "Ronin",
     npcDescription: "Ronin",
+    action: "meet_npc",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+    },
     src: "../assets/portal.webp",
     text: "You look at Ronin, who has distanced himself from the others. Like Aleth, the Breaker-in-training has his attention firmly on the portal. Unlike Aleth, it seems he is doing it to avoid you and the others.",
     choices: [
@@ -304,7 +455,15 @@ export const adventurePages = {
     title: "Threx Briefing",
     type: "choice",
     npcPresent: "Threx",
-    npcDescription: "Team Leader",
+    action: "meet_npc",
+    npcDescription: "C-Class Breaker, party leader",
+    npcStats: {
+        maxHP: 150,
+        currentHP: 150,
+        ac: 16,
+        attack: 8,
+        magic: 4
+      },
     src: "../assets/portal.webp",
     text: "\"Alright!\" Threx yells. \"It's about time to head in. Gather around for the pre-raid briefing.\"\n\nThere are grumbled affirmatives from most of the group, but you feel differently.\n\nYou feel...",
     choices: [
@@ -601,15 +760,66 @@ export const adventurePages = {
     type: "choice",
     text: "You've thought about this question a lot. Who hasn't? There are few people alive who haven't fantasized about fighting alongside the heroes of the *Global Protocol Authority (GPA)*, or experimenting with the exciting tech of the *Epoch Corporation*.\n\nBut there are plenty of smaller guilds, too. The *Thomur Guild* specializes in niche markets. The *Silk Road* specializes in trade. You know of at least a dozen guilds that most people would kill to be a member of.\n\nThen again, there's a certain coolness factor of remaining freelance, too.\n\nYou realize Akemi is still staring at you, waiting for an answer.",
     choices: [
-      { label: "Global Protocol Authority", next: "guild_gpa" },
-      { label: "The Epoch Corporation", next: "guild_epoch" },
-      { label: "The Silhouette", next: "guild_silhouette" },
-      { label: "Protocol Null", next: "guild_protocol_null" },
-      { label: "The Veil Cult", next: "guild_veil_cult" },
-      { label: "The Silk Road", next: "guild_silk_road" },
-      { label: "The Thomur Guild", next: "guild_thomur_guild" },
-      { label: "Freelance", next: "guild_freelance" },
-      { label: "You haven't decided", next: "guild_no_preference" },
+      { label: "Global Protocol Authority",
+        action: "guild_opinion",
+        guildName: "Global Protocol Authority",
+        opinion: "interested",
+        next: "guild_gpa" 
+      },
+      { label: "The Epoch Corporation",
+        action: "guild_opinion",
+        guildName: "The Epoch Corporation",
+        opinion: "interested",
+        next: "guild_epoch" 
+      },
+      { label: "The Silhouette", 
+        action: "guild_opinion",
+        guildName: "The Silhouette",
+        opinion: "interested",
+        next: "guild_silhouette" 
+      },
+      { label: "Protocol Null", 
+        action: "guild_opinion",
+        guildName: "Protocol Null",
+        opinion: "interested",
+        next: "guild_protocol_null" 
+
+      },
+      { label: "The Veil Cult", 
+        action: "guild_opinion",
+        guildName: "The Veil Cult",
+        opinion: "interested",
+        next: "guild_veil_cult" 
+
+      },
+      { label: "The Silk Road", 
+        action: "guild_opinion",
+        guildName: "The Silk Road",
+        opinion: "interested",
+        next: "guild_silk_road" 
+
+      },
+      { label: "The Thomur Guild", 
+        action: "guild_opinion",
+        guildName: "The Thomur Guild",
+        opinion: "interested",
+        next: "guild_thomur_guild" 
+
+      },
+      { label: "Freelance", 
+        action: "guild_opinion",
+        guildName: "Freelance",
+        opinion: "interested",
+        next: "guild_freelance" 
+
+      },
+      { label: "You haven't decided", 
+        action: "guild_opinion",
+        guildName: "No Preference",
+        opinion: "interested",
+        next: "guild_no_preference" 
+
+      },
     ],
   },
   guild_gpa: {

@@ -7,6 +7,26 @@ interface NPCInfo {
   description?: string;
   location?: string;
   metAt?: string;
+  // NPC Stats
+  maxHP?: number;
+  currentHP?: number;
+  ac?: number;
+  attack?: number;
+  magic?: number;
+  // Status
+  isAlive: boolean;
+  isDead?: boolean;
+  injuryCount?: number;
+  lastInjury?: string;
+  deathLocation?: string;
+  deathTime?: string;
+}
+
+interface GuildOpinion {
+  guildName: string;
+  opinion: 'positive' | 'negative' | 'neutral' | 'interested' | 'dismissed';
+  timestamp: string;
+  pageId?: string;
 }
 
 interface PlayerProgress {
@@ -14,12 +34,18 @@ interface PlayerProgress {
   failedCombats?: string[];
   failedRolls?: string[];
   
-  // NPC tracking
+  // NPC tracking with full stats
   deadNPCs?: string[];
-  metNPCs?: NPCInfo[];  // Changed from string[] to NPCInfo[]
+  metNPCs?: NPCInfo[];
   npcRelationships?: {
     [npcName: string]: number;
   };
+  
+  // Guild tracking
+  joinedGuild?: string;
+  guildJoinDate?: string;
+  guildOpinions?: GuildOpinion[];
+  interestedGuilds?: string[];
   
   // Minion tracking by group
   minionGroups?: {
@@ -75,6 +101,9 @@ export async function getPlayerProgress(userId: string): Promise<PlayerProgress>
       visitedPages: [],
       wentAlone: false,
       minionGroups: {},
+      joinedGuild: null,
+      guildOpinions: [],
+      interestedGuilds: [],
       lastUpdated: new Date(),
     };
     
@@ -112,27 +141,19 @@ export async function recordRollFailure(userId: string, rollPageId: string) {
   console.log(`🎲 Recorded roll failure at ${rollPageId}`);
 }
 
-// Track NPC death
-export async function recordNPCDeath(userId: string, npcName: string) {
-  const ref = doc(db, 'users', userId);
-  const progress = await getPlayerProgress(userId);
-  
-  if (!progress.deadNPCs?.includes(npcName)) {
-    await updateDoc(ref, {
-      deadNPCs: [...(progress.deadNPCs || []), npcName],
-      lastUpdated: new Date()
-    });
-    
-    console.log(`💀 ${npcName} has died`);
-  }
-}
-
-// Track NPC meeting with full info
+// Track NPC meeting with full stats
 export async function recordNPCMeeting(
   userId: string, 
   npcName: string, 
   description?: string,
-  location?: string
+  location?: string,
+  stats?: {
+    maxHP?: number;
+    currentHP?: number;
+    ac?: number;
+    attack?: number;
+    magic?: number;
+  }
 ) {
   const ref = doc(db, 'users', userId);
   const progress = await getPlayerProgress(userId);
@@ -145,7 +166,15 @@ export async function recordNPCMeeting(
       name: npcName,
       description,
       location,
-      metAt: new Date().toISOString()
+      metAt: new Date().toISOString(),
+      maxHP: stats?.maxHP || 100,
+      currentHP: stats?.currentHP || stats?.maxHP || 100,
+      ac: stats?.ac || 12,
+      attack: stats?.attack || 3,
+      magic: stats?.magic || 2,
+      isAlive: true,
+      isDead: false,
+      injuryCount: 0
     };
     
     await updateDoc(ref, {
@@ -154,6 +183,72 @@ export async function recordNPCMeeting(
     });
     
     console.log(`👋 Met ${npcName}`);
+  }
+}
+
+// Update NPC HP
+export async function updateNPCHP(userId: string, npcName: string, newHP: number) {
+  const ref = doc(db, 'users', userId);
+  const progress = await getPlayerProgress(userId);
+  
+  const updatedNPCs = progress.metNPCs?.map(npc => {
+    if (npc.name === npcName) {
+      const wasInjured = newHP < npc.currentHP;
+      return {
+        ...npc,
+        currentHP: Math.max(0, newHP),
+        injuryCount: wasInjured ? (npc.injuryCount || 0) + 1 : npc.injuryCount,
+        lastInjury: wasInjured ? new Date().toISOString() : npc.lastInjury,
+        isAlive: newHP > 0,
+        isDead: newHP <= 0
+      };
+    }
+    return npc;
+  });
+  
+  await updateDoc(ref, {
+    metNPCs: updatedNPCs,
+    lastUpdated: new Date()
+  });
+  
+  console.log(`💊 Updated ${npcName} HP to ${newHP}`);
+}
+
+// Get NPC current stats
+export async function getNPCStats(userId: string, npcName: string): Promise<NPCInfo | null> {
+  const progress = await getPlayerProgress(userId);
+  return progress.metNPCs?.find(npc => npc.name === npcName) || null;
+}
+
+// Track NPC death with location
+export async function recordNPCDeath(userId: string, npcName: string, deathLocation?: string) {
+  const ref = doc(db, 'users', userId);
+  const progress = await getPlayerProgress(userId);
+  
+  // Update NPC info to mark as dead
+  const updatedNPCs = progress.metNPCs?.map(npc => {
+    if (npc.name === npcName) {
+      return {
+        ...npc,
+        isAlive: false,
+        isDead: true,
+        currentHP: 0,
+        deathLocation: deathLocation || 'Unknown',
+        deathTime: new Date().toISOString()
+      };
+    }
+    return npc;
+  });
+  
+  // Add to deadNPCs list if not already there
+  if (!progress.deadNPCs?.includes(npcName)) {
+    await updateDoc(ref, {
+      deadNPCs: [...(progress.deadNPCs || []), npcName],
+      metNPCs: updatedNPCs,
+      lastUpdated: new Date()
+    });
+    
+    console.log(`💀 ${npcName} has died at ${deathLocation || 'unknown location'}`);
   }
 }
 
@@ -344,7 +439,89 @@ export async function hasToldTeamAbout(userId: string, npcName: string): Promise
   return progress.toldTeamAbout?.includes(npcName) || false;
 }
 
+// ==================== GUILD TRACKING ====================
 
+// Record guild opinion
+export async function recordGuildOpinion(
+  userId: string,
+  guildName: string,
+  opinion: 'positive' | 'negative' | 'neutral' | 'interested' | 'dismissed',
+  pageId?: string
+) {
+  const ref = doc(db, 'users', userId);
+  const progress = await getPlayerProgress(userId);
+  
+  const guildOpinion: GuildOpinion = {
+    guildName,
+    opinion,
+    timestamp: new Date().toISOString(),
+    pageId
+  };
+  
+  // Update or add opinion
+  const existingOpinions = progress.guildOpinions || [];
+  const updatedOpinions = existingOpinions.filter(g => g.guildName !== guildName);
+  updatedOpinions.push(guildOpinion);
+  
+  // Track interested guilds
+  let interestedGuilds = progress.interestedGuilds || [];
+  if (opinion === 'interested' && !interestedGuilds.includes(guildName)) {
+    interestedGuilds = [...interestedGuilds, guildName];
+  } else if (opinion === 'dismissed') {
+    interestedGuilds = interestedGuilds.filter(g => g !== guildName);
+  }
+  
+  await updateDoc(ref, {
+    guildOpinions: updatedOpinions,
+    interestedGuilds,
+    lastUpdated: new Date()
+  });
+  
+  console.log(`🏛️ Recorded ${opinion} opinion for ${guildName}`);
+}
+
+// Join a guild
+export async function joinGuild(userId: string, guildName: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    joinedGuild: guildName,
+    guildJoinDate: new Date().toISOString(),
+    lastUpdated: new Date()
+  });
+  
+  console.log(`🎉 Joined guild: ${guildName}`);
+}
+
+// Get guild opinion
+export async function getGuildOpinion(userId: string, guildName: string): Promise<GuildOpinion | null> {
+  const progress = await getPlayerProgress(userId);
+  return progress.guildOpinions?.find(g => g.guildName === guildName) || null;
+}
+
+// Get all guild opinions
+export async function getAllGuildOpinions(userId: string): Promise<GuildOpinion[]> {
+  const progress = await getPlayerProgress(userId);
+  return progress.guildOpinions || [];
+}
+
+// Check if player has joined a guild
+export async function hasJoinedGuild(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return !!progress.joinedGuild;
+}
+
+// Get player's guild
+export async function getPlayerGuild(userId: string): Promise<string | null> {
+  const progress = await getPlayerProgress(userId);
+  return progress.joinedGuild || null;
+}
+
+// Check if player is interested in guild
+export async function isInterestedInGuild(userId: string, guildName: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.interestedGuilds?.includes(guildName) || false;
+}
 
 
 
@@ -650,6 +827,11 @@ export async function hasToldTeamAbout(userId: string, npcName: string): Promise
 
 // // Track page visit
 // export async function recordPageVisit(userId: string, pageId: string) {
+//   if (!userId || !pageId) {
+//     console.error('Invalid userId or pageId in recordPageVisit');
+//     return;
+//   }
+  
 //   const ref = doc(db, 'users', userId);
 //   const progress = await getPlayerProgress(userId);
   
@@ -686,271 +868,6 @@ export async function hasToldTeamAbout(userId: string, npcName: string): Promise
 // export async function hasMetNPC(userId: string, npcName: string): Promise<boolean> {
 //   const progress = await getPlayerProgress(userId);
 //   return progress.metNPCs?.some(npc => npc.name === npcName) || false;
-// }
-
-// // Check if player told team about NPC
-// export async function hasToldTeamAbout(userId: string, npcName: string): Promise<boolean> {
-//   const progress = await getPlayerProgress(userId);
-//   return progress.toldTeamAbout?.includes(npcName) || false;
-// }
-
-
-
-
-
-
-
-
-
-
-// import { doc, updateDoc, setDoc, getDoc } from 'firebase/firestore';
-// import { db } from '../lib/firebase';
-
-// // Types
-// interface PlayerProgress {
-//   // className: any;
-
-//   // Combat tracking
-//   failedCombats?: string[];  // Array of battle page IDs
-//   failedRolls?: string[];    // Array of roll page IDs
-  
-//   // NPC tracking
-//   deadNPCs?: string[];       // Array of NPC names
-//   metNPCs?: string[];        // Array of NPC names player has met
-//   npcRelationships?: {       // NPC relationship scores
-//     [npcName: string]: number;
-//   };
-  
-//   // Player choices
-//   wentAlone?: boolean;       // Entered area without team
-//   characterName?: string;    // Character they're playing as
-//   toldTeamAbout?: string[];  // Names mentioned to team
-  
-//   // Death tracking
-//   deaths?: number;           // Number of times died
-//   revivals?: number;         // Number of times revived
-//   deathLocations?: string[]; // Where they died
-  
-//   // Route tracking
-//   route?: string;            // Current route (alone, team, etc.)
-//   completedRoutes?: string[]; // All routes completed
-  
-//   // General progress
-//   currentPage?: string;      // Last page visited
-//   visitedPages?: string[];   // All pages visited
-//   lastUpdated?: Date;
-// }
-
-// // Initialize or get player progress
-// export async function getPlayerProgress(userId: string): Promise<PlayerProgress> {
-//   try {
-//     const progressRef = doc(db, 'users', userId);
-//     const progressSnap = await getDoc(progressRef);
-    
-//     if (progressSnap.exists()) {
-//       return progressSnap.data() as PlayerProgress;
-//     }
-    
-//     // Initialize new progress
-//     const initialProgress: PlayerProgress = {
-//       failedCombats: [],
-//       failedRolls: [],
-//       deadNPCs: [],
-//       metNPCs: [],
-//       npcRelationships: {},
-//       toldTeamAbout: [],
-//       deaths: 0,
-//       revivals: 0,
-//       deathLocations: [],
-//       completedRoutes: [],
-//       visitedPages: [],
-//       wentAlone: false,
-//       lastUpdated: new Date(),
-//       // className: undefined
-//     };
-    
-//     await setDoc(progressRef, initialProgress);
-//     return initialProgress;
-//   } catch (error) {
-//     console.error('Error getting player progress:', error);
-//     throw error;
-//   }
-// }
-
-// // Track combat failure
-// export async function recordCombatFailure(userId: string, battlePageId: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   await updateDoc(ref, {
-//     failedCombats: [...(progress.failedCombats || []), battlePageId],
-//     lastUpdated: new Date()
-//   });
-  
-//   console.log(`📉 Recorded combat failure at ${battlePageId}`);
-// }
-
-// // Track roll failure
-// export async function recordRollFailure(userId: string, rollPageId: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   await updateDoc(ref, {
-//     failedRolls: [...(progress.failedRolls || []), rollPageId],
-//     lastUpdated: new Date()
-//   });
-  
-//   console.log(`🎲 Recorded roll failure at ${rollPageId}`);
-// }
-
-// // Track NPC death
-// export async function recordNPCDeath(userId: string, npcName: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   // Only add if not already dead
-//   if (!progress.deadNPCs?.includes(npcName)) {
-//     await updateDoc(ref, {
-//       deadNPCs: [...(progress.deadNPCs || []), npcName],
-//       lastUpdated: new Date()
-//     });
-    
-//     console.log(`💀 ${npcName} has died`);
-//   }
-// }
-
-// // Track NPC meeting
-// export async function recordNPCMeeting(userId: string, npcName: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   // Only add if not already met
-//   if (!progress.metNPCs?.includes(npcName)) {
-//     await updateDoc(ref, {
-//       metNPCs: [...(progress.metNPCs || []), npcName],
-//       lastUpdated: new Date()
-//     });
-    
-//     console.log(`👋 Met ${npcName}`);
-//   }
-// }
-
-// // Track telling team about someone
-// export async function recordToldTeam(userId: string, npcName: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   // Only add if not already told
-//   if (!progress.toldTeamAbout?.includes(npcName)) {
-//     await updateDoc(ref, {
-//       toldTeamAbout: [...(progress.toldTeamAbout || []), npcName],
-//       lastUpdated: new Date()
-//     });
-    
-//     console.log(`🗣️ Told team about ${npcName}`);
-//   }
-// }
-
-// // Track player death
-// export async function recordDeath(userId: string, deathLocation: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   await updateDoc(ref, {
-//     deaths: (progress.deaths || 0) + 1,
-//     deathLocations: [...(progress.deathLocations || []), deathLocation],
-//     lastUpdated: new Date()
-//   });
-  
-//   console.log(`☠️ Player died at ${deathLocation}. Total deaths: ${(progress.deaths || 0) + 1}`);
-// }
-
-// // Track revival
-// export async function recordRevival(userId: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   await updateDoc(ref, {
-//     revivals: (progress.revivals || 0) + 1,
-//     lastUpdated: new Date()
-//   });
-  
-//   console.log(`✨ Player revived. Total revivals: ${(progress.revivals || 0) + 1}`);
-// }
-
-// // Track going alone
-// export async function recordWentAlone(userId: string, characterName?: string) {
-//   const ref = doc(db, 'users', userId);
-  
-//   const updates: any = {
-//     wentAlone: true,
-//     route: 'alone',
-//     lastUpdated: new Date()
-//   };
-  
-//   if (characterName) {
-//     updates.characterName = characterName;
-//   }
-  
-//   await updateDoc(ref, updates);
-  
-//   console.log(`🚶 Player went alone${characterName ? ` as ${characterName}` : ''}`);
-// }
-
-// // Track route completion
-// export async function recordRouteCompletion(userId: string, routeName: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   if (!progress.completedRoutes?.includes(routeName)) {
-//     await updateDoc(ref, {
-//       completedRoutes: [...(progress.completedRoutes || []), routeName],
-//       route: routeName,
-//       lastUpdated: new Date()
-//     });
-    
-//     console.log(`🎯 Completed route: ${routeName}`);
-//   }
-// }
-
-// // Track page visit
-// export async function recordPageVisit(userId: string, pageId: string) {
-//   const ref = doc(db, 'users', userId);
-//   const progress = await getPlayerProgress(userId);
-  
-//   await updateDoc(ref, {
-//     currentPage: pageId,
-//     visitedPages: Array.from(new Set([...(progress.visitedPages || []), pageId])),
-//     lastUpdated: new Date()
-//   });
-// }
-
-// // Check if player has met certain conditions
-// export async function hasPlayerMetCondition(userId: string, condition: string): Promise<boolean> {
-//   const progress = await getPlayerProgress(userId);
-  
-//   switch (condition) {
-//     case 'went_alone':
-//       return progress.wentAlone === true;
-//     case 'died_before':
-//       return (progress.deaths || 0) > 0;
-//     case 'been_revived':
-//       return (progress.revivals || 0) > 0;
-//     default:
-//       return false;
-//   }
-// }
-
-// // Check if NPC is alive
-// export async function isNPCAlive(userId: string, npcName: string): Promise<boolean> {
-//   const progress = await getPlayerProgress(userId);
-//   return !progress.deadNPCs?.includes(npcName);
-// }
-
-// // Check if player has met NPC
-// export async function hasMetNPC(userId: string, npcName: string): Promise<boolean> {
-//   const progress = await getPlayerProgress(userId);
-//   return progress.metNPCs?.includes(npcName) || false;
 // }
 
 // // Check if player told team about NPC

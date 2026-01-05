@@ -195,7 +195,7 @@ export const adventurePages = {
     type: "battle",
     enemy: {
       name: "Critter",
-      maxHP: 500,      // Enemy health
+      maxHP: 10,      // Enemy health
       ac: 10,          // Armor Class (difficulty to hit)
       attack: 2,      // Attack bonus
       magic: 1        // Magic attack bonus

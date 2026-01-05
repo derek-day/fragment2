@@ -11,6 +11,18 @@ interface NPCInfo {
   maxHP?: number;
   currentHP?: number;
   ac?: number;
+  
+  // strength?: number;
+  // dexterity?: number;
+  // constitution?: number;
+  // intelligence?: number;
+  // wisdom?: number;
+  // charisma?: number;
+
+  // physio?: number;
+  // neuro?: number;
+  // psycho?: number;
+  // pheno?: number;
   attack?: number;
   magic?: number;
   // Status
@@ -20,6 +32,11 @@ interface NPCInfo {
   lastInjury?: string;
   deathLocation?: string;
   deathTime?: string;
+  //C-Class A-Class B-Class
+  class?: string;
+  breakerClass?: string;
+  level?: number;
+  //need possible unknown class/breaker that could change
 }
 
 interface GuildOpinion {

@@ -140,6 +140,11 @@ export default function Home() {
           createdAt: new Date(),
           characterName: "",
           stats: {
+            //possible change this to tapestry stats, this needs changed in battle and roll pages
+            //physio
+            //neuro
+            //psycho
+            //pheno
             Strength: 10,
             Dexterity: 10,
             Constitution: 10,

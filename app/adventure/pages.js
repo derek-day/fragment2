@@ -79,11 +79,11 @@ export const adventurePages = {
   choose_name: {
     title: "Who Are You?",
     src: "../assets/portal.webp",
-    text: "Before you can proceed, you need to choose a name for yourself. This name will be your identity in the game world.",
+    text: "Before you can proceed, you need to choose a name for yourself. This will be your identity in the game world.",
     type: "input",
     input: {
       field: "characterName", 
-      label: "Enter your name:",
+      label: "Who are you?",
       next: "akemi_intro"
     }
   },
@@ -100,8 +100,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   protocol_intro: {
@@ -124,11 +126,6 @@ export const adventurePages = {
     type: "text",
     text: "Your clothes were handed back to you, and you were escorted outside. A digital reader replaced the AR display you were hoping for, tailored to your time in the chamber. It was make-believe, a cosplay of the version of yourself you had just been denied.\n\nSome Breakers were insane enough to brave gates without being activated yet. Their hope-- before their skulls were usually crushed by whatever beasts waited inside-- was that the Protocol would change its mind.\n\nYou, apparently, were one of the insane ones, because you entered your wish, hoping it would be made real.",
     next: "stat_intro",
-    //next should go to stat page with DND stat numbers, all starting at 10 with a point buy of an additional 10
-    //after would then lead to equipment, menu, maps
-    //then need to make sure they are going to the correct page depending on if they are with the team or entered portal alone
-    //if with team - next: "back_to_team",
-    //if alone - next: "portal_encounter",
   },
   stat_intro: {
     id: "stat-allocation",
@@ -137,13 +134,11 @@ export const adventurePages = {
     text: "Distribute your stat points. Choose wisely, as your future depends on it.",
     stats: {
       HP: 20,
-      Strength: 10,
-      Dexterity: 10,
-      Constitution: 10,
-      Intelligence: 10,
-      Wisdom: 10,
-      Charisma: 10,
-      points: 10
+      Fellowship: 10,
+      Athletics: 10,
+      Thought: 10,
+      Essence: 10,
+      points: 6
     },
     next: "class_confirmation",
   },
@@ -203,6 +198,21 @@ export const adventurePages = {
     text: "",
     fail: "critter_death",
     next: "portal_victory",
+  },
+  portal_victory: {
+    title: "Win!",
+    type: "choice",
+    text: "The creature may have taken you by surprise, but you bested it in the end. On one hand, it feels great to have the first notch in your belt (and to know that regular humans aren't hopeless against E-ranked creatures).\n\nOn the other hand, that thing was a lot stronger than you anticipated. You wonder whether moving forward with the others would be the better path...",
+    choices: [
+      { label: "Wait for the others", next: "wait_others" },
+      { label: "Keep moving", next: "keep_moving_alone" },
+    ],
+  },
+  wait_others: {
+
+  },
+  keep_moving_alone: {
+
   },
   critter_death: {
     title: "---",
@@ -345,8 +355,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   team_intro2: {
@@ -362,8 +374,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   team_intro3: {
@@ -379,8 +393,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   team_intro4: {
@@ -396,8 +412,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   team_intro5: {
@@ -413,8 +431,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
   },
   ronin_intro: {
@@ -427,8 +447,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
     },
     src: "../assets/portal.webp",
     text: "You look at Ronin, who has distanced himself from the others. Like Aleth, the Breaker-in-training has his attention firmly on the portal. Unlike Aleth, it seems he is doing it to avoid you and the others.",
@@ -461,8 +483,10 @@ export const adventurePages = {
         maxHP: 150,
         currentHP: 150,
         ac: 16,
-        attack: 8,
-        magic: 4
+        fellowship: 10,
+        athletics: 10,
+        thought: 10,
+        essence: 10
       },
     src: "../assets/portal.webp",
     text: "\"Alright!\" Threx yells. \"It's about time to head in. Gather around for the pre-raid briefing.\"\n\nThere are grumbled affirmatives from most of the group, but you feel differently.\n\nYou feel...",
@@ -572,7 +596,7 @@ export const adventurePages = {
     src: "../assets/portal.webp",
     text: "You could argue your point, but it's easier to show than to tell. This'll teach him to doubt a freelance hunter!",
     roll: {
-      stat: "Strength",
+      stat: "Athletics",
       dc: 12,
       successText: "Your strike is quick, powerful, and straight to the point. It hits Threx clean across the face, eliciting a grunt from the big man and a gasp from the others. Even Ronin seems impressed.",
       failText: "Threx has been fighting for a long time, and against creatures far more powerful than you. He easily ducks your fist and retorts with a strike of his own.\n\nA moment later, you're looking up at the man who hit you.",
@@ -694,12 +718,12 @@ export const adventurePages = {
       item: ""        // Magic attack bonus
     },
     team: [
-      { name: "Akemi", maxHP: 15, ac: 12, attack: 3, magic: 5 },
-      { name: "Harla", maxHP: 20, ac: 14, attack: 4, magic: 2 },
-      { name: "Kaelion", maxHP: 18, ac: 13, attack: 5, magic: 3 },
-      { name: "Sheemie", maxHP: 12, ac: 11, attack: 2, magic: 6 },
-      { name: "Mitzi", maxHP: 14, ac: 12, attack: 3, magic: 4 },
-      { name: "Aleth", maxHP: 16, ac: 13, attack: 4, magic: 3 },
+      { name: "Akemi", maxHP: 15, ac: 12, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
+      { name: "Harla", maxHP: 20, ac: 14, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
+      { name: "Kaelion", maxHP: 18, ac: 13, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
+      { name: "Sheemie", maxHP: 12, ac: 11, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
+      { name: "Mitzi", maxHP: 14, ac: 12, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
+      { name: "Aleth", maxHP: 16, ac: 13, fellowship: 10, athletics: 10, thought: 10, essence: 10 },
     ],
     text: "",
     fail: "death",
@@ -918,7 +942,7 @@ export const adventurePages = {
     type: "roll",
     text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery.",
     roll: {
-      stat: "Wisdom",
+      stat: "Thought",
       dc: 14,
       successText: "You pull your eyes from the carvings and take in the forest beyond the trees. There is a layout to the woods themselves, as though it's been painstakingly designed.Following the converging lines of the purple tree-things, you notice a shimmer in the distance.\n\nIt's only there for a moment, then it disappears.",
       failText: "This place is strange, but it doesn't feel threatening. You look for movement beyond the trees, but find nothing.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
@@ -958,7 +982,7 @@ export const adventurePages = {
     type: "roll",
     text: "You take a moment to admire them. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes? ",
     roll: {
-      stat: "Wisdom",
+      stat: "Thought",
       dc: 14,
       successText: "You peer closer, and the pattern beneath the patterns assembles itself. Though each carving is different from the rest, you recognize a distinction between groups of them.\n\nThere are many with curved edges. These are the tree-things.\n\nThere are several longer, squigly ones. These are the streams.\n\nThere are a few jagged ones. You're not sure what they are, but most are congregated in two locations across these various tapestries.\n\nMovement catches your eye amongst a grouping of eight small dots. Seven of them are... moving.",
       failText: "It's difficult to tell.\n\nYou stare at the carvings a moment longer, admiring their beauty before continuing on.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",

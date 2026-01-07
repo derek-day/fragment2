@@ -145,12 +145,10 @@ export default function Home() {
             //neuro
             //psycho
             //pheno
-            Strength: 10,
-            Dexterity: 10,
-            Constitution: 10,
-            Intelligence: 10,
-            Wisdom: 10,
-            Charisma: 10,
+            Fellowship: 10,
+            Athletics: 10,
+            Thought: 10,
+            Essence: 10,
             HP: 20,
             MaxHP: 20,
             XP: 0,
@@ -158,6 +156,7 @@ export default function Home() {
           },
           route: "",
           className: "",
+          breakerClass: "",
           metNPCs: [],
           deadNPCs: [],
           failedCombats: [],

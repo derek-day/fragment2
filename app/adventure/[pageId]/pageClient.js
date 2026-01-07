@@ -22,6 +22,7 @@ import {
   isInterestedInGuild
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
+import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
 import StatLayout from "../../../util/StatLayout";
 import MenuButton from "../../../util/MenuButton";
 import PageStats from "../../../components/PageStats";
@@ -30,6 +31,7 @@ import BattlePage from "../../../components/BattlePage";
 import RollPage from "../../../components/RollPage";
 import DeathPage from "../../../components/DeathPage";
 import DebugPanel from "../../../components/DebugPanel";
+import DataPacketBrowser from "../../../components/DataPacket";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -43,6 +45,11 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [userStats, setUserStats] = useState(null);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const [isPageChanging, setIsPageChanging] = useState(false);
+
+  // Data Packet states
+  const [newDataPackets, setNewDataPackets] = useState([]);
+  const [showPacketNotification, setShowPacketNotification] = useState(false);
+  const [showPacketBrowser, setShowPacketBrowser] = useState(false);
 
   const PARTICLE_COUNT = 40;
   const particles = useMemo(() => {
@@ -124,6 +131,13 @@ export default function PageClient({ page: initialPage, pageId }) {
         
         // Handle conditional branching
         await handlePageLoad(user.uid);
+
+        // Check for new data packets
+        const unlocked = await checkAndUnlockPackets(user.uid, pageId);
+        if (unlocked.length > 0) {
+          setNewDataPackets(unlocked);
+          setShowPacketNotification(true);
+        }
         
         // Auto-track NPC meetings with full info
         if (page.npcPresent) {
@@ -206,9 +220,9 @@ export default function PageClient({ page: initialPage, pageId }) {
         
         // Determine class
         let className = "";
-        if (allocatedStats.Intelligence >= 14) className = "Mage";
-        else if (allocatedStats.Strength >= 14 || allocatedStats.Constitution >= 14) className = "Warrior";
-        else if (allocatedStats.Charisma >= 14 || allocatedStats.Wisdom >= 14) className = "Summoner";
+        if (allocatedStats.Essence >= 14) className = "Mage";
+        else if (allocatedStats.Athletics >= 14) className = "Warrior";
+        else if (allocatedStats.Thought >= 14) className = "Summoner";
         else className = "Undecided / Mixed";
 
         await updateDoc(ref, { 
@@ -320,6 +334,12 @@ export default function PageClient({ page: initialPage, pageId }) {
   // Handle choice selection - only allow if not already selected
   const handleChoiceClick = (choice) => {
     setSelectedChoice(selectedChoice?.next === choice.next ? null : choice);
+  };
+
+  // Handle opening packet from notification
+  const handleOpenPacketFromNotification = (packet) => {
+    setShowPacketNotification(false);
+    setShowPacketBrowser(true);
   };
 
   // Animation variants
@@ -512,6 +532,23 @@ export default function PageClient({ page: initialPage, pageId }) {
             </motion.button>
           )}
         </motion.div>
+
+        {/* Data Packet Notification */}
+        <AnimatePresence>
+          {showPacketNotification && (
+            <DataPacketNotification
+              packets={newDataPackets}
+              onClose={() => setShowPacketNotification(false)}
+              onOpenPacket={handleOpenPacketFromNotification}
+            />
+          )}
+        </AnimatePresence>
+        {/* Data Packet Browser (opened from notification) */}
+        <DataPacketBrowser
+          isOpen={showPacketBrowser}
+          onClose={() => setShowPacketBrowser(false)}
+          userId={user?.uid}
+        />
       </motion.div>
     </AnimatePresence>
   );

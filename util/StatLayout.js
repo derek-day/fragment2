@@ -181,12 +181,10 @@ export default function StatLayout() {
               }}
             >
               {Object.entries({
-                STR: stats.Strength,
-                DEX: stats.Dexterity,
-                CON: stats.Constitution,
-                INT: stats.Intelligence,
-                WIS: stats.Wisdom,
-                CHA: stats.Charisma
+                FEL: stats.Fellowship,
+                ATH: stats.Athletics,
+                THO: stats.Thought,
+                ESS: stats.Essence
               }).map(([stat, value], index) => (
                 <motion.div
                   key={stat}

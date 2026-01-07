@@ -1,20 +1,14 @@
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import BackgroundMusic from "../components/BackgroundMusic";
 
 export const metadata = {
   title: "The Gatebreaker Protocol",
-  description: "A choose your own adventure by Andrew Akers, Derek Day, and Tye Sheets",
+  description: "A choose your own adventure story by Andrew Akers, Derek Day, and Tye Sheets",
 };
+
+const PLAYLIST = [
+  { title: "Test", src: "/assets/music/andor.m4a" },
+];
 
 export default function RootLayout({ children }) {
   return (
@@ -22,6 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en" style={{backgroundImage: "url('../assets/portal.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
       <body>
         {children}
+
+        <BackgroundMusic 
+         tracks={PLAYLIST} 
+         initialVolume={0.3}
+       />
       </body>
     </html>
   );

@@ -11,20 +11,12 @@ interface NPCInfo {
   maxHP?: number;
   currentHP?: number;
   ac?: number;
-  
-  // strength?: number;
-  // dexterity?: number;
-  // constitution?: number;
-  // intelligence?: number;
-  // wisdom?: number;
-  // charisma?: number;
-
-  // physio?: number;
-  // neuro?: number;
-  // psycho?: number;
-  // pheno?: number;
-  attack?: number;
-  magic?: number;
+  fellowship?: number;
+  athletics?: number;
+  thought?: number;
+  essence?: number;
+  // attack?: number;
+  // magic?: number;
   // Status
   isAlive: boolean;
   isDead?: boolean;
@@ -168,8 +160,12 @@ export async function recordNPCMeeting(
     maxHP?: number;
     currentHP?: number;
     ac?: number;
-    attack?: number;
-    magic?: number;
+    fellowship?: number;
+    athletics?: number;
+    thought?: number;
+    essence?: number;
+    // attack?: number;
+    // magic?: number;
   }
 ) {
   const ref = doc(db, 'users', userId);
@@ -187,8 +183,12 @@ export async function recordNPCMeeting(
       maxHP: stats?.maxHP || 100,
       currentHP: stats?.currentHP || stats?.maxHP || 100,
       ac: stats?.ac || 12,
-      attack: stats?.attack || 3,
-      magic: stats?.magic || 2,
+      fellowship: stats?.fellowship || 10,
+      athletics: stats?.athletics || 10,
+      thought: stats?.thought || 10,
+      essence: stats?.essence || 10,
+      // attack: stats?.attack || 3,
+      // magic: stats?.magic || 2,
       isAlive: true,
       isDead: false,
       injuryCount: 0

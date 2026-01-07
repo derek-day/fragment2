@@ -486,12 +486,10 @@ const BattleSystem = ({ userStats, page }) => {
   const player = {
     name: userStats?.name || "Yib",
     maxHP: userStats?.HP || 20,
-    strength: userStats?.Strength || 10,
-    intelligence: userStats?.Intelligence || 10,
-    dexterity: userStats?.Dexterity || 10,
-    wisdom: userStats?.Wisdom || 10,
-    charisma: userStats?.Charisma || 10,
-    constitution: userStats?.Constitution || 10,
+    athletics: userStats?.Athletics || 10,
+    essence: userStats?.Essence || 10,
+    thought: userStats?.Thought || 10,
+    fellowship: userStats?.Fellowship || 10,
   };
 
   console.log("Player Stats:", player);
@@ -501,17 +499,18 @@ const BattleSystem = ({ userStats, page }) => {
 
   // Get strongest physical stat (STR or DEX)
   const getAttackStat = () => {
-    return player.strength >= player.dexterity ? 
-      { name: 'STR', value: player.strength, mod: getModifier(player.strength) } :
-      { name: 'DEX', value: player.dexterity, mod: getModifier(player.dexterity) };
+    // return player.athletics;
+    return player.athletics >= player.athletics ? 
+      { name: 'ATH', value: player.athletics, mod: getModifier(player.athletics) } :
+      { name: 'ATH', value: player.athletics, mod: getModifier(player.athletics) };
   };
 
   // Get strongest spellcasting stat (INT, WIS, or CHA)
   const getSpellcastingStat = () => {
     const stats = [
-      { name: 'INT', value: player.intelligence, mod: getModifier(player.intelligence) },
-      { name: 'WIS', value: player.wisdom, mod: getModifier(player.wisdom) },
-      { name: 'CHA', value: player.charisma, mod: getModifier(player.charisma) }
+      { name: 'THO', value: player.thought, mod: getModifier(player.thought) },
+      { name: 'ESS', value: player.essence, mod: getModifier(player.essence) },
+      { name: 'FEL', value: player.fellowship, mod: getModifier(player.fellowship) }
     ];
     return stats.reduce((best, current) => current.value > best.value ? current : best);
   };
@@ -616,7 +615,7 @@ const BattleSystem = ({ userStats, page }) => {
     if (isRolling) return;
 
     const roll = await rollDice(20);
-    const dexMod = getModifier(player.dexterity);
+    const dexMod = getModifier(player.athletics);
     const total = roll + dexMod;
 
     addLog(`You attempt to flee! Roll: ${roll} + ${dexMod} (DEX) = ${total}`, 'roll');
@@ -652,7 +651,7 @@ const BattleSystem = ({ userStats, page }) => {
           const total = roll + (page.enemy.attack || 0);
           addLog(`${page.enemy.name} rolls ${roll} + ${page.enemy.attack} = ${total} to attack!`, 'enemy');
           
-          const playerAC = 10 + getModifier(player.dexterity);
+          const playerAC = 10 + getModifier(player.athletics);
           
           if (total >= playerAC) {
             const damage = await calculateDamage(1, 6) + (page.enemy.attack || 0);
@@ -665,7 +664,7 @@ const BattleSystem = ({ userStats, page }) => {
           const total = roll + (page.enemy.magic || 0);
           addLog(`${page.enemy.name} casts a spell! Roll: ${roll} + ${page.enemy.magic} = ${total}`, 'enemy');
           
-          const playerAC = 10 + getModifier(player.dexterity);
+          const playerAC = 10 + getModifier(player.athletics);
           
           if (total >= playerAC) {
             const damage = await calculateDamage(1, 8) + (page.enemy.magic || 0);
@@ -740,20 +739,16 @@ const BattleSystem = ({ userStats, page }) => {
                 <h3 className="text-sm md:text-base font-bold truncate">{player.name}</h3>
               </div>
               <HPBar current={playerHP} max={player.maxHP} color="bg-green-500" />
-              <div className="mt-2 text-xs grid grid-cols-3 gap-1">
+              {/* <div className="mt-2 text-xs grid grid-cols-3 gap-1">
                 <div className="text-center">
-                  <div className="text-gray-500">STR</div>
-                  <div className="text-orange-400 font-bold">{getModifier(player.strength) >= 0 ? '+' : ''}{getModifier(player.strength)}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-gray-500">DEX</div>
-                  <div className="text-blue-400 font-bold">{getModifier(player.dexterity) >= 0 ? '+' : ''}{getModifier(player.dexterity)}</div>
+                  <div className="text-gray-500">AC</div>
+                  <div className="text-orange-400 font-bold">{getModifier(player.athletics) >= 0 ? '+' : ''}{getModifier(player.athletics)}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-gray-500">Potions</div>
                   <div className="text-green-400 font-bold">{potionsRemaining}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Enemy */}
@@ -831,14 +826,14 @@ const BattleSystem = ({ userStats, page }) => {
             <span className="hidden sm:inline">Magic</span> ({getSpellcastingStat().name})
           </button>
           
-          <button
+          {/* <button
             onClick={handleItem}
             disabled={!isPlayerTurn || battleEnded || selectedAction || potionsRemaining === 0}
             className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
           >
             <Package className="w-4 h-4" />
             <span className="hidden sm:inline">Item</span> ({potionsRemaining})
-          </button>
+          </button> */}
           
           {/* <button
             onClick={handleLeave}

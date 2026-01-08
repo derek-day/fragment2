@@ -1327,9 +1327,9 @@ export const adventurePages = {
     title: "Inspect Fail",
     type: "text",
     text: "It's difficult to tell.\n\nYou stare at the carvings a moment longer, admiring their beauty before continuing on.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
-    next: "forest_deeper",
+    next: "forest_deeper_together",
   },
-  forest_deeper: {
+  forest_deeper_together: {
     title: "Deeper In The Forest",
     type: "text",
     text: "Threx leads you deeper into the forest, following a wide and well-defined footpath.\n\n\"It's weird nothing else has tried to kill us,\" Mitzi says.\n\n The party leader nods. \"I agree. This place isn't very large, and we definitely stand out against all the purple.\"\n\n\"I hate purple.\"\n\n\"You hate everything.\"\n\nMitzi smirks. \"True.\"\n\nAt last, the path leads into a clearing. For the first time since entering the gate, you see a color other than purple.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment, and you have to agree.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.",
@@ -1655,6 +1655,7 @@ export const adventurePages = {
     next: "",
   },
   no_camper: {
+    src: "../assets/shack.webp",
     title: "No",
     type: "text",
     text: "You take a step back, realizing your folly in trying to reason with this thing. Threx grabs your wrist and pulls you behind him.\n\n\"Dumbass,\" he says.",
@@ -1712,6 +1713,7 @@ export const adventurePages = {
   },
   hospital: {
     //hospital room background
+    src: "../assets/hospital.webp",
     title: "Awake",
     type: "text",
     text: "You awake in a hospital bed, flanked by a nurse and a healer.\n\n\"He's coming to,\" the healer whispers.\n\n\"Oh, thank God,\" says the nurse. \"His family will be thrilled to see him in one piece.\"\n\n\"Well, I wouldn't go that far.\"\n\nYour eyes follow the gaze of the healer to the stump of your right arm, then to the open space below your knees.",
@@ -1940,19 +1942,19 @@ export const adventurePages = {
     title: "---",
     type: "text",
     text: "Then, you sleep.",
-    next: ""
+    next: "hospital_later"
   },
   family_rest: {
     title: "Rest",
     type: "text",
     text: "\"Mmm-mmm,\" you manage. It's too much even to shake your head.\n\n\"Booo!\" Ryke says.\n\nCrixon, always the pragmatist, says, \"We have school tomorrow. We've already missed three days sitting around the hospital. We probably won't be here when you wake up next.\"\n\n\"Has... my pay...been deposited...yet?\"\n\nYour younger brother sneaks a glance at the older one, who looks away.\n\n\"Yeah, it was in there.\"",
-    next: family_rest2
+    next: "family_rest2"
   },
   family_rest2: {
     title: "Rest",
     type: "text",
     text: "You look from one brother to the other, already guessing where it went.\n\nCale, the oldest, remains silent, as he usually does. If you had more energy, you'd address this. Right now, however, the only thing you plan to address is the softness of your pillow.\n\n\"We'll... talk... later.\" You say before struggling out a weak \"I... love... you\" before the darkness returns. You realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
-    next: ""
+    next: "hospital_later"
   },
   family_painkiller: {
     title: "Visit",
@@ -1993,14 +1995,14 @@ export const adventurePages = {
   family_painkiller7: {
     title: "Visit",
     type: "text",
-    text: "\"I left enough for rent... and for some food.\" The twenty-three-year-old pauses, knowing he isn't giving you the answer you're expecting.\n\n\"Travis,\" he says at last. \"He got out a few days ago. He needed money and I...\" Cale pauses to look at his bag again. \"You know what I need.\"\n\n\"Travis,\" you whisper, hoping to have already heard that name for the last time.\n\nCale says more, but you have trouble registering it. You're so tired.",
+    text: "\"I left enough for rent... and for some food.\" The twenty-three-year-old pauses, knowing he isn't giving you the answer you're expecting.\n\n\"Travis,\" he says at last. \"He got out a few days ago. He needed money and I...\" Cale pauses to look at his bag again. \"You know what I need.\"",
     next: "family_painkiller8"
   },
   family_painkiller8: {
     title: "Visit",
     type: "text",
-    text: "You realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
-    next: ""
+    text: "\"Travis,\" you whisper, hoping to have already heard that name for the last time.\n\nCale says more, but you have trouble registering it. You're so tired.\n\nYou realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
+    next: "hospital_later"
   },
   family_address: {
     title: "Visit",
@@ -2152,6 +2154,8 @@ export const adventurePages = {
     next: "arclight"
   },
   arclight: {
+    //background change, old building that looks to have been knocked down. used to be a capital, now buildings no larger than 3 stories with an obelisk memorial
+    src: "../assets/arclight.webp",
     title: "Arclight Haven",
     type: "text",
     text: "Fifteen minutes later, you leave the hospital behind and re-enter the city you've always known as home. Your new limbs feel odd, but natural, too. Stronger, maybe, but certainly different.\n\nJust like your city.\n\nArclight Haven sits on swampland. It sprawls like a rash, and no buildings are taller than three stories. It's as if the whole place had been knocked down once, and it's now too afraid to stand back up.\n\nIn a way, that's true. In another way, it isn't.",
@@ -2233,6 +2237,7 @@ export const adventurePages = {
     next: "arclight_study"
   },
   arclight_study: {
+    src: "../assets/study.webp",
     title: "Arclight Study",
     type: "text",
     text: "Instead, you find yourself standing on the bottom floor of a two-story study. Bookcases stretch out and up from you, spines reflecting the cozy fire that's cracking in the corner hearth.\n\nYou spin and realize the door behind you is gone. You're stuck here, wherever here is. You've always known that gates can appear as anything, and their insides can contain any manner of world.\n\nStill, you feel a sense of displacement here—a strange vertigo.",
@@ -2441,6 +2446,7 @@ export const adventurePages = {
   },
   activated: {
     //maybe new moving background from react bits?
+    //update breaker class to D
     title: "Activated!",
     type: "text",
     text: "\"Congratulations! The Protocol has activated you. You may now spend Breaker Points, get into more difficult gates, choose a path, and use the system store.\"\n\nYour Rank is D-Class.",

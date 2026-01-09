@@ -39,15 +39,15 @@ export const EQUIPMENT_ITEMS = {
     name: 'Health Potion',
     type: 'Consumable',
     rarity: 'Common',
-    description: 'Restores health immediately upon use. The effects last until you take damage again.',
+    description: 'A red liquid that will instantly heal once taken.',
     stats: {
       healing: '10 HP'
     },
     unlocksOnPage: 'very_dumb',
     icon: Package
   },
-  environment_potion: {
-    id: 'environment_potion',
+  environmental_potion: {
+    id: 'environmental_potion',
     name: 'Environmental Resistance Potion',
     type: 'Consumable',
     rarity: 'Uncommon',
@@ -56,7 +56,7 @@ export const EQUIPMENT_ITEMS = {
       duration: '3 hours',
       effect: 'Negates environment penalties'
     },
-    unlocksOnPage: 'team_portal_inside',
+    unlocksOnPage: 'hold_vial',
     icon: Zap
   },
   mechanical_knife: {

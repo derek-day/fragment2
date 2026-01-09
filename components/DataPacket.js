@@ -12,29 +12,30 @@ export const DATA_PACKETS = {
     id: 'world_state',
     title: 'The State of the World',
     category: 'Lore',
-    content: `The world was once familiar. Cities bustled, governments ruled, science pushed forward. Then the Gates appeared — silent, hovering anomalies that defied space and time. Within weeks, the first monsters emerged. Entire continents were wiped out. Conventional weapons could only slow them, only atomics.\n\nIn response, a select few Awakened. They heard the voice of the Protocol, saw invisible text and numbers overlay their vision, and gained abilities beyond explanation. They became known as Breakers, and their existence changed everything.\n\nNow, society exists in a state of permanent tension. Technology continues to advance, but resources are funneled into defense. Massive Gate Zones have been walled off. Cities operate in shifts depending on nearby anomalies. Militaries have been replaced with Guilds. The old world is gone — replaced by survival, structure, and secrets.`,
-    unlocksOnPage: 'page_1'
+    content: `The world as you knew it ended three years ago. The Gates appeared without warning, tearing through reality itself. Now, humanity huddles in fortified cities while the wilderness between has become unpredictable and dangerous.`,
+    unlocksOnPage: 'page_1',
+    updates: [] // Can have multiple updates
   },
   the_gates: {
     id: 'the_gates',
     title: 'The Gates',
     category: 'Lore',
-    content: `Each is a breach between dimensions — their origin unknown. Some believe they lead to alternate realities; others say they are fragments of a decaying multiverse.\n\nFailure to clear a Gate in time results in a Rift, releasing its contents into the world.`,
-    unlocksOnPage: 'page_1'
+    content: `Massive rifts in space-time that connect our world to... elsewhere. They pulse with an otherworldly energy, and those who venture too close report hearing whispers in languages that shouldn't exist.`,
+    unlocksOnPage: 'inspect_edges'
   },
   portal_basics: {
     id: 'portal_basics',
     title: 'Portal Classifications',
     category: 'Technology',
     content: `Portals are ranked from E-Class (safest) to S-Class (catastrophic). Gold portals typically indicate treasure opportunities. The color, shape, and energy signature all provide clues about what awaits inside.`,
-    unlocksOnPage: 'page_1'
+    unlocksOnPage: 'edges_continued'
   },
   the_protocol: {
     id: 'the_protocol',
     title: 'The Protocol',
     category: 'Lore',
-    content: `No one truly understands the Gatebreaker Protocol. It appears to be an adaptive, possibly sentient force that connects Awakened individuals across the globe. Some believe it is alien. Others, divine. A few claim it is humanity's own future leaking back through time.Every Hunter is bound to the Gatebreaker Protocol, granting them access to:\n\nEssence – Energy used to cast spells and activate abilities\n\nLife Points (LP) – Your endurance in battle\n\nBreaker Points (HP) – Experience used to unlock and upgrade abilities\n\nThe Skill Tree System – Choose your Path and build your power`,
-    unlocksOnPage: 'page_1'
+    content: `A mysterious entity that bridges the gap between humanity and supernatural power. Accessed through the Halcyon AI in Activation Chambers, the Protocol grants abilities beyond normal human capacity. Its true nature and intentions remain unknown.`,
+    unlocksOnPage: 'protocol_intro'
   },
   activation_chamber: {
     id: 'activation_chamber',
@@ -55,7 +56,21 @@ export const DATA_PACKETS = {
     title: 'Akemi',
     category: 'Characters',
     content: `A friendly and optimistic Breaker-in-training from Ramsey Academy. She dreams of starting her own guild someday and seems genuinely interested in making connections with fellow Breakers.`,
-    unlocksOnPage: 'akemi_intro'
+    unlocksOnPage: 'akemi_intro',
+    updates: [
+      {
+        id: 'akemi_update_1',
+        title: 'Guild Ambitions',
+        content: `Akemi revealed her serious plans to start her own guild once she's strong enough. She's already thinking about recruitment and seems to see potential in you as a founding member.`,
+        unlocksOnPage: 'guild_thomur_guild' // or wherever she mentions this
+      },
+      {
+        id: 'akemi_update_2',
+        title: 'Combat Style',
+        content: `During the battle, you noticed Akemi favors a versatile fighting style. She doesn't seem to want to lock herself into a single specialization, preferring adaptability over raw power.`,
+        unlocksOnPage: 'team_portal_battle' // or relevant battle page
+      }
+    ]
   },
   character_threx: {
     id: 'character_threx',
@@ -190,20 +205,54 @@ export async function checkAndUnlockPackets(userId, pageId) {
     
     const userData = userSnap.data();
     const unlockedPackets = userData.unlockedDataPackets || [];
+    const unlockedUpdates = userData.unlockedDataPacketUpdates || [];
     
-    // Find packets that should unlock on this page
-    const newPackets = Object.values(DATA_PACKETS).filter(
-      packet => packet.unlocksOnPage === pageId && !unlockedPackets.includes(packet.id)
-    );
+    const newlyUnlocked = [];
     
-    // Update Firestore if there are new packets
-    if (newPackets.length > 0) {
-      const updatedUnlocked = [...unlockedPackets, ...newPackets.map(p => p.id)];
-      await updateDoc(userRef, {
-        unlockedDataPackets: updatedUnlocked
-      });
+    // Check for new base packets
+    Object.values(DATA_PACKETS).forEach(packet => {
+      if (packet.unlocksOnPage === pageId && !unlockedPackets.includes(packet.id)) {
+        newlyUnlocked.push({
+          ...packet,
+          isUpdate: false
+        });
+      }
       
-      return newPackets;
+      // Check for packet updates
+      if (packet.updates && packet.updates.length > 0) {
+        packet.updates.forEach(update => {
+          const updateKey = `${packet.id}_${update.id}`;
+          if (update.unlocksOnPage === pageId && !unlockedUpdates.includes(updateKey)) {
+            newlyUnlocked.push({
+              id: packet.id,
+              title: `${packet.title}: ${update.title}`,
+              category: packet.category,
+              content: update.content,
+              isUpdate: true,
+              updateId: update.id,
+              parentPacketId: packet.id
+            });
+          }
+        });
+      }
+    });
+    
+    // Update Firestore if there are new items
+    if (newlyUnlocked.length > 0) {
+      const newPackets = newlyUnlocked.filter(p => !p.isUpdate).map(p => p.id);
+      const newUpdates = newlyUnlocked.filter(p => p.isUpdate).map(p => `${p.parentPacketId}_${p.updateId}`);
+      
+      const updates = {};
+      if (newPackets.length > 0) {
+        updates.unlockedDataPackets = [...unlockedPackets, ...newPackets];
+      }
+      if (newUpdates.length > 0) {
+        updates.unlockedDataPacketUpdates = [...unlockedUpdates, ...newUpdates];
+      }
+      
+      await updateDoc(userRef, updates);
+      
+      return newlyUnlocked;
     }
     
     return [];
@@ -225,8 +274,24 @@ export async function getUnlockedPackets(userId) {
     
     const userData = userSnap.data();
     const unlockedIds = userData.unlockedDataPackets || [];
+    const unlockedUpdates = userData.unlockedDataPacketUpdates || [];
     
-    return Object.values(DATA_PACKETS).filter(p => unlockedIds.includes(p.id));
+    const packets = Object.values(DATA_PACKETS)
+      .filter(p => unlockedIds.includes(p.id))
+      .map(packet => {
+        // Add unlocked updates to the packet
+        const packetUpdates = packet.updates ? packet.updates.filter(update => {
+          const updateKey = `${packet.id}_${update.id}`;
+          return unlockedUpdates.includes(updateKey);
+        }) : [];
+        
+        return {
+          ...packet,
+          unlockedUpdates: packetUpdates
+        };
+      });
+    
+    return packets;
   } catch (error) {
     console.error("Error getting unlocked packets:", error);
     return [];
@@ -243,11 +308,13 @@ export function DataPacketNotification({ packets, onClose, onOpenPacket }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 400, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed bottom-4 right-4 bg-gray-800 border-2 border-blue-500 shadow-2xl max-w-sm z-50"
+      className="fixed bottom-4 right-4 bg-gray-800 border-2 border-blue-500 rounded-lg shadow-2xl max-w-sm z-50"
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
-          <div className="text-blue-400 font-bold text-lg">Data Packet Received</div>
+          <div className="text-blue-400 font-bold text-lg">
+            {packets.some(p => p.isUpdate) ? 'Data Packet Updated' : 'Data Packet Received'}
+          </div>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-200 transition-colors"
@@ -258,14 +325,16 @@ export function DataPacketNotification({ packets, onClose, onOpenPacket }) {
         <div className="space-y-2">
           {packets.map(packet => (
             <motion.button
-              key={packet.id}
+              key={packet.isUpdate ? `${packet.parentPacketId}_${packet.updateId}` : packet.id}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => onOpenPacket(packet)}
-              className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-2"
+              className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition-colors flex items-center gap-2"
             >
-              <span className="text-blue-400">•</span>
+              <span className={packet.isUpdate ? "text-yellow-400" : "text-blue-400"}>
+                {packet.isUpdate ? "↻" : "•"}
+              </span>
               <span className="text-sm">{packet.title}</span>
             </motion.button>
           ))}
@@ -308,8 +377,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
   if (!isOpen) return null;
 
   return (
-    <AnimatePresence>
-      <motion.div
+    <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -321,7 +389,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-gray-800 max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
+          className="bg-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
         >
           {/* Header */}
           <div className="flex justify-between items-center p-6 border-b border-gray-700">
@@ -359,12 +427,36 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                 >
                   ← Back to list
                 </button>
-                <div className="bg-gray-900 p-6 border border-gray-700">
+                <div className={`bg-gray-900 rounded-lg p-6 border border-gray-700`}>
                   <div className="text-sm text-blue-400 mb-2">{selectedPacket.category}</div>
                   <h3 className="text-2xl font-bold mb-4 text-white">{selectedPacket.title}</h3>
-                  <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                    {selectedPacket.content}
-                  </p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                        {selectedPacket.content}
+                      </p>
+                    </div>
+                    
+                    {/* Show unlocked updates */}
+                    {selectedPacket.unlockedUpdates && selectedPacket.unlockedUpdates.length > 0 && (
+                      <div className="border-t border-gray-700 pt-4 mt-4">
+                        <div className="text-sm font-semibold text-yellow-400 mb-3 flex items-center gap-2">
+                          <span>↻</span>
+                          <span>Additional Information</span>
+                        </div>
+                        <div className="space-y-3">
+                          {selectedPacket.unlockedUpdates.map((update, idx) => (
+                            <div key={idx} className="bg-gray-800 rounded p-3 border-l-2 border-yellow-400">
+                              <div className="text-sm font-medium text-yellow-400 mb-1">{update.title}</div>
+                              <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                                {update.content}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ) : (
@@ -376,7 +468,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-400"></span>
+                      <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
                       {category}
                     </h3>
                     <div className="space-y-2">
@@ -385,9 +477,16 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                           key={packet.id}
                           whileHover={{ scale: 1.02, x: 5 }}
                           onClick={() => setSelectedPacket(packet)}
-                          className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 transition-colors flex items-center justify-between group"
+                          className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors flex items-center justify-between group"
                         >
-                          <span className="text-white">{packet.title}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-white">{packet.title}</span>
+                            {packet.unlockedUpdates && packet.unlockedUpdates.length > 0 && (
+                              <span className="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded">
+                                {packet.unlockedUpdates.length} update{packet.unlockedUpdates.length > 1 ? 's' : ''}
+                              </span>
+                            )}
+                          </div>
                           <ChevronRight 
                             className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" 
                             size={20} 
@@ -409,7 +508,6 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
           </div>
         </motion.div>
       </motion.div>
-    </AnimatePresence>
   );
 }
 

@@ -1660,7 +1660,6 @@ export const pages = {
     next: "",
   },
   camper_finish: {
-    //need the ray of lights react bit
     title: "---",
     type: "text",
     text: "*Nothing separates you from the silent, dark, boundless world you find yourself in.*\n\n*You scream, but no words come.*\n\n*You look, but there is only darkness.*\n\n*You struggle to move, but you are formless.*",
@@ -1673,6 +1672,7 @@ export const pages = {
     next: "formless2"
   },
   formless2: {
+    //use the light ray component as background
     title: "---",
     type: "text",
     text: "\"Well hooooowwwddyyy!\"\n\n*That wasn't you, was it?*\n\n\"Sorry 'bout that, par'ner. Let me get a light for ya.\"\n\n*A faint speck appears in the middle distance, creating contrast to the endless dark.*\n\n\"That's better.\"",
@@ -2129,11 +2129,17 @@ export const pages = {
     text: "You wake again, still in the hospital room. It's empty now, but there are hints of other visitors.\n\nYou press the call button, and a new nurse enters a minute later.",
     choices: [
       //add note to inventory or data journal
-      { label: "Keep the note", next: "nurse" },
-      { label: "Leave the note here", next: "nurse" },
+      { label: "Keep the note", next: "nurse_keep" },
+      { label: "Leave the note here", next: "nurse_leave" },
     ],
   },
-  nurse: {
+  nurse_keep: {
+    title: "Nurse",
+    type: "text",
+    text: "\"You're looking much better!\" the nurse remarks. \"Right as rain! We'll get you attuned to your new limbs, and then you'll be on your way!\"\n\nThere's a soft pinch as the needle recedes from your arm. You wonder how the hell Cale spends so much time with these things.\n\n\"Doesn't that... take a while?\" you ask, dreading the months of physical therapy ahead of you.\n\n\"Before the gates and the Epoch Corporation, definitely, but it's a different world now. I consider it a small trade compared to everything we lost, but we take the wins when we can, right?\"",
+    next: "nurse2"
+  },
+  nurse_leave: {
     title: "Nurse",
     type: "text",
     text: "\"You're looking much better!\" the nurse remarks. \"Right as rain! We'll get you attuned to your new limbs, and then you'll be on your way!\"\n\nThere's a soft pinch as the needle recedes from your arm. You wonder how the hell Cale spends so much time with these things.\n\n\"Doesn't that... take a while?\" you ask, dreading the months of physical therapy ahead of you.\n\n\"Before the gates and the Epoch Corporation, definitely, but it's a different world now. I consider it a small trade compared to everything we lost, but we take the wins when we can, right?\"",

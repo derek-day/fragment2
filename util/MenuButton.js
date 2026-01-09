@@ -3,14 +3,16 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, BookOpen, LogOut, Settings, Database } from "lucide-react";
+import { Menu, X, Home, BookOpen, LogOut, Settings, Database, Package } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import DataPacketBrowser from "../components/DataPacket";
+import EquipmentBrowser from "../components/Equipment";
 
 export default function MenuButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [showDataPackets, setShowDataPackets] = useState(false);
+  const [showEquipment, setShowEquipment] = useState(false);
   const [userId, setUserId] = useState(null);
   const router = useRouter();
 
@@ -45,6 +47,15 @@ export default function MenuButton() {
         setShowDataPackets(true);
       },
       color: "text-cyan-400"
+    },
+    {
+      icon: Package,
+      label: "Inventory",
+      action: () => {
+        setIsOpen(false);
+        setShowEquipment(true);
+      },
+      color: "text-green-400"
     },
     {
       icon: BookOpen,
@@ -166,7 +177,7 @@ export default function MenuButton() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     item.action();
-                    if (item.label !== "Data Packets") {
+                    if (item.label !== "Data Packets" && item.label !== "Inventory") {
                       setIsOpen(false);
                     }
                   }}
@@ -186,6 +197,15 @@ export default function MenuButton() {
         <DataPacketBrowser
           isOpen={showDataPackets}
           onClose={() => setShowDataPackets(false)}
+          userId={userId}
+        />
+      )}
+
+      {/* Equipment Browser */}
+      {showEquipment && (
+        <EquipmentBrowser
+          isOpen={showEquipment}
+          onClose={() => setShowEquipment(false)}
           userId={userId}
         />
       )}

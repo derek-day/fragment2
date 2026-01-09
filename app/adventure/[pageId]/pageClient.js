@@ -23,6 +23,7 @@ import {
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
 import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
+import { checkAndUnlockEquipment, EquipmentNotification } from "../../../components/Equipment";
 import StatLayout from "../../../util/StatLayout";
 import MenuButton from "../../../util/MenuButton";
 import PageStats from "../../../components/PageStats";
@@ -32,6 +33,7 @@ import RollPage from "../../../components/RollPage";
 import DeathPage from "../../../components/DeathPage";
 import DebugPanel from "../../../components/DebugPanel";
 import DataPacketBrowser from "../../../components/DataPacket";
+import EquipmentBrowser from "../../../components/Equipment";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -50,6 +52,10 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [newDataPackets, setNewDataPackets] = useState([]);
   const [showPacketNotification, setShowPacketNotification] = useState(false);
   const [showPacketBrowser, setShowPacketBrowser] = useState(false);
+
+  const [newEquipment, setNewEquipment] = useState([]);
+  const [showEquipmentNotification, setShowEquipmentNotification] = useState(false);
+  const [showEquipmentBrowser, setShowEquipmentBrowser] = useState(false);
 
   const PARTICLE_COUNT = 40;
   const particles = useMemo(() => {
@@ -137,6 +143,12 @@ export default function PageClient({ page: initialPage, pageId }) {
         if (unlocked.length > 0) {
           setNewDataPackets(unlocked);
           setShowPacketNotification(true);
+        }
+
+        const unlockedEquipment = await checkAndUnlockEquipment(user.uid, pageId);
+        if (unlockedEquipment.length > 0) {
+          setNewEquipment(unlockedEquipment);
+          setShowEquipmentNotification(true);
         }
         
         // Auto-track NPC meetings with full info
@@ -342,6 +354,12 @@ export default function PageClient({ page: initialPage, pageId }) {
     setShowPacketBrowser(true);
   };
 
+  // Handle opening equipment from notification
+  const handleOpenEquipmentFromNotification = (item) => {
+    setShowEquipmentNotification(false);
+    setShowEquipmentBrowser(true);
+  }
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -533,6 +551,17 @@ export default function PageClient({ page: initialPage, pageId }) {
           )}
         </motion.div>
 
+        {/* Equipment Notification */}
+        <AnimatePresence>
+          {showEquipmentNotification && (
+            <EquipmentNotification
+              items={newEquipment}
+              onClose={() => setShowEquipmentNotification(false)}
+              onOpenItem={handleOpenEquipmentFromNotification}
+            />
+          )}
+        </AnimatePresence>
+
         {/* Data Packet Notification */}
         <AnimatePresence>
           {showPacketNotification && (
@@ -543,10 +572,18 @@ export default function PageClient({ page: initialPage, pageId }) {
             />
           )}
         </AnimatePresence>
+        
         {/* Data Packet Browser (opened from notification) */}
         <DataPacketBrowser
           isOpen={showPacketBrowser}
           onClose={() => setShowPacketBrowser(false)}
+          userId={user?.uid}
+        />
+        	
+        {/* Equipment Browser (opened from notification) */}
+        <EquipmentBrowser
+          isOpen={showEquipmentBrowser}
+          onClose={() => setShowEquipmentBrowser(false)}
           userId={user?.uid}
         />
       </motion.div>

@@ -33,12 +33,12 @@ export default function MenuButton() {
   };
 
   const menuItems = [
-    {
-      icon: Home,
-      label: "Dashboard",
-      action: () => router.push("/dashboard"),
-      color: "text-blue-400"
-    },
+    // {
+    //   icon: Home,
+    //   label: "Dashboard",
+    //   action: () => router.push("/dashboard"),
+    //   color: "text-blue-400"
+    // },
     {
       icon: Database,
       label: "Data Packets",
@@ -57,18 +57,18 @@ export default function MenuButton() {
       },
       color: "text-green-400"
     },
-    {
-      icon: BookOpen,
-      label: "Journal",
-      action: () => router.push("/journal"),
-      color: "text-purple-400"
-    },
-    {
-      icon: Settings,
-      label: "Settings",
-      action: () => router.push("/settings"),
-      color: "text-gray-400"
-    },
+    // {
+    //   icon: BookOpen,
+    //   label: "Journal",
+    //   action: () => router.push("/journal"),
+    //   color: "text-purple-400"
+    // },
+    // {
+    //   icon: Settings,
+    //   label: "Settings",
+    //   action: () => router.push("/settings"),
+    //   color: "text-gray-400"
+    // },
     {
       icon: LogOut,
       label: "Logout",

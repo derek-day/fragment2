@@ -10,7 +10,7 @@ import { db } from "../lib/firebase";
 export const EQUIPMENT_ITEMS = {
   companion_note: {
     id: 'companion_note',
-    name: 'Note from First Portal companions',
+    name: 'Note from Companions',
     type: 'Item',
     rarity: 'Common',
     description: 'A note from your companions after your encounter with the Camper.',

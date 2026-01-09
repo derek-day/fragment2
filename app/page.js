@@ -151,7 +151,7 @@ export default function Home() {
             Essence: 10,
             HP: 20,
             MaxHP: 20,
-            XP: 0,
+            BP: 0,
             Level: 1,
           },
           route: "",

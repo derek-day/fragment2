@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Shield, Zap, User } from "lucide-react";
+import { Heart, Shield, Zap, User, Badge } from "lucide-react";
 
 export default function StatLayout() {
   const [stats, setStats] = useState(null);
   const [characterName, setCharacterName] = useState("");
   const [className, setClassName] = useState("");
+  const [breakerClass, setBreakerClass] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function StatLayout() {
           setStats(data.stats);
           setCharacterName(data.characterName || "Unknown");
           setClassName(data.className || "Unknown");
+          setBreakerClass(data.breakerClass || "Unknown");
         }
       }
     };
@@ -94,6 +96,10 @@ export default function StatLayout() {
           <Shield size={12} />
           {className} • Level {stats.Level}
         </div>
+        <div className="text-xs text-gray-400 flex items-center gap-2">
+          <Badge size={12} />
+          Breaker Class • {breakerClass}
+        </div>
       </motion.div>
 
       {/* HP Bar */}
@@ -106,7 +112,7 @@ export default function StatLayout() {
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-center gap-1">
             <Heart size={14} className="text-red-400" />
-            <span className="text-xs font-semibold">HP</span>
+            <span className="text-xs font-semibold">LP</span>
           </div>
           <span className="text-xs font-bold">
             {stats.HP}/{stats.MaxHP}
@@ -140,13 +146,13 @@ export default function StatLayout() {
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-center gap-1">
             <Zap size={14} className="text-yellow-400" />
-            <span className="text-xs font-semibold">XP</span>
+            <span className="text-xs font-semibold">BP</span>
           </div>
-          <span className="text-xs">{stats.XP}</span>
+          <span className="text-xs">{stats.BP}</span>
         </div>
         <div className="w-full bg-gray-700 rounded-full h-2 border border-gray-600 overflow-hidden">
           <motion.div
-            custom={(stats.XP % 100)}
+            custom={(stats.BP % 100)}
             variants={statBarVariants}
             initial="hidden"
             animate="visible"

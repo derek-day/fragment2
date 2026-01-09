@@ -21,19 +21,19 @@ export const EQUIPMENT_ITEMS = {
     unlocksOnPage: 'nurse_keep',
     icon: Scroll
   },
-  basic_armor: {
-    id: 'basic_armor',
-    name: 'Leather Armor',
-    type: 'Armor',
-    rarity: 'Common',
-    description: 'Light leather armor that provides basic protection without hampering movement.',
-    stats: {
-      ac: '+1',
-      maxHP: '+5'
-    },
-    unlocksOnPage: 'team_equipment',
-    icon: Shield
-  },
+//   basic_armor: {
+//     id: 'basic_armor',
+//     name: 'Leather Armor',
+//     type: 'Armor',
+//     rarity: 'Common',
+//     description: 'Light leather armor that provides basic protection without hampering movement.',
+//     stats: {
+//       ac: '+1',
+//       maxHP: '+5'
+//     },
+//     unlocksOnPage: 'team_equipment',
+//     icon: Shield
+//   },
   health_potion: {
     id: 'health_potion',
     name: 'Health Potion',
@@ -59,33 +59,33 @@ export const EQUIPMENT_ITEMS = {
     unlocksOnPage: 'hold_vial',
     icon: Zap
   },
-  mechanical_knife: {
-    id: 'mechanical_knife',
-    name: 'E-Corp Oscillating Knife',
-    type: 'Weapon',
-    rarity: 'Rare',
-    description: 'An advanced weapon created by the Epoch Corporation. The blade oscillates at high frequency for devastating cuts.',
-    stats: {
-      damage: '+5',
-      athletics: '+2',
-      special: 'Ignore 2 AC'
-    },
-    unlocksOnPage: 'ronin_intro',
-    icon: Sword
-  },
-  gate_stabilizer: {
-    id: 'gate_stabilizer',
-    name: 'Gate Stabilizer',
-    type: 'Tool',
-    rarity: 'Epic',
-    description: 'An Epoch Corporation device that locks portals open after defeating the Tethered Being. Essential for long-term gate exploration.',
-    stats: {
-      effect: 'Prevents gate collapse',
-      duration: 'Permanent'
-    },
-    unlocksOnPage: 'gate_stabilizer_check',
-    icon: Package
-  }
+//   mechanical_knife: {
+//     id: 'mechanical_knife',
+//     name: 'E-Corp Oscillating Knife',
+//     type: 'Weapon',
+//     rarity: 'Rare',
+//     description: 'An advanced weapon created by the Epoch Corporation. The blade oscillates at high frequency for devastating cuts.',
+//     stats: {
+//       damage: '+5',
+//       athletics: '+2',
+//       special: 'Ignore 2 AC'
+//     },
+//     unlocksOnPage: 'ronin_intro',
+//     icon: Sword
+//   },
+//   gate_stabilizer: {
+//     id: 'gate_stabilizer',
+//     name: 'Gate Stabilizer',
+//     type: 'Tool',
+//     rarity: 'Epic',
+//     description: 'An Epoch Corporation device that locks portals open after defeating the Tethered Being. Essential for long-term gate exploration.',
+//     stats: {
+//       effect: 'Prevents gate collapse',
+//       duration: 'Permanent'
+//     },
+//     unlocksOnPage: 'gate_stabilizer_check',
+//     icon: Package
+//   }
 };
 
 // Check and unlock equipment based on page

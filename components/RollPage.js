@@ -149,9 +149,9 @@ export default function RollPage({ userStats, page }) {
             </div>
           </div>
 
-          <div className="text-gray-300 mb-4 p-3 bg-gray-900 rounded">
+          {/* <div className="text-gray-300 mb-4 p-3 bg-gray-900 rounded">
             {result.success ? page.roll.successText : page.roll.failText}
-          </div>
+          </div> */}
 
           <motion.button
             whileHover={{ scale: 1.05 }}

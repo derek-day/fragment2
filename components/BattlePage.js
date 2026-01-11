@@ -721,156 +721,272 @@ const BattleSystem = ({ userStats, page }) => {
     );
   };
 
-  return (
-    <div className="box min-h-screen bg-gradient-to-b text-white p-4 md:p-6">
-      <div className="max-w-5xl mx-auto space-y-4">
-        <h1 className="text-2xl md:text-3xl font-bold text-center">{page.title}</h1>
+return (
+    // ROOT CONTAINER: 
+    // - Transparent so background image shows.
+    // - Flex/Centered to float the UI in the middle.
+    // - Padding (p-6 md:p-12) keeps UI away from corner buttons.
+    <div className="fixed inset-0 z-10 flex items-center justify-center p-6 md:p-12 lg:p-16 pointer-events-none">
+      
+      {/* GLASS CARD: The actual interface */}
+      <div className="w-full max-w-md md:max-w-4xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
         
-        {/* Compact Battle Scene */}
-        <div className="bg-gray-800 rounded-lg p-4 border-2 border-gray-700">
-          <p className="text-gray-300 text-sm md:text-base mb-4 leading-relaxed line-clamp-3">{page.text}</p>
+        {/* 1. Header */}
+        <header className="bg-slate-900/50 border-b border-slate-700/50 p-3 shrink-0 flex justify-between items-center">
+          <h1 className="text-lg font-bold text-slate-100 shadow-black drop-shadow-md">{page.title}</h1>
           
-          {/* Combatants - Horizontal Layout */}
-          <div className="grid grid-cols-2 gap-3">
-            {/* Player */}
-            <div className="bg-gray-900 p-3 rounded-lg border-2 border-blue-500">
-              <div className="flex items-center gap-2 mb-2">
-                <Heart className="w-4 h-4 text-red-500" />
-                <h3 className="text-sm md:text-base font-bold truncate">{player.name}</h3>
+          {/* Status Badge */}
+          <div className={`px-3 py-0.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider border ${
+            battleEnded 
+              ? (playerHP > 0 ? "bg-green-900/60 border-green-500 text-green-200" : "bg-red-900/60 border-red-500 text-red-200")
+              : (isPlayerTurn ? "bg-blue-900/60 border-blue-500 text-blue-200 animate-pulse" : "bg-orange-900/60 border-orange-500 text-orange-200")
+          }`}>
+             {battleEnded ? (playerHP > 0 ? "Victory" : "Defeat") : (isPlayerTurn ? "Your Turn" : "Enemy Turn")}
+          </div>
+        </header>
+
+        {/* 2. Main Content - Scrollable internal area if height gets too small */}
+        <div className="flex-1 overflow-y-auto p-3 md:p-5 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
+          
+          {/* LEFT COLUMN: Visuals */}
+          <div className="flex flex-col gap-3">
+            {/* Combatants */}
+            <div className="grid grid-cols-2 gap-3">
+              {/* Player */}
+              <div className="bg-slate-900/60 p-2.5 border border-blue-500/30">
+                <div className="flex justify-between items-center mb-1">
+                   <div className="flex items-center gap-1.5 font-bold text-sm text-blue-100">
+                     <Heart className="w-3.5 h-3.5 text-red-500" /> {player.name}
+                   </div>
+                   <span className="text-[10px] text-slate-400">{playerHP}/{player.maxHP}</span>
+                </div>
+                <HPBar current={playerHP} max={player.maxHP} color="bg-green-500" />
               </div>
-              <HPBar current={playerHP} max={player.maxHP} color="bg-green-500" />
-              {/* <div className="mt-2 text-xs grid grid-cols-3 gap-1">
-                <div className="text-center">
-                  <div className="text-gray-500">AC</div>
-                  <div className="text-orange-400 font-bold">{getModifier(player.athletics) >= 0 ? '+' : ''}{getModifier(player.athletics)}</div>
+              
+              {/* Enemy */}
+              <div className="bg-slate-900/60 p-2.5 border border-red-500/30">
+                <div className="flex justify-between items-center mb-1">
+                   <div className="flex items-center gap-1.5 font-bold text-sm text-red-100">
+                     <Shield className="w-3.5 h-3.5 text-yellow-500" /> {page.enemy.name}
+                   </div>
+                   <div className="text-[10px] text-slate-400 font-mono">AC:{page.enemy.ac}</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-gray-500">Potions</div>
-                  <div className="text-green-400 font-bold">{potionsRemaining}</div>
-                </div>
-              </div> */}
+                <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-500" />
+              </div>
             </div>
 
-            {/* Enemy */}
-            <div className="bg-gray-900 p-3 rounded-lg border-2 border-red-500">
-              <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-4 h-4 text-yellow-500" />
-                <h3 className="text-sm md:text-base font-bold truncate">{page.enemy.name}</h3>
-              </div>
-              <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-500" />
-              <div className="mt-2 text-xs grid grid-cols-3 gap-1">
-                <div className="text-center">
-                  <div className="text-gray-500">AC</div>
-                  <div className="text-blue-400 font-bold">{page.enemy.ac}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-gray-500">ATK</div>
-                  <div className="text-orange-400 font-bold">+{page.enemy.attack}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-gray-500">MAG</div>
-                  <div className="text-purple-400 font-bold">+{page.enemy.magic}</div>
-                </div>
-              </div>
+            {/* Dice Tray - Fixed Height so it doesn't sprawl */}
+            <div className="h-32 md:h-48 w-full bg-slate-900/40 border-2 border-dashed border-slate-700/50 relative">
+               {/* <span className="absolute top-2 left-2 text-[10px] text-slate-600 font-mono uppercase">Dice Tray</span> */}
+               <div id="dice-box" ref={containerRef} className="w-full h-full" />
             </div>
+          </div>
+
+          {/* RIGHT COLUMN: Info & Logs */}
+          <div className="flex flex-col gap-3 min-h-0">
+             {/* Story Text */}
+             <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
+                <p className="line-clamp-3 md:line-clamp-none">{page.text}</p>
+             </div>
+
+             {/* Battle Log - constrained height */}
+             <div className="flex-1 min-h-[100px] md:min-h-0 bg-black/40 border border-slate-700/50 p-2 flex flex-col relative overflow-hidden">
+                <span className="text-[10px] font-bold text-slate-500 mb-1 uppercase tracking-wider sticky top-0">Log</span>
+                <div className="overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                  {gameLog.slice().reverse().map((log) => (
+                    <div key={log.id} className={`text-[11px] p-1.5 ${
+                        log.type === 'success' ? 'text-green-300 bg-green-900/20' :
+                        log.type === 'fail' ? 'text-red-300 bg-red-900/20' :
+                        log.type === 'damage' ? 'text-orange-300 bg-orange-900/20' :
+                        'text-slate-400'
+                    }`}>
+                      {log.message}
+                    </div>
+                  ))}
+                </div>
+             </div>
           </div>
         </div>
 
-        {/* Dice Box - Compact */}
-        <div
-          id="dice-box"
-          ref={containerRef}
-          className="w-full h-32 md:h-40 rounded-lg bg-gray-900 border-2 border-gray-700"
-        />
-
-        {/* Battle Log - Compact */}
-        <div className="bg-gray-800 rounded-lg p-3 h-32 md:h-40 overflow-y-auto border-2 border-gray-700">
-          {/* <h3 className="text-sm font-bold mb-2 text-gray-400 sticky top-0 bg-gray-800">Battle Log</h3> */}
-          <div className="space-y-1">
-            {gameLog.slice(-5).map((log) => (
-              <div 
-                key={log.id}
-                className={`p-2 rounded text-xs ${
-                  log.type === 'success' ? 'bg-green-900 text-green-200' :
-                  log.type === 'fail' ? 'bg-red-900 text-red-200' :
-                  log.type === 'damage' ? 'bg-orange-900 text-orange-200' :
-                  log.type === 'heal' ? 'bg-blue-900 text-blue-200' :
-                  log.type === 'roll' ? 'bg-purple-900 text-purple-200' :
-                  log.type === 'enemy' ? 'bg-red-800 text-red-100' :
-                  'bg-gray-700 text-gray-300'
-                }`}
-              >
-                {log.message}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Buttons - Compact Grid */}
-        <div className="grid grid-cols-2 gap-2">
+        {/* 3. Footer Buttons */}
+        <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-2 gap-3 shrink-0">
           <button
             onClick={handleAttack}
             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+            className="bg-orange-700 hover:bg-orange-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <Sword className="w-4 h-4" />
-            <span className="hidden sm:inline">Attack</span> ({getAttackStat().name})
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-sm">ATTACK</span>
+              <span className="text-[10px] opacity-70 font-mono">{getAttackStat().name}</span>
+            </div>
           </button>
-          
+
           <button
             onClick={handleMagic}
             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+            className="bg-purple-700 hover:bg-purple-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <Sparkles className="w-4 h-4" />
-            <span className="hidden sm:inline">Magic</span> ({getSpellcastingStat().name})
+             <div className="flex flex-col items-start leading-none">
+              <span className="text-sm">MAGIC</span>
+              <span className="text-[10px] opacity-70 font-mono">{getSpellcastingStat().name}</span>
+            </div>
           </button>
-          
-          {/* <button
-            onClick={handleItem}
-            disabled={!isPlayerTurn || battleEnded || selectedAction || potionsRemaining === 0}
-            className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
-          >
-            <Package className="w-4 h-4" />
-            <span className="hidden sm:inline">Item</span> ({potionsRemaining})
-          </button> */}
-          
-          {/* <button
-            onClick={handleLeave}
-            disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="bg-gray-600 hover:bg-gray-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
-          >
-            <DoorOpen className="w-4 h-4" />
-            <span className="hidden sm:inline">Flee</span> (DEX)
-          </button> */}
         </div>
 
-        {/* Turn Indicator */}
-        <div className="text-center">
-          {!battleEnded && (
-            <p className="text-lg md:text-xl font-bold">
-              {isPlayerTurn ? 'Your Turn' : 'Enemy Turn...'}
-            </p>
-          )}
-          {battleEnded && playerHP > 0 && enemyHP <= 0 && (
-            <div className="bg-green-900 p-3 rounded-lg">
-              <p className="text-xl md:text-2xl font-bold text-green-300">Victory!</p>
-              <p className="text-xs text-gray-400 mt-1">Redirecting...</p>
-            </div>
-          )}
-          {battleEnded && playerHP <= 0 && (
-            <div className="bg-red-900 p-3 rounded-lg">
-              <p className="text-xl md:text-2xl font-bold text-red-300">Defeated</p>
-              <p className="text-xs text-gray-400 mt-1">Redirecting...</p>
-            </div>
-          )}
-        </div>
       </div>
     </div>
-
-
-
   );
+
+  
+  // return (
+  //   <div className="box min-h-screen bg-gradient-to-b text-white p-4 md:p-6">
+  //     <div className="max-w-5xl mx-auto space-y-4">
+  //       <h1 className="text-2xl md:text-3xl font-bold text-center">{page.title}</h1>
+        
+  //       {/* Compact Battle Scene */}
+  //       <div className="bg-gray-800 rounded-lg p-4 border-2 border-gray-700">
+  //         <p className="text-gray-300 text-sm md:text-base mb-4 leading-relaxed line-clamp-3">{page.text}</p>
+          
+  //         {/* Combatants - Horizontal Layout */}
+  //         <div className="grid grid-cols-2 gap-3">
+  //           {/* Player */}
+  //           <div className="bg-gray-900 p-3 rounded-lg border-2 border-blue-500">
+  //             <div className="flex items-center gap-2 mb-2">
+  //               <Heart className="w-4 h-4 text-red-500" />
+  //               <h3 className="text-sm md:text-base font-bold truncate">{player.name}</h3>
+  //             </div>
+  //             <HPBar current={playerHP} max={player.maxHP} color="bg-green-500" />
+  //             {/* <div className="mt-2 text-xs grid grid-cols-3 gap-1">
+  //               <div className="text-center">
+  //                 <div className="text-gray-500">AC</div>
+  //                 <div className="text-orange-400 font-bold">{getModifier(player.athletics) >= 0 ? '+' : ''}{getModifier(player.athletics)}</div>
+  //               </div>
+  //               <div className="text-center">
+  //                 <div className="text-gray-500">Potions</div>
+  //                 <div className="text-green-400 font-bold">{potionsRemaining}</div>
+  //               </div>
+  //             </div> */}
+  //           </div>
+
+  //           {/* Enemy */}
+  //           <div className="bg-gray-900 p-3 rounded-lg border-2 border-red-500">
+  //             <div className="flex items-center gap-2 mb-2">
+  //               <Shield className="w-4 h-4 text-yellow-500" />
+  //               <h3 className="text-sm md:text-base font-bold truncate">{page.enemy.name}</h3>
+  //             </div>
+  //             <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-500" />
+  //             <div className="mt-2 text-xs grid grid-cols-3 gap-1">
+  //               <div className="text-center">
+  //                 <div className="text-gray-500">AC</div>
+  //                 <div className="text-blue-400 font-bold">{page.enemy.ac}</div>
+  //               </div>
+  //               <div className="text-center">
+  //                 <div className="text-gray-500">ATK</div>
+  //                 <div className="text-orange-400 font-bold">+{page.enemy.attack}</div>
+  //               </div>
+  //               <div className="text-center">
+  //                 <div className="text-gray-500">MAG</div>
+  //                 <div className="text-purple-400 font-bold">+{page.enemy.magic}</div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+
+  //       {/* Dice Box - Compact */}
+  //       <div
+  //         id="dice-box"
+  //         ref={containerRef}
+  //         className="w-full h-32 md:h-40 rounded-lg bg-gray-900 border-2 border-gray-700"
+  //       />
+
+  //       {/* Battle Log - Compact */}
+  //       <div className="bg-gray-800 rounded-lg p-3 h-32 md:h-40 overflow-y-auto border-2 border-gray-700">
+  //         {/* <h3 className="text-sm font-bold mb-2 text-gray-400 sticky top-0 bg-gray-800">Battle Log</h3> */}
+  //         <div className="space-y-1">
+  //           {gameLog.slice(-5).map((log) => (
+  //             <div 
+  //               key={log.id}
+  //               className={`p-2 rounded text-xs ${
+  //                 log.type === 'success' ? 'bg-green-900 text-green-200' :
+  //                 log.type === 'fail' ? 'bg-red-900 text-red-200' :
+  //                 log.type === 'damage' ? 'bg-orange-900 text-orange-200' :
+  //                 log.type === 'heal' ? 'bg-blue-900 text-blue-200' :
+  //                 log.type === 'roll' ? 'bg-purple-900 text-purple-200' :
+  //                 log.type === 'enemy' ? 'bg-red-800 text-red-100' :
+  //                 'bg-gray-700 text-gray-300'
+  //               }`}
+  //             >
+  //               {log.message}
+  //             </div>
+  //           ))}
+  //         </div>
+  //       </div>
+
+  //       {/* Action Buttons - Compact Grid */}
+  //       <div className="grid grid-cols-2 gap-2">
+  //         <button
+  //           onClick={handleAttack}
+  //           disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+  //           className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+  //         >
+  //           <Sword className="w-4 h-4" />
+  //           <span className="hidden sm:inline">Attack</span> ({getAttackStat().name})
+  //         </button>
+          
+  //         <button
+  //           onClick={handleMagic}
+  //           disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+  //           className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+  //         >
+  //           <Sparkles className="w-4 h-4" />
+  //           <span className="hidden sm:inline">Magic</span> ({getSpellcastingStat().name})
+  //         </button>
+          
+  //         {/* <button
+  //           onClick={handleItem}
+  //           disabled={!isPlayerTurn || battleEnded || selectedAction || potionsRemaining === 0}
+  //           className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+  //         >
+  //           <Package className="w-4 h-4" />
+  //           <span className="hidden sm:inline">Item</span> ({potionsRemaining})
+  //         </button> */}
+          
+  //         {/* <button
+  //           onClick={handleLeave}
+  //           disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+  //           className="bg-gray-600 hover:bg-gray-700 disabled:bg-gray-600 disabled:cursor-not-allowed p-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors text-sm"
+  //         >
+  //           <DoorOpen className="w-4 h-4" />
+  //           <span className="hidden sm:inline">Flee</span> (DEX)
+  //         </button> */}
+  //       </div>
+
+  //       {/* Turn Indicator */}
+  //       <div className="text-center">
+  //         {!battleEnded && (
+  //           <p className="text-lg md:text-xl font-bold">
+  //             {isPlayerTurn ? 'Your Turn' : 'Enemy Turn...'}
+  //           </p>
+  //         )}
+  //         {battleEnded && playerHP > 0 && enemyHP <= 0 && (
+  //           <div className="bg-green-900 p-3 rounded-lg">
+  //             <p className="text-xl md:text-2xl font-bold text-green-300">Victory!</p>
+  //             <p className="text-xs text-gray-400 mt-1">Redirecting...</p>
+  //           </div>
+  //         )}
+  //         {battleEnded && playerHP <= 0 && (
+  //           <div className="bg-red-900 p-3 rounded-lg">
+  //             <p className="text-xl md:text-2xl font-bold text-red-300">Defeated</p>
+  //             <p className="text-xs text-gray-400 mt-1">Redirecting...</p>
+  //           </div>
+  //         )}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default BattleSystem;

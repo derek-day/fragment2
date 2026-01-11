@@ -138,14 +138,14 @@ export default function BackgroundMusic({
           
           <div className="flex items-center gap-3 overflow-hidden">
             {/* Rotating Icon */}
-            {/* <motion.div
-              animate={{ rotate: isPlaying ? 360 : 0 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            <motion.div
+              // animate={{ rotate: isPlaying ? 360 : 0 }}
+              // transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               className={isPlaying ? "text-blue-400" : "text-gray-500"}
             >
               <Music size={18} />
-            </motion.div> */}
-            
+            </motion.div>
+            {/* <Music size={18} /> */}
             {/* Marquee Text (Only visible if expanded OR if you want it in minimized) */}
             <AnimatePresence mode="wait">
               {!isMinimized && (
@@ -166,7 +166,7 @@ export default function BackgroundMusic({
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 pl-3">
             {/* Quick Play/Pause in Minimized Mode */}
             {isMinimized && (
               <button 

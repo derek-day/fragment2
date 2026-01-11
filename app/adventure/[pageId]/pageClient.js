@@ -19,7 +19,8 @@ import {
   recordGuildOpinion,
   joinGuild,
   getPlayerGuild,
-  isInterestedInGuild
+  isInterestedInGuild,
+  recordSacrifice
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
 import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
@@ -291,6 +292,10 @@ export default function PageClient({ page: initialPage, pageId }) {
             selectedChoice.npcStats
           );
         }
+
+        if (selectedChoice.action === 'sacrifice' && selectedChoice.sacrificeLocation) {
+          await recordSacrifice(user.uid, selectedChoice.sacrificeLocation);
+        }
         
         nextPageId = selectedChoice.next;
         await updateDoc(ref, { currentPage: nextPageId });
@@ -424,7 +429,7 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         <StatLayout />
         <MenuButton />
-        <DebugPanel pageId={pageId} page={page} />
+        {/* <DebugPanel pageId={pageId} page={page} /> */}
 
         <motion.div 
           className="story-text p-2 mb-6"

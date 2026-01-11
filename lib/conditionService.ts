@@ -2,7 +2,9 @@ import {
   getPlayerProgress, 
   isNPCAlive, 
   getPlayerGuild, 
-  isInterestedInGuild 
+  isInterestedInGuild,
+  hasSacrificed,
+  getCurrentRoute
 } from './progressService';
 
 export async function checkPageCondition(userId: string, condition: any): Promise<boolean> {
@@ -40,6 +42,20 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     case 'no_guild':
       const hasGuild = await getPlayerGuild(userId);
       return !hasGuild;
+
+    case 'sacrificed':
+      return await hasSacrificed(userId);
+    
+    case 'did_not_sacrifice':
+      return !await hasSacrificed(userId);
+    
+    case 'went_with_team':
+      const route = await getCurrentRoute(userId);
+      return route === 'team';
+    
+    case 'route':
+      const currentRoute = await getCurrentRoute(userId);
+      return currentRoute === condition.route;
     
     default:
       return true;

@@ -288,6 +288,12 @@ button {
     font-family: "Urbanist", sans-serif;
 }
 
+/* span {
+  font-family: "ivypresto-headline", serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+} */
+
 .stat-box {
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;

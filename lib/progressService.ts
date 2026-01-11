@@ -78,6 +78,10 @@ interface PlayerProgress {
   // Route tracking
   route?: string;
   completedRoutes?: string[];
+
+  sacrificedForTeam?: boolean;
+  sacrificeLocation?: string;
+  sacrificeTime?: string;
   
   // General progress
   currentPage?: string;
@@ -540,6 +544,34 @@ export async function isInterestedInGuild(userId: string, guildName: string): Pr
   return progress.interestedGuilds?.includes(guildName) || false;
 }
 
+
+// ALONE/TOGETHER AND SACRIFICE TRACKING
+export async function recordSacrifice(userId: string, location: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    sacrificedForTeam: true,
+    sacrificeLocation: location,
+    sacrificeTime: new Date().toISOString(),
+    lastUpdated: new Date()
+  });
+  
+  console.log(`🛡️ Player sacrificed themselves at ${location}`);
+}
+
+// Check if player sacrificed themselves
+export async function hasSacrificed(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.sacrificedForTeam === true;
+}
+
+// Get current route (alone or team)
+export async function getCurrentRoute(userId: string): Promise<'alone' | 'team' | null> {
+  const progress = await getPlayerProgress(userId);
+  if (progress.wentAlone) return 'alone';
+  if (progress.route === 'team') return 'team';
+  return null;
+}
 
 
 

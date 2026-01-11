@@ -387,7 +387,7 @@ export const adventurePages = {
     text: "\"You're... hiding. Afraid... of the alternative... to being alone. I know... because I'm the same way.\"\n\nThere's a third flash, and you're suddenly looking up. Both of your legs, no longer connected to anything, topple beside you.",
     choices: [
       { label: "Let the others fight", next: "party_fight_alone" },
-      { label: "Prop yourself on your good arm and face down your killer", next: "face_camper_alone" },
+      { label: "Prop yourself on your good arm and face down your killer", next: "face_camper_alone", action: 'sacrifice', sacrificeLocation: 'camper_encounter'},
     ],
   },
   face_camper_alone: {
@@ -518,6 +518,82 @@ export const adventurePages = {
     title: "Camper Encounter",
     type: "battle",
     text: "Camper Encounter",
+    //players loses their right arm and both legs
+    //ends in a failure no matter what
+    enemy: {
+      name: "The Camper",
+      maxHP: 1000,      // Enemy health
+      ac: 16,          // Armor Class (difficulty to hit)
+      attack: 5,      // Attack bonus
+      magic: 5        // Magic attack bonus
+    },
+    fail: "camper_fail_alone",
+    next: "camper_fail_alone",
+  },
+  camper_fail_alone: {
+    title: "Inevitable",
+    type: "choice",
+    text: "Failure is inevitable, but you are faced with a small choice in your final moments.",
+    choices: [
+      { label: "Engage", next: "camper_engage_alone" },
+      { label: "Retreat", next: "camper_engage_retreat" },
+    ],
+  },
+  camper_engage_alone: {
+    title: "Engage",
+    type: "text",
+    text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
+    next: "camper_engage_alone2"
+  },
+  camper_engage_alone2: {
+    title: "Engage",
+    type: "text",
+    text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.",
+    next: "camper_engage_alone3"
+  },
+  camper_engage_alone3: {
+    title: "Engage",
+    type: "text",
+    text: "The fear and the pain fade to a dull roar, leaving only anger and disappointment behind.\n\n\"Do it!\" you scream. \"Get it over with!\"\n\nThe Camper looks at you, a hint of admiration in its eyes.\n\n\"You have entertained me, after all. That will not save you, but it will save *them*. I wouldn't want to... overindulge.\"\n\nYou follow the Camper's comment to where the rest of the party stands frozen at the treeline.",
+    next: "camper_engage_alone4"
+  },
+  camper_engage_alone4: {
+    title: "Engage",
+    type: "text",
+    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Simon, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class Breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThe Camper obliges, and the last thing you see is darkness.",
+    action: "sacrifice", 
+    sacrificeLocation: "camper_encounter",
+    next: "camper_finish"
+  },
+  camper_engage_retreat: {
+    title: "Retreat",
+    type: "text",
+    text: "You back away from the creature, hellbent on prolonging your life as long as possible.\n\nRyke, Crixon, Cale-- what will they do without you?\n\nThe Camper closes on you slowly, savoring the fear of your final moments.\n\nYou crawl over body parts and fallen weapons, neither noticing nor caring. \"N-no,\" you beg. \"Please. I- I'm not supposed to go like this.\"",
+    next: "camper_engage_retreat2"
+  },
+  camper_engage_retreat2: {
+    title: "Retreat",
+    type: "text",
+    text: "\"Pitiful,\" your killer says. \"Perhaps the next world I open mine to will send creatures who entertain me better than yours has.\"\n\nThe thing stomps on your ankle to keep you from retreating. The bone shatters.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.\n\nSomehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.",
+    next: "camper_engage_retreat3"
+  },
+  camper_engage_retreat3: {
+    title: "Retreat",
+    type: "text",
+    text: "Your older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.\n\nYou collapse into a puddle of tears, not caring that the rest of the party arrived just in time to witness it. They freeze when they see the state of you; you despise the pity in their eyes.",
+    next: "camper_engage_retreat4"
+  },
+  camper_engage_retreat4: {
+    title: "Retreat",
+    type: "text",
+    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-steel themselves to come to your aid.\n\nTears sting your eyes. Things weren't supposed to go like this. You were meant to prove yourself here, but the only thing you've proven is how weak you are.\n\nYou collapse, defeated, and the party you abandoned rushes to help you.\n\n\"Good,\" the Camper says, revealing his hidden arm and leg before swatting the its C-Class leader away like a bug. \"Maybe one of these ones will actually entertain me.\"",
+    next: "camper_engage_retreat5"
+  },
+  camper_engage_retreat5: {
+    title: "Retreat",
+    type: "text",
+    text: "A mustachioed man in fine armor and a woman in skin-tight black leather are reduced to slabs of meat without a second glance.\n\nThe creature frowns. \"Then again, perhaps not.\"\n\nAs it turns its bloodlust to the remaining five, darkness finally finds you.\n\nIt comes as a mercy.",
+    next: "camper_finish"
   },
   ridge_alone: {
     title: "Thin The Herd",
@@ -1748,7 +1824,38 @@ export const adventurePages = {
     type: "text",
     text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class operative.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
     //depends on if they were solo/together and sacrificed
-    next: ""
+    conditionalNext: [
+    {
+      conditions: [
+        { type: 'went_alone', value: true },
+        { type: 'sacrificed', value: true }
+      ],
+      next: 'solo_sacrifice'
+    },
+    {
+      conditions: [
+        { type: 'went_alone', value: true },
+        { type: 'did_not_sacrifice', value: true }
+      ],
+      next: 'solo_didnt_sacrifice'
+    },
+    {
+      conditions: [
+        { type: 'went_with_team', value: true },
+        { type: 'sacrificed', value: true }
+      ],
+      next: 'together_sacrifice'
+    },
+    {
+      conditions: [
+        { type: 'went_with_team', value: true },
+        { type: 'did_not_sacrifice', value: true }
+      ],
+      next: 'together_didnt_sacrifice'
+    }
+  ],
+    // Fallback
+    next: 'together_didnt_sacrifice'
   },
   solo_sacrifice: {
     title: "Companions",

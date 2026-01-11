@@ -141,7 +141,7 @@ export default function MenuButton() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          whileHover={{ scale: 1.1, rotate: 90 }}
+          // whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(!isOpen)}
           className="bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-3 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-colors"

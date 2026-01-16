@@ -10,7 +10,7 @@ const STAT_DESCRIPTIONS = {
   Fellowship: "Influences charisma, trading prices, and your ability to persuade NPCs.",
   Athletics: "Determines physical health, carrying capacity, and melee damage.",
   Thought: "Governs intelligence, puzzle-solving, and efficiency of summoned units.",
-  Essence: "Affects mana pool, spell potency, and resistance to magical effects.",
+  Essence: "Affects spell potency, and resistance to magical effects.",
 };
 
 export default function PageStats({ onStatsChange }) {

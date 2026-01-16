@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Shield, Zap, User, Badge } from "lucide-react";
+import { Heart, Shield, Zap, User, Badge, Key } from "lucide-react";
 
 export default function StatLayout() {
   const [stats, setStats] = useState(null);
   const [characterName, setCharacterName] = useState("");
   const [className, setClassName] = useState("");
+  const [breakerIdFormatted, setBreakerIdFormatted] = useState("");
   const [breakerClass, setBreakerClass] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -23,6 +24,7 @@ export default function StatLayout() {
           setStats(data.stats);
           setCharacterName(data.characterName || "Unknown");
           setClassName(data.className || "Unknown");
+          setBreakerIdFormatted(data.breakerIdFormatted || "000-000-000");
           setBreakerClass(data.breakerClass || "Unknown");
         }
       }
@@ -91,6 +93,10 @@ export default function StatLayout() {
         <div className="flex items-center gap-2 mb-1">
           <User size={16} className="text-blue-400" />
           <h3 className="font-bold text-lg">{characterName}</h3>
+        </div>
+        <div className="text-xs text-gray-400 flex items-center gap-2">
+          <Key size={12} />
+          Breaker ID • {breakerIdFormatted}
         </div>
         <div className="text-xs text-gray-400 flex items-center gap-2">
           <Shield size={12} />

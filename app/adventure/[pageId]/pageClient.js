@@ -43,6 +43,7 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [user, setUser] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [characterName, setCharacterName] = useState("");
+  const [className, setClassName] = useState("");
   const [allocatedStats, setAllocatedStats] = useState(null);
   const [pointsRemaining, setPointsRemaining] = useState(10);
   const [userStats, setUserStats] = useState(null);
@@ -134,6 +135,7 @@ export default function PageClient({ page: initialPage, pageId }) {
           const userData = snap.data();
           setUserStats(userData.stats || {});
           setCharacterName(userData.characterName || "Unknown");
+          setClassName(userData.className || "Unknown");
         }
         
         // Handle conditional branching
@@ -324,7 +326,11 @@ export default function PageClient({ page: initialPage, pageId }) {
 
   // Parse text with italics and character name
   const renderText = () => {
-    const text = (page.text || "").replace(/{{characterName}}/g, characterName || "Yib");
+    // const text = (page.text || "").replace(/{{characterName}}/g, characterName || "Yib");
+    let text = page.text || "";
+    text = text.replace(/{{characterName}}/g, characterName || "Yib");
+    text = text.replace(/{{className}}/g, className || "Unknown");
+
     
     return text.split("\n\n").map((para, idx) => {
       const parts = para.split(/(\*[^*]+\*)/g);

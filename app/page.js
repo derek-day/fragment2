@@ -12,6 +12,7 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
+import { generateUniqueBreakerID, formatBreakerID } from "../lib/breakerIdGenerator";
 
 const PARTICLE_COUNT = 40;
 
@@ -131,20 +132,20 @@ export default function Home() {
       if (authMode === "register") {
         // Create new account
         userCred = await createUserWithEmailAndPassword(auth, email, password);
+
+        const breakerId = await generateUniqueBreakerID(db);
+        const formattedId = formatBreakerID(breakerId);
         
         // Firebase Auth automatically hashes passwords - no need to manually salt/hash
         // Email is stored as-is (not sensitive like passwords)
         await setDoc(doc(db, "users", userCred.user.uid), {
           email: userCred.user.email,
+          breakerId: breakerId,
+          breakerIdFormatted: formattedId, // For display purposes
           currentPage: "page_1",
           createdAt: new Date(),
           characterName: "",
           stats: {
-            //possible change this to tapestry stats, this needs changed in battle and roll pages
-            //physio
-            //neuro
-            //psycho
-            //pheno
             Fellowship: 10,
             Athletics: 10,
             Thought: 10,
@@ -171,13 +172,16 @@ export default function Home() {
           lastUpdated: new Date()
         });
         
-        setSuccessMessage("Protocol generating...");
+        // setSuccessMessage("Protocol generating...");
+        setSuccessMessage(`Protocol Initialized\nBreaker ID: ${formattedId}`);
       } else {
         // Login
         userCred = await signInWithEmailAndPassword(auth, email, password);
         const docSnap = await getDoc(doc(db, "users", userCred.user.uid));
         const characterName = docSnap.exists() ? docSnap.data().characterName : null;
-        setSuccessMessage(`Welcome back, ${characterName || "Gatebreaker"}!`);
+        const breakerIdFormatted = docSnap.exists() ? docSnap.data().breakerIdFormatted : null;
+        //setSuccessMessage(`Welcome back, ${characterName || "Gatebreaker"}!`);
+        setSuccessMessage(`Welcome back, ${characterName || "Gatebreaker"}!\nID: ${breakerIdFormatted || "Unknown"}`);
       }
 
       // Redirect after short delay
@@ -186,7 +190,7 @@ export default function Home() {
         const userDoc = await getDoc(userRef);
         const page = userDoc.exists() ? userDoc.data().currentPage : "page_1";
         router.push(`/adventure/${page}`);
-      }, 1000);
+      }, 2000);
     } catch (err) {
       // Handle specific Firebase errors
       if (err.code === 'auth/email-already-in-use') {

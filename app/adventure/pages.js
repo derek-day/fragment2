@@ -148,7 +148,7 @@ export const adventurePages = {
     type: "classRedirect",
     src: "../assets/lab.webp",
     //need to change the text based on if alone or with team
-    text: "You tell the others what your selection was on the digital readout, careful not to mention your unranked status or that you're not activated.  They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.",
+    text: "You check your digital readout. Your class is set to {{className}}. Breaker status is still unranked.\n\nYou sigh. At least you made it this far.",
     classNext: {
       Warrior: {
         team: "team_Warrior",
@@ -733,35 +733,35 @@ export const adventurePages = {
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "\"You and Kaelion will get along great then,\" Akemi says, gesturing to a man in armor so fancy it could have supported your family for a month.\n\nYou doubt her assumption. There aren't too many rich people on your side of town.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"You and Kaelion will get along great then,\" Akemi says, gesturing to a man in armor so fancy it could have supported your family for a month.\n\nYou doubt her assumption. There aren't too many rich people on your side of town.",
   },
   team_Mage: {
     title: "Mage",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "Akemi smiles. \"I'm sure you and Sheemie will have plenty to talk about.\" She leans in, and you detect a hint of lavender and sandalwood. \"Just don't get him started on ecology.\"\n\nYou cock your head, unsure of how to take the advice.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\nAkemi smiles. \"I'm sure you and Sheemie will have plenty to talk about.\" She leans in, and you detect a hint of lavender and sandalwood. \"Just don't get him started on ecology.\"\n\nYou cock your head, unsure of how to take the advice.",
   },
   team_Summoner: {
     title: "Summoner",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "Akemi smirks. \"As long as your goal isn't to summon the creepy things Mitzi talks about, I think we'll still get along fine!\"\n\nYou consider asking for specifics, but decide now might not be the time.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\nAkemi smirks. \"As long as your goal isn't to summon the creepy things Mitzi talks about, I think we'll still get along fine!\"\n\nYou consider asking for specifics, but decide now might not be the time.",
   },
   team_Undecided: {
     title: "Undecided",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
   },
   team_Mixed: {
     title: "Mixed",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
   },
   team_intro1: {
     title: "Harla",

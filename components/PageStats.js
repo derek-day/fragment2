@@ -70,7 +70,7 @@ export default function PageStats({ onStatsChange }) {
   return (
     <motion.div 
       // className="p-6 stat-box box bg-gray-800 bg-opacity-90 backdrop-blur-sm border-2 border-gray-700 shadow-xl"
-      className="p-6 stat-box bg-gray-800 bg-opacity-90 backdrop-blur-sm border-2 border-gray-700 shadow-xl"
+      className="display p-6 stat-box bg-gray-800 bg-opacity-90 backdrop-blur-sm border-2 border-gray-700 shadow-xl"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -78,7 +78,7 @@ export default function PageStats({ onStatsChange }) {
     >
       <motion.div variants={itemVariants} className="mb-6 text-center">
         <h2 className="text-2xl font-bold mb-2 text-white">Assign Your Stats</h2>
-        <div className="inline-block bg-blue-900 bg-opacity-50 px-6 py-2 border-2 border-blue-600">
+        <div className="inline-block bg-blue-900 bg-opacity-50 px-6 py-2 border-2 border-blue-800">
           <span className="text-lg font-bold text-blue-400">
             Points Available: {pointsRemaining}
           </span>

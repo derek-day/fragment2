@@ -44,7 +44,7 @@ export default function DebugPanel({ pageId, page }) {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full shadow-lg font-bold"
       >
-        {isOpen ? '🐛 Hide Debug' : '🐛 Debug'}
+        {isOpen ? 'Hide Debug' : 'Debug'}
       </button>
 
       {/* Debug Panel */}

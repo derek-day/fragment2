@@ -729,16 +729,16 @@ return (
     <div className="fixed inset-0 z-10 flex items-center justify-center p-6 md:p-12 lg:p-16 pointer-events-none">
       
       {/* GLASS CARD: The actual interface */}
-      <div className="w-full max-w-md md:max-w-4xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
+      <div className="display w-full max-w-md md:max-w-4xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
         
         {/* 1. Header */}
         <header className="bg-slate-900/50 border-b border-slate-700/50 p-3 shrink-0 flex justify-between items-center">
           <h1 className="text-lg font-bold text-slate-100 shadow-black drop-shadow-md">{page.title}</h1>
           
           {/* Status Badge */}
-          <div className={`px-3 py-0.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider border ${
+          <div className={`px-3 py-0.5 text-[10px] md:text-xs font-bold uppercase tracking-wider border ${
             battleEnded 
-              ? (playerHP > 0 ? "bg-green-900/60 border-green-500 text-green-200" : "bg-red-900/60 border-red-500 text-red-200")
+              ? (playerHP > 0 ? "bg-green-900/60 border-green-600 text-green-200" : "bg-red-900/60 border-red-600 text-red-200")
               : (isPlayerTurn ? "bg-blue-900/60 border-blue-500 text-blue-200 animate-pulse" : "bg-orange-900/60 border-orange-500 text-orange-200")
           }`}>
              {battleEnded ? (playerHP > 0 ? "Victory" : "Defeat") : (isPlayerTurn ? "Your Turn" : "Enemy Turn")}
@@ -756,22 +756,22 @@ return (
               <div className="bg-slate-900/60 p-2.5 border border-blue-500/30">
                 <div className="flex justify-between items-center mb-1">
                    <div className="flex items-center gap-1.5 font-bold text-sm text-blue-100">
-                     <Heart className="w-3.5 h-3.5 text-red-500" /> {player.name}
+                     <Heart className="w-3.5 h-3.5 text-red-600" /> {player.name}
                    </div>
                    <span className="text-[10px] text-slate-400">{playerHP}/{player.maxHP}</span>
                 </div>
-                <HPBar current={playerHP} max={player.maxHP} color="bg-green-500" />
+                <HPBar current={playerHP} max={player.maxHP} color="bg-green-600" />
               </div>
               
               {/* Enemy */}
-              <div className="bg-slate-900/60 p-2.5 border border-red-500/30">
+              <div className="bg-slate-900/60 p-2.5 border border-red-600/30">
                 <div className="flex justify-between items-center mb-1">
                    <div className="flex items-center gap-1.5 font-bold text-sm text-red-100">
                      <Shield className="w-3.5 h-3.5 text-yellow-500" /> {page.enemy.name}
                    </div>
                    <div className="text-[10px] text-slate-400 font-mono">AC:{page.enemy.ac}</div>
                 </div>
-                <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-500" />
+                <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-600" />
               </div>
             </div>
 
@@ -785,9 +785,9 @@ return (
           {/* RIGHT COLUMN: Info & Logs */}
           <div className="flex flex-col gap-3 min-h-0">
              {/* Story Text */}
-             <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
+             {/* <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
                 <p className="line-clamp-3 md:line-clamp-none">{page.text}</p>
-             </div>
+             </div> */}
 
              {/* Battle Log - constrained height */}
              <div className="flex-1 min-h-[100px] md:min-h-0 bg-black/40 border border-slate-700/50 p-2 flex flex-col relative overflow-hidden">
@@ -813,7 +813,8 @@ return (
           <button
             onClick={handleAttack}
             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="bg-orange-700 hover:bg-orange-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+            className="flex items-center justify-center bg-gradient-to-br from-orange-600 to-red-700 hover:from-orange-500 hover:to-red-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-4 font-bold gap-2 justify-center shadow-lg border-b-4 border-red-900 active:border-b-0 active:scale-95 transition-all"
+            // className="bg-orange-700 hover:bg-orange-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <Sword className="w-4 h-4" />
             <div className="flex flex-col items-start leading-none">
@@ -825,7 +826,8 @@ return (
           <button
             onClick={handleMagic}
             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="bg-purple-700 hover:bg-purple-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
+            className="flex items-center justify-center bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-4 font-bold gap-2 justify-center shadow-lg border-b-4 border-purple-900 active:border-b-0 active:scale-95 transition-all"
+            // className="bg-purple-700 hover:bg-purple-600 disabled:opacity-50 disabled:bg-slate-700 text-white py-3 font-bold shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95"
           >
             <Sparkles className="w-4 h-4" />
              <div className="flex flex-col items-start leading-none">

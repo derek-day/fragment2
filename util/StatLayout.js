@@ -77,7 +77,7 @@ export default function StatLayout() {
 
   return (
     <motion.div 
-      className="stat-layout fixed top-4 left-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-4 shadow-2xl border-2 border-gray-700 z-40"
+      className="display stat-layout fixed top-4 left-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-4 shadow-2xl border-2 border-gray-700 z-40"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -204,7 +204,7 @@ export default function StatLayout() {
                     hidden: { opacity: 0, x: -10 },
                     visible: { opacity: 1, x: 0 }
                   }}
-                  className="bg-gray-800 p-2 rounded text-center border border-gray-700 hover:border-gray-600 transition-colors"
+                  className="bg-gray-900 p-2 text-center border border-gray-800 hover:border-gray-700 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="text-xs text-gray-400">{stat}</div>

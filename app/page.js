@@ -309,7 +309,7 @@ export default function Home() {
                   <input
                     type="email"
                     placeholder="Enter your email address"
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border px-3 py-2"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={isAuthenticating}
@@ -324,7 +324,7 @@ export default function Home() {
                       <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter your password"
-                        className="w-full border rounded px-3 py-2 pr-10"
+                        className="w-full border px-3 py-2 pr-10"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         disabled={isAuthenticating}
@@ -348,7 +348,7 @@ export default function Home() {
                       <input
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm your password"
-                        className="w-full border rounded px-3 py-2 pr-10"
+                        className="w-full border px-3 py-2 pr-10"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         disabled={isAuthenticating}
@@ -369,7 +369,7 @@ export default function Home() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 p-3 bg-red-900 border border-red-600 rounded text-red-200 text-sm"
+                    className="mb-4 p-3 bg-red-900 border border-red-600 text-red-200 text-sm"
                   >
                     {error}
                   </motion.div>
@@ -380,7 +380,7 @@ export default function Home() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 p-3 bg-green-900 border border-green-600 rounded text-green-200 text-sm"
+                    className="mb-4 p-3 bg-green-900 border border-green-600 text-green-200 text-sm"
                   >
                     {successMessage}
                   </motion.div>

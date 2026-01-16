@@ -308,7 +308,7 @@ export function DataPacketNotification({ packets, onClose, onOpenPacket }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 400, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed bottom-4 right-4 bg-gray-800 border-2 border-blue-500 rounded-lg shadow-2xl max-w-sm z-50"
+      className="display fixed bottom-4 right-4 bg-gray-800 border border-blue-500 shadow-2xl max-w-sm z-50"
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
@@ -330,7 +330,7 @@ export function DataPacketNotification({ packets, onClose, onOpenPacket }) {
               animate={{ opacity: 1, x: 0 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => onOpenPacket(packet)}
-              className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition-colors flex items-center gap-2"
+              className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 transition-colors flex items-center gap-2"
             >
               <span className={packet.isUpdate ? "text-yellow-400" : "text-blue-400"}>
                 {packet.isUpdate ? "↻" : "•"}
@@ -389,7 +389,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
+          className="display bg-gray-800 max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
         >
           {/* Header */}
           <div className="flex justify-between items-center p-6 border-b border-gray-700">
@@ -425,9 +425,9 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                   onClick={() => setSelectedPacket(null)}
                   className="text-blue-400 hover:text-blue-300 mb-4 flex items-center gap-2 transition-colors"
                 >
-                  ← Back to list
+                  ← Back to packets
                 </button>
-                <div className={`bg-gray-900 rounded-lg p-6 border border-gray-700`}>
+                <div className={`bg-gray-900 p-6 border border-gray-700`}>
                   <div className="text-sm text-blue-400 mb-2">{selectedPacket.category}</div>
                   <h3 className="text-2xl font-bold mb-4 text-white">{selectedPacket.title}</h3>
                   <div className="space-y-4">
@@ -446,7 +446,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                         </div>
                         <div className="space-y-3">
                           {selectedPacket.unlockedUpdates.map((update, idx) => (
-                            <div key={idx} className="bg-gray-800 rounded p-3 border-l-2 border-yellow-400">
+                            <div key={idx} className="bg-gray-800 p-3 border-l-2 border-yellow-400">
                               <div className="text-sm font-medium text-yellow-400 mb-1">{update.title}</div>
                               <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                                 {update.content}
@@ -468,7 +468,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                      <span className="w- h-1 bg-blue-400"></span>
                       {category}
                     </h3>
                     <div className="space-y-2">
@@ -477,12 +477,12 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                           key={packet.id}
                           whileHover={{ scale: 1.02, x: 5 }}
                           onClick={() => setSelectedPacket(packet)}
-                          className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors flex items-center justify-between group"
+                          className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 transition-colors flex items-center justify-between group"
                         >
                           <div className="flex items-center gap-2">
                             <span className="text-white">{packet.title}</span>
                             {packet.unlockedUpdates && packet.unlockedUpdates.length > 0 && (
-                              <span className="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded">
+                              <span className="text-xs bg-yellow-600 text-white px-2 py-0.5">
                                 {packet.unlockedUpdates.length} update{packet.unlockedUpdates.length > 1 ? 's' : ''}
                               </span>
                             )}

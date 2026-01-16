@@ -126,7 +126,7 @@ export default function BackgroundMusic({
     <motion.div 
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed bottom-4 left-4 z-50 flex flex-col items-end pointer-events-none display"
+      className="fixed bottom-4 left-4 z-50 flex flex-col items-end pointer-events-none display music-player"
     >
       <audio ref={audioRef} src={currentTrack.src} preload="auto" />
 

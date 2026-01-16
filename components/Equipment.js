@@ -164,7 +164,7 @@ export function EquipmentNotification({ items, onClose, onOpenItem }) {
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: 400, opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed bottom-4 right-4 bg-gray-800 border-2 border-green-500 rounded-lg shadow-2xl max-w-sm z-50"
+      className="fixed bottom-4 right-4 bg-gray-800 border-2 border-green-500 shadow-2xl max-w-sm z-50"
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
@@ -186,7 +186,7 @@ export function EquipmentNotification({ items, onClose, onOpenItem }) {
                 animate={{ opacity: 1, x: 0 }}
                 whileHover={{ scale: 1.02 }}
                 onClick={() => onOpenItem(item)}
-                className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded transition-colors"
+                className="w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <Icon size={16} className="text-green-400" />
@@ -271,7 +271,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-gray-800 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
+        className="display bg-gray-800 max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
       >
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
@@ -352,7 +352,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                    <span className="w-1 h-1 bg-green-400"></span>
                     {type}
                   </h3>
                   <div className="space-y-2">
@@ -363,7 +363,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                           key={item.id}
                           whileHover={{ scale: 1.02, x: 5 }}
                           onClick={() => setSelectedItem(item)}
-                          className={`w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors border-l-4 ${getRarityBorder(item.rarity)}`}
+                          className={`w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 transition-colors border-l-4 ${getRarityBorder(item.rarity)}`}
                         >
                           <div className="flex items-center justify-between group">
                             <div className="flex items-center gap-3">

@@ -435,18 +435,20 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         <StatLayout />
         <MenuButton />
-        <DebugPanel pageId={pageId} page={page} />
+        {/* <DebugPanel pageId={pageId} page={page} /> */}
 
-        <motion.div 
-          className="story-text p-2 mb-6"
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="space-y-2 m-3">
-            {renderText()}
-          </div>
-        </motion.div>
+        {page.type !== 'battle' && page.type !== 'roll' && (
+          <motion.div 
+            className="story-text p-4 mb-6"
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="space-y-2 m-3">
+              {renderText()}
+            </div>
+          </motion.div>
+        )}
 
         <motion.div 
           className="space-y-4 w-full max-w-2xl"

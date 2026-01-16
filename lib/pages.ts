@@ -961,7 +961,8 @@ export const pages = {
     type: "text",
     src: "../assets/portal.webp",
     text: "\"The world before this one failed. We cannot fail.\n\nWe have two things the old world did not. The first is the Protocol. Without it, we would be the weak, biologically-damned beings that our ancestors were. Without it, we'd be no match for most of what's in these gates. Halycon has connected us to that entity, and we're stronger now because of it.\n\nThe second things is each other.\n\nNow, let's check our gear a final time and then kick some ass!\"",
-    next: "team_equipment",
+    // next: "team_equipment",
+    next: "team_portal_entry",
   },
   waste: {
     title: "Waste of Time",
@@ -1007,7 +1008,8 @@ export const pages = {
     type: "text",
     src: "../assets/portal.webp",
     text: "\"Fair enough, but don't come crying to me if you get in above your head out there.\"\n\nThrex gives you and Ronin a final piercing look before turning back to others. \"Let's do a final gear check before leading these two to their deaths.\"",
-    next: "team_equipment",
+    // next: "team_equipment",
+    next: "team_portal_entry",
   },
   punch_threx: {
     title: "Punch Threx In The Face",

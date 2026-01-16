@@ -32,7 +32,7 @@ export const pages = {
     title: "Portal Entrance",
     src: "../assets/forest.webp",
     type: "text",
-    text: "Even more, the place's qualities assault your senses. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple fauna obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.",
+    text: "Even more, the place's qualities assault your senses. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.",
     next: "portal_view",
   },
   portal_view: {
@@ -138,12 +138,14 @@ export const pages = {
       Essence: 10,
       points: 6
     },
+    //may need to change next depending on if alone or with team
     next: "class_confirmation",
   },
   class_confirmation: {
     id: "class-confirmation",
     type: "classRedirect",
     src: "../assets/lab.webp",
+    //need to change the text based on if alone or with team
     text: "You tell the others what your selection was on the digital readout, careful not to mention your unranked status or that you're not activated.  They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.",
     classNext: {
       Warrior: {
@@ -166,6 +168,10 @@ export const pages = {
         team: "team_Mixed",
         alone: "alone_equipment",
       },
+      "Undecided / Mixed": {
+        team: "team_Mixed",
+        alone: "alone_equipment",
+      },
     },
   },
   alone_equipment: {
@@ -180,7 +186,7 @@ export const pages = {
     src: "../assets/forest.webp",
     type: "text",
     next: "portal_encounter",
-    text: "Something small and quick darts at you from the nearest tuft of fauna, pulling you from the past. You try to react, but the strain of this place makes you sluggish.\n\nYou raise your weapon just in time to defend yourself, but you already know this fight will be more challenging than you hoped.",
+    text: "Something small and quick darts at you from the nearest tuft of flora, pulling you from the past. You try to react, but the strain of this place makes you sluggish.\n\nYou raise your weapon just in time to defend yourself, but you already know this fight will be more challenging than you hoped.",
   },
   portal_encounter: {
     title: "First Battle",
@@ -1077,21 +1083,21 @@ export const pages = {
     title: "Team Portal View",
     src: "../assets/forest.webp",
     type: "text",
-    text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple fauna obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
+    text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
     next: "team_portal_encounter_take",
   },
   team_portal_view_hold: {
     title: "Team Portal View",
     src: "../assets/forest.webp",
     type: "text",
-    text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple fauna obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
+    text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
     next: "team_portal_encounter_hold",
   },
   team_portal_encounter_take: {
     title: "What Is That?",
     src: "../assets/forest.webp",
     type: "choice",
-    text: "Something small and quick darts at you from the nearest tuft of fauna. You react quickly to the threat, beating your companions to the punch.",
+    text: "Something small and quick darts at you from the nearest tuft of flora. You react quickly to the threat, beating your companions to the punch.",
     choices: [
       { label: "Eliminate the threat", next: "team_portal_battle" },
       { label: "Dive for cover", next: "team_portal_dive" },
@@ -1133,7 +1139,7 @@ export const pages = {
     title: "What Is That?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "Something small and quick darts at you from the nearest tuft of fauna. You try to react, but the strain of this place makes you sluggish.\n\nLuckily, you're not here alone. Aleth addresses the threat, stilling it with a throwing knife to the face.\n\n\"Not bad for someone who hasn't been activated,\" Threx says, patting him on the back. \"Mark my words: the Protocol will notice you yet!\"",
+    text: "Something small and quick darts at you from the nearest tuft of flora. You try to react, but the strain of this place makes you sluggish.\n\nLuckily, you're not here alone. Aleth addresses the threat, stilling it with a throwing knife to the face.\n\n\"Not bad for someone who hasn't been activated,\" Threx says, patting him on the back. \"Mark my words: the Protocol will notice you yet!\"",
     next: "team_portal_battle_finish",
   },
   team_portal_battle_finish: {

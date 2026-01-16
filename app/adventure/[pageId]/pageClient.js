@@ -429,7 +429,7 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         <StatLayout />
         <MenuButton />
-        {/* <DebugPanel pageId={pageId} page={page} /> */}
+        <DebugPanel pageId={pageId} page={page} />
 
         <motion.div 
           className="story-text p-2 mb-6"

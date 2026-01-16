@@ -136,12 +136,10 @@ export default function DebugPanel({ pageId, page }) {
             <div>
               <h4 className="font-bold text-purple-300 mb-2">Stats</h4>
               <div className="bg-gray-800 p-2 rounded grid grid-cols-2 gap-1">
-                <div>STR: {userData.stats.Strength}</div>
-                <div>DEX: {userData.stats.Dexterity}</div>
-                <div>CON: {userData.stats.Constitution}</div>
-                <div>INT: {userData.stats.Intelligence}</div>
-                <div>WIS: {userData.stats.Wisdom}</div>
-                <div>CHA: {userData.stats.Charisma}</div>
+                <div>FEL: {userData.stats.Fellowship}</div>
+                <div>ATH: {userData.stats.Athletics}</div>
+                <div>THO: {userData.stats.Thought}</div>
+                <div>ESS: {userData.stats.Essence}</div>
                 <div>HP: {userData.stats.HP}/{userData.stats.MaxHP}</div>
                 <div>Level: {userData.stats.Level}</div>
               </div>

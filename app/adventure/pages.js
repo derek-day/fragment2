@@ -110,7 +110,7 @@ export const adventurePages = {
     title: "Meet the Protocol",
     type: "text",
     src: "../assets/lab.webp",
-    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI-looking machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
+    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI-looking machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential Breakers in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
     next: "failed_to_connect",
   },
   failed_to_connect: {
@@ -148,7 +148,7 @@ export const adventurePages = {
     type: "classRedirect",
     src: "../assets/lab.webp",
     //need to change the text based on if alone or with team
-    text: "You check your digital readout. Your class is set to {{className}}. Breaker status is still unranked.\n\nYou sigh. At least you made it this far.",
+    text: "You check your digital readout. Your path is set to {{className}}. Breaker status is still unranked.\n\nYou sigh. At least you made it this far.",
     classNext: {
       Warrior: {
         team: "team_Warrior",
@@ -221,7 +221,144 @@ export const adventurePages = {
     ],
   },
   wait_others: {
-
+    title: "Wait for the Others",
+    type: "route",
+    route: "team",
+    text: "This strange, purple world waits with you, feeling more peaceful than it has a right to.\n\nTen minutes later, your companions arrive. Threx is the first, and he glares at you before taking stock of your surroundings.\n\nRonin emerges next. Out of everyone you were meant to clear this world with, he is the only one you know, and he hates your guts.\n\n\"Damn,\" he says when he sees you. \"I was hoping this place would have taken care of you by now.\"\n\n\"What an unkind thing to say!\" The woman who emerged behind Ronin pushes past him and offers you a hand. \"I, for one, am glad you're still in one piece. I'm Akemi.\"",
+    next: "wait_others2"
+  },
+  wait_others2: {
+    title: "Wait for the Others",
+    type: "input",
+    text: "Before you can proceed, you need to choose a name for yourself. This will be your identity in the game world.",
+    input: {
+      field: "characterName", 
+      label: "Who are you?",
+      next: "wait_others3"
+    }
+  },
+  wait_others3: {
+    title: "Wait for the Others",
+    type: "text",
+    text: "\"It's very nice to meet you, {{characterName}}. I also think it was very brave of you to rush into things. Though, maybe you can hold off in the future? We are a team, after all, right?\"\n\n\"I'm also glad you're in one piece,\" says a black woman in dented armor. She had emerged just in time to catch Akemi's comment. \"Otherwise, I would have had to save your sorry ass.\" She pauses. \"Which probably would have been a record.\"\n\n\"Don't be rude, Harla!\" Akemi says. \"He was just a little overzealous. We've all been there. At least he waited for us, right? He could have been deep in the woods by now.\"",
+    next: "wait_others4"
+  },
+  wait_others4: {
+    title: "Wait for the Others",
+    type: "text",
+    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class Summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
+    next: "wait_others5"
+  },
+  wait_others5: {
+    title: "Wait for the Others",
+    type: "text",
+    text: "You've met the others.\n\nThrex, a C-Class warrior\n\nAkemi, an E-Class undeclared\n\nHarla, a D-Class healer\n\nRonin, the —you do a double take —*D-Class* mixed.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\nYou look up at Ronin, and instead lock eyes with a member of the party you hadn't noticed before.",
+    next: "wait_others6"
+  },
+  wait_others6: {
+    title: "Wait for the Others",
+    type: "choice",
+    text: "He had been watching you intently and doesn't look away now that you've noticed him.\n\nIt's creepy.\n\n\"Aleth Achen,\" reads your digital readout when you scroll to the final entry. \"Unactivated.\"\n\nJust like you.\n\nThere's a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    choices: [
+      { label: "Take the vial", next: "wait_take" },
+      { label: "Hold off for now", next: "wait_hold" },
+    ],
+  },
+  wait_take: {
+    title: "Wait for the Others",
+    type: "text",
+    text: "You drain the vial, and the ill effects of this world immediately dull.\n\n\"All potions work the same way,\" Akemi tells you. \"The effect is immediate, and it'll last for however long it is advertised! The only exception is health potions; those will heal you right up and keep you that way unless you get hurt again!\"\n\n\"And poison,\" Mitzi says, deadpan. \"That's permanent, too.\"",
+    next: "threx_impress",
+  },
+  wait_hold: {
+    title: "Wait for the Others",
+    type: "text",
+    text: "You thank Akemi and pocket the potion for later. This place is brutal, but it's nothing you can't handle.\n\nBetter to hold on to it until you actually need it.",
+    next: "threx_impress",
+  },
+  threx_impress: {
+    title: "Threx Impressed",
+    type: "choice",
+    text: "\"Alright!\" Threx yells. \"Let's get moving. Newbie,\" he pauses to address you directly. \"I'm... impressed you managed to take on that thing yourself. I'd like you to be up front with me so I can watch your style directly.\"",
+    choices: [
+      { label: "Agree (Talk with Threx)", next: "agree_threx" },
+      { label: "Disagree (Talk with the others)", next: "disagree_threx" },
+    ],
+  },
+  agree_threx: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "\"I'm all yours,\" you tell him.\n\nYou move to the front and lead the group into the alien forest alongside Threx.\n\nBehind you, Akemi asks Ronin, \"What guild are you hoping to get into?\"\n\n\"Epoch Corporation,\" he replies.\"They have the coolest tech, best weapons, and I feel like they really get it, yaknow?\" He pauses before adding, \"What about you?\"\n\nAkemi blushes. \"I actually want to start a guild of my own one day. I know it's silly, but it's always been a dream of mine.\"",
+    next: "agree_threx2"
+  },
+  agree_threx2: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "\"I don't think that's silly at all.\" Ronin smiles, and you wonder whether you're watching these two flirt right now.\n\nHis next words confirm it.\n\n\"Dreams are what make us who we are, and, well, yours seems really special.\"\n\nAkemi's blush darkens, and you roll your eyes.\n\nStrange love in a strange land.",
+    next: "agree_threx3"
+  },
+  agree_threx3: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "The rest of the party joins the conversation about guilds and factions. From your position at the front, you get to hear the entire exchange.\n\n\"I can't wait to start investing my points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.",
+    next: "agree_threx4"
+  },
+  agree_threx4: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *the Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
+    next: "agree_threx5"
+  },
+  agree_threx5: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "\"Hey!\" Sheemie exclaims in his high-pitched way.\n\nMitzi ignores the outburst. \"Them or *Protocol Null*.\" She doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.\n\n\"How can one be so ambivalent toward the Protocol?\" Kaelion asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"",
+    next: "agree_threx6"
+  },
+  agree_threx6: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If *The Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
+    next: "agree_threx7"
+  },
+  agree_threx7: {
+    title: "Agree with Threx",
+    type: "text",
+    text: "\"I entered my first gate solo, too,\" he explains, eyes still trained on the surrounding foliage. \"Showed up thirty minutes early and was almost finished with its Tethered Being before the rest of my party showed up.\"\n\nYou raise an eyebrow, surprised.\n\n\"I did the same thing with my second gate. And the third. I grinded enough Breaker Points while solo that I earned my Class-C license without fighting alongside a single person.\" He sighs, then chuckles. \"I thought I would be the next Silas Knorr or Ember Naes.\"",
+    next: "agree_threx8"
+  },
+  agree_threx8: {
+    title: "Agree with Threx",
+    type: "choice",
+    text: "\"But my hubris almost killed me. I... appreciate that you took the chance you did, truly, but what truly impresses me is that you're walking alongside us now.\"\n\n\"No man is an island, {{characterName}}. The Silas Knorrs and Ember Naes of the world are outliers. The best way for the rest of us to survive this world is to take it on together.\" Threx turns to you and smiles. \"Do you understand what I'm saying?\"",
+    choices: [
+      { label: "\"Yes\"", next: "yes_threx" },
+      { label: "\"No\"", next: "no_threx" },
+    ],
+  },
+  yes_threx: {
+    title: "Yes",
+    type: "text",
+    text: "Threx nods. \"Good. If the rest of today goes well, maybe I'll see about you getting a more permanent spot on this team.\"",
+    next: "eyes_threx"
+  },
+  no_threx: {
+    title: "No",
+    type: "text",
+    text: "Threx's smile inverts itself. \"Well, perhaps one day you will. For your sake, I hope it's sooner rather than too late.\"",
+    next: "eyes_threx"
+  },
+  eyes_threx: {
+    title: "Eyes Up",
+    type: "text",
+    text: "Threx turns from you. \"Eyes up!\" He booms to the group. \"We're here to clear the place, not socialize!\"\n\nThe others lock in. You do the same, surveying the surrounding tree-things.",
+    next: "alien_forest"
+  },
+  disagree_threx: {
+    title: "Disagree with Threx",
+    type: "text",
+    text: "\"I'd like to chat with the others first, if that's okay with you.\" You shrug. \"Maybe offer some apologies for going off on my own. We should be a team, right?\"\n\nThrex looks at you for a long moment, then nods.\n\n\"Good idea. Maybe we'll talk more later.\"\n\nYou lag back for a moment, waiting on the others to catch up.",
+    next: "team_portal_victory"
   },
   keep_moving_alone: {
     title: "Keep Moving",
@@ -288,18 +425,21 @@ export const adventurePages = {
   tethered_lair_alone: {
     title: "Tethered Lair",
     type: "text",
+    src: "../assets/shack.webp",
     text: "It doesn't take long to reach the lair. The tracks of the boss's minions take you right to it.\n\nIt... isn't what you expected. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\nThe shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.",
     next: "tethered_lair_alone2"
   },
   tethered_lair_alone2: {
     title: "Tethered Lair",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"I was hoping to give my pets a snack today,\"  the alien-thing says in a voice like sandpaper, \"but it seems you were keen to meet me first. No matter... They'll be dining on you soon enough.\"",
     next: "tethered_lair_alone3",
   },
   tethered_lair_alone3: {
     title: "Tethered Lair",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "You blink, confused. Plenty of creatures inside the gates can talk, but not many are E-Class. You've heard stories about beings-- *Campers*-- that hide themselves in worlds they don't belong to. They aren't connected to the world itself, which often means gates don't register a higher threat level.\n\nThey wait in these places for the purpose of ambushing lower-level explorers.\n\nExplorers like you.\n\nOn a tree next to you, eight symbols like yours mix with the jagged ones representing the minions-- this thing's *pets*.\n\nThe party you were meant to enter with is fighting them.",
     choices: [
       { label: "Speak to the creature", next: "speak_camper_alone" },
@@ -310,6 +450,7 @@ export const adventurePages = {
   speak_camper_alone: {
     title: "Speak To Camper",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"I wouldn't be too sure about the kibble thing,\" you say. \"In a few minutes, I doubt you'll have any pets left to feed.\"\n\nThe thing cocks its head. \"Hmm, I suppose you're right. You creatures possess such little power that you're nearly invisible to me at a distance.\"\n\nThe Camper pauses. \"Even though I'm speaking to you right now, I hardly sense that flavor of energy at all. It's almost as if... you are nothing.\"",
     choices: [
       { label: "Keep talking", next: "keep_talking_alone" },
@@ -319,6 +460,7 @@ export const adventurePages = {
   keep_talking_alone: {
     title: "Keep Talking",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "You step forward.\n\n\"I want to know more about you,\" you say. \"Where are you from, originally? How long have you been here?\"\n\nThe thing cocks its head, amused.\n\n\"I know some things about the world you come from. Tell me: does a human converse with an insect before stepping on it?\"",
     choices: [
       { label: "Sometimes", next: "sometimes_alone" },
@@ -328,18 +470,21 @@ export const adventurePages = {
   no_alone: {
     title: "Uh Oh",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You take a step back, realizing your folly in trying to reason with this thing.\n\n*Dumbass*, you think.",
     next: "attack_camper_alone"
   },
   sometimes_alone: {
     title: "Shrug",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You shrug. \"That depends on the person, I guess. Some people are lonelier than others.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
     next: "sometimes_alone2",
   },
   sometimes_alone2: {
     title: "Camper Appearance",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The thing is two heads taller than you and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
     next: "sometimes_alone3",
   },
@@ -353,12 +498,14 @@ export const adventurePages = {
   sometimes_alone4: {
     title: "Camper Attack",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You feel the wound an instant later, a burning across your left side. The Camper hasn't done enough to mortally wound you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\" The Camper returns its weapon to its sheath, then lays it on the porch with its armor. Its body is scarred and burned, aged, but also incredibly muscular.",
     next: "sometimes_alone5"
   },
   sometimes_alone5: {
     title: "Camper Attack",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "It places its dominant arm behind its back next, then balances itself on one leg.\n\n\"I'm afraid stooping myself any more to your level requires a permanent handicap. This will have to suffice.\"\n\nOn a tree next to you, the final jagged symbol disappears. Eight dots like yours are moving your way now.\n\nQuickly.",
     choices: [
       { label: "Keep talking", next: "keep_talking_camper_alone" },
@@ -368,12 +515,14 @@ export const adventurePages = {
   keep_talking_camper_alone: {
     title: "Keep Talking",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"Yeah,\" you manage, tasting blood. \"Definitely... lonely.\"\n\nYou take in the palace-like cabin once again, trying to understand the rationale of a creature this powerful. Why is it here? Why does it lure and prey on creatures it knows it can easily defeat?\n\nWhy is it alone?You imagine the path you had taken to get here, solitary, with a group of seven at your back, and a theory comes to you.",
     next: "keep_talking_camper_alone2"
   },
   keep_talking_camper_alone2: {
     title: "Keep Talking",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"I think... you're lonely...\" you say again, \"but I also... think you're afraid.\"\n\n\"Afraid!?\" The Camper rasps a grating laugh. \"I am more powerful than you can imagine! Hundreds of creatures have fallen to my blades. What could I possibly be afraid of?\"\n\n\"You're afraid... of something out there... that's even stronger... than you are. That's why you're hiding... behind an E-Class gate.\"\n\nThere's another flash of movement, and a soft thump on the ground next to you.",
     next: "keep_talking_camper_alone3"
     //life points halved again
@@ -381,12 +530,14 @@ export const adventurePages = {
   keep_talking_camper_alone3: {
     title: "Keep Talking",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You feel a numbness in the fingertips of your right arm, and then an excruciating pain halfway down your bicep.\n\nYour arm is no longer attached.",
     next: "party_arrives_alone"
   },
   party_arrives_alone: {
     title: "Party Arrives",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "The rest of your party arrives, out of breath and covered in gore. They freeze when they see the state of you; you despise the pity in their eyes. All of them-- even Ronin, an old friend who can no longer stand you-- steel themselves to come to your aid.\n\nTears sting your eyes. Things weren't supposed to go like this. You were meant to prove yourself here, yet the only thing you've proven is how weak you are.\n\nThrough your pain and frustration, a follow-up thought arrives on the heels of the one you just verbalized.",
     choices: [
       { label: "Tell the others to stop, and keep talking", next: "party_stop_alone" },
@@ -396,6 +547,7 @@ export const adventurePages = {
   party_stop_alone: {
     title: "Keep Talking",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"You're... hiding. Afraid... of the alternative... to being alone. I know... because I'm the same way.\"\n\nThere's a third flash, and you're suddenly looking up. Both of your legs, no longer connected to anything, topple beside you.",
     choices: [
       { label: "Let the others fight", next: "party_fight_alone" },
@@ -405,6 +557,7 @@ export const adventurePages = {
   face_camper_alone: {
     title: "Face Camper",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "The thing is right in front of you now, so close that you can smell the rot of its breath.",
     choices: [
       { label: "Strike it", next: "strike_alone" },
@@ -414,36 +567,42 @@ export const adventurePages = {
   strike_alone: {
     title: "Strike Camper",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
     next: "memory_alone"
   },
   maintain_alone: {
     title: "Maintain Contact",
     type: "text",
+    src: "../assets/shack.webp",
     text: "It takes every ounce of self-discipline you have, but you grit your teeth and hold the gaze of your killer.\n\nLike everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
     next: "maintain_alone2"
   },
   maintain_alone2: {
     title: "Maintain Contact",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Instead, you are only gifted with a memory of a single moment-- a curse, really. You immediately place it, because it's one you've revisited often.\n\nThis was years before the arrival of the first gate, but the two events can be likened by how time can be measured before and after.\n\nYou see exploding windows and bodies thrown around the inside of the rolling car.",
     next: "memory_alone"
   },
   memory_alone: {
     title: "Remember",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.There is no reason in mad worlds like these.",
     next: "memory_alone2"
   },
   memory_alone2: {
     title: "Siblings",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The fear and the pain fade to a dull roar, leaving only anger and disappointment behind.\n\n\"Do it!\" you scream. \"Get it over with!\"\n\nThe Camper looks at you, a hint of admiration in its eyes.\n\n\"You have entertained me,\" the creature rasps. \"I have not had that in a long time. Consider your sacrifice... worth it. Because of you, I shall let the others go free.\"\n\nThe Camper's jaw widens, unhinges, and prepares to swallow your face.",
     next: "memory_alone3"
   },
   memory_alone3: {
     title: "Camper Attack?",
     type: "roll",
+    src: "../assets/shack.webp",
     text: "Then, it freezes.\n\nLike an animal catching the sudden scent of a predator, the Camper sniffs at the air and bristles.",
     roll: {
       stat: "Thought",
@@ -457,59 +616,69 @@ export const adventurePages = {
   something_nearby: {
     title: "Something Is Here",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"Who else is with you?\" the Camper rasps. It steps away from you, looking scared for the first time. \"This... isn't possible. How can one of you move so quickly?\"\n\nThere's a blur to your left, and a figure in a gray throbe appears between you and the creature far more powerful than you.\n\nThis one-- more powerful still-- throws the Camper backward with a strike you hardly register. The creature that had just seemed unstoppable crashes into its cabin, blowing the fine materials into bits.",
     next: "something_nearby2"
   },
   something_nearby2: {
     title: "A Savior Arrives",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"It's okay,\" your savior tells you. \"I'll handle it from here. You rest.\" He pauses to take in the others. \"I'm... sorry I'm late.\"\n\nBefore darkness takes you, you register something else about the stranger's clothing. Yes, it is styled in the way common to those in the Middle East, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.",
     next: "something_nearby3"
   },
   something_nearby3: {
     title: "A Savior Arrives",
     type: "text",
-    text: "The realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class operative-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
+    src: "../assets/shack.webp",
+    text: "The realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class Breaker-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
   }, 
   party_fight_alone: {
     title: "Party Fight",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You've been punished enough, and darkness is coming fast. Speaking to this thing was a mistake.\n\nYou collapse, defeated, and the party you abandoned rushes to help you.\n\n\"Good,\" the Camper says, revealing his hidden arm and leg before swatting the party leader away like a bug. \"Maybe one of these will actually entertain me.\"",
     next: "party_fight_alone2",
   },
   party_fight_alone2: {
     title: "Party Fight",
     type: "text",
+    src: "../assets/shack.webp",
     text: "A mustachioed man in fine armor and a woman in skin-tight black leather are reduced to slabs of meat without a second glance.\n\nThe creature frowns. \"Then again, perhaps not.\"\n\nAs it turns its bloodlust to the others, darkness finally finds you.\n\nIt comes as a mercy. This way, at least, you don't have to hear the screams.",
     next: "camper_finish"
   },
   sometimes_attack_alone: {
     title: "Time To Charge",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Talking was a mistake. You're half dead now and have nothing to show for it!\n\nYou grit your teeth and do what you should have done right away.",
     next: "camper_encounter_alone"
   },
   attack_camper_alone: {
     title: "Camper Charge",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You're here to kill this thing. The fact it can speak doesn't change a thing.\n\nSensing your intent, the corner of the thing's mouth curls into a sick grin.\n\n\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"",
     next: "camper_blur_alone"
   },
   remain_silent_alone: {
     title: "Remain Silent",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You keep quiet, unsure of how to best handle creatures of this potential magnitude.\n\n\"Not what you were expecting, hmm?\" The thing croaks a chuckle. \"There are several heads on my mantle of creatures who felt the same way. You'll be in good company.\"",
     next: "camper_blur_alone"
   },
   camper_blur_alone: {
     title: "Shouldn't Be Here",
     type: "text",
+    src: "../assets/shack.webp",
     text: "There's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is two heads taller than you and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
     next: "camper_blur_alone2"
   },
   camper_blur_alone2: {
     title: "Camper Appearance",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.\n\nYou feel the wound an instant later, a burning across your left side. The Camper hasn't done enough to mortally wound you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\"",
     next: "camper_blur_alone3",
     //life points need halved
@@ -517,18 +686,21 @@ export const adventurePages = {
   camper_blur_alone3: {
     title: "Camper Attack",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The Camper returns its weapon to its sheath, then lays it on the porch with its armor. Its body is scarred and burned, aged, but also incredibly muscular.\n\nIt places its dominant arm behind its back next, then balances itself on one leg.\n\n\"I'm afraid stooping myself any more to your level requires a permanent handicap. This will have to suffice.\"",
     next: "camper_blur_alone4"
   },
   camper_blur_alone4: {
     title: "Camper Attack",
     type: "text",
+    src: "../assets/shack.webp",
     text: "On a tree next to you, the final jagged symbol disappears. Eight dots like yours are moving your way now.\n\nQuickly.\n\nYou scoff and charge, looking forward to evening the scales.",
     next: "camper_encounter_alone"
   },
   camper_encounter_alone: {
     title: "Camper Encounter",
     type: "battle",
+    src: "../assets/shack.webp",
     text: "Camper Encounter",
     //players loses their right arm and both legs
     //ends in a failure no matter what
@@ -545,6 +717,7 @@ export const adventurePages = {
   camper_fail_alone: {
     title: "Inevitable",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "Failure is inevitable, but you are faced with a small choice in your final moments.",
     choices: [
       { label: "Engage", next: "camper_engage_alone" },
@@ -554,24 +727,28 @@ export const adventurePages = {
   camper_engage_alone: {
     title: "Engage",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
     next: "camper_engage_alone2"
   },
   camper_engage_alone2: {
     title: "Engage",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.",
     next: "camper_engage_alone3"
   },
   camper_engage_alone3: {
     title: "Engage",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The fear and the pain fade to a dull roar, leaving only anger and disappointment behind.\n\n\"Do it!\" you scream. \"Get it over with!\"\n\nThe Camper looks at you, a hint of admiration in its eyes.\n\n\"You have entertained me, after all. That will not save you, but it will save *them*. I wouldn't want to... overindulge.\"\n\nYou follow the Camper's comment to where the rest of the party stands frozen at the treeline.",
     next: "camper_engage_alone4"
   },
   camper_engage_alone4: {
     title: "Engage",
     type: "text",
+    src: "../assets/shack.webp",
     text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Simon, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class Breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThe Camper obliges, and the last thing you see is darkness.",
     action: "sacrifice", 
     sacrificeLocation: "camper_encounter",
@@ -580,30 +757,35 @@ export const adventurePages = {
   camper_engage_retreat: {
     title: "Retreat",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You back away from the creature, hellbent on prolonging your life as long as possible.\n\nRyke, Crixon, Cale-- what will they do without you?\n\nThe Camper closes on you slowly, savoring the fear of your final moments.\n\nYou crawl over body parts and fallen weapons, neither noticing nor caring. \"N-no,\" you beg. \"Please. I- I'm not supposed to go like this.\"",
     next: "camper_engage_retreat2"
   },
   camper_engage_retreat2: {
     title: "Retreat",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"Pitiful,\" your killer says. \"Perhaps the next world I open mine to will send creatures who entertain me better than yours has.\"\n\nThe thing stomps on your ankle to keep you from retreating. The bone shatters.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.\n\nSomehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.",
     next: "camper_engage_retreat3"
   },
   camper_engage_retreat3: {
     title: "Retreat",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Your older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.\n\nYou collapse into a puddle of tears, not caring that the rest of the party arrived just in time to witness it. They freeze when they see the state of you; you despise the pity in their eyes.",
     next: "camper_engage_retreat4"
   },
   camper_engage_retreat4: {
     title: "Retreat",
     type: "text",
+    src: "../assets/shack.webp",
     text: "All of them-- even Ronin, the only one you actually know and who can't stand you-steel themselves to come to your aid.\n\nTears sting your eyes. Things weren't supposed to go like this. You were meant to prove yourself here, but the only thing you've proven is how weak you are.\n\nYou collapse, defeated, and the party you abandoned rushes to help you.\n\n\"Good,\" the Camper says, revealing his hidden arm and leg before swatting the its C-Class leader away like a bug. \"Maybe one of these ones will actually entertain me.\"",
     next: "camper_engage_retreat5"
   },
   camper_engage_retreat5: {
     title: "Retreat",
     type: "text",
+    src: "../assets/shack.webp",
     text: "A mustachioed man in fine armor and a woman in skin-tight black leather are reduced to slabs of meat without a second glance.\n\nThe creature frowns. \"Then again, perhaps not.\"\n\nAs it turns its bloodlust to the remaining five, darkness finally finds you.\n\nIt comes as a mercy.",
     next: "camper_finish"
   },
@@ -637,18 +819,21 @@ export const adventurePages = {
   },
   critter_death: {
     title: "---",
+    src: "../assets/forest.webp",
     type: "text",
     text: "Your world goes black, but there is a single light in the darkness...\n\nYou approach it, and it feels... good. Comforting...\n\nYou reach for it, but rough hands pull you back...",
     next: "welcome_back"
   },
   welcome_back: {
     title: "Welcome Back",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"Welcome back to the world of the living, dumbass.\"\n\nThrex and seven others are standing around you, unimpressed.\n\n\"You're lucky we have a healer,\" Ronin says from the back. He's the only person you know from this group, and he hates your guts.",
     next: "welcome_back2"
   },
   welcome_back2: {
     title: "Welcome Back",
+    src: "../assets/forest.webp",
     type: "choice",
     text: "Standing from where she had been kneeling over your corpse, a large black woman in dented armor wipes her hands.\n\n\"That might be a record,\" she says. \"I don't think I ever had to heal someone mere seconds after entering a gate before.\"\n\n\"Don't be rude, Harla!\" chastises a woman next to her. \"He was just a little overzealous. We've all been there.\" She steps forward and offers you a hand up. \"I'm Akemi.\"",
     choices: [
@@ -659,6 +844,7 @@ export const adventurePages = {
   },
   friendly_return: {
     title: "Take Hand",
+    src: "../assets/forest.webp",
     type: "text",
     text: "You take the hand being offered to you, a little embarrassed. You had seen things going a little differently here.",
     action: "akemi_nice",
@@ -666,7 +852,7 @@ export const adventurePages = {
   },
   good_name: {
     title: "Who Are You?",
-    src: "../assets/portal.webp",
+    src: "../assets/forest.webp",
     text: "Before you can proceed, you need to choose a name for yourself. This name will be your identity in the game world.",
     type: "input",
     input: {
@@ -677,6 +863,7 @@ export const adventurePages = {
   },
   good_intro: {
     title: "Akemi Intro",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"Well, I think it's very nice to meet you {{characterName}}. I also think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
     next: "threx_collar"
@@ -684,13 +871,14 @@ export const adventurePages = {
   neutral_return: {
     title: "Stand Up",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You ignore the hand and struggle to your feet.",
     action: "akemi_mean",
     next: "bad_name"
   },
   bad_name: {
     title: "Who Are You?",
-    src: "../assets/portal.webp",
+    src: "../assets/forest.webp",
     text: "Before you can proceed, you need to choose a name for yourself. This name will be your identity in the game world.",
     type: "input",
     input: {
@@ -702,12 +890,14 @@ export const adventurePages = {
   bad_intro: {
     title: "Akemi Intro",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"Well, I think it's very nice to meet you {{characterName}},\" Akemi says, trying to ignore the slight. \"I also think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
     next: "threx_collar"
   },
   bad_return: {
     title: "Ignored",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You ignore both the hand and the question, returning to your feet on your own terms.\n\nAkemi gafaws.\n\n\"I told you, Ronin says. \"Yib is an asshole.\"\n\nBefore you can reply, strong hands grab the collar of your shirt.\n\n\"Asshole or not,\" Threx says, \"you're going to listen to me now. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
     action: "add_name",
     next: "what_going_be",
@@ -715,18 +905,63 @@ export const adventurePages = {
   threx_collar: {
     title: "Threx Collar",
     type: "text",
+    src: "../assets/forest.webp",
     next: "what_going_be",
     text: "Before you can answer, strong hands grab the collar of your shirt.\n\n\"She's right,\" Threx hisses. \"And you need to realize your place on that team. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
   },
   what_going_be: {
     title: "What's it going to be?",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "What's it going to be?",
     choices: [
       { label: "Stay and listen", next: "stay" },
       { label: "Leave", next: "leave" },
       { label: "Leave, then sneak back in", next: "leave_sneak" },
     ]
+  },
+  stay: {
+    title: "Stay",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "\"I...I'll listen,\" you stammer, realizing this is the only way forward. \"I'm sorry for entering alone. I... thought I was stronger.\"\n\nRonin chuckles at your expense, but your words find their mark.\n\n\"Good,\" Threx says. \"In that case, we're moving on. Consult that digital readout of yours to learn more about the others while we move. Knowing who you're fighting beside might save your life today.\"",
+    next: "stay2"
+  },
+  stay2: {
+    title: "Stay",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "\"*Digital* readout?\" a mustachioed man in fine armor asks. He speaks like a character in a medieval period piece. \"Doth thou claim this rube isn't activated?\"\n\nNext to him, a girl in skin-tight black leather rolls her eyes and adds, \"As if we weren't worried about him already.\"\n\nYour digital readout gives you the names and portfolios of your companions. The man is Kaelion Virehart, an E-Class warrior. The woman, a summoner, is \"Mitzi.\" Also E-Class.",
+    next: "stay3"
+  },
+  stay3: {
+    title: "Stay",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "Admiring the purple tree-things is Sheemie Bauer, a dorky-looking E-Class mage.\n\nYou've met the others.\n\nThrex, the C-Class warrior\n\nAkemi, the E-Class undeclared\n\nHarla, the D-Class healer\n\nRonin, the— you do a double take— *D-Class* mixed.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.",
+    next: "stay4"
+  },
+  stay4: {
+    title: "Stay",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "You look up at Ronin, and instead lock eyes with a member of the party you hadn't noticed before.\n\nThe final member of the party had been watching you intently, and he doesn't look away now that you've noticed him.\n\nIt's creepy.\n\n\"Aleth Achen,\" reads your digital readout when you scroll to the final entry. \"Unactivated.\"\n\n*He's like me,* you realize.",
+    //next depends on if they were nice to akemi (takes hand)
+    next: ""
+  },
+  leave: {
+    title: "Leave",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "\"I...I...\" Tears overrule your objection. Who are you kidding? You were dead only minutes ago.",
+    next: "go_home"
+  },
+  leave_sneak: {
+    title: "Leave, then Sneak Back In",
+    src: "../assets/forest.webp",
+    type: "text",
+    text: "\"Fine,\" you hiss, pulling yourself away from the Class-C Breaker. You don't need him, anyway. You don't need any of them.\n\nRonin is laughing as you exit the portal, but that's okay. The joke will be on him soon enough.\n\nFor a brief moment, you're looking back at your city again. Arclight Haven is only just waking up, and the hum of traffic is still faint. You look at the obelisk at the edge of the city, thinking of your family and the promise you made to keep them safe.\n\nYou *can't* pick another career. There is too much riding on this one. You count to a hundred fifteen times, giving your ex-companions time to move on, then re-enter.",
+    next: "forest_deeper",
   },
   team_Warrior: {
     title: "Warrior",
@@ -991,7 +1226,7 @@ export const adventurePages = {
     title: "Waste of Time",
     type: "choice",
     src: "../assets/portal.webp",
-    text: "\"That's true. Half of our top hunters *are* freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
+    text: "\"That's true. Half of our top Breakers *are* freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
     choices: [
       { label: "Go home", next: "go_home" },
       { label: "Punch Threx in the face", next: "punch_threx" },
@@ -1017,7 +1252,7 @@ export const adventurePages = {
     title: "Punch Threx In The Face",
     type: "roll",
     src: "../assets/portal.webp",
-    text: "You could argue your point, but it's easier to show than to tell. This'll teach him to doubt a freelance hunter!",
+    text: "You could argue your point, but it's easier to show than to tell. This'll teach him to doubt a freelance Breaker!",
     roll: {
       stat: "Athletics",
       dc: 12,
@@ -1163,14 +1398,14 @@ export const adventurePages = {
     title: "Breaker Points?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
+    text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the *Thomur Guild*. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
     next: "team_portal_victory2",
   },
   team_portal_victory2: {
     title: "Guilds?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join The Silhouettes once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either *The Silhouettes* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
+    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *The Silhouettes* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either *The Silhouettes* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
     next: "team_portal_victory3",
   },
   team_portal_victory3: {
@@ -1635,6 +1870,7 @@ export const adventurePages = {
   forest_shack: {
     title: "Forest Shack",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* that comes from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
     choices: [
       { label: "Speak to the creature", next: "speak_to_creature" },
@@ -1645,12 +1881,13 @@ export const adventurePages = {
   remain_silent: {
     title: "Remain Silent",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You keep quiet, unsure how to talk to Tethered Beings.\n\n\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" the wannabee knight yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"\n\n\"We have a better chance fighting this thing together!\" Ronin protests. \"I--\"\n\n\"Now!\"\n\nThe C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Ronin stops arguing and files behind Threx with you and the others. Behind all of you, Kaelion drops the last of his armor and begins his sprint to the exit.",
     next: "camper_hunt",
   },
   camper_hunt: {
     title: "Camper Hunt",
-    src: "../assets/forest_clearing.webp",
+    src: "../assets/shack.webp",
     type: "text",
     text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
@@ -1658,18 +1895,21 @@ export const adventurePages = {
   },
   send_a_runner: {
     title: "Send A Runner",
+    src: "../assets/shack.webp",
     type: "text",
     text: "\"Mitzi,\" you whisper. \"Run back to the gate and get us some help. Aleth is right; something about this feels off.\"\n\nThe woman blinks at you. \"Excuse me? If you're so worried about it, why don't you go? I'm here to get stronger. I can't do that if I'm running away, can I?\"\n\n\"Mitzi,\" Threx hisses. \"Do what he's telling you. Inform the GPA that our Tethered Being is a Camper.\"\n\n\"A what?\" Mitsi is incredulous. \"No way! I'm not going anywhere.\"\n\n\"Now!\"",
     next: "send_a_runner2",
   },
   send_a_runner2: {
     title: "Send A Runner",
+    src: "../assets/shack.webp",
     type: "text",
     text: "The C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Mitzi stops arguing and spins around. She's moving at a full sprint before the creature speaks again.\n\n\"Good,\" it rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
     next: "send_a_runner3",
   },
   send_a_runner3: {
     title: "Send A Runner",
+    src: "../assets/shack.webp",
     type: "text",
     text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has *become* null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
@@ -1677,18 +1917,21 @@ export const adventurePages = {
   },
   speak_to_creature: {
     title: "Speak To The Creature",
+    src: "../assets/shack.webp",
     type: "text",
     text: "\"They tried to kill us first,\" you say. Your companions turn, dumbstruck.",
     next: "speak_to_creature2",
   },
   speak_to_creature2: {
     title: "Speak To The Creature",
+    src: "../assets/shack.webp",
     type: "text",
     text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The *what?*\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class Breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
     next: "speak_to_creature3",
   },
   speak_to_creature3: {
     title: "Speak To The Creature",
+    src: "../assets/shack.webp",
     type: "choice",
     text: "\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" Kaelion yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"",
     choices: [
@@ -1698,6 +1941,7 @@ export const adventurePages = {
   },
   behind_threx: {
     title: "Get Behind Threx",
+    src: "../assets/shack.webp",
     type: "text",
     text: "You file behind the group leader with the others. Threx takes a step forward and angles his warhammer sideways.",
     next: "threx_ahead",
@@ -1705,12 +1949,14 @@ export const adventurePages = {
   threx_ahead: {
     title: "Threx Ahead",
     type: "text",
+    src: "../assets/shack.webp",
     text: "For the first time since you've met him, the C-Class Breaker reveals his full power. It dwarfs the rest of you.\n\nKaelion drops the last of his armor and begins his sprint to the exit.",
     next: "camper_hunt",
   },
   continue_talking: {
     title: "Continue Talking",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "You step forward, putting  the group leader at your back.\n\n\"I want to know more about you,\" you say. \"Where are you from, originally? How long have you been here?\"\n\nThe thing cocks its head, amused. \"I know some things about the world you come from. Tell me: does a human converse with an insect before stepping on it?\"",
     choices: [
       { label: "Sometimes", next: "sometimes_camper" },
@@ -1720,11 +1966,13 @@ export const adventurePages = {
   sometimes_camper: {
     title: "Sometimes",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You shrug. \"That depends on the human, I guess. Some people are lonelier than others.\"\n\nBehind you, Kaelion drops the last of his armor and begins his sprint to the portal.\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
     next: "sometimes_camper2",
   },
   sometimes_camper2: {
     title: "Sometimes",
+    src: "../assets/shack.webp",
     type: "text",
     text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
@@ -1735,7 +1983,7 @@ export const adventurePages = {
     title: "No",
     type: "text",
     text: "You take a step back, realizing your folly in trying to reason with this thing. Threx grabs your wrist and pulls you behind him.\n\n\"Dumbass,\" he says.",
-    next: "",
+    next: "camper_hunt",
   },
   camper_finish: {
     title: "---",
@@ -1830,13 +2078,13 @@ export const adventurePages = {
   veyr: {
     title: "Veyr Singrave",
     type: "text",
-    text: "You've heard of Veyr Singrave. The S-Class Breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of operatives registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
+    text: "You've heard of Veyr Singrave. The S-Class Breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of Breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
     next: "veyr2"
   },
   veyr2: {
     title: "Veyr Singrave",
     type: "text",
-    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class operative.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
+    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class Breaker.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
     //depends on if they were solo/together and sacrificed
     conditionalNext: [
     {

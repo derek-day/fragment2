@@ -53,9 +53,9 @@ export const DATA_PACKETS = {
   },
   character_akemi: {
     id: 'character_akemi',
-    title: 'Akemi',
+    title: 'Akemi Sato',
     category: 'Characters',
-    content: `A friendly and optimistic Breaker-in-training from Ramsey Academy. She dreams of starting her own guild someday and seems genuinely interested in making connections with fellow Breakers.`,
+    content: `Friendly. Natural leader. Wants to start her own guild. Could be good relationship material. Parents were refugees from Japan during the Fracture Event.\n\nBreaker ID: 102-345-697\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy\n\nPath: Undeclared\n\nPrimary Weapon: No Primary Weapon/Alternates`,
     unlocksOnPage: 'akemi_intro',
     updates: [
       {
@@ -74,107 +74,128 @@ export const DATA_PACKETS = {
   },
   character_threx: {
     id: 'character_threx',
-    title: 'Threx',
+    title: 'Threx Muller',
     category: 'Characters',
-    content: `C-Class Breaker and your party leader. Experienced, powerful, and no-nonsense. He takes his role seriously and expects the same from his team members.`,
+    content: `Leader of your first party. Strong, serious, and genuinly interested in the safety of the Breakers he manages. Used to break gates solo, but decided that parties are the better route after getting rescued in a break gone bad. Large, muscular, high-and-tight haircut, clean shaven.\n\nBreaker ID: 742-137-094\n\nBreaker Class: C-Class\n\nAssociation: Global Protocol Authority\n\nPath: Warrior\n\nPrimary Weapon: Battleaxe`,
     unlocksOnPage: 'threx_brief'
   },
   character_ronin: {
     id: 'character_ronin',
-    title: 'Ronin',
+    title: 'Ronin Balore',
     category: 'Characters',
-    content: `A fellow freelance Breaker who harbors strong negative feelings toward you. He wields mechanical knives from the Epoch Corporation and aspires to join their ranks.`,
+    content: `Like you, an orphan. Your former friend and current rival. Blames you for something he's never explained. Obsessed with the Epoch Corporation. Spiky black hair, trim build, Japanese and Irish parentage.\n\nBreaker ID: 301-246-879\n\nBreaker Class: D-Class\n\nAssociation: Unaffiliated\n\nPath: Mixed\n\nPrimary Weapon: E-Corp Self-Oscellating Blade`,
     unlocksOnPage: 'ronin_intro'
   },
   character_harla: {
     id: 'character_harla',
-    title: 'Harla',
+    title: 'Harla Freeman',
     category: 'Characters',
-    content: `The team's healer and a formidable fighter in her own right. Her dented armor tells the story of someone who can both take and heal from serious hits. She has a taste for gossip.`,
+    content: `Healer. Into gossip. Harla wears old, dented armor, hinting that she's taken many hits in her life. Middle-aged, dark complected, black hair in a bun.\n\nBreaker ID: 966-931-878\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy/ Global Protocol Authority\n\nPath: Mage (Healer)\n\nPrimary Weapon: Assorted Magic`,
     unlocksOnPage: 'team_intro1'
   },
   character_kaelion: {
     id: 'character_kaelion',
     title: 'Kaelion Virehart',
     category: 'Characters',
-    content: `A warrior in exceptionally expensive armor who speaks like a knight from old tales. His handlebar mustache and formal manner of speaking make him memorable, if somewhat anachronistic.`,
+    content: `Acts like a knight. Wears expensive-looking armor and speaks like he belongs in an old romance novel. Cool mustache.\n\nBreaker ID: 825-629-126\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Warrior\n\nPrimary Weapon: Longsword`,
     unlocksOnPage: 'team_intro2'
   },
   character_sheemie: {
     id: 'character_sheemie',
-    title: 'Sheemie',
+    title: 'Sheemie Bauer',
     category: 'Characters',
-    content: `An energetic mage specializing in plant-based abilities. He dreams of joining the Thomur Guild and has an infectious enthusiasm that borders on overwhelming.`,
+    content: `An energetic mage specializing in plant-based abilities. Friendly. Dorky. Obssesed with trees. Sheemie is short, skinny, and his perpetually-smiling face is pitted with acne scars. Wearing green wizard robes.\n\nBreaker ID: 204-847-186\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Mage\n\nPrimary Weapon: Tree-themed Magic`,
     unlocksOnPage: 'team_intro3'
   },
   character_mitzi: {
     id: 'character_mitzi',
     title: 'Mitzi',
     category: 'Characters',
-    content: `A quiet, deadpan mage dressed in skin-tight black leather. She's interested in joining either The Silhouettes or Protocol Null, organizations that question the nature of the Protocol itself.`,
+    content: `Dark and edgy. Wears skin-tight black leather. Mitzi is a woman of few words. The words she uses, however, make most people wish she spoke even less. Interested in eventually joining either the Silhouette or Protocol Null.\n\nBreaker ID: 373-179-628\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Summoner\n\nPrimary Weapon: Creepy Summoning Magic`,
     unlocksOnPage: 'team_intro4'
   },
   character_aleth: {
     id: 'character_aleth',
-    title: 'Aleth',
+    title: 'Aleth Achen',
     category: 'Characters',
-    content: `An unactivated samurai with keen instincts. He often senses when something is wrong and prefers to remain freelance. Despite not being connected to the Protocol, he's proven himself capable.`,
+    content: `Calm, quiet, and always seeming to notice more than most people. Aleth is skinny, average height, and overtly unactivated. He also perpetually seems to believe that "something is wrong." Unkempt blonde hair. Short, scruffy facial hair, always wearing blue jeans and a white T-shirt.\n\nBreaker ID: 401-236-879\n\nBreaker Class: No Record\n\nAssociation: Ramsey Academy\n\nPath: No Record\n\nPrimary Weapon: Throwing Knives`,
     unlocksOnPage: 'team_intro5'
   },
   guild_gpa: {
     id: 'guild_gpa',
-    title: 'Global Protocol Authority',
-    category: 'Factions',
-    content: `The largest and most established organization of Breakers. They maintain order, fund academies, and get priority access to new gates. Seen as the closest thing to pre-gate government structure.`,
-    unlocksOnPage: 'guild_gpa'
+    title: 'Global Protocol Authority (GPA)',
+    category: 'Factions and Guilds',
+    content: `Motto: "Balance Through Strength."\n\nFocus: Regulation, Rankings, Mission Assignment\n\nPresence: Global; HQ in The Association\n\nRole: Oversees Hunter licensing, missions, and Rank progression. Officially neutral, but often tied to Epoch Corp funding.\n\nRumors: May be suppressing knowledge of higher Gate classifications or S+ Awakenings.`,
+    // content: `The largest and most established organization of Breakers. They maintain order, fund academies, and get priority access to new gates. Seen as the closest thing to pre-gate government structure.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_epoch: {
     id: 'guild_epoch',
     title: 'Epoch Corporation',
-    category: 'Factions',
-    content: `A tech-focused guild that creates cutting-edge equipment like Gate Stabilizers and mechanical weapons. They value ingenuity and originality above all else.`,
-    unlocksOnPage: 'guild_epoch'
+    category: 'Factions and Guilds',
+    content: `Motto: "The Future Must Be Engineered."\n\nFocus: Essence research, artificial Awakening, gear innovation\n\nPresence: Global, with hubs in Zariel's Spine and Halcyon Refract\n\nRole: Manufactures weapons, relics, and experimental mods. Recruits Hunters for research-driven black ops.\n\nRumors: May have triggered early Break Events during failed containment trials.`,
+    // content: `A tech-focused guild that creates cutting-edge equipment like Gate Stabilizers and mechanical weapons. They value ingenuity and originality above all else.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_silhouettes: {
     id: 'guild_silhouettes',
     title: 'The Silhouettes',
-    category: 'Factions',
-    content: `A breakaway faction seen as dangerous by outsiders. They question the nature of the Protocol and seek deeper understanding. Strongest presence in Blackspire and Halcyon Refract.`,
-    unlocksOnPage: 'guild_silhouette'
+    category: 'Factions and Guilds',
+    content: `Motto: "Power Without Chains.”\n\nFocus: Rogue Hunters, Gate manipulation, anti-Protocol agenda\n\nPresence: Shadow networks in Vanta Reach, Cinderwake Expanse\n\nRole: Operates as a resistance movement or terror network, depending on your source. Skilled in Gate subversion and illegal Awakening rerolls.\n\nRumors: May have discovered a method to hijack Protocol fragments.`,
+    // content: `A breakaway faction seen as dangerous by outsiders. They question the nature of the Protocol and seek deeper understanding. Strongest presence in Blackspire and Halcyon Refract.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_protocol_null: {
     id: 'guild_protocol_null',
     title: 'Protocol Null',
-    category: 'Factions',
-    content: `The most radical faction, with the motto "Unlink yourself." They believe in transcending the Protocol rather than serving it. Members seek to understand and potentially break free from the system.`,
-    unlocksOnPage: 'guild_protocol_null'
+    category: 'Factions and Guilds',
+    content: `Motto: "Unlink Yourself."\n\nFocus: Breaking the System, spiritual Gate transcendence\n\nPresence: Fragmented enclaves across the world\n\nRole: Former Hunters who rejected their Awakening. Believe the Protocol is a lie — a parasitic control algorithm.\n\nRumors: Some have regained full power without using Essence… or LP.`,
+    // content: `The most radical faction, with the motto "Unlink yourself." They believe in transcending the Protocol rather than serving it. Members seek to understand and potentially break free from the system.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_veil_cult: {
     id: 'guild_veil_cult',
-    title: 'The Veil Cult (The Scribes)',
-    category: 'Factions',
-    content: `A spiritual organization that views the gates as divine. Members (who call themselves Scribes) find religious significance in the Protocol and the portals. Often subject to ridicule from other Breakers.`,
-    unlocksOnPage: 'guild_veil_cult'
+    title: 'The Veil Cult',
+    category: 'Factions and Guilds',
+    content: `Motto: "All Hail the Protocol."\n\nFocus: Gate worship, resistance to Hunter interference\n\nPresence: Hidden temples, high-level infiltrators in Halcyon Refract\n\nRole: Treats Gates as divine, living beings. Disrupting a Gate is heresy. Known to infiltrate guilds and whisper Gate-lore to low-Rank Hunters.\n\nRumors: May be communicating directly with the Gates — or worse, merging with them.`,
+    // content: `A spiritual organization that views the gates as divine. Members (who call themselves Scribes) find religious significance in the Protocol and the portals. Often subject to ridicule from other Breakers.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_silk_road: {
     id: 'guild_silk_road',
     title: 'The Silk Road',
-    category: 'Factions',
-    content: `The wealthiest guild, specializing in trade and commerce. Membership comes with exceptional financial benefits and opportunities. Known for their sharp uniforms and business acumen.`,
-    unlocksOnPage: 'guild_silk_road'
+    category: 'Factions and Guilds',
+    content: `Motto: \n\nFocus: \n\nPresence: \n\nRole: \n\nRumors: `,
+    // content: `The wealthiest guild, specializing in trade and commerce. Membership comes with exceptional financial benefits and opportunities. Known for their sharp uniforms and business acumen.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   guild_thomur: {
     id: 'guild_thomur',
     title: 'Thomur Guild',
-    category: 'Factions',
-    content: `A rising guild that specializes in niche markets and hyper-specialized abilities. Their rapid rise to prominence this year has made them an attractive option for Breakers looking to grow with an organization.`,
-    unlocksOnPage: 'guild_thomur_guild'
+    category: 'Factions and Guilds',
+    content: `Motto: \n\nFocus: \n\nPresence: \n\nRole: \n\nRumors: `,
+    // content: `A rising guild that specializes in niche markets and hyper-specialized abilities. Their rapid rise to prominence this year has made them an attractive option for Breakers looking to grow with an organization.`,
+    unlocksOnPage: 'team_portal_victory5',
+    unlocksOnPage: 'forest_deeper',
+    unlocksOnPage: 'agree_threx7',
   },
   gate_stabilizer: {
     id: 'gate_stabilizer',
     title: 'Gate Stabilizer',
     category: 'Technology',
-    content: `An Epoch Corporation device that locks portals open after the Tethered Being is defeated. Without one, Breakers have only 10 minutes to exit before being trapped forever.`,
+    // content: `An Epoch Corporation device that locks portals open after the Tethered Being is defeated. Without one, Breakers have only 10 minutes to exit before being trapped forever.`,
     unlocksOnPage: 'gate_stabilizer_check'
   },
   tethered_beings: {

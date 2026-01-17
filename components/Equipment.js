@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Package, ChevronRight, Sword, Shield, Zap, Scroll } from "lucide-react";
+import { X, Package, ChevronRight, Sword, Shield, Zap, Scroll, BowArrow } from "lucide-react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
@@ -20,6 +20,18 @@ export const EQUIPMENT_ITEMS = {
     // },
     unlocksOnPage: 'nurse_keep',
     icon: Scroll
+  },
+  crossbow: {
+    id: 'crossbow',
+    name: 'Crossbow',
+    type: 'Weapon',
+    rarity: 'Common',
+    description: 'A simple crossbow that can be used to shoot arrows.',
+    stats: {
+      damage: '+5'
+    },
+    unlocksOnPage: 'study_defense',
+    icon: BowArrow
   },
 //   basic_armor: {
 //     id: 'basic_armor',
@@ -57,6 +69,7 @@ export const EQUIPMENT_ITEMS = {
       effect: 'Negates environment penalties'
     },
     unlocksOnPage: 'hold_vial',
+    unlocksOnPage: 'wait_hold',
     icon: Zap
   },
 //   mechanical_knife: {

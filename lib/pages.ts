@@ -410,6 +410,94 @@ export const pages = {
   ridge_ambush: {
     title: "Ridge Battle",
     type: "battle",
+    enemy: {
+      name: "Bigger Critter", //12 of them
+      maxHP: 10,      // Enemy health
+      ac: 10,          // Armor Class (difficulty to hit)
+      attack: 2,      // Attack bonus
+      magic: 1        // Magic attack bonus
+    },
+    text: "",
+    fail: "ridge_ambush_fail",
+    next: "ridge_ambush_success",
+  },
+  ridge_ambush_fail: {
+    title: "Ridge Battle Lost",
+    type: "text",
+    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth.\n\nYour arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nSure enough, the jaws close, and the red goes to black.",
+    next: "ridge_ambush_fail2"
+  },
+  ridge_ambush_fail2: {
+    title: "Ridge Battle Lost",
+    //no src, black background
+    type: "text",
+    text: "You float in this dark ocean for a moment... and an eternity.\n\n\"Go back,\" a soft voice whispers. It sounds so familiar. \"I'm not ready for you yet.\"\n\nThe darkness recedes, and the silhouettes of seven figures appear above you. You know them at once, and the realization burns your face with embarrassment.\n\n\"Dumbass,\" Threx says. \"You should have gone home.\"\n\n\"I told you so,\" Ronin adds.\n\n\"Oh, {{characterName}},\" says one of the women, shaking her head.",
+    next: "ridge_ambush_fail3"
+  },
+  ridge_ambush_fail3: {
+    title: "Ridge Battle Lost",
+    type: "text",
+    text: "When you open your eyes, the group you were supposed to break the gate with is staring down at you. They've carried you to a rock at the center of the clearing, and the rest of the gate's creatures lie broken atop yellow flowers.\n\n\"We're not wasting our time taking you to the exit,\" Threx says. \"But you better not get in our way. Consult that digital readout of yours to learn more about the others while we move. We've saved your ass, after all.\"",
+    next: "ridge_ambush_fail4"
+  },
+  ridge_ambush_fail4: {
+    title: "Ridge Battle Lost",
+    type: "text",
+    text: "\"*Digital readout?*\" a mustachioed man in fine armor asks. He speaks like a character in a medieval period piece. \"Doth thou claim this rube isn't activated?\"\n\nNext to him, a girl in skin-tight black leather rolls her eyes and adds, \"No mystery there. That explains why we had to rescue him.\"\n\nYour digital readout gives you the names and portfolios of your companions. The man is Kaelion Virehart, an E-Class warrior. The woman, a summoner, is \"Mitzi.\" Also E-Class.",
+    next: "ridge_ambush_fail5"
+  },
+  ridge_ambush_fail5: {
+    title: "Ridge Battle Lost",
+    type: "text",
+    text: "There's also Sheemie Bauer, a dorky-looking E-Class mage.\n\nAnd Harla, a D-Class Healer in heavily-dented armor. She must have been the one to bring you back.\n\nThere's Akemi, an undeclared E-Class who watches you with the prettiest eyes you've ever seen.\n\nThere's Aleth, who, like you, is unactivated. He nods at you with a smirk.",
+    next: "ridge_ambush_fail6"
+  },
+  ridge_ambush_fail6: {
+    title: "Ridge Battle Lost",
+    type: "text",
+    text: "Last is Ronin, your former best friend. He's a— you do a double take— mixed *D-Class*.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\n\"Sheemie,\" Threx says, \"is the Gate Stabilizer still intact after that skirmish?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
+    next: ""
+  },
+
+  ridge_ambush_success: {
+    title: "Ridge Battle Won",
+    type: "text",
+    text: "You stand amidst a pile of fresh corpses, out of breath and bleeding from a hundred cuts. Despite the odds, you've somehow survived the counter.\n\n\"That... just leaves the Tethered Being,\" you say aloud.\n\n\"Holy... crap.\"\n\nYou reel to face the voice and discover seven sets of wide eyes looking back at you.\n\n\"You killed all of these things?\" Threx asks. \"I'm... actually impressed.\"",
+    next: "ridge_ambush_success2"
+  },
+  ridge_ambush_success2: {
+    title: "Ridge Battle Won",
+    type: "text",
+    text: "You scan the faces of the others, vaguely remembering their portfolios from your time investigating the Break.\n\nThere's Kaelion Virehart, an E-Class warrior with a handlebar mustache and fine armor.\n\nThere's Mitzi, an E-Class summoner, wearing skin-tight black leather.\n\nThere's Sheemie Bauer, a dorky-looking E-Class mage.\n\nThere's Harla, a D-Class Healer in heavily-dented armor.",
+    next: "ridge_ambush_success3"
+  },
+  ridge_ambush_success3: {
+    title: "Ridge Battle Won",
+    type: "text",
+    text: "There's Akemi, an undeclared E-Class who watches you with the prettiest eyes you've ever seen.\n\nThere's Aleth, who, like you, is unactivated. He nods at you with a smirk.\n\nThere's Ronin Balore... your former best friend.\n\n\"This is...amazing,\" he mutters.\n\nYou shake your head, fighting wooziness. \"I'm breaking this gate alone. Stay out of my way.\"",
+    next: "ridge_ambush_success4"
+  },
+  ridge_ambush_success4: {
+    title: "Ridge Battle Won",
+    type: "choice",
+    text: "Harla snorts. \"Fat chance. You're in no shape to take on the boss by yourself.\" She raises a glowing hand. \"But I can heal you... if you're not too proud to let me.\"",
+    choices: [
+      { label: "Accept", next: "harla_accept" },
+      { label: "Decline", next: "harla_decline" },
+    ],
+  },
+  harla_accept: {
+    //health is restored
+    title: "Accept Healing",
+    type: "text",
+    text: "You sigh and offer a weak nod. The effect is immediate.",
+    next: "gate_stabilizer_check"
+  },
+  harla_decline: {
+    title: "Decline Healing",
+    type: "text",
+    text: "\"No,\" you manage. \"I've already made it this far. I'll see this through myself.\"\n\n\"Too bad,\" Threx says. \"We're coming along anyway. This was impressive, but you still need us. Sheemie, is the Gate Stabilizer okay after our run here?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
+    next: "gate_stabilizer_check"
   },
   ignore_it: {
     title: "Ignore It",
@@ -950,7 +1038,7 @@ export const pages = {
     title: "Ignored",
     type: "text",
     src: "../assets/forest.webp",
-    text: "You ignore both the hand and the question, returning to your feet on your own terms.\n\nAkemi gafaws.\n\n\"I told you, Ronin says. \"Yib is an asshole.\"\n\nBefore you can reply, strong hands grab the collar of your shirt.\n\n\"Asshole or not,\" Threx says, \"you're going to listen to me now. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
+    text: "You ignore both the hand and the question, returning to your feet on your own terms.\n\nAkemi gafaws.\n\n\"I told you, Ronin says. \"{{characterName}} is an asshole.\"\n\nBefore you can reply, strong hands grab the collar of your shirt.\n\n\"Asshole or not,\" Threx says, \"you're going to listen to me now. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
     action: "add_name",
     next: "what_going_be",
   },

@@ -211,7 +211,7 @@ export default function PageClient({ page: initialPage, pageId }) {
         };
         
         if (page.route === "alone") {
-          updates.characterName = "Yib";
+          // updates.characterName = "Yib";
           updates.wentAlone = true;
         }
         
@@ -328,7 +328,7 @@ export default function PageClient({ page: initialPage, pageId }) {
   const renderText = () => {
     // const text = (page.text || "").replace(/{{characterName}}/g, characterName || "Yib");
     let text = page.text || "";
-    text = text.replace(/{{characterName}}/g, characterName || "Yib");
+    text = text.replace(/{{characterName}}/g, characterName || "My Dude");
     text = text.replace(/{{className}}/g, className || "Unknown");
 
     

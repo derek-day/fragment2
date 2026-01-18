@@ -2205,7 +2205,7 @@ export const adventurePages = {
       //{ label: "...I'm not a member of a party", next: "hospital_response" },
     ],
   },
-  hospital_reponse: {
+  hospital_response: {
     title: "Try Talking",
     type: "text",
     text: "\"Uhhhhnnngggrrraa,\" you say.\n\nThe nurse and healer exchange a look.\n\n\"These damned Breakers never listen,\" mutters the latter. \"It doesn't matter whether they are E-Rank like this one, or S like the one who brought them in.\"\n\n\"Oh, you can't blame Veyr for having places to be!\" argues the latter. Her eyes grow wide with admiration. \"I still can't believe we got to see *the* Veyr Singrave in person! Ahh! He's so dreamy!\"",

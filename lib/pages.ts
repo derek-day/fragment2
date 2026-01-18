@@ -379,6 +379,44 @@ export const pages = {
       { label: "Keep moving", next: "keep_moving_alone_carvings" },
     ],
   },
+  keep_moving_alone_carvings: {
+    title: "Keep Moving",
+    type: "roll",
+    text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery. You don't care much for the Thomur Guild anyway.\n\nAfter all, you plan on doing this Gatebreaker thing solo.",
+    roll: {
+      stat: "Thought",
+      dc: 15,
+      successText: "You pull your eyes from the carvings and take in the forest beyond the trees. There is a layout to the woods themselves, as though it's been painstakingly designed.",
+      failText: "This place is strange, but it doesn't feel threatening. You look for movement beyond the trees, but find nothing.",
+      nextSuccess: "keep_moving_alone_success",
+      nextFail: "carving_alone_fail",
+    },
+  },
+  keep_moving_alone_success: {
+    title: "Keep Moving",
+    type: "choice",
+    text: "Following the converging lines of the purple tree-things, you notice a shimmer in the distance.\n\nIt's only there for a moment, then disappears.",
+    choices: [
+      { label: "Get off the path and use the environment as cover", next: "cover_alone" },
+      { label: "Ignore it", next: "ignore_it" },
+    ],
+  },
+  cover_alone: {
+    title: "Use Cover",
+    type: "text",
+    text: "You exit the well-defined footpath begin moving along a slight ridge running parallel to it.\n\nThe going is slower along this route, but you're more protected.\n\nEventually, the path leads into a clearing. It would have been a perfect place for an ambush.\n\nInstead, when the creatures inevitably come, the ridge protects your flank.\n\nOne by one, they come for you.\n\nThere are twelve.",
+    next: "ridge_ambush"
+  },
+  ridge_ambush: {
+    title: "Ridge Battle",
+    type: "battle",
+  },
+  ignore_it: {
+    title: "Ignore It",
+    type: "text",
+    text: "This world is weird and behaves in ways you'll nevestand. Better to avoid jumping at every little thing.\n\nYou shrug and continue moving.",
+    next: "carving_alone_fail"
+  },
   inspect_alone: {
     title: "Inspect The Carvings",
     type: "roll",
@@ -391,6 +429,22 @@ export const pages = {
       nextSuccess: "carving_alone_success",
       nextFail: "carving_alone_fail",
     },
+  },
+  carving_alone_fail: {
+    title: "Carving Failed",
+    type: "text",
+    text: "At last, the path leads into a clearing. For the first time since entering this place, you see a color other than purple.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.",
+    next: "carving_alone_fail2"
+  },
+  carving_alone_fail2: {
+    title: "Carving Failed",
+    type: "text",
+    text: "Unfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge at you. They are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou walked right into an ambush.",
+    next: "ambush_alone"
+  },
+  ambush_alone: {
+    title: "Ambush",
+    type: "battle",
   },
   carving_alone_success: {
     title: "Carving Patterns",

@@ -24,7 +24,16 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     
     case 'went_alone':
       return progress.wentAlone === true;
+
+    case 'nice_to_akemi':
+      return progress.niceToAkemi === true;
+
+    case 'gave_to_cale':
+      return progress.gaveToCale === true;
     
+    case 'took_environment_potion':
+      return progress.tookEnvironmentPotion === true;
+
     case 'died_before':
       return (progress.deaths || 0) > 0;
     

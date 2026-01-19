@@ -69,6 +69,9 @@ interface PlayerProgress {
   wentAlone?: boolean;
   characterName?: string;
   toldTeamAbout?: string[];
+  niceToAkemi?: boolean;
+  gaveToCale?: boolean;
+  tookEnvironmentPotion?: boolean;
   
   // Death tracking
   deaths?: number;
@@ -113,6 +116,9 @@ export async function getPlayerProgress(userId: string): Promise<PlayerProgress>
       completedRoutes: [],
       visitedPages: [],
       wentAlone: false,
+      niceToAkemi: false,
+      gaveToCale: false,
+      tookEnvironmentPotion: false,
       minionGroups: {},
       joinedGuild: null,
       guildOpinions: [],
@@ -564,6 +570,7 @@ export async function hasSacrificed(userId: string): Promise<boolean> {
   const progress = await getPlayerProgress(userId);
   return progress.sacrificedForTeam === true;
 }
+
 
 // Get current route (alone or team)
 export async function getCurrentRoute(userId: string): Promise<'alone' | 'team' | null> {

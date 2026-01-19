@@ -134,7 +134,7 @@ export default function PageClient({ page: initialPage, pageId }) {
         if (snap.exists()) {
           const userData = snap.data();
           setUserStats(userData.stats || {});
-          setCharacterName(userData.characterName || "Unknown");
+          setCharacterName(userData.characterName || "My Guy");
           setClassName(userData.className || "Unknown");
         }
         

@@ -72,6 +72,7 @@ interface PlayerProgress {
   niceToAkemi?: boolean;
   gaveToCale?: boolean;
   tookEnvironmentPotion?: boolean;
+  tookHospitalNote?: boolean;
   
   // Death tracking
   deaths?: number;
@@ -571,6 +572,70 @@ export async function hasSacrificed(userId: string): Promise<boolean> {
   return progress.sacrificedForTeam === true;
 }
 
+
+export async function recordNiceToAkemi(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    niceToAkemi: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player was nice to Akemi`);
+}
+
+export async function wasNiceToAkemi(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.niceToAkemi === true;
+}
+
+export async function recordGaveToCale(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    gaveToCale: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player gave to Cale`);
+}
+
+export async function hasGivenToCale(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.gaveToCale === true;
+}
+
+export async function recordTookEnvironmentalPotion(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    tookEnvironmentPotion: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player took environmental potion`);
+}
+
+export async function hasTakenEnvironmentalPotion(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.tookEnvironmentPotion === true;
+}
+
+export async function recordTookHospitalNote(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    tookHospitalNote: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player took hospital note`);
+}
+
+export async function hasTakenHospitalNote(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.tookHospitalNote === true;
+}
 
 // Get current route (alone or team)
 export async function getCurrentRoute(userId: string): Promise<'alone' | 'team' | null> {

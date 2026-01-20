@@ -362,6 +362,7 @@ export const pages = {
     title: "Keep Moving",
     type: "text",
     text: "...but you've come too far to wuss out now.",
+    action: "not_nice_to_akemi",
     next: "forest_deeper"
   },
   forest_deeper: {
@@ -987,7 +988,7 @@ export const pages = {
     src: "../assets/forest.webp",
     type: "text",
     text: "You take the hand being offered to you, a little embarrassed. You had seen things going a little differently here.",
-    action: "akemi_nice",
+    action: "nice_to_akemi",
     next: "good_name"
   },
   good_name: {
@@ -1013,7 +1014,7 @@ export const pages = {
     type: "text",
     src: "../assets/forest.webp",
     text: "You ignore the hand and struggle to your feet.",
-    action: "akemi_mean",
+    action: "nice_to_akemi",
     next: "bad_name"
   },
   bad_name: {
@@ -1039,7 +1040,8 @@ export const pages = {
     type: "text",
     src: "../assets/forest.webp",
     text: "You ignore both the hand and the question, returning to your feet on your own terms.\n\nAkemi gafaws.\n\n\"I told you, Ronin says. \"{{characterName}} is an asshole.\"\n\nBefore you can reply, strong hands grab the collar of your shirt.\n\n\"Asshole or not,\" Threx says, \"you're going to listen to me now. You have a choice, newbie. You can either do as I say the rest of the time we're in here, or you can head right back through this portal and find yourself a new career.\"",
-    action: "add_name",
+    // action: "add_name",
+    action: "not_nice_to_akemi",
     next: "what_going_be",
   },
   threx_collar: {
@@ -1404,16 +1406,24 @@ export const pages = {
   },
   threx_hits: {
     title: "Threx Hits Back",
-    type: "text",
+    type: "battle",
     src: "../assets/portal.webp",
-    text: "Any celebration is short-lived, though. Threx quickly shrugs off the strike, and returns with an attack of his own.\n\nThrex wipes the floor with you immediately, showcasing the power disparity between class E and C.",
+    text: "Any celebration is short-lived, though. Threx quickly shrugs off the strike, and returns with an attack of his own.",
+    enemy: {
+      name: "Threx Muller",
+      maxHP: 1000,      // Enemy health
+      ac: 16,          // Armor Class (difficulty to hit)
+      attack: 5,      // Attack bonus
+      magic: 5        // Magic attack bonus
+    },
+    fail: "very_dumb",
     next: "very_dumb",
   },
   very_dumb: {
     title: "Very Dumb",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"That was very dumb of you... but I appreciate your gusto. Here...\"\n\nYour digital readout dings with a notification.\n\nHealth potion added.",
+    text: "\n\nThrex wipes the floor with you immediately, showcasing the power disparity between class E and C.\n\n\"That was very dumb of you... but I appreciate your gusto. Here...\"\n\nYour digital readout dings with a notification.\n\nHealth potion added.",
     next: "now_what",
   },
   now_what: {
@@ -1437,6 +1447,7 @@ export const pages = {
     title: "Team Portal Entry",
     src: "../assets/forest.webp",
     type: "text",
+    action: "nice_to_akemi",
     text: "With your gear checked and your role in the party understood as best it can be, you follow the others to the portal.\n\nIt crackles, sloshes, and whispers at your approach, speaking in a language even its denizens fail to understand. Its surface runs like quicksilver. Its golden facade sparkles against the sun. It's the most beautiful thing you've ever seen.\n\nAnd also the most terrifying.\n\nYou enter... and all you've ever known disappears behind you.",
     next: "team_portal_inside",
   },
@@ -2340,7 +2351,7 @@ export const pages = {
     choices: [
       { label: "Accept and stay awhile", next: "family_visit" },
       { label: "Decline and get some rest", next: "family_rest" },
-      { label: "Accept, but save the painkiller for Cale ", next: "family_painkiller" },
+      { label: "Accept, but save the painkiller for Cale ", next: "family_painkiller", action: "gave_to_cale", },
       { label: "Accept and address it with Cale", next: "family_address" },
     ],
   },
@@ -2626,8 +2637,8 @@ export const pages = {
     text: "You wake again, still in the hospital room. It's empty now, but there are hints of other visitors.\n\nYou press the call button, and a new nurse enters a minute later.",
     choices: [
       //add note to inventory or data journal
-      { label: "Keep the note", next: "nurse_keep" },
-      { label: "Leave the note here", next: "nurse_leave" },
+      { label: "Keep the note", next: "nurse_keep", action: "took_hospital_note" },
+      { label: "Leave the note here", next: "nurse_leave", action: "did_not_take_hospital_note" },
     ],
   },
   nurse_keep: {
@@ -2871,7 +2882,7 @@ export const pages = {
   interloper_ok: {
     title: "Okay",
     type: "text",
-    text: "\"Fine,\" you lie. \"I'll follow what you tell me. Only... I'm not even activated yet. I'm not sure how helpful I'll be if the Protocol hasn't even noticed me.\"\n\n\"I wouldn't be too concerned about that. Changes are coming, my friend.\" They look at you. \"Is there anything else you'd like to discuss?\"\n\nYou pause a moment, knowing your earlier statement is only half true. The Protocol hasn't activated you, but you *did* speak with something in that *other* place.",
+    text: "\"Fine,\" you say. \"I'll follow what you tell me. Only... I'm not even activated yet. I'm not sure how helpful I'll be if the Protocol hasn't even noticed me.\"\n\n\"I wouldn't be too concerned about that. Changes are coming, my friend.\" They look at you. \"Is there anything else you'd like to discuss?\"\n\nYou pause a moment, knowing your earlier statement is only half true. The Protocol hasn't activated you, but you *did* speak with something in that *other* place.",
     next: "interloper_ok2"
   },
   interloper_ok2: {
@@ -2965,7 +2976,7 @@ export const pages = {
     text: "You almost died a few days ago, and your family is no better off because of it.\n\n\"*D-Class,*\" you say again.\n\n*Things will only get harder from here.*",
     next: "chapter1_end_card"
   },
-  chaper1_end_card: {
+  chapter1_end_card: {
     //need some kind of ending here before chapter 2 is ready to push
   }
 };

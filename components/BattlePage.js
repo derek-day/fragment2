@@ -785,9 +785,9 @@ return (
           {/* RIGHT COLUMN: Info & Logs */}
           <div className="flex flex-col gap-3 min-h-0">
              {/* Story Text */}
-             {/* <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
+             <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
                 <p className="line-clamp-3 md:line-clamp-none">{page.text}</p>
-             </div> */}
+             </div>
 
              {/* Battle Log - constrained height */}
              <div className="flex-1 min-h-[100px] md:min-h-0 bg-black/40 border border-slate-700/50 p-2 flex flex-col relative overflow-hidden">

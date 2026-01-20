@@ -20,7 +20,10 @@ import {
   joinGuild,
   getPlayerGuild,
   isInterestedInGuild,
-  recordSacrifice
+  recordSacrifice,
+  recordNiceToAkemi,
+  recordGaveToCale,
+  recordTookEnvironmentalPotion
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
 import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
@@ -298,7 +301,23 @@ export default function PageClient({ page: initialPage, pageId }) {
         if (selectedChoice.action === 'sacrifice' && selectedChoice.sacrificeLocation) {
           await recordSacrifice(user.uid, selectedChoice.sacrificeLocation);
         }
-        
+
+        if (selectedChoice.action === 'nice_to_akemi') {
+          await recordNiceToAkemi(user.uid);
+        }
+
+        if (selectedChoice.action === 'gave_to_cale') {
+          await recordGaveToCale(user.uid);
+        }
+
+        if (selectedChoice.action === 'took_environment_potion') {
+          await recordTookEnvironmentalPotion(user.uid);
+        }
+
+        if (selectedChoice.action === 'took_hospital_note') {
+          await recordTookHospitalNote(user.uid);
+        }
+
         nextPageId = selectedChoice.next;
         await updateDoc(ref, { currentPage: nextPageId });
         setSelectedChoice(null);

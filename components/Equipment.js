@@ -21,9 +21,22 @@ export const EQUIPMENT_ITEMS = {
     unlocksOnPage: 'nurse_keep',
     icon: Scroll
   },
+  epoch_design: {
+    id: 'epoch_design',
+    name: 'Epoch Corporation Designs',
+    type: 'Item',
+    rarity: 'Common',
+    description: 'Important design notes from the Epoch Corporation.',
+    // stats: {
+    //   damage: '+2',
+    //   athletics: '+1'
+    // },
+    unlocksOnPage: 'take_desk',
+    icon: Scroll
+  },
   crossbow: {
     id: 'crossbow',
-    name: 'Crossbow',
+    name: 'Nullbite (1 of 2)',
     type: 'Weapon',
     rarity: 'Common',
     description: 'A simple crossbow that can be used to shoot arrows.',

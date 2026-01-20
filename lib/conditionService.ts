@@ -4,6 +4,10 @@ import {
   getPlayerGuild, 
   isInterestedInGuild,
   hasSacrificed,
+  wasNiceToAkemi,
+  hasGivenToCale,
+  hasTakenEnvironmentalPotion,
+  hasTakenHospitalNote,
   getCurrentRoute
 } from './progressService';
 
@@ -57,7 +61,31 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     
     case 'did_not_sacrifice':
       return !await hasSacrificed(userId);
+
+    case 'nice_to_akemi':
+      return await wasNiceToAkemi(userId);
     
+    case 'not_nice_to_akemi':
+      return !await wasNiceToAkemi(userId);
+
+    case 'gave_to_cale':
+      return await hasGivenToCale(userId);
+    
+    case 'did_not_give_to_cale':
+      return !await hasGivenToCale(userId);
+
+    case 'took_environment_potion':
+      return await hasTakenEnvironmentalPotion(userId);
+    
+    case 'did_not_take_environment_potion':
+      return !await hasTakenEnvironmentalPotion(userId);
+
+    case 'took_hospital_note':
+      return await hasTakenHospitalNote(userId);
+    
+    case 'did_not_take_hospital_note':
+      return !await hasTakenHospitalNote(userId);
+
     case 'went_with_team':
       const route = await getCurrentRoute(userId);
       return route === 'team';

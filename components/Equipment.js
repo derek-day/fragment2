@@ -69,6 +69,7 @@ export const EQUIPMENT_ITEMS = {
       healing: '10 HP'
     },
     unlocksOnPage: 'very_dumb',
+    unlocksOnPage: 'very_dumb_fail',
     icon: Package
   },
   environmental_potion: {
@@ -169,6 +170,108 @@ export async function getUnlockedEquipment(userId) {
   }
 }
 
+// Use a consumable item
+export async function useConsumable(userId, itemId) {
+  if (!userId || !itemId) return { success: false, message: "Invalid parameters" };
+  
+  try {
+    const userRef = doc(db, "users", userId);
+    const userSnap = await getDoc(userRef);
+    
+    if (!userSnap.exists()) return { success: false, message: "User not found" };
+    
+    const userData = userSnap.data();
+    const item = EQUIPMENT_ITEMS[itemId];
+    
+    if (!item) return { success: false, message: "Item not found" };
+    if (item.type !== 'Consumable') return { success: false, message: "Item is not consumable" };
+    
+    // Check if user has the item
+    const unlockedEquipment = userData.unlockedEquipment || [];
+    if (!unlockedEquipment.includes(itemId)) {
+      return { success: false, message: "You don't have this item" };
+    }
+    
+    // Apply item effect based on item ID
+    let updates = {};
+    let message = "";
+    
+    if (itemId === 'health_potion') {
+      const currentHP = userData.stats?.HP || 0;
+      const maxHP = userData.stats?.MaxHP || 20;
+      const newHP = Math.min(currentHP + 10, maxHP + 10); // Can overheal by 10
+      const newMaxHP = Math.max(maxHP, newHP); // Increase max if needed
+      
+      updates = {
+        'stats.HP': newHP,
+        'stats.MaxHP': newMaxHP
+      };
+      message = `Restored 10 HP! (${currentHP} → ${newHP})`;
+    } else if (itemId === 'environment_potion') {
+      // Environment potions don't consume, they're just equipped
+      return { success: true, message: "Environmental resistance active!", consumed: false };
+    } else {
+      // Generic consumable
+      message = `Used ${item.name}`;
+    }
+    
+    // Remove item from inventory (consumables are one-time use)
+    const updatedEquipment = unlockedEquipment.filter(id => id !== itemId);
+    updates.unlockedEquipment = updatedEquipment;
+    
+    await updateDoc(userRef, updates);
+    
+    return { success: true, message, consumed: true };
+  } catch (error) {
+    console.error("Error using consumable:", error);
+    return { success: false, message: "Failed to use item" };
+  }
+}
+
+// Update HP after battle or event
+export async function updatePlayerHP(userId, newHP, maxHP = null) {
+  if (!userId) return false;
+  
+  try {
+    const userRef = doc(db, "users", userId);
+    const updates = { 'stats.HP': Math.max(0, newHP) }; // Don't go below 0
+    
+    if (maxHP !== null) {
+      updates['stats.MaxHP'] = maxHP;
+    }
+    
+    await updateDoc(userRef, updates);
+    return true;
+  } catch (error) {
+    console.error("Error updating HP:", error);
+    return false;
+  }
+}
+
+// Halve player HP
+export async function halvePlayerHP(userId) {
+  if (!userId) return false;
+  
+  try {
+    const userRef = doc(db, "users", userId);
+    const userSnap = await getDoc(userRef);
+    
+    if (!userSnap.exists()) return false;
+    
+    const currentHP = userSnap.data().stats?.HP || 0;
+    const halvedHP = Math.floor(currentHP / 2);
+    
+    await updateDoc(userRef, {
+      'stats.HP': Math.max(1, halvedHP) // Keep at least 1 HP
+    });
+    
+    return true;
+  } catch (error) {
+    console.error("Error halving HP:", error);
+    return false;
+  }
+}
+
 // Notification component for new equipment
 export function EquipmentNotification({ items, onClose, onOpenItem }) {
   if (!items || items.length === 0) return null;
@@ -247,6 +350,28 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
     const equipment = await getUnlockedEquipment(userId);
     setUnlockedEquipment(equipment);
     setLoading(false);
+  };
+
+  const handleUseItem = async (item) => {
+    if (item.type !== 'Consumable') {
+      setUseMessage("This item cannot be used from here");
+      setTimeout(() => setUseMessage(""), 2000);
+      return;
+    }
+
+    setIsUsing(true);
+    const result = await useConsumable(userId, item.id);
+    
+    setUseMessage(result.message);
+    setTimeout(() => setUseMessage(""), 3000);
+    
+    if (result.success && result.consumed) {
+      // Reload equipment to reflect consumed item
+      await loadEquipment();
+      setSelectedItem(null); // Close detail view
+    }
+    
+    setIsUsing(false);
   };
 
   const groupEquipmentByType = () => {
@@ -367,6 +492,24 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                     </div>
                   </div>
                 )}
+
+                {/* Use Item Button for Consumables */}
+                {selectedItem.type === 'Consumable' && (
+                  <div>
+                    <button
+                      onClick={() => handleUseItem(selectedItem)}
+                      disabled={isUsing}
+                      className="w-full px-4 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold transition-colors mb-2"
+                    >
+                      {isUsing ? "Using..." : "Use Item"}
+                    </button>
+                    {useMessage && (
+                      <div className="text-center text-sm text-green-400 bg-gray-800 p-2">
+                        {useMessage}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.div>
           ) : (
@@ -417,7 +560,8 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
         {/* Footer */}
         <div className="p-4 border-t border-gray-700 bg-gray-900">
           <div className="text-sm text-gray-400 text-center">
-            {unlockedEquipment.length} / {Object.keys(EQUIPMENT_ITEMS).length} items collected
+            {unlockedEquipment.length} items collected
+            {/* {unlockedEquipment.length} / {Object.keys(EQUIPMENT_ITEMS).length} items collected */}
           </div>
         </div>
       </motion.div>

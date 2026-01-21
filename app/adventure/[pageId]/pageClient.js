@@ -38,6 +38,7 @@ import DeathPage from "../../../components/DeathPage";
 import DebugPanel from "../../../components/DebugPanel";
 import DataPacketBrowser from "../../../components/DataPacket";
 import EquipmentBrowser from "../../../components/Equipment";
+import { applyPageHPModification, hasVisitedPage } from "../../../lib/hpModifier";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -61,6 +62,40 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [newEquipment, setNewEquipment] = useState([]);
   const [showEquipmentNotification, setShowEquipmentNotification] = useState(false);
   const [showEquipmentBrowser, setShowEquipmentBrowser] = useState(false);
+
+  const [hpModResult, setHpModResult] = useState(null);
+  const [showHPNotification, setShowHPNotification] = useState(false);
+
+  useEffect(() => {
+    const handleHPModification = async () => {
+      if (!user || !page.hpModification) return;
+
+      // Check if this is a one-time modification and already applied
+      if (page.hpModification.oneTime) {
+        const visited = await hasVisitedPage(user.uid, pageId);
+        if (visited) return; // Skip if already visited
+      }
+
+      // Apply the modification
+      const result = await applyPageHPModification(user.uid, page.hpModification);
+      
+      if (result) {
+        setHpModResult(result);
+        setShowHPNotification(true);
+        
+        // Update local userStats to reflect change
+        setUserStats(prev => ({
+          ...prev,
+          HP: result.newHP
+        }));
+        
+        // Auto-hide after 4 seconds
+        setTimeout(() => setShowHPNotification(false), 4000);
+      }
+    };
+
+    handleHPModification();
+  }, [user, pageId, page.hpModification]);
 
   const PARTICLE_COUNT = 40;
   const particles = useMemo(() => {
@@ -268,6 +303,11 @@ export default function PageClient({ page: initialPage, pageId }) {
       }
       // Handle choices
       else if (selectedChoice) {
+
+        if (selectedChoice.hpModification) {
+          await applyPageHPModification(user.uid, selectedChoice.hpModification);
+        }
+
         // Guild opinion action
         if (selectedChoice.action === 'guild_opinion' && selectedChoice.guildName) {
           await recordGuildOpinion(
@@ -618,6 +658,41 @@ export default function PageClient({ page: initialPage, pageId }) {
           onClose={() => setShowEquipmentBrowser(false)}
           userId={user?.uid}
         />
+
+        {/* HP Modification Notification */}
+        <AnimatePresence>
+          {showHPNotification && hpModResult && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40"
+            >
+              <div className={`px-6 py-4 rounded-lg shadow-2xl border-2 ${
+                hpModResult.newHP < hpModResult.oldHP 
+                  ? 'bg-red-900 border-red-600' 
+                  : 'bg-green-900 border-green-600'
+              }`}>
+                <div className="text-center">
+                  <div className="text-sm font-semibold mb-1">
+                    {page.hpModification.message || hpModResult.message}
+                  </div>
+                  <div className="text-2xl font-bold">
+                    <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-300' : 'text-green-300'}>
+                      {hpModResult.oldHP}
+                    </span>
+                    <span className="text-gray-400 mx-2">→</span>
+                    <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-100' : 'text-green-100'}>
+                      {hpModResult.newHP}
+                    </span>
+                    <span className="text-gray-400 text-sm ml-2">HP</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </motion.div>
     </AnimatePresence>
   );

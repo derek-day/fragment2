@@ -633,8 +633,13 @@ export const pages = {
     title: "Camper Appearance",
     type: "text",
     text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.",
-    next: "sometimes_alone4"
+    next: "sometimes_alone4",
     //life points need halved
+    hpModification: {
+      type: 'halve',
+      message: 'The sight weakens you!',
+      // oneTime: true
+    }
   },
   sometimes_alone4: {
     title: "Camper Attack",
@@ -1401,7 +1406,7 @@ export const pages = {
       successText: "Your strike is quick, powerful, and straight to the point. It hits Threx clean across the face, eliciting a grunt from the big man and a gasp from the others. Even Ronin seems impressed.",
       failText: "Threx has been fighting for a long time, and against creatures far more powerful than you. He easily ducks your fist and retorts with a strike of his own.\n\nA moment later, you're looking up at the man who hit you.",
       nextSuccess: "threx_hits",
-      nextFail: "very_dumb",
+      nextFail: "very_dumb_fail",
     },
   },
   threx_hits: {
@@ -1418,6 +1423,18 @@ export const pages = {
     },
     fail: "very_dumb",
     next: "very_dumb",
+  },
+  very_dumb_fail: {
+    title: "Very Dumb",
+    type: "text",
+    src: "../assets/portal.webp",
+    text: "\n\nThrex wipes the floor with you immediately, showcasing the power disparity between class E and C.\n\n\"That was very dumb of you... but I appreciate your gusto. Here...\"\n\nYour digital readout dings with a notification.\n\nHealth potion added.",
+    next: "now_what",
+    hpModification: {
+      type: 'subtract',
+      amount: 10,
+      message: 'A wallop!',
+    }
   },
   very_dumb: {
     title: "Very Dumb",

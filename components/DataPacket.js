@@ -374,7 +374,7 @@ export function DataPacketNotification({ packets, onClose, onOpenPacket }) {
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
-          <div className="text-blue-400 font-bold text-lg">
+          <div className="text-blue-400 font-semibold text-lg">
             {packets.some(p => p.isUpdate) ? 'Data Packet Updated' : 'Data Packet Received'}
           </div>
           <button

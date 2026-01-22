@@ -203,7 +203,8 @@ export const pages = {
       maxHP: 10,      // Enemy health
       ac: 10,          // Armor Class (difficulty to hit)
       attack: 2,      // Attack bonus
-      magic: 1        // Magic attack bonus
+      magic: 1,        // Magic attack bonus
+      bp: 5
     },
     text: "",
     fail: "critter_death",
@@ -1433,7 +1434,7 @@ export const pages = {
     hpModification: {
       type: 'subtract',
       amount: 10,
-      message: 'A wallop!',
+      message: 'Threx knocks you out cold, dealing 10 damage.',
     }
   },
   very_dumb: {
@@ -1442,6 +1443,11 @@ export const pages = {
     src: "../assets/portal.webp",
     text: "\n\nThrex wipes the floor with you immediately, showcasing the power disparity between class E and C.\n\n\"That was very dumb of you... but I appreciate your gusto. Here...\"\n\nYour digital readout dings with a notification.\n\nHealth potion added.",
     next: "now_what",
+    hpModification: {
+      type: 'add',
+      amount: 1,
+      message: 'Threx pulls you back up before you pass out.',
+    }
   },
   now_what: {
     title: "Now What?",

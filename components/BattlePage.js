@@ -68,7 +68,7 @@ const BattleSystem = ({ userStats, page, userId }) => {
   }, []);
 
   const player = {
-    name: userStats?.characterName || "Yib",
+    name: userStats?.characterName || "My Guy",
     maxHP: maxHP,
     athletics: userStats?.Athletics || 10,
     essence: userStats?.Essence || 10,
@@ -274,10 +274,13 @@ const BattleSystem = ({ userStats, page, userId }) => {
         addLog('Victory! You defeated the enemy!', 'success');
         setBattleEnded(true);
         
+        // Define result here so it's scoped for the timeout
+        let result = null;
+
         // Award Breaker Points
         if (userId) {
           const bpAmount = calculateEnemyBP(page.enemy);
-          const result = await awardBreakerPoints(userId, bpAmount, `defeated ${page.enemy.name}`);
+          result = await awardBreakerPoints(userId, bpAmount, `defeated ${page.enemy.name}`);
           
           if (result) {
             setBPResult(result);

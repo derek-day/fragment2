@@ -215,6 +215,7 @@ export const adventurePages = {
   portal_victory: {
     title: "Win!",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "The creature may have taken you by surprise, but you bested it in the end. On one hand, it feels great to have the first notch in your belt (and to know that regular humans aren't hopeless against E-ranked creatures).\n\nOn the other hand, that thing was a lot stronger than you anticipated. You wonder whether moving forward with the others would be the better path...",
     choices: [
       { label: "Wait for the others", next: "wait_others" },
@@ -224,6 +225,7 @@ export const adventurePages = {
   wait_others: {
     title: "Wait for the Others",
     type: "route",
+    src: "../assets/forest.webp",
     route: "team",
     text: "This strange, purple world waits with you, feeling more peaceful than it has a right to.\n\nTen minutes later, your companions arrive. Threx is the first, and he glares at you before taking stock of your surroundings.\n\nRonin emerges next. Out of everyone you were meant to clear this world with, he is the only one you know, and he hates your guts.\n\n\"Damn,\" he says when he sees you. \"I was hoping this place would have taken care of you by now.\"\n\n\"What an unkind thing to say!\" The woman who emerged behind Ronin pushes past him and offers you a hand. \"I, for one, am glad you're still in one piece. I'm Akemi.\"",
     next: "wait_others2"
@@ -231,6 +233,7 @@ export const adventurePages = {
   wait_others2: {
     title: "Wait for the Others",
     type: "input",
+    src: "../assets/forest.webp",
     text: "Before you can proceed, you need to choose a name for yourself. This will be your identity in the game world.",
     input: {
       field: "characterName", 
@@ -241,24 +244,28 @@ export const adventurePages = {
   wait_others3: {
     title: "Wait for the Others",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"It's very nice to meet you, {{characterName}}. I also think it was very brave of you to rush into things. Though, maybe you can hold off in the future? We are a team, after all, right?\"\n\n\"I'm also glad you're in one piece,\" says a black woman in dented armor. She had emerged just in time to catch Akemi's comment. \"Otherwise, I would have had to save your sorry ass.\" She pauses. \"Which probably would have been a record.\"\n\n\"Don't be rude, Harla!\" Akemi says. \"He was just a little overzealous. We've all been there. At least he waited for us, right? He could have been deep in the woods by now.\"",
     next: "wait_others4"
   },
   wait_others4: {
     title: "Wait for the Others",
     type: "text",
+    src: "../assets/forest.webp",
     text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class Summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
     next: "wait_others5"
   },
   wait_others5: {
     title: "Wait for the Others",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You've met the others.\n\nThrex, a C-Class warrior\n\nAkemi, an E-Class undeclared\n\nHarla, a D-Class healer\n\nRonin, the —you do a double take —*D-Class* mixed.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\nYou look up at Ronin, and instead lock eyes with a member of the party you hadn't noticed before.",
     next: "wait_others6"
   },
   wait_others6: {
     title: "Wait for the Others",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "He had been watching you intently and doesn't look away now that you've noticed him.\n\nIt's creepy.\n\n\"Aleth Achen,\" reads your digital readout when you scroll to the final entry. \"Unactivated.\"\n\nJust like you.\n\nThere's a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "wait_take" },
@@ -268,18 +275,21 @@ export const adventurePages = {
   wait_take: {
     title: "Wait for the Others",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You drain the vial, and the ill effects of this world immediately dull.\n\n\"All potions work the same way,\" Akemi tells you. \"The effect is immediate, and it'll last for however long it is advertised! The only exception is health potions; those will heal you right up and keep you that way unless you get hurt again!\"\n\n\"And poison,\" Mitzi says, deadpan. \"That's permanent, too.\"",
     next: "threx_impress",
   },
   wait_hold: {
     title: "Wait for the Others",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You thank Akemi and pocket the potion for later. This place is brutal, but it's nothing you can't handle.\n\nBetter to hold on to it until you actually need it.",
     next: "threx_impress",
   },
   threx_impress: {
     title: "Threx Impressed",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "\"Alright!\" Threx yells. \"Let's get moving. Newbie,\" he pauses to address you directly. \"I'm... impressed you managed to take on that thing yourself. I'd like you to be up front with me so I can watch your style directly.\"",
     choices: [
       { label: "Agree (Talk with Threx)", next: "agree_threx" },
@@ -289,48 +299,56 @@ export const adventurePages = {
   agree_threx: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"I'm all yours,\" you tell him.\n\nYou move to the front and lead the group into the alien forest alongside Threx.\n\nBehind you, Akemi asks Ronin, \"What guild are you hoping to get into?\"\n\n\"Epoch Corporation,\" he replies.\"They have the coolest tech, best weapons, and I feel like they really get it, yaknow?\" He pauses before adding, \"What about you?\"\n\nAkemi blushes. \"I actually want to start a guild of my own one day. I know it's silly, but it's always been a dream of mine.\"",
     next: "agree_threx2"
   },
   agree_threx2: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"I don't think that's silly at all.\" Ronin smiles, and you wonder whether you're watching these two flirt right now.\n\nHis next words confirm it.\n\n\"Dreams are what make us who we are, and, well, yours seems really special.\"\n\nAkemi's blush darkens, and you roll your eyes.\n\nStrange love in a strange land.",
     next: "agree_threx3"
   },
   agree_threx3: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "The rest of the party joins the conversation about guilds and factions. From your position at the front, you get to hear the entire exchange.\n\n\"I can't wait to start investing my points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.",
     next: "agree_threx4"
   },
   agree_threx4: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *the Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
     next: "agree_threx5"
   },
   agree_threx5: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Hey!\" Sheemie exclaims in his high-pitched way.\n\nMitzi ignores the outburst. \"Them or *Protocol Null*.\" She doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.\n\n\"How can one be so ambivalent toward the Protocol?\" Kaelion asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"",
     next: "agree_threx6"
   },
   agree_threx6: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If *The Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
     next: "agree_threx7"
   },
   agree_threx7: {
     title: "Agree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"I entered my first gate solo, too,\" he explains, eyes still trained on the surrounding foliage. \"Showed up thirty minutes early and was almost finished with its Tethered Being before the rest of my party showed up.\"\n\nYou raise an eyebrow, surprised.\n\n\"I did the same thing with my second gate. And the third. I grinded enough Breaker Points while solo that I earned my Class-C license without fighting alongside a single person.\" He sighs, then chuckles. \"I thought I would be the next Silas Knorr or Ember Naes.\"",
     next: "agree_threx8"
   },
   agree_threx8: {
     title: "Agree with Threx",
     type: "choice",
+    src: "../assets/deeper.webp",
     text: "\"But my hubris almost killed me. I... appreciate that you took the chance you did, truly, but what truly impresses me is that you're walking alongside us now.\"\n\n\"No man is an island, {{characterName}}. The Silas Knorrs and Ember Naes of the world are outliers. The best way for the rest of us to survive this world is to take it on together.\" Threx turns to you and smiles. \"Do you understand what I'm saying?\"",
     choices: [
       { label: "\"Yes\"", next: "yes_threx" },
@@ -340,30 +358,35 @@ export const adventurePages = {
   yes_threx: {
     title: "Yes",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Threx nods. \"Good. If the rest of today goes well, maybe I'll see about you getting a more permanent spot on this team.\"",
     next: "eyes_threx"
   },
   no_threx: {
     title: "No",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Threx's smile inverts itself. \"Well, perhaps one day you will. For your sake, I hope it's sooner rather than too late.\"",
     next: "eyes_threx"
   },
   eyes_threx: {
     title: "Eyes Up",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Threx turns from you. \"Eyes up!\" He booms to the group. \"We're here to clear the place, not socialize!\"\n\nThe others lock in. You do the same, surveying the surrounding tree-things.",
     next: "alien_forest"
   },
   disagree_threx: {
     title: "Disagree with Threx",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"I'd like to chat with the others first, if that's okay with you.\" You shrug. \"Maybe offer some apologies for going off on my own. We should be a team, right?\"\n\nThrex looks at you for a long moment, then nods.\n\n\"Good idea. Maybe we'll talk more later.\"\n\nYou lag back for a moment, waiting on the others to catch up.",
     next: "team_portal_victory"
   },
   keep_moving_alone: {
     title: "Keep Moving",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "...but you've come too far to wuss out now.",
     action: "not_nice_to_akemi",
     next: "forest_deeper"
@@ -371,12 +394,14 @@ export const adventurePages = {
   forest_deeper: {
     title: "Deeper In",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "So, alone, you enter the alien forest, and the big picture of the place disappears behind the purple tree-things.\n\nThey smell like sour milk and groan against an invisible breeze. Their tubes resemble scales more than bark, and they are adorned with intricate patterns. No two are alike.\n\nAs you walk, you revel in the knowledge that you are the first person ever to tread this path. You think, too, of the stranglehold that the various guilds and factions have on the worlds inside the gates. The Global Protocol Authority, the Sihlouette, Protocol Null, the Veil Cult, the Silk Road-- each takes as much as they can, leaving less and less for freelancers like yourself.",
     next: "forest_deeper2"
   },
   forest_deeper2: {
     title: "Deeper In",
     type: "choice",
+    src: "../assets/deeper.webp",
     text: "If you hadn't come here under the auspices of being with a group, you would've never been allowed within five hundred feet of the place.\n\nYou look again at the carvings on the trees. They remind you of advertisements you've seen for the Thomur Guild, an up-and-coming faction in Arclight Haven. The guild specializes in abilities that most Breakers tend to ignore —speaking to animals, breathing underwater, living without sleep, etc. —and they've recently taken an interest in botany. If Threx and his crew hadn't gotten the bid first, they'd be here instead.\n\nThey'd be obsessed with this stuff.",
     choices: [
       { label: "Inspect the carvings", next: "inspect_alone" },
@@ -386,6 +411,7 @@ export const adventurePages = {
   keep_moving_alone_carvings: {
     title: "Keep Moving",
     type: "roll",
+    src: "../assets/deeper.webp",
     text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery. You don't care much for the Thomur Guild anyway.\n\nAfter all, you plan on doing this Gatebreaker thing solo.",
     roll: {
       stat: "Thought",
@@ -399,6 +425,7 @@ export const adventurePages = {
   keep_moving_alone_success: {
     title: "Keep Moving",
     type: "choice",
+    src: "../assets/deeper.webp",
     text: "Following the converging lines of the purple tree-things, you notice a shimmer in the distance.\n\nIt's only there for a moment, then disappears.",
     choices: [
       { label: "Get off the path and use the environment as cover", next: "cover_alone" },
@@ -408,12 +435,14 @@ export const adventurePages = {
   cover_alone: {
     title: "Use Cover",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "You exit the well-defined footpath begin moving along a slight ridge running parallel to it.\n\nThe going is slower along this route, but you're more protected.\n\nEventually, the path leads into a clearing. It would have been a perfect place for an ambush.\n\nInstead, when the creatures inevitably come, the ridge protects your flank.\n\nOne by one, they come for you.\n\nThere are twelve.",
     next: "ridge_ambush"
   },
   ridge_ambush: {
     title: "Ridge Battle",
     type: "battle",
+    src: "../assets/ridge.webp",
     enemy: {
       name: "Bigger Critter", //12 of them
       maxHP: 10,      // Enemy health
@@ -428,6 +457,7 @@ export const adventurePages = {
   ridge_ambush_fail: {
     title: "Ridge Battle Lost",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth.\n\nYour arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nSure enough, the jaws close, and the red goes to black.",
     next: "ridge_ambush_fail2"
   },
@@ -441,24 +471,28 @@ export const adventurePages = {
   ridge_ambush_fail3: {
     title: "Ridge Battle Lost",
     type: "text",
+    src: "../assets/forest.webp",
     text: "When you open your eyes, the group you were supposed to break the gate with is staring down at you. They've carried you to a rock at the center of the clearing, and the rest of the gate's creatures lie broken atop yellow flowers.\n\n\"We're not wasting our time taking you to the exit,\" Threx says. \"But you better not get in our way. Consult that digital readout of yours to learn more about the others while we move. We've saved your ass, after all.\"",
     next: "ridge_ambush_fail4"
   },
   ridge_ambush_fail4: {
     title: "Ridge Battle Lost",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"*Digital readout?*\" a mustachioed man in fine armor asks. He speaks like a character in a medieval period piece. \"Doth thou claim this rube isn't activated?\"\n\nNext to him, a girl in skin-tight black leather rolls her eyes and adds, \"No mystery there. That explains why we had to rescue him.\"\n\nYour digital readout gives you the names and portfolios of your companions. The man is Kaelion Virehart, an E-Class warrior. The woman, a summoner, is \"Mitzi.\" Also E-Class.",
     next: "ridge_ambush_fail5"
   },
   ridge_ambush_fail5: {
     title: "Ridge Battle Lost",
     type: "text",
+    src: "../assets/forest.webp",
     text: "There's also Sheemie Bauer, a dorky-looking E-Class mage.\n\nAnd Harla, a D-Class Healer in heavily-dented armor. She must have been the one to bring you back.\n\nThere's Akemi, an undeclared E-Class who watches you with the prettiest eyes you've ever seen.\n\nThere's Aleth, who, like you, is unactivated. He nods at you with a smirk.",
     next: "ridge_ambush_fail6"
   },
   ridge_ambush_fail6: {
     title: "Ridge Battle Lost",
     type: "text",
+    src: "../assets/forest.webp",
     text: "Last is Ronin, your former best friend. He's a— you do a double take— mixed *D-Class*.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\n\"Sheemie,\" Threx says, \"is the Gate Stabilizer still intact after that skirmish?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: ""
   },
@@ -466,24 +500,28 @@ export const adventurePages = {
   ridge_ambush_success: {
     title: "Ridge Battle Won",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "You stand amidst a pile of fresh corpses, out of breath and bleeding from a hundred cuts. Despite the odds, you've somehow survived the counter.\n\n\"That... just leaves the Tethered Being,\" you say aloud.\n\n\"Holy... crap.\"\n\nYou reel to face the voice and discover seven sets of wide eyes looking back at you.\n\n\"You killed all of these things?\" Threx asks. \"I'm... actually impressed.\"",
     next: "ridge_ambush_success2"
   },
   ridge_ambush_success2: {
     title: "Ridge Battle Won",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "You scan the faces of the others, vaguely remembering their portfolios from your time investigating the Break.\n\nThere's Kaelion Virehart, an E-Class warrior with a handlebar mustache and fine armor.\n\nThere's Mitzi, an E-Class summoner, wearing skin-tight black leather.\n\nThere's Sheemie Bauer, a dorky-looking E-Class mage.\n\nThere's Harla, a D-Class Healer in heavily-dented armor.",
     next: "ridge_ambush_success3"
   },
   ridge_ambush_success3: {
     title: "Ridge Battle Won",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "There's Akemi, an undeclared E-Class who watches you with the prettiest eyes you've ever seen.\n\nThere's Aleth, who, like you, is unactivated. He nods at you with a smirk.\n\nThere's Ronin Balore... your former best friend.\n\n\"This is...amazing,\" he mutters.\n\nYou shake your head, fighting wooziness. \"I'm breaking this gate alone. Stay out of my way.\"",
     next: "ridge_ambush_success4"
   },
   ridge_ambush_success4: {
     title: "Ridge Battle Won",
     type: "choice",
+    src: "../assets/ridge.webp",
     text: "Harla snorts. \"Fat chance. You're in no shape to take on the boss by yourself.\" She raises a glowing hand. \"But I can heal you... if you're not too proud to let me.\"",
     choices: [
       { label: "Accept", next: "harla_accept" },
@@ -494,24 +532,28 @@ export const adventurePages = {
     //health is restored
     title: "Accept Healing",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "You sigh and offer a weak nod. The effect is immediate.",
     next: "gate_stabilizer_check"
   },
   harla_decline: {
     title: "Decline Healing",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "\"No,\" you manage. \"I've already made it this far. I'll see this through myself.\"\n\n\"Too bad,\" Threx says. \"We're coming along anyway. This was impressive, but you still need us. Sheemie, is the Gate Stabilizer okay after our run here?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: "gate_stabilizer_check"
   },
   ignore_it: {
     title: "Ignore It",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "This world is weird and behaves in ways you'll nevestand. Better to avoid jumping at every little thing.\n\nYou shrug and continue moving.",
     next: "carving_alone_fail"
   },
   inspect_alone: {
     title: "Inspect The Carvings",
     type: "roll",
+    src: "../assets/deeper.webp",
     text: "You might not have an interest in joining the Thomur Guild, but you can still allow yourself to admire the same things they do.\n\nYou take a moment to inspect the carvings. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes?",
     roll: {
       stat: "Thought",
@@ -525,17 +567,20 @@ export const adventurePages = {
   carving_alone_fail: {
     title: "Carving Failed",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "At last, the path leads into a clearing. For the first time since entering this place, you see a color other than purple.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.",
     next: "carving_alone_fail2"
   },
   carving_alone_fail2: {
     title: "Carving Failed",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "Unfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge at you. They are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou walked right into an ambush.",
     next: "ambush_alone"
   },
   ambush_alone: {
     title: "Ambush",
+    src: "../assets/ridge.webp",
     type: "battle",
   },
   carving_alone_success: {
@@ -1963,7 +2008,7 @@ export const adventurePages = {
   keep_to_yourself: {
     title: "Keep It To Yourself",
     type: "text",
-    text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements.You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
+    text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements. You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
     next: "keep_to_yourself2",
   },
   keep_to_yourself2: {

@@ -229,6 +229,10 @@ button {
     inset 0 0 20px rgba(0, 180, 255, 0.15);
 }
 
+.battle-log {
+  max-height: 15rem;
+}
+
 .login-div {
   width: 420px;
     z-index: 1;
@@ -399,6 +403,10 @@ button {
 @media (max-width: 700px) {
   .stat-layout {
     display: none;
+  }
+
+  .battle-log {
+    max-height: 10rem;
   }
 }
 

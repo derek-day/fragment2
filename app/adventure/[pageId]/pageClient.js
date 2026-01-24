@@ -41,6 +41,7 @@ import EquipmentBrowser from "../../../components/Equipment";
 import { applyPageHPModification, hasVisitedPage } from "../../../lib/hpModifier";
 import LightRay from "../../../components/LightRay";
 import PrismaticBurst from "../../../components/PrismaticBurst";
+import ChapterEndCard from "../../../components/ChapterEndCard";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -483,22 +484,8 @@ export default function PageClient({ page: initialPage, pageId }) {
       )}
 
       {page.useCustomBackground && page.customBackgroundComponent === 'PrismaticBurst' && (
-        //   <PrismaticBurst
-        //     animationType="rotate3d"
-        //     intensity={2}
-        //     speed={0.5}
-        //     distort={0}
-        //     paused={false}
-        //     offset={{ x: 0, y: 0 }}
-        //     hoverDampness={0.25}
-        //     rayCount={0}
-        //     mixBlendMode="lighten"
-        //     colors={['#ff007a', '#4d3dff', '#ffffff']}
-        //     color0=""
-        //     color1=""
-        //     color2=""
-        // />
-        <PrismaticBurst/>
+        // <PrismaticBurst/>
+        <ChapterEndCard config={page} />
       )}
 
       {!page.useCustomBackground && (
@@ -524,7 +511,7 @@ export default function PageClient({ page: initialPage, pageId }) {
         <MenuButton />
         {/* <DebugPanel pageId={pageId} page={page} /> */}
 
-        {page.type !== 'battle' && page.type !== 'roll' && (
+        {page.type !== 'battle' && page.type !== 'roll' && page.type !== 'endCard' && (
           <motion.div 
             className="story-text p-4 mb-6"
             variants={itemVariants}

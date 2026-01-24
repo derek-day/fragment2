@@ -3251,10 +3251,8 @@ export const adventurePages = {
     next: "chapter1_end_card"
   },
   chapter1_end_card: {
-    title: "Chapter 1 Complete",
-    // type: "text",
+    title: "Thank you",
     type: "endCard",
-    text: "You have completed Chapter 1 of The Gatebreaker Protocol!\n\nStay tuned for Chapter 2, coming soon!",
     useCustomBackground: true,
     customBackgroundComponent: "PrismaticBurst"
   }

@@ -1026,7 +1026,7 @@ export const pages = {
   },
   critter_death: {
     title: "---",
-    src: "../assets/forest.webp",
+    useCustomBackground: true,
     type: "text",
     text: "Your world goes black, but there is a single light in the darkness...\n\nYou approach it, and it feels... good. Comforting...\n\nYou reach for it, but rough hands pull you back...",
     next: "welcome_back"
@@ -2269,6 +2269,7 @@ export const pages = {
   camper_finish: {
     title: "---",
     type: "text",
+    useCustomBackground: true,
     text: "*Nothing separates you from the silent, dark, boundless world you find yourself in.*\n\n*You scream, but no words come.*\n\n*You look, but there is only darkness.*\n\n*You struggle to move, but you are formless.*",
     next: "formless"
   },

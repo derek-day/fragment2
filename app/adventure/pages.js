@@ -386,7 +386,7 @@ export const adventurePages = {
   keep_moving_alone: {
     title: "Keep Moving",
     type: "text",
-    src: "../assets/deeper.webp",
+    src: "../assets/forest.webp",
     text: "...but you've come too far to wuss out now.",
     action: "not_nice_to_akemi",
     next: "forest_deeper"
@@ -471,28 +471,28 @@ export const adventurePages = {
   ridge_ambush_fail3: {
     title: "Ridge Battle Lost",
     type: "text",
-    src: "../assets/forest.webp",
+    src: "../assets/deeper.webp",
     text: "When you open your eyes, the group you were supposed to break the gate with is staring down at you. They've carried you to a rock at the center of the clearing, and the rest of the gate's creatures lie broken atop yellow flowers.\n\n\"We're not wasting our time taking you to the exit,\" Threx says. \"But you better not get in our way. Consult that digital readout of yours to learn more about the others while we move. We've saved your ass, after all.\"",
     next: "ridge_ambush_fail4"
   },
   ridge_ambush_fail4: {
     title: "Ridge Battle Lost",
     type: "text",
-    src: "../assets/forest.webp",
+    src: "../assets/deeper.webp",
     text: "\"*Digital readout?*\" a mustachioed man in fine armor asks. He speaks like a character in a medieval period piece. \"Doth thou claim this rube isn't activated?\"\n\nNext to him, a girl in skin-tight black leather rolls her eyes and adds, \"No mystery there. That explains why we had to rescue him.\"\n\nYour digital readout gives you the names and portfolios of your companions. The man is Kaelion Virehart, an E-Class warrior. The woman, a summoner, is \"Mitzi.\" Also E-Class.",
     next: "ridge_ambush_fail5"
   },
   ridge_ambush_fail5: {
     title: "Ridge Battle Lost",
     type: "text",
-    src: "../assets/forest.webp",
+    src: "../assets/deeper.webp",
     text: "There's also Sheemie Bauer, a dorky-looking E-Class mage.\n\nAnd Harla, a D-Class Healer in heavily-dented armor. She must have been the one to bring you back.\n\nThere's Akemi, an undeclared E-Class who watches you with the prettiest eyes you've ever seen.\n\nThere's Aleth, who, like you, is unactivated. He nods at you with a smirk.",
     next: "ridge_ambush_fail6"
   },
   ridge_ambush_fail6: {
     title: "Ridge Battle Lost",
     type: "text",
-    src: "../assets/forest.webp",
+    src: "../assets/deeper.webp",
     text: "Last is Ronin, your former best friend. He's a— you do a double take— mixed *D-Class*.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\n\"Sheemie,\" Threx says, \"is the Gate Stabilizer still intact after that skirmish?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: ""
   },
@@ -553,7 +553,7 @@ export const adventurePages = {
   inspect_alone: {
     title: "Inspect The Carvings",
     type: "roll",
-    src: "../assets/deeper.webp",
+    src: "../assets/carving.webp",
     text: "You might not have an interest in joining the Thomur Guild, but you can still allow yourself to admire the same things they do.\n\nYou take a moment to inspect the carvings. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes?",
     roll: {
       stat: "Thought",
@@ -574,30 +574,33 @@ export const adventurePages = {
   carving_alone_fail2: {
     title: "Carving Failed",
     type: "text",
-    src: "../assets/ridge.webp",
+    src: "../assets/critters.webp",
     text: "Unfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge at you. They are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou walked right into an ambush.",
     next: "ambush_alone"
   },
   ambush_alone: {
     title: "Ambush",
-    src: "../assets/ridge.webp",
+    src: "../assets/critters.webp",
     type: "battle",
   },
   carving_alone_success: {
     title: "Carving Patterns",
     type: "text",
+    src: "../assets/carving.webp",
     text: "There are many with curved edges. These are the tree-things.\n\nThere are several longer, squigly ones. These are the streams.\n\nThere are a few jagged ones. You're not sure what they are, but most are congregated in two locations across these various tapestries.\n\nMovement catches your eye amongst a grouping of seven small dots. Those must be the Breakers you were supposed to enter with.",
     next: "carving_alone_success2"
   },
   carving_alone_success2: {
     title: "Carving Patterns",
     type: "text",
+    src: "../assets/carving.webp",
     text: "You scour the map for familiar landmarks, eventually landing on an eighth dot surrounded by the ones with curved endings. It moves, then stops near one of the tree-thing symbols.\n\nYou take two big steps back, and the dot moves a moment later. You return to the tree, and it does the same.\n\n\"And that's me,\" you whisper.\n\nYou look back at the jagged carvings. There are twelve of them. If you continue the way you're going, you'll walk into an area where they'll surround you.\n\n*An ambush.*",
     next: "carving_alone_success3"
   },
   carving_alone_success3: {
     title: "Ambush",
     type: "choice",
+    src: "../assets/carving.webp",
     text: "You scan the rest of the living map and discover a single symbol sitting away from the jagged ones.\n\n\"And that's gotta be the Tethered Being,\" you say, speaking of the entity the gate entrance is tied to. You don't have the necessary Gate Stabilizer to keep the gate open once the being is defeated, but the others are definitely carrying one.\n\nThey'd have ten minutes to reach the corpse before the gate closes to keep things open for the mining team. Surely that's enough time for intrepid heroes like them.\n\nYou look between the two kinds of shapes, forced to make a decision.",
     choices: [
       { label: "Counter-attack the minions", next: "counter_attack_alone" },
@@ -608,6 +611,7 @@ export const adventurePages = {
   tethered_alone: {
     title: "Approach The Tethered-Being",
     type: "text",
+    src: "../assets/carving.webp",
     text: "Taking the minions on alone risks getting swarmed. The Tethered Being is alone right now-- fresh for the slaying. You'll just have to be sure to end the thing quickly; the longer things take, the greater the risk of having the minions attack you from behind.",
     next: "tethered_lair_alone",
   },
@@ -680,6 +684,7 @@ export const adventurePages = {
   sometimes_alone3: {
     title: "Camper Appearance",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.",
     next: "sometimes_alone4",
     //life points need halved
@@ -986,29 +991,34 @@ export const adventurePages = {
   ridge_alone: {
     title: "Thin The Herd",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "There's a wide and well-defined footpath next to you, but you follow the slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come for you, the ridge protects your flank.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou count twelve heading your way.",
     next: "herd_battle",
   },
   herd_battle: {
     title: "Thin The Herd",
     type: "battle",
+    src: "../assets/critters.webp",
     text: "12 beasts",
   },
   counter_attack_alone: {
     title: "Counter Attack",
     type: "text",
+    src: "../assets/critters.webp",
     text: "You entered this gate alone to get yourself noticed by the Protocol. You checked the risks associated with that goal at the preverbial door.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements.",
     next: "counter_attack_alone2"
   },
   counter_attack_alone2: {
     title: "Counter Attack",
     type: "text",
+    src: "../assets/critters.webp",
     text: "You decapitate one yellow flower, then another. Two geysers of blood follow, as the creatures beneath them howl in anguish.\n\nTwo of your enemies are already out of the fight.\n\nThe field becomes chaos the next instant. Ten more creatures emerge from the underbrush and charge you. They are cotton candy colored, just like the trees, and larger than the one you faced near the gate. Their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou smile and charge them back.\n\nThe Protocol will *have* to activate you after today.",
     next: "counter_attack_battle"
   },
   counter_attack_battle: {
     title: "Counter Attack",
     type: "battle",
+    src: "../assets/critters.webp",
     text: "10 beasts",
   },
   critter_death: {
@@ -1714,42 +1724,49 @@ export const adventurePages = {
   guild_gpa: {
     title: "Global Protocol Authority",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You shrug. \"The GPA, probably. There's a global element there, and they tend to get priority with Breaks.\" You pause before adding, \"Plus, they're the closest thing we have to what existed before the gates.\"\n\n\"That's understandable,\" Akemi says. \"The GPA is the route the Ramsey Academy pushed most of us to go in, too. It makes sense, seeing as they fund the place and everything.\" With a wink, she adds, \"You'd fit in nicely there; they always get the cutest Breakers.\"\n\nYou're not sure if she's joking, but you chuckle just to be safe.",
     next: "keep_moving",
   },
   guild_epoch: {
     title: "Epoch Corporation",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"Probably the Epoch Corporation,\" you say, thinking of the countless advancements they have given the world since their inception.\n\nAkemi opens her mouth to respond, but Ronin beats her to it.\n\n\"Ha! Like E-Corp would want anything to do with you! They worship ingenuity and originality above all else. What would they want with someone as morally bankrupt as you!\"\n\n\"What's he talking about?\" Akemi asks.\n\nYou notice Harla leaning in, too, anxious for potential drama. The others look on, even though they've clearly heard the slight. You're not sure what Ronin is talking about, but you remember that he also wanted to join the Epoch Corporation.\n\nIs he worried you might keep him from that goal?",
     next: "keep_moving",
   },
   guild_silhouette: {
     title: "The Silhouette",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included *the Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halycon Refract-- where they are strongest-- is close to home.",
     next: "keep_moving",
   },
   guild_protocol_null: {
     title: "Protocol Null",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You whisper the motto of the most interesting faction there is.\n\n\"Unlink yourself.\"\n\nAkemi's eyes go wide. \"Protocol Null? For real?\"\n\nYou shrug, trying to play it cool. \"Yeah, they just feel like the most serious option. Everyone else is content with playing the game; Protocol Null is the only group interested in transcending it.\"\n\n\"Why are you and Mitzi here, then?\" she asks. \"If you don't trust the gates or the Protocol, why risk your lives?\"\n\n\"It's the easiest way to get stronger. How else can we level up enough to catch Protocol Null's attention?\"\n\nAkemi studies you, and you study her back. Could she be interested in joining Protocol Null one day, too?\n\n\"We should talk about it sometime,\" she says at last.",
     next: "keep_moving",
   },
   guild_veil_cult: {
     title: "The Veil Cult",
     type: "text",
+    src: "../assets/forest.webp",
     text: "To admit interest in the Veil Cult could make you a target of ridicule for most people. Akemi doesn't seem like the judgmental sort, though.\n\n\"I... think these gates are the most beautiful thing to ever grace humanity.\" You look around, taking this world in again. \"It's...*divine*, even.\"\n\n\"Yeah, I...Oh!\" Akemi grasps your meaning and stumbles through a response. \"I actually haven't, uh, met any members of the...\" she pauses. \"Is it offensive to use the name? I mean, do *you*--\"\n\n\"They call themselves the Scribes,\" you say, smiling. \"But, honestly, I haven't even met any of them yet. Maybe one day, though.\"\n\n \"That's fascinating. I think a lot of people find divinity in the gates and the Protocol; I wish they talked about it more.\"\n\n\"Yes!\" you exclaim. That was your thought exactly.\n\n*She gets it.*",
     next: "keep_moving",
   },
   guild_silk_road: {
     title: "The Silk Road",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"I'm thinking the Silk Road, actually.\"\n\nOf all the guilds, the Silk Road is, by far, the wealthiest. If they recruited you, Cale, Crixon, and Ryke wouldn't want for a single thing again. Your siblings would suddenly have every opportunity in the world.\n\nWith the Silk Road, Cale might even get the help he needs.\n\n\"That's cool!\" Akemi exclaims. \"We had a few members of the Silk Road come speak to us at the Ramsey Academy. They seemed really strong. Cool uniforms, too.\"",
     next: "keep_moving",
   },
   guild_thomur_guild: {
     title: "The Thomur Guild",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "\"I think Sheemie has the right idea. I'd love to get into a guild that isn't established yet. Grow with it, ya know?\"\n\nAkemi's eyes flash with understanding. In a measured tone, she asks, \"Is it the Thomur Guild specifically, or just the prospect of getting in on the ground floor of 'the next big thing?'\"",
     choices: [
       { label: "Thomur", next: "thomur_choice" },
@@ -1759,23 +1776,27 @@ export const adventurePages = {
   thomur_choice: {
     title: "Thomur",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"Probably Thomur,\" you reply. \"Their rise to prominence  this year has been inspiring. I really think they might be a top-five guild one day.\"\n\n\"Boo!\" Akemi says with a playful pout. \"And here I was about to invite you into the one I'll be starting.\"\n\nYou perk up at this. Starting one's own guild is probably even harder than being a Breaker.",
     next: "keep_moving",
   },
   anything_new_choice: {
     title: "Anything New",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"I'm willing to consider anything I feel has promise,\" you reply. \"Though... I have a long way to go before I'll need to think about it.\"\n\n \"I plan to start a guild of my own once I'm strong enough. Maybe you can be my first member.\" She winks. \"*If* you see promise in it.\"",
     next: "keep_moving",
   },
   guild_freelance: {
     title: "Freelance",
+    src: "../assets/forest.webp",
     type: "text",
     text: "\"I'm freelance all the way.\"\n\nAkemi laughs. \"I figured as much based on how you approached today's gate. Plenty of Breakers have made a name for themselves by going freelance. Who knows, maybe you'll  be one of them!\"\n\nYou doubt it, but appreciate the positivity. In truth, joining a guild always felt like a pipe dream. One has to be C-Class just to apply, and even then, it doesn't guarantee anything.\n\n\"Maybe,\" you say instead, feigning her same positivity.\n\n\"Well, if you ever decide not to do this solo, keep me in mind. It won't be for a while yet, but I plan to start my own guild one day.\"\n\nYou perk up at this. Starting one's own guild is probably harder than being a successful freelancer.\n\n\"Did you have a name in mind?\" you ask.\n\nBefore Akemi can respond, a stern voice calls out from ahead of you.",
     next: "keep_moving",
   },  
   guild_no_preference: {
     title: "No Preference",
+    src: "../assets/forest.webp",
     type: "text",
     text: "You give an exaggerated shrug. \"My priority right now is staying alive. I'll worry about the next step when I'm ready to leave this one.\"\n\nAkemi laughs, and a part of you thinks you'd like to hear more of that sound. The other part can't figure out whether or not she's making fun of you.\n\n\"You're either brave or crazy,\" she says at last. \"I can't imagine entering one of these things without knowing the Protocol had my back.\" She pauses to look at Aleth. \"He isn't activated, either.",
     next: "guild_no_preference2",
@@ -1783,18 +1804,20 @@ export const adventurePages = {
   guild_no_preference2: {
     title: "No Preference",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You do know most people never activate, right?\" Harla says, clear eavesdropping. \"You're subjecting yourself to more danger than the rest of us by being here. We at least know Aleth can take care of himself.\n\nYou remain silent. Cale, Crixon, and Ryke need you to succeed. For the sake of your siblings, the risks are worth it.\n\n\"Well,\" Akemi says after flashing Harla a death stare, \"when you activate, I'd love to tell you about the guild I plan to start. Maybe you can be the first member!\"\n\nBefore you can ask about it, a stern voice calls out from ahead of you.",
     next: "keep_moving",
   },
   keep_moving: {
     title: "Keep Moving",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"We need to keep moving,\" Threx says. He's already several paces ahead of the group.\n\nTogether, you enter the alien forest, and the big picture of the place disappears beneath the purple tree-things.",
     next: "alien_forest",
   },
   alien_forest: {
     title: "Alien Forest",
-    src: "../assets/forest_deep.webp",
+    src: "../assets/deeper.webp",
     type: "choice",
     text: "They smell like sour milk and groan against an invisible breeze. Their tubes resemble scales more than bark, and intricate patterns cover their surfaces in natural hieroglyphics. No two are alike.",
     choices: [
@@ -1805,6 +1828,7 @@ export const adventurePages = {
   forest_keep_moving: {
     title: "Keep Moving",
     type: "roll",
+    src: "../assets/deeper.webp",
     text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery.",
     roll: {
       stat: "Thought",
@@ -1818,6 +1842,7 @@ export const adventurePages = {
   moving_success: {
     title: "Keep Moving Success",
     type: "choice",
+    src: "../assets/deeper.webp",
     text: "\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
     choices: [
       { label: "Warn the group about the shimmer", next: "warn_shimmer" }, 
@@ -1826,6 +1851,7 @@ export const adventurePages = {
   warn_shimmer: {
     title: "Warn The Group",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"I saw something moving behind us,\" you report.\n\nThe group stops.\n\n\"Where?\" Threx asks.\n\nYou point to your rear and describe the shimmering.\n\n\"He's always been skittish,\" Ronin teases. \"It was probably just a tree or an eye floater or something.\"\n\nThrex looks at you a moment longer.",
     //need to come back and set next page based on previous choices
     next: "",
@@ -1833,18 +1859,21 @@ export const adventurePages = {
   keep_guard: {
     title: "Keep Your Guard Up",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "You decide to keep your observations to yourself for now. Better to stay alert and see what happens next.\n\nThe rest of the journey through the forest is tense, but uneventful.",
     next: "forest_aftermath",
   },
   moving_fail: {
     title: "Keep Moving Fail",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "The others already think you're a weak link for not attending the academy with them. You don't want them to think you're scared of every eye floater or shifting tree-thing.",
     next: "inspect_fail",
   },
   tree_inspect: {
     title: "Inspect the Carvings",
     type: "roll",
+    src: "../assets/carving.webp",
     text: "You take a moment to admire them. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes? ",
     roll: {
       stat: "Thought",
@@ -1858,28 +1887,30 @@ export const adventurePages = {
   inspect_fail: {
     title: "Inspect Fail",
     type: "text",
+    src: "../assets/carving.webp",
     text: "It's difficult to tell.\n\nYou stare at the carvings a moment longer, admiring their beauty before continuing on.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nHis answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"",
     next: "forest_deeper_together",
   },
   forest_deeper_together: {
     title: "Deeper In The Forest",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "Threx leads you deeper into the forest, following a wide and well-defined footpath.\n\n\"It's weird nothing else has tried to kill us,\" Mitzi says.\n\n The party leader nods. \"I agree. This place isn't very large, and we definitely stand out against all the purple.\"\n\n\"I hate purple.\"\n\n\"You hate everything.\"\n\nMitzi smirks. \"True.\"\n\nAt last, the path leads into a clearing. For the first time since entering the gate, you see a color other than purple.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment, and you have to agree.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.",
     next: "forest_clearing",
   },
   forest_clearing: {
     title: "Forest Clearing",
-    src: "../assets/forest_clearing.webp",
+    src: "../assets/ridge.webp",
     type: "text",
     text: "You feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.\n\n\"It's like something out of a fantasy,\" Mitzi says, smiling. \"I... don't hate this.\"\n\nUnfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"",
     next: "forest_clearing_encounter",
   },
   forest_clearing_encounter: {
     title: "Forest Clearing Encounter",
-    src: "../assets/forest.webp",
+    src: "../assets/critters.webp",
     type: "battle",
     enemy: {
-      name: "Cotton Candy Creature",
+      name: "Critter",
       maxHP: 40,      // Enemy health
       ac: 13,          // Armor Class (difficulty to hit)
       attack: 7,      // Attack bonus
@@ -1906,18 +1937,21 @@ export const adventurePages = {
   forest_clearing_encounter_fail3: {
     title: "!!!",
     type: "text",
+    src: "../assets/critters.webp",
     text: "You scream and realize your vocal cords are once again intact. You grasp your throat; the flesh has regrown.",
     next: "forest_clearing_encounter_fail4",
   },
   forest_clearing_encounter_fail4: {
     title: "Revived",
     type: "text",
+    src: "../assets/critters.webp",
     text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\n\"Sheemie,\" Threx says. \"Is the gate stabilizer still intact after that hit you took?\"\n\nAlready back to full strength, the plant aficionado pulls a grey sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: "gate_stabilizer_check",
   },
   inspect_success: {
     title: "Inspect Success",
     type: "choice",
+    src: "../assets/carving.webp",
     text: "Oblivious, the rest of the group trudges on. You see their movements echoed on the maps.\n\n\"Have you ever told us which guild you'd be interested in?\" Akemi asks Aleth.\n\nYou watch the carvings. If you continue the way Threx is leading, you will walk into an area surrounded by the jagged symbols.\n\nAleth's answer comes quickly.\n\n\"Freelance. Especially if I don't activate. The Ramsey Academy credentials are just to get me access to more gates.\"\n\n\"We're walking into an ambush,\" you whisper.",
     choices: [
       { label: "Warn the others", next: "alert_team" }, 
@@ -1926,12 +1960,14 @@ export const adventurePages = {
   alert_team: {
     title: "Alert The Team",
     type: "text",
+    src: "../assets/carving.webp",
     text: "\"Hold up,\" you tell the others. \"We can learn something from the trees. I... think we're walking into an ambush.\"\n\nRonin snorts in derision. To you, he whispers, \"Maybe you and the plant weirdo can join the Thomur Guild together.\"\n\nThrex doubles back to reach you. \"This better be good, {{characterName}}. We can't afford to waste any more time here.\"\n\n\"No, he's definitely onto something.\" Aleth stands near a tree of his own now, looking over the symbols. \"I think this is a map.\" \n\nAfter a moment to see for himself, the party leader nods.\n\n\"There's a symbol on this tree that looks different from all the others,\" Threx says. \"That must be the being the portal is tied to.\"",
     next: "alert_team2",
   },
   alert_team2: {
     title: "Alert The Team",
     type: "choice",
+    src: "../assets/carving.webp",
     text: "\"We could skip all its minions and head right for it,\" Harla offers. \"I bet all those squiggles around it are its horde.\"\n\n\"And then what?\" Kaelion Virehart retorts. \"We must dispense with the minions so the mining crew has sanctuary for their work.\"\n\n\"The minions will have less cause to fight if we slay their leader first,\" Ronin offers. \"Look at how many are up there waiting for us; we could use that to our advantage.\"\n\nAkemi shakes her head. \"Or we can step into the ambush prepared. If we head to the boss first, and it proves powerful enough to stall us, that risks us getting flanked by the minions.\"\n\n\"True,\" Mitzi agrees. \"They'd see us changing course. We have no idea how fast they are, either.\"\n\nThe group looks to Threx for an answer. The C-Class Breaker mulls over his options.\n\nNow's your chance to voice your own two cents.",
     choices: [
       { label: "Go after the boss first", next: "head_to_boss" },
@@ -1942,6 +1978,7 @@ export const adventurePages = {
   head_to_boss: {
     title: "Head To The Boss",
     type: "text",
+    src: "../assets/carving.webp",
     text: "\"I say we go for the boss first,\" you state confidently. \"If we can take it down quickly, the minions might lose their will to fight.\"\n\nThrex nods slowly. \"Alright. Let's move out. Stay sharp, everyone.\"\n\nYou steel yourself for the battle ahead, hoping your plan pays off.",
     //next depends on if player failed any previous encounters or rolls, alone or with group
     next: "",
@@ -1949,42 +1986,48 @@ export const adventurePages = {
   clear_minions: {
     title: "Clear The Minions",
     type: "text",
+    src: "../assets/carving.webp",
     text: "\"I agree with Kaelion and Mitzi,\" you say. \"Better to face what we know before facing what we don't.\"",
     next: "forest_encounter_prepare",
   },
   threx_decides: {
     title: "Threx Decides",
     type: "text",
+    src: "../assets/carving.webp",
     text: "After taking a moment to reflect, Threx says, \"I agree with Mitzi and Ronin. We already know we can face the minions easily enough; better to do it early.\"",
     next: "forest_encounter_prepare",
   },
   forest_encounter_prepare: {
     title: "Forest Encounter Preparation",
     type: "text",
+    src: "../assets/carving.webp",
     text: "\"Everyone, tighten up. Aleth, cover our rear with {{characterName}}. Roland, I want you and Akemi on the right flank. Mitzi, you and Ronin take the left.\"",
     next: "forest_encounter_prepare2",
   },
   forest_encounter_prepare2: {
     title: "Forest Encounter Preparation",
     type: "text",
+    src: "../assets/carving.webp",
     text: "\"Harla, you're in the center. Keep an eye open for whoever might need healing.\" The C-Class Breaker draws his warhammer. \"And I'll strike down anything stupid enough to come at us head-on.\"\n\nThe forest is silent in the wake of this formation, sans the occasional groan of a tree-thing.\n\n\"I told you so,\" Ronin offers meekly. \"{{characterName}} is afraid of his own shadow.\"\n\nThrex ignores him. \"We're moving. Keep your guard up.\"",
     next: "forest_encounter_prepare3",
   },
   forest_encounter_prepare3: {
     title: "Forest Encounter Preparation",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "He leads you through the forest. There's a wide and well-defined footpath next to you, but he takes you along a slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come, the ridge protects your flank.\n\n\"Good call, freelancer,\" Threx yells as the horde of creatures screams your way. \"We would have been surrounded if you hadn't said something.\"\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Reverse phalanx!\" Threx commands.",
     next: "forest_encounter_prepare4",
   },
   forest_encounter_prepare4: {
     title: "Forest Encounter Preparation",
     type: "text",
+    src: "../assets/ridge.webp",
     text: "The graduates of the Ramsey Academy loosen their grouping and quickly form a reverse V. You and Ronin trade a confused glance, then form up where there's room.\n\nThe creatures are funneled to the group's strongest member. Threx bats three of them aside with ease.\n\nRealizing their mistake too late, the beasts panic. With the deadliest threat at their front and more of their ilk pushing at their rear, they desperately lash out wherever they can.\n\nTwo come after you.",
     next: "forest_prepare_encounter",
   },
     forest_prepare_encounter: {
     title: "Forest Encounter",
-    src: "../assets/forest.webp",
+    src: "../assets/critters.webp",
     type: "battle",
     enemy: {
       name: "Minion",
@@ -2002,27 +2045,30 @@ export const adventurePages = {
   forest_prepare_encounter_success: {
     title: "Forest Encounter Success",
     type: "text",
+    src: "../assets/critters.webp",
     text: "Both beasts fall into pieces. Around you, the rest are similarly dispatched. Sheemie and Mitzi are injured, but Harla quickly sets them right with her healing magic. The healer also has one or two new dents in her armor.\n\n\"Good call, {{characterName}},\" Threx says again. \"One of us could have gone down if these things had ambushed us.\"",
     next: "threx_sweat",
   },
   keep_to_yourself: {
     title: "Keep It To Yourself",
     type: "text",
+    src: "../assets/carving.webp",
     text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements. You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
     next: "keep_to_yourself2",
   },
   keep_to_yourself2: {
     title: "Keep It To Yourself",
     type: "text",
+    src: "../assets/critters.webp",
     text: "Two geysers of blood answer her as the creatures beneath the flowers howl in anguish. Already, two of your enemies are out of the fight.\n\nAll at once, the field becomes chaos. Ten more creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"\n\nYou smile, already charging into the fight. While the others take their time to regroup, you prepare to add more notches to your belt.\n\nThe Protocol will *have* to activate you after today.",
     next: "forest_encounter",
   },
   forest_encounter: {
     title: "Forest Encounter",
-    src: "../assets/forest.webp",
+    src: "../assets/critters.webp",
     type: "battle",
     enemy: {
-      name: "Cotton Candy Creature",
+      name: "Minion",
       maxHP: 30,      // Enemy health
       ac: 12,          // Armor Class (difficulty to hit)
       attack: 5,      // Attack bonus
@@ -2049,42 +2095,49 @@ export const adventurePages = {
   forest_encounter_fail3: {
     title: "!!!",
     type: "text",
+    src: "../assets/critters.webp",
     text: "You scream and realize your vocal cords are once again intact. You grasp your throat; the flesh has regrown.",
     next: "forest_encounter_fail4",
   },
   forest_encounter_fail4: {
     title: "Revieved",
     type: "text",
+    src: "../assets/critters.webp",
     text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\nA strong hand grabs your shoulder.\n\n\"You did good with that warning,\" Threx says. \"We would have lost more people if we had walked into that ambush. Maybe permanently.\"",
     next: "threx_sweat",
   },
   threx_sweat: {
     title: "Agreed",
     type: "text",
+    src: "../assets/critters.webp",
     text: "You nod. Though that may have been true, you know Threx would have done just fine.\n\nHe hasn't even broken a sweat.",
     next: "forest_encounter_success2",
   },
   forest_encounter_success: {
     title: "Forest Encounter Success",
     type: "text",
+    src: "../assets/critters.webp",
     text: "The final beast collapses at your feet.\n\n\"That... sucked,\" Ronin pants while cleaning off his mechanical knife.\n\nBehind him, Harla regrows the flesh on Mitzi's arm and resets Sheemie's broken leg. The healer also has one or two new dents in her armor.",
     next: "forest_encounter_success2",
   },
   forest_encounter_success2: {
     title: "Forest Encounter Success",
     type: "text",
+    src: "../assets/critters.webp",
     text: "\"Haza!\" Kaelion exclaims. \"We have bested the beasts! Surely they've just thrown everything they had at us?\"\n\nAleth nudges one of the dead creatures with his foot. Like Threx, he doesn't even seem winded. \"None of these feels like their leader.\"\n\n\"Aleth's right,\" Akemi says. \"I haven't gotten any messages from the Protocol that the gate's losing stability. Has anyone else?\"\n\nThe rest of the group consults their augmented-reality displays, then shakes their heads. You hold off on checking your handheld digital reader. It would only remind the others that you haven't actually been activated yet.\n\nRonin wipes off his blade. \"Well, we already killed its bodyguards. Finding their trail home shouldn't be too difficult.\"\n\nThrex nods. \"Sheemie, is the Gate Stabilizer still intact after that skirmish?\"\n\nThe plant aficionado pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: "gate_stabilizer_check",
   },
   gate_stabilizer_check: {
     title: "Gate Stabilizer Check",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Sure is, boss! We lodge this thing in the Tethered Being after we kill it, and that portal will be locked open!\"\n\nLike the portal itself, this is the first time you've seen a Gate Stabilizer in person. It's smaller than you imagined, and simpler. Without it, you and your companions would only have ten minutes to exit this place after killing the Tethered Being.\n\nThe alternative was being stuck here forever.\n\n\"Thank God for E-Corp!\" Ronin exclaims. His oscillating knives are built by the same company.\n\nSheemie puts the Gate Stabilizer away. \"I'm excited to stick around a bit after we clear this place,\" he says, inspecting a nearby tree. \"I'd love some time to inspect these carvings.\"\n\nMitzi sighs and whispers, \"Tree guy.\"",
     next: "gate_stabilizer_check2",
   },
   gate_stabilizer_check2: {
     title: "Gate Stabilizer Check",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"*After,*\" Threx says, already following the most well-defined path of the creatures. \"We can't afford to let our guards down yet.\"\n\nIt doesn't take long to reach the lair of the gate's Tethered Being. The tracks of your former attackers take you along the path of least resistance. When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\n\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.",
     next: "forest_shack",
   },
@@ -2258,7 +2311,6 @@ export const adventurePages = {
   },
   hospital: {
     //hospital room background
-    src: "../assets/hospital.webp",
     title: "Awake",
     type: "text",
     text: "You awake in a hospital bed, flanked by a nurse and a healer.\n\n\"He's coming to,\" the healer whispers.\n\n\"Oh, thank God,\" says the nurse. \"His family will be thrilled to see him in one piece.\"\n\n\"Well, I wouldn't go that far.\"\n\nYour eyes follow the gaze of the healer to the stump of your right arm, then to the open space below your knees.",
@@ -2266,6 +2318,7 @@ export const adventurePages = {
   },
   hospital2: {
     title: "Missing",
+    src: "../assets/hospital.webp",
     type: "text",
     //need to check if player sacrificed self
     text: "You're missing three limbs!\n\nRegistering your impending panic, the healer says, \"I'm sorry. If an S-Class healer had reached you right away, they could have brought back all of you.\"",
@@ -2274,6 +2327,7 @@ export const adventurePages = {
   hospital3: {
     title: "Silk Road",
     type: "choice",
+    src: "../assets/hospital.webp",
     text: "\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
@@ -2287,24 +2341,28 @@ export const adventurePages = {
   hospital_response: {
     title: "Try Talking",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Uhhhhnnngggrrraa,\" you say.\n\nThe nurse and healer exchange a look.\n\n\"These damned Breakers never listen,\" mutters the latter. \"It doesn't matter whether they are E-Rank like this one, or S like the one who brought them in.\"\n\n\"Oh, you can't blame Veyr for having places to be!\" argues the latter. Her eyes grow wide with admiration. \"I still can't believe we got to see *the* Veyr Singrave in person! Ahh! He's so dreamy!\"",
     next: "veyr"
   },
   hospital_silent: {
     title: "Silence",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "The healer continues. \"You're lucky to be alive. If not for that S-Class Breaker, you and the others would be dead in that other world.\"\n\nThe nurse squeals. \"I still can't believe we got to see *the* Veyr Singrave in the flesh!\" Her eyes grow wide with admiration. \"He's so dreamy!\"",
     next: "veyr"
   },
   veyr: {
     title: "Veyr Singrave",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "You've heard of Veyr Singrave. The S-Class Breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of Breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
     next: "veyr2"
   },
   veyr2: {
     title: "Veyr Singrave",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class Breaker.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
     //depends on if they were solo/together and sacrificed
     conditionalNext: [
@@ -2342,12 +2400,14 @@ export const adventurePages = {
   },
   solo_sacrifice: {
     title: "Companions",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Don't stress about your companions, either,\" the healer says. \"They are okay... All of them. From the story we heard, you risked everything to save them.\"\n\n\"They'll be in to see you later,\" the nurse says, \"but we figured you'd want to see your family first.\"\n\n\"I'm not a member of a party!\" you try to say. What you utter instead sounds more like Tongues.",
     next: "family"
   },
   solo_didnt_sacrifice: {
     title: "Companions",
+    src: "../assets/hospital.webp",
     type: "text",
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
@@ -2357,11 +2417,13 @@ export const adventurePages = {
   together_didnt_sacrifice: {
     title: "Companions",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "You aren't the only survivor!\n\nDid Akemi make it out? Did Aleth? Sheemie? Threx and some of the others had been obliterated when you last saw them, but so had you!\n\n\"*Are they nearby?*\" you try to ask. \"*Are they close?*\"What comes out sounds more like, \"Ehhhrrr!\"",
     next: "together_didnt_sacrifice2"
   },
   together_didnt_sacrifice2: {
     title: "Companions",
+    src: "../assets/hospital.webp",
     type: "text",
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
@@ -2371,29 +2433,34 @@ export const adventurePages = {
   together_sacrifice: {
     title: "Companions",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Don't stress about your companions, either,\" the healer says. \"They are okay... All except the one who went down before you did. From the story we heard, you risked everything to save them.\"\n\nThe words come with relief, but also with a shard of glass. Kaelion Virehart, the brave knight-in-training, wasn't coming back.\n\n\"They'll be in to see you later,\" the nurse says, \"but we figured you'd want to see your family first.\"",
     next: "family"
   },
   family: {
     title: "Family",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "Before she can say more, the door to the hospital room flies open.\n\n\"{{characterName}}!\"\n\nRyke runs in, knocking the nurse aside, and jumps into bed with you.\n\n\"Ahhhhh!\" you scream.\n\nCrixon enters next, smiling widely. \"Thank God! I thought we'd have to start relying on Cale to pay rent!\"",
     next: "family2"
   },
   family2: {
     title: "Family",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "Your third sibling enters last. There are dark bags under his eyes, darker than the last time you saw him. His clothes are dirty and hang loosely about him. Cale raises his hand to you in greeting. Even from here, you can see the purple tint of his veins.\n\nHow long has it been since his last injection? A day? Two?\n\nHow long were you out?",
     next: "family3"
   },
   family3: {
     title: "Family",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Youww so bwave!\" Ryke exclaims, nuzzling up to you. Her eyes look just like your mom's did.\n\n\"Be careful with the patient!\" say the nurse and healer in unison.",
     next: "family4"
   },
   family4: {
     title: "Family",
+    src: "../assets/hospital.webp",
     type: "roll",
     text: "\"I can increase your painkiller if you want to visit for a bit,\" the healer offers, gesturing at the IV bag attached to your arm. \"If I were S-Class, you wouldn't need it... But you got what you got.\"",
     roll: {
@@ -2407,6 +2474,7 @@ export const adventurePages = {
   },
   family_decide_fail: {
     title: "Family",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "Visit or rest?",
     choices: [
@@ -2417,6 +2485,7 @@ export const adventurePages = {
   family_decide_success: {
     title: "Family",
     type: "choice",
+    src: "../assets/hospital.webp",
     text: "Visit or rest?",
     choices: [
       { label: "Accept and stay awhile", next: "family_visit" },
@@ -2428,23 +2497,27 @@ export const adventurePages = {
   family_visit: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
     next: "family_visit2"
   },
   family_visit2: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
     next: "family_visit3",
   },
   family_visit3: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"How long?\" you ask.\n\nCrixon replies quickly. If he were a little older, you'd have less to worry about with the household. He's responsible. Dependable.\n\n\"Three days.\"\n\nYou sigh. \"Has my pay already been deposited into the account?\"\n\nYour younger brother sneaks a glance at the older one, who looks away.\n\n\"Yeah, it was in there.\"\n\n\"*Was?*\"",
     next: "family_visit4"
   },
   family_visit4: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "You know what the response is going to be before Crixon opens his mouth, but you need to hear it anyway.\n\nIt's Cale who answers.\n\n\"I left enough for rent... and for some food.\" The twenty-three-year-old pauses to look at you and the two children. \"Christ! Mom and Dad left that account for *all* of us! I... just had some things to pay off, is all.\"\n\nCrixon rolls his eyes. Ryke plays with your blankets.\n\nCale looks at you, expecting a reaction.",
     choices: [
@@ -2455,24 +2528,28 @@ export const adventurePages = {
   },
   cale_yell: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"You didn't earn it!\" you yell, ignoring the discomfort in your chest...and everywhere else. \"You don't get to decide where it goes! Grow the hell up, Cale.\"\n\nYour brother's eyes meet yours. The pain in them is evident, but so is the anger.\n\nWithout another word, he storms from the room, slamming the door behind him.",
     next: "cale_storm"
   },
   cale_ask: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Oh yeah?\" Your voice is ice cold. \"And what debts were those, I wonder? Does it have something to do with those purple veins on your arms? Has Travis been hanging around again?\"\n\n\"No! Well... kinda. But it's not what you think!\"\n\nCrixon gives you a look that says, \"*It's exactly what you think.*\"\n\n\"Travis got out a few days ago and is having trouble affording a place. I... just wanted to help.\"",
     next: "cale_transactional"
   },
   cale_silent: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "You look at your brother and wait. Eventually, he caves under the weight of your silence.\n\n\"It wasn't much! Not really. It's just... Travis got out a few days ago and is having a rough time affording a place. I was just trying to help.\"",
     next: "cale_transactional"
   },
   cale_transactional: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "\"Was this help transactional?\" you ask. \"Did he give you anything in return?\"\n\nYour brother shrugs, then looks down, further drawing attention to the purple and engorged veins of his arms.\n\nThat's all the answer you need.",
     choices: [
@@ -2482,30 +2559,35 @@ export const adventurePages = {
   },
   cale_stop: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"That shit's gonna kill you,\" you say to your brother. \"I know you're hurting, but injecting yourself with that poison doesn't help.\"\n\nYou tell him every time you have a chance to.\n\nThe outcome is always the same.\n\nCale stares you down for a moment, then storms out of the room. The door slams behind him.",
     next: "cale_storm"
   },
   cale_storm: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Great,\" Crixen says. \"It was almost a week before he came home the last time he stormed off.\"",
     next: "ryke"
   },
   cale_change: {
     title: "Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "What's the point of starting a fight over something you can't change?\n\nYou look at your brother a moment longer, then shift the conversation elsewhere.\n\n\"What's going on with everyone else?\"\n\nRyke nuzzles up next to you, making you feel just a little better.\n\n\"I gawt an A-pwus on my science pwoject!\" your little sister says.\n\n\"Oh yeah? What was it on?\"",
     next: "ryke_project"
   },
   ryke_project: {
     title: "Ryke",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"The Gates! I had a-- Thewh was a gate that lea to a big cave! I made it out of slime! And then, in that cave, I made anothewh gate that looked like Momma and Dadda's monolith. It was so cool!\"\n\n\"Wow! A gate inside another gate? That is cool.\" You look at Crixon. \"That sounds like a lot of work.\"\n\nYour younger brother nods, and Ryke continues speaking in her stream-of-consciousness kind of way.You take it all in and smile. Despite the pain and the bits of you forever lost to your first gate, and the financial drama, and the family drama, you feel content.",
     next: "ryke_project2",
   },
   ryke_project2: {
     title: "Ryke",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "It might just be the painkillers doing their job, but it feels like more than that. You shouldn't have walked away from what happened in there, and yet you have.\n\nThe conversation with your siblings ebbs and flows, just as it always does. Ryke does most of the talking, mainly speaking about nothing at all.\n\nYou and Crixon share looks and laugh often.\n\nWhen the door finally closes behind them, exhaustion ambushes you.\n\nA final thought reaches you before unconsciousness does.",
     choices: [
@@ -2522,12 +2604,14 @@ export const adventurePages = {
   },
   family_rest: {
     title: "Rest",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Mmm-mmm,\" you manage. It's too much even to shake your head.\n\n\"Booo!\" Ryke says.\n\nCrixon, always the pragmatist, says, \"We have school tomorrow. We've already missed three days sitting around the hospital. We probably won't be here when you wake up next.\"\n\n\"Has... my pay...been deposited...yet?\"\n\nYour younger brother sneaks a glance at the older one, who looks away.\n\n\"Yeah, it was in there.\"",
     next: "family_rest2"
   },
   family_rest2: {
     title: "Rest",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "You look from one brother to the other, already guessing where it went.\n\nCale, the oldest, remains silent, as he usually does. If you had more energy, you'd address this. Right now, however, the only thing you plan to address is the softness of your pillow.\n\n\"We'll... talk... later.\" You say before struggling out a weak \"I... love... you\" before the darkness returns. You realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
     next: "hospital_later"
@@ -2535,47 +2619,55 @@ export const adventurePages = {
   family_painkiller: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
     next: "family_painkiller2"
   },
   family_painkiller2: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
     next: "family_painkiller3",
   },
   family_painkiller3: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
     next: "family_painkiller4"
   },
   family_painkiller4: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixen shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
     next: "family_painkiller5"
   },
   family_painkiller5: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Hit the dial and replace that bag with one of the used ones in the trash. You can take the full one home, in case you need it later.\"\n\n\"You sure?\" he says, looking you over. You can't tell whether the hesitation is genuine, or if he does it because he's expected to.\n\n\"Do it,\" you say. \"We'll just have to save most of the talking until after I'm... discharged.\"\n\nYou realize Cale is already detaching the IV bag. Pain is returning quickly, as is your urge to sleep.",
     next: "family_painkiller6"
   },
   family_painkiller6: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"How long... have I been here?\" you ask.\n\n\"Three days,\" he replies, using medical tape to reseal the bag. It disappears into his backpack a minute later.\n\n\"Has my pay... been deposited...yet?\"\n\n\"Yeah.\"\n\n\"And...where is it now?\"\n\nYou hear a sniffle and realize your older brother is crying. You repeat the question.",
     next: "family_painkiller7"
   },
   family_painkiller7: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"I left enough for rent... and for some food.\" The twenty-three-year-old pauses, knowing he isn't giving you the answer you're expecting.\n\n\"Travis,\" he says at last. \"He got out a few days ago. He needed money and I...\" Cale pauses to look at his bag again. \"You know what I need.\"",
     next: "family_painkiller8"
   },
   family_painkiller8: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Travis,\" you whisper, hoping to have already heard that name for the last time.\n\nCale says more, but you have trouble registering it. You're so tired.\n\nYou realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
     next: "hospital_later"
@@ -2583,29 +2675,34 @@ export const adventurePages = {
   family_address: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
     next: "family_address2"
   },
   family_address2: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
     next: "family_address3",
   },
   family_address3: {
     title: "Visit",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
     next: "family_address4"
   },
   family_address4: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixen shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
     next: "family_address5"
   },
   family_address5: {
     title: "Visit",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "\"You okay?\"\n\nYour brother looks up, surprised. His eyes meet yours, then look over the rest of you.\n\n\"*You're* asking *me* that question?\" he says. \"Really?\"\n\nYou try to shrug, but your body doesn't allow you.\n\n\"We gotta look out for each other, right?\"\n\nCale's eyes mist up, and then he looks away.\n\n\"Your pay was deposited into the shared account Mom and Dad left us,\" he whispers. \"I... may have spent some of it.\"",
     choices: [
@@ -2617,17 +2714,20 @@ export const adventurePages = {
   address_yell: {
     title: "Address Cale",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"You didn't earn it!\" you yell, ignoring the discomfort in your chest...and everywhere else. \"You don't get to decide where it goes! Grow the hell up, Cale.\"\n\nYour brother's eyes meet yours. The pain in them is evident, but so is the anger.\n\nWithout another word, he storms from the room, slamming the door behind him.\n\nCrixon and Ryke return a few minutes later. The younger one had chocolate on her face. Crixon's wore disappointment.\n\n\"The last time Cale left like that, it was almost a week before we saw him again.\"",
     next: "ryke"
   },
   address_ask: {
     title: "Address Cale",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"Oh yeah?\" Your voice is ice cold. \"And what debts were those, I wonder? Does it have something to do with those purple veins on your arms? Has Travis been hanging around again?\"\n\n\"No! Well... kinda. But it's not what you think!\" He pauses, then adds, \"He just needed some help, is all!\"",
     next: "address_transactional"
   },
   address_silent: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "You look at your brother and wait. Eventually, he caves under the weight of your silence.\n\n\"It wasn't much! Not really. It's just... Travis got out a few days ago and is having a rough time affording a place. I was just trying to help.\"",
     next: "address_transactional"
@@ -2635,6 +2735,7 @@ export const adventurePages = {
   address_transactional: {
     title: "Address Cale",
     type: "choice",
+    src: "../assets/hospital.webp",
     text: "\"Was this help transactional?\" you ask. \"Did he give you anything in return?\"\n\nYour brother shrugs, then looks down, further drawing attention to the purple and engorged veins of his arms.\n\nThat's all the answer you need.",
     choices: [
       { label: "Ask Cale to stop using drugs", next: "address_stop" },
@@ -2644,24 +2745,28 @@ export const adventurePages = {
   },
   address_stop: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"That shit's gonna kill you,\" you say to your brother. \"I know you're hurting, but injecting yourself with that poison doesn't help.\"\n\nYou tell him every chance you get.\n\nThe outcome is always the same.\n\nCale stares you down, the previous moment of shared tenderness forgotten. Then, he storms out of the room.\n\nCrixon and Ryke return a few minutes later. The younger one had chocolate on her face. Crixon's wore disappointment.\n\n\"The last time Cale left like that, it was almost a week before we saw him again.\"",
     next: "ryke"
   },
   address_change: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "What's the point of starting a fight over something you can't change?\n\nYou look at your brother a moment longer, then shift the conversation elsewhere.\n\n\"Go get the others. I'd like to visit with all of you before I pass out again.\"\n\nHe does, you do, and the monster haunting your brother is nearly forgotten.\n\nNearly.",
     next: "ryke"
   },
   address_travis: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"How was it? Seeing Travis again after, what, five years?\" You whistle. \"I can't believe it's been that long since the Marshalls' place burned down.\"\n\nCale grunts at the painful memory of your old foster home. Beth and Rodney Marshall were deeply unpleasant people, as were many of the adolescents they housed.\n\n\"It was... strange,\" Cale says. \"We've all grown up so much, {{characterName}}. Travis has, too, obviously. You know how the system changes people.\"\n\nHe pauses, as if lost in the recall of a recent memory.\n\n\"But in some ways, it still feels like we're the same old kids, yaknow? There's just... a lot of history between us. A lot of it I'd rather forget, but some of it...\"",
     next: "address_travis2"
   },
   address_travis2: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "You nod, knowing the feeling.\n\n\"Just be careful, alright? I don't want to see you get hurt again.\" You look at his purple veins. \"We could try getting you into rehab again. I've been reading about a really facility in Aethervault. I know it's far, but...\"\n\nCale snorts. \"I'm not going to South America, {{characterName}}. I... don't want to be that far away from you guys.\"\n\n\"But if it helps--\"\n\n\"I'm not going. We can't afford it anyway, especially with you in this condition. I'll,\" he pauses again to deliver an almost-believable cough. \"I'll be fine.\"",
     next: "address_travis3"
@@ -2669,11 +2774,13 @@ export const adventurePages = {
   address_travis3: {
     title: "Address Cale",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "\"If you need me,\" you say, \"I'm here. You know that.\"\n\nCale nods. \"Enough of this heavy shit, okay? You know I hate hospitals anyway. Can I bring the others back in here?\"\n\nIt's your turn to nod.\n\nYour brother retrieves your other siblings, but the monster haunting him stays fresh on your mind.\n\nRyke nuzzles up next to you, though. That makes you feel just a little better.\n\n\"I gawt an A-pwus on my science pwoject!\" your little sister says.",
     next: "address_travis4"
   },
   address_travis4: {
     title: "Address Cale",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "\"Oh yeah?\" you ask. What was it on?\"\n\n\"The Gates! I had a-- Thewh was a gate that lea to a big cave! I made it out of slime! And then, in that cave, I made anothewh gate that looked like Momma and Dadda's monolith. It was so cool!\"\n\n\"Wow! A gate inside another gate? That is cool.\" You look at Crixon. \"That sounds like a lot of work.\"\n\nYour younger brother nods, and Ryke continues speaking in her stream-of-consciousness kind of way.",
     next: "address_travis5"
@@ -2681,11 +2788,13 @@ export const adventurePages = {
   address_travis5: {
     title: "Address Cale",
     type: "text",
+    src: "../assets/hospital.webp",
     text: "You take it all in and smile. Despite the pain and the bits of you forever lost to your first gate, and the financial drama, and the family drama, you feel content.\n\nIt might just be the painkillers doing their job, but it feels like more than that. You shouldn't have walked away from what happened in there, and yet you have.\n\nThe conversation with your siblings ebbs and flows, just as it always does. Ryke does most of the talking, mainly speaking about nothing at all.\n\nYou and Crixon share looks and laugh often. Sometimes, Cale even joins in. It's almost convincing.",
     next: "address_travis6"
   },
   address_travis6: {
     title: "How Are You Feeling?",
+    src: "../assets/hospital.webp",
     type: "choice",
     text: "When the door finally closes behind them, the exhaustion catches up to you. A final thought reaches you before unconsciousness does.",
     choices: [
@@ -2696,6 +2805,7 @@ export const adventurePages = {
   },
   ryke: {
     title: "How Are You Feeling?",
+    src: "../assets/hospital.webp",
     type: "text",
     text: "You close your eyes, broken from the last world and already weary of this one.\n\nRyke nuzzles up next to you, though. That makes you feel just a little better.\n\n\"I gawt an A-pwus on my science pwoject!\" your little sister says.\n\nYou take a deep breathe, content to maintain the relationships you do have.\n\n\"Oh yeah? What was it on?\"",
     next: "ryke_project"
@@ -2703,6 +2813,7 @@ export const adventurePages = {
   hospital_later: {
     //changes depending on sacrifice/alone
     title: "Later...",
+    src: "../assets/hospital_later.webp",
     type: "choice",
     text: "You wake again, still in the hospital room. It's empty now, but there are hints of other visitors.\n\nYou press the call button, and a new nurse enters a minute later.",
     choices: [
@@ -2713,24 +2824,28 @@ export const adventurePages = {
   },
   nurse_keep: {
     title: "Nurse",
+    src: "../assets/hospital_later.webp",
     type: "text",
     text: "\"You're looking much better!\" the nurse remarks. \"Right as rain! We'll get you attuned to your new limbs, and then you'll be on your way!\"\n\nThere's a soft pinch as the needle recedes from your arm. You wonder how the hell Cale spends so much time with these things.\n\n\"Doesn't that... take a while?\" you ask, dreading the months of physical therapy ahead of you.\n\n\"Before the gates and the Epoch Corporation, definitely, but it's a different world now. I consider it a small trade compared to everything we lost, but we take the wins when we can, right?\"",
     next: "nurse2"
   },
   nurse_leave: {
     title: "Nurse",
+    src: "../assets/hospital_later.webp",
     type: "text",
     text: "\"You're looking much better!\" the nurse remarks. \"Right as rain! We'll get you attuned to your new limbs, and then you'll be on your way!\"\n\nThere's a soft pinch as the needle recedes from your arm. You wonder how the hell Cale spends so much time with these things.\n\n\"Doesn't that... take a while?\" you ask, dreading the months of physical therapy ahead of you.\n\n\"Before the gates and the Epoch Corporation, definitely, but it's a different world now. I consider it a small trade compared to everything we lost, but we take the wins when we can, right?\"",
     next: "nurse2"
   },
   nurse2: {
     title: "Nurse",
+    src: "../assets/hospital_later.webp",
     type: "text",
     text: "The nurse leaves your view and returns a moment later, carrying dismembered limbs\n\n\"We already installed the chip for these babies while you were out. It should feel no different from moving your old arms and legs.\"\n\n\"You... did *brain surgery* on me?\"\n\nThe nurse blinks. \"Well, yeah. Didn't your brother tell you already? I was told he and your other siblings came to visit the other day. He *is* your next of kin, after all.\"",
     next: "nurse3"
   },
   nurse3: {
     title: "Nurse",
+    src: "../assets/hospital_later.webp",
     type: "text",
     text: "\"No,\" you hiss. \"No one told me.\"\n\nThe nurse looks around, suddenly concerned. \"Well, uh, I'm afraid the process is irreversible. Do you.. still want to learn how to use these things, or...?\"\n\nAfter a long sigh and a brief rub of the temples, you nod.",
     next: "arclight"
@@ -2745,12 +2860,14 @@ export const adventurePages = {
   },
   arclight2: {
     title: "Arclight Haven",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "This place was once the capital of an empire. It saw itself as the helm of the world, the center of the universe.\n\nThe arrival of the gates shattered that hubris.\n\nStill, there is power here. The GPA is here. Two top ten Breakers are here. Your family-- and you-- are here, despite all the reasons you shouldn't be.\n\nIn the distance is an old memorial to an even older ideal. The obelisk watches over the city like a sentry, reminding it of better times and promising a renewal.",
     next: "arclight3"
   },
   arclight3: {
     title: "Arclight Haven",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "You've spent a lot of time at the obelisk and surrounding memorials. Your parents used to take you and Cale there. After they died, the obelisk became a memorial for them, too.\n\nYou're hobbling, but the longer you walk, the less stiff you feel.\n\nSwamp gas ignites in the distance, beckoning you in the direction of home. Washington, DC, didn't always host these flammable ghosts, but an early rift here injected methane into the soil. Will-o'-the-wisps they were once called. Now, these Arclights give this haven its new name.",
     next: "arclight4"
@@ -2758,6 +2875,7 @@ export const adventurePages = {
   arclight4: {
     title: "Arclight Haven",
     type: "choice",
+    src: "../assets/arclight.webp",
     text: "You watch a few more ignitions, then sigh. You've been away from the apartment for too long. Has Cale already burned away the last of your paycheck?\n\nYou reach a personal crossroads on your way. One direction will lead you home on foot. The other, quicker direction will lead you to the metro.",
     choices: [
       { label: "Walk", next: "arclight_walk" },
@@ -2767,11 +2885,13 @@ export const adventurePages = {
   arclight_walk: {
     title: "Arclight Walk",
     type: "text",
+    src: "../assets/arclight.webp",
     text: "You turn left, content to reach home when your feet get you there. The obelisk watches over you for a few more blocks, then disappears behind a row of townhouses.\n\nIt's midday, and the city is alive with the overlapping chatter of cars, bikes, and pedestrians. You navigate between and around them, and they all ignore you. Such is the way in the big city.",
     next: "arclight_walk2"
   },
   arclight_walk2: {
     title: "Arclight Walk",
+    src: "../assets/arclight.webp",
     type: "choice",
     text: "On the corner is the bodega you usually visit while walking this route. It's been a while since you've had food of your own choosing.",
     choices: [
@@ -2781,18 +2901,21 @@ export const adventurePages = {
   },
   arclight_go_inside: {
     title: "Arclight Inside",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "You enter the store behind a group of teenagers.\n\nWhen you emerge on the other side of the threshold, the teenagers are gone. The familiar insides of the bodega are, too.",
     next: "arclight_study"
   },
   arclight_keep_walking: {
     title: "Arclight Walk",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "For now, at least, you pass by the store. Now that you have the means, walking sounds like too good a thing to give up.\n\nYou travel block after block, tired but not in your new limbs. Before long, you realize your stroll has taken you on a detour. You've reached the memorials of the old National Mall. The recently repaired reflecting pool offers you glimpses of yourself.\n\nYou don't look too bad for someone who has just left the hospital.",
     next: "arclight_keep_walking2"
   },
   arclight_keep_walking2: {
     title: "Arclight Walk",
+    src: "../assets/arclight.webp",
     type: "choice",
     text: "You walk through the remains of the memorial on the pool's western side. It resembles the ruins of the Parthenon in ancient Greece— now long gone— and features an empty, broken chair. You remember that the statue of a great leader once sat here, but that history belongs to a country that no longer exists.\n\nYou circle the reflecting pool and approach the obelisk. Surprisingly, it's open today. A line of people is waiting to take an elevator to the top.",
     choices: [
@@ -2802,18 +2925,21 @@ export const adventurePages = {
   },
   arclight_get_in_line: {
     title: "Get In Line",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "You file in with the others and eventually follow them inside the obelisk.\n\nWhen you reach the other side of the threshold, however, the people are gone.",
     next: "arclight_study"
   },
   arclight_walk_home: {
     title: "Walk Home",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "Like the corner store, the obelisk passes you by. Your legs feel good now. All of you feels good now.\n\nEventually, you're standing in front of the door to your apartment. You can already sense the emptiness on the other side.\n\nCrixon and Ryke are likely in school right now.\n\nAnd who knows where Cale is.\n\nKnowing the place is likely a mess, you prepare for the worst as you open the door and step inside.\n\nOnly, when you reach the other side, your apartment is nowhere to be found.",
     next: "arclight_study"
   },
   arclight_train: {
     title: "Arclight Train",
+    src: "../assets/arclight.webp",
     type: "text",
     text: "You turn right, and the ground swallows you. The roar of the metro echoes through the tunnel like the call of a great beast.\n\nIt's midday, and so a fair-sized crowd has gathered in this space, heading to their own destinations. They all ignore you. Such is the way here.\n\nThe red line arrives its obligatory three minutes late, and people file inside. You wait your turn, then enter behind them.\n\nWhen you emerge on the other side of the threshold, the people are gone. The train car is gone, too.",
     next: "arclight_study"
@@ -2828,6 +2954,7 @@ export const adventurePages = {
   arclight_study2: {
     title: "Arclight Study",
     type: "choice",
+    src: "../assets/study.webp",
     text: "You've *never* heard of a gate that only lets in some people and ignores others. Are there beasts here, or something else?",
     choices: [
       { label: "Call out", next: "study_call" },
@@ -2837,18 +2964,21 @@ export const adventurePages = {
   study_call: {
     title: "Study Call Out",
     type: "text",
+    src: "../assets/study.webp",
     text: "\"Hello?\"\n\nYour voice is quiet in the big room, making you feel very small indeed.\n\n\"Hi.\"",
     next: "study_voice"
   },
   study_explore: {
     title: "Explore Study",
     type: "text",
+    src: "../assets/study.webp",
     text: "The sound of your footfalls disappears into your surroundings, allowing you to move quietly to a gnarled desk sitting near the fire. Its surface is covered in papers and drawings.",
     next: "study_bookshelf"
   },
   study_voice: {
     title: "Study Voice",
     type: "choice",
+    src: "../assets/study.webp",
     text: "The voice comes from the loft above you. There's a figure standing there, but their features blur against your perception.\n\nThey feel like the being you had seen in that *other* place-- the one between life and death -- but also markedly different.\n\nImmediately, you sense the power of this person. Even if you were back to full strength, the disparity between you two would be even greater than between you and the Camper.",
     choices: [
       { label: "Seek a defense", next: "study_defense" },
@@ -2858,6 +2988,7 @@ export const adventurePages = {
   study_bookshelf: {
     title: "Study Bookshelf",
     type: "roll",
+    src: "../assets/study.webp",
     text: "There is also a bookshelf that stands out from the others. The spines of its books are dark, though the titles themselves sparkle against the uneven light.",
     roll: {
       stat: "Thought",
@@ -2871,6 +3002,7 @@ export const adventurePages = {
   study_room: {
     title: "Study Room",
     type: "choice",
+    src: "../assets/study.webp",
     text: "What would you like to search?",
     choices: [
       { label: "Search the desk", next: "search_desk" },
@@ -2880,6 +3012,7 @@ export const adventurePages = {
   search_desk: {
     title: "Study Room",
     type: "choice",
+    src: "../assets/study.webp",
     text: "The papers on the desk appear to be Epoch Corporation designs. You can't make out what they depict, but it looks powerful.",
     choices: [
       { label: "Take", next: "take_desk" },
@@ -2890,6 +3023,7 @@ export const adventurePages = {
     //add study desk papers to inventory/data journal
     title: "Study Room",
     type: "choice",
+    src: "../assets/study.webp",
     text: "You snatch the papers from the desk and pocket them.\n\nYou also detect the movements of your mysterious host.",
     choices: [
       { label: "Ignore and go to the bookcase", next: "search_bookshelf" },
@@ -2899,23 +3033,27 @@ export const adventurePages = {
   search_bookshelf: {
     title: "Study Bookshelf",
     type: "text",
+    src: "../assets/study.webp",
     text: "You visit the bookcase and pull a few of the titles at random.\n\n\"Solo Leveling,\" reads one.\n\n\"Dungeon Crawler Carl,\" reads another.\n\nYou've never heard of either.\n\n\"I've always had an affinity for literary RPGs,\" your host calls to you. \"There's a certain appeal to playing an active role in the story, wouldn't you agree?\"",
     next: "study_voice"
   },
   study_defense: {
     title: "Study Defense",
     type: "text",
+    src: "../assets/study.webp",
     text: "You look around, and your eyes find an ancient suit of armor standing beside a desk near the fireplace. You obviously don't have time to don it, but the suit is holding a crossbow.\n\nYou wrench the weapon free and point it at your host. You can't hope to match him, but at least you'll go down fighting.",
     next: "study_defense2"
   },
   study_defense2: {
     title: "Study Defense",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"Can I expect to leave this place, or are you here to hurt me?\"\n\nThey click their tongue, and you sense regret in the words that follow.\n\n\"It is not my intention to hurt you, {{characterName}}, but there will be pain on the path ahead.\"\n\nThe figure nods at your weapon.\"I'll let you keep that. If you manage to find the ammunition for it, maybe it'll transfer some of that pain elsewhere.\"",
     next: "study_ask"
   },
   study_ask: {
     title: "Study Ask",
+    src: "../assets/study.webp",
     type: "choice",
     text: "\"Who are you?\" you ask, hating how small you feel.\n\nYou can't see this person's face, but you sense their smile. \"That's the wrong question,\" they reply.\n\n\"And the answer at this point would only confuse you. Though I suppose you may call me an Interloper, since that is what I am.\"",
     choices: [
@@ -2925,6 +3063,7 @@ export const adventurePages = {
   },
   study_what: {
     title: "Study What",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"I've never heard of a gate like this one before,\" you say. \"What is this place?\"\n\nThe Interloper points at you. \"Now *that* is the right question!\"\n\nThey begin a slow walk down the stairs toward you, their features still a blur. Their hands sweep wide arcs across the room as they answer.\n\n\"This place-- like me-- is as foreign to your world as it is to all the others. I belong nowhere, and so I am free to exist anywhere. But... it exists because of me, that much is certain. Soon, you will be the same way.\"",
     next: "study_want"
@@ -2932,6 +3071,7 @@ export const adventurePages = {
   study_want: {
     //{If the player explored the gate with the group AND collected the note in the hospital add to text: "You might not realize it, but you mean a great deal to me."}
     title: "Study Want",
+    src: "../assets/study.webp",
     type: "choice",
     text: "\"Your fate and mine are connected, {{characterName}}. You might not appreciate that yet, but you will in time.\"\n\n\"Unfortunately, you are still at the very beginning of your journey. There are many more hardships you must face before reaching the level I need you to be. In the meantime, I need you to do what I tell you when I tell you. You will be faced with choices that may lead you from my sight. You *must* not let that happen.\"",
     choices: [
@@ -2942,6 +3082,7 @@ export const adventurePages = {
   },
   interloper_why: {
     title: "Why",
+    src: "../assets/study.webp",
     type: "choice",
     text: "\"You won't even let me see your face,\" you say. \"Why should I trust that you have my best interests at heart?\"\n\nThe Interloper shrugs. \"I already know the choices you'll make. I already know much of your path. If it helps, I can even tell you a thing or two about your future. Though...\" they pause dramatically, \"some things may be hard to hear.\"",
     choices: [
@@ -2952,21 +3093,27 @@ export const adventurePages = {
   interloper_ok: {
     title: "Okay",
     type: "text",
+    src: "../assets/study.webp",
     text: "\"Fine,\" you say. \"I'll follow what you tell me. Only... I'm not even activated yet. I'm not sure how helpful I'll be if the Protocol hasn't even noticed me.\"\n\n\"I wouldn't be too concerned about that. Changes are coming, my friend.\" They look at you. \"Is there anything else you'd like to discuss?\"\n\nYou pause a moment, knowing your earlier statement is only half true. The Protocol hasn't activated you, but you *did* speak with something in that *other* place.",
     next: "interloper_ok2"
   },
   interloper_ok2: {
+    title: "Okay",
+    type: "text",
+    src: "../assets/study.webp",
     text: "You open your mouth to ask about it, but something holds your tongue, literally keeping the words from leaving you.\n\nYou feel the Interloper narrow their eyes. \"I understand. Unfortunately, you won't be able to talk about me, either. Too much at stake. The Protocol's ways are mysterious, but I always understood why it does that much, at least.\"\n\nYou struggle to say more, but the words still won't come.",
     next: "interloper_intro"
   },
   interloper_ok_lie: {
     title: "Okay (Lying)",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"Fine,\" you lie. \"I'll follow what you tell me. Only... I'm not even activated yet. I'm not sure how helpful I'll be if the Protocol hasn't even noticed me.\"\n\nYou feel the Interloper narrow their eyes at you.\n\n\"I suppose time will tell,\" they whisper before turning away. \"As for you not being activated, I wouldn't be too concerned. Changes are coming, my friend.\"",
     next: "interloper_intro"
   },
   interloper_tell: {
     title: "Tell Me",
+    src: "../assets/study.webp",
     type: "choice",
     text: "\"If you know what you claim to know, then yes, I want to know my future.\"\n\nThe Interloper laughs, but the sound is welcoming-- not at all like the Camper.\n\n\"In the weeks ahead, you'll be asked to go break a gate in Halycon Refract. When you're there, you'll learn something interesting about the Gatebreaker Protocol.\"\n\nYou blink. \"I'm... not even an official E-Class. Why would anyone call me in to help with a gate thousands of miles away?\"\n\n\"Because things are about to change for you. If you make the right choices, you will amass enough power to change the world.\"",
     choices: [
@@ -2976,12 +3123,14 @@ export const adventurePages = {
   },
   interloper_great: {
     title: "Great",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"That's great!\" you excaim. \"...If it's true.\"\n\n\"Time will prove my words. In the meantime, I only ask that you consider them... and my request.\"",
     next: "interloper_intro"
   },
   interloper_family: {
     title: "Family",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"And what of my family?\" you ask. \"Am I allowed to know anything about their futures?\"\n\nThe Interloper shakes their head. \"I can tell you things about the gates because you have some agency over yourself. Knowing-- and trying to change-- the paths that other people walk will only lead you to madness.\"",
     next: "interloper_intro"
@@ -2989,6 +3138,7 @@ export const adventurePages = {
   interloper_keep: {
     title: "Keep To Self",
     type: "choice",
+    src: "../assets/study.webp",
     text: "You shake your head. \"No person should know their future. Only I control my choices.\"\n\nThe Interloper laughs. \"Very well. I suppose that means you refuse to listen to my recommendations, then?\"",
     choices: [
       { label: "\"Probably not\"", next: "interloper_not" },
@@ -2998,6 +3148,7 @@ export const adventurePages = {
   },
   interloper_not: {
     title: "Probably Not",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"I don't know you, and so I can't trust you. I'm happy to hear whatever advice you're willing to send my way, but my choices will remain my own.\"\n\nSurprisingly, your host doesn't seem bothered by your refusal.\n\n\"I figured you'd say that. However, you might change your mind once you see what the future has in store for you.\" They turn away. \"As for you not being activated, I wouldn't be too concerned. Changes are coming, my friend.\"",
     next: "interloper_intro"
@@ -3005,23 +3156,27 @@ export const adventurePages = {
   interloper_listen: {
     title: "Listening",
     type: "text",
+    src: "../assets/study.webp",
     text: "\"Nah,\" you say. \"I'll listen to what you have to tell me. Only... I'm not even activated yet. I thought the Protocol would acknowledge me after everything that's happened... but it's been silent.\"\n\n\"I wouldn't be too concerned about that. Changes are coming, my friend.\" They look at you. \"Is there anything else you'd like to discuss?\"\n\nYou pause a moment, knowing your earlier statement is only half true. The Protocol hasn't activated you, but you *did* speak with something in that *other* place.",
     next: "interloper_listen2"
   },
   interloper_listen2: {
     title: "Listening",
+    src: "../assets/study.webp",
     type: "text",
     text: "You open your mouth to ask about it, but something holds your tongue, literally keeping the words from leaving you.\n\nYou feel the Interloper narrow their eyes. \"I understand. Unfortunately, you won't be able to talk about me, either. Too much at stake. The Gatekeeper's ways are mysterious, but I always understood why it does that much, at least.\"\n\nYou struggle to say more, but the words still won't come.",
     next: "interloper_intro"
   },
   interloper_listen_lie: {
     title: "Listening (Lying)",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"Nah,\" you lie. \"I'll listen to what you have to tell me. Only... I'm not even activated yet. I thought the Protocol would acknowledge me after everything that's happened... but it's been silent.\"\n\nYou feel the Interloper narrow their eyes at you.\n\n\"I suppose time will tell,\" they whisper.\n\n\"As for you not being activated, I wouldn't be too concerned. Changes are coming, my friend.\"",
     next: "interloper_intro"
   },
   interloper_intro: {
     title: "Interloper Intro",
+    src: "../assets/study.webp",
     type: "text",
     text: "\"Anyway,\" The Interloper disappears entirely, and their voice continues from around the room, \"I just wanted to make an introduction, let you know you have someone looking out for you.\"\n\nA door appears in front of you. It looks exactly like the one to your apartment.\n\n\"I'll see you soon. Or maybe I'm mistaken.\" You don't see it, but you swear you feel the Interloper wink. \"I suppose the other players will decide.\"\n\nYou open the door and step into your apartment. It's empty, but not entirely. An image overlays your living room, visible only to you.",
     next: "activated"
@@ -3030,18 +3185,21 @@ export const adventurePages = {
     //maybe new moving background from react bits?
     //update breaker class to D
     title: "Activated!",
+    src: "../assets/apartment.webp",
     type: "text",
     text: "\"Congratulations! The Protocol has activated you. You may now spend Breaker Points, get into more difficult gates, choose a path, and use the system store.\"\n\nYour Rank is D-Class.",
     next: "activated2"
   },
   activated2: {
     title: "Activated!",
+    src: "../assets/apartment.webp",
     type: "text",
     text: "\"D-Class?\" You let out a low whistle. You skipped E entirely.\n\nYou look back at your closed apartment door. *Did the Interloper do this?*\n\nYou blink twice, and the augmented reality window disappears. Your shoddy living room returns to focus, looking more dire than ever.",
     next: "activated3"
   },
   activated3: {
     title: "Activated!",
+    src: "../assets/apartment.webp",
     type: "text",
     text: "You almost died a few days ago, and your family is no better off because of it.\n\n\"*D-Class,*\" you say again.\n\n*Things will only get harder from here.*",
     next: "chapter1_end_card"

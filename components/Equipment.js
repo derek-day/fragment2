@@ -428,7 +428,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-gray-800 max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
+        className="display bg-gray-800 max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-700"
       >
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
@@ -527,7 +527,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
-                    <span className="w-1 h-1 bg-green-400"></span>
+                    {/* <span className="w-1 h-1 bg-blue-400"></span> */}
                     {type}
                   </h3>
                   <div className="space-y-2">

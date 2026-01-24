@@ -688,19 +688,18 @@ export const adventurePages = {
     src: "../assets/shack.webp",
     text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.",
     next: "sometimes_alone4",
-    //life points need halved
-    hpModification: {
-      type: 'halve',
-      message: 'The sight weakens you!',
-      // oneTime: true
-    }
   },
   sometimes_alone4: {
     title: "Camper Attack",
     type: "text",
     src: "../assets/shack.webp",
     text: "You feel the wound an instant later, a burning across your left side. The Camper hasn't done enough to mortally wound you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\" The Camper returns its weapon to its sheath, then lays it on the porch with its armor. Its body is scarred and burned, aged, but also incredibly muscular.",
-    next: "sometimes_alone5"
+    next: "sometimes_alone5",
+    hpModification: {
+      type: 'halve',
+      message: 'Sliced by the Camper\'s katana, your life force is severely diminished.',
+      // oneTime: true
+    }
   },
   sometimes_alone5: {
     title: "Camper Attack",
@@ -732,7 +731,12 @@ export const adventurePages = {
     type: "text",
     src: "../assets/shack.webp",
     text: "You feel a numbness in the fingertips of your right arm, and then an excruciating pain halfway down your bicep.\n\nYour arm is no longer attached.",
-    next: "party_arrives_alone"
+    next: "party_arrives_alone",
+    hpModification: {
+      type: 'halve',
+      message: 'The Camper severs your arm, leaving you grievously wounded.',
+      // oneTime: true
+    }
   },
   party_arrives_alone: {
     title: "Party Arrives",
@@ -2352,7 +2356,14 @@ export const adventurePages = {
     type: "text",
     useCustomBackground: true,
     text: "You awake in a hospital bed, flanked by a nurse and a healer.\n\n\"He's coming to,\" the healer whispers.\n\n\"Oh, thank God,\" says the nurse. \"His family will be thrilled to see him in one piece.\"\n\n\"Well, I wouldn't go that far.\"",
-    next: "hospital1"
+    next: "hospital1",
+    hpModification: {
+      type: 'set',
+      amount: 20,
+      message: 'Your health has been restored to 20 HP.',
+      // oneTime: true
+    }
+
   },
   hospital1: {
     title: "Awake",

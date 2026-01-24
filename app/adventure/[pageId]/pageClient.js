@@ -683,7 +683,7 @@ export default function PageClient({ page: initialPage, pageId }) {
               exit={{ opacity: 0, y: -50 }}
               className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40"
             >
-              <div className={`px-6 py-4 rounded-lg shadow-2xl border-2 ${
+              <div className={`px-6 py-4 shadow-2xl border-2 ${
                 hpModResult.newHP < hpModResult.oldHP 
                   ? 'bg-red-900 border-red-600' 
                   : 'bg-green-900 border-green-600'

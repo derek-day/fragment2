@@ -39,6 +39,8 @@ import DebugPanel from "../../../components/DebugPanel";
 import DataPacketBrowser from "../../../components/DataPacket";
 import EquipmentBrowser from "../../../components/Equipment";
 import { applyPageHPModification, hasVisitedPage } from "../../../lib/hpModifier";
+import LightRay from "../../../components/LightRay";
+import PrismaticBurst from "../../../components/PrismaticBurst";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -472,9 +474,34 @@ export default function PageClient({ page: initialPage, pageId }) {
         exit="exit"
         variants={backgroundVariants}
         className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
-        style={{ backgroundImage: page.src ? `url(${page.src})` : 'none' }}
+        style={{ backgroundImage: page.src ? `url(${page.src})` : 'none',
+        backgroundColor: page.useCustomBackground ? '#000' : undefined}}
       >
 
+      {page.useCustomBackground && page.customBackgroundComponent === 'LightRays' && (
+        <LightRay />
+      )}
+
+      {page.useCustomBackground && page.customBackgroundComponent === 'PrismaticBurst' && (
+        //   <PrismaticBurst
+        //     animationType="rotate3d"
+        //     intensity={2}
+        //     speed={0.5}
+        //     distort={0}
+        //     paused={false}
+        //     offset={{ x: 0, y: 0 }}
+        //     hoverDampness={0.25}
+        //     rayCount={0}
+        //     mixBlendMode="lighten"
+        //     colors={['#ff007a', '#4d3dff', '#ffffff']}
+        //     color0=""
+        //     color1=""
+        //     color2=""
+        // />
+        <PrismaticBurst/>
+      )}
+
+      {!page.useCustomBackground && (
         <div className="screen-particles">
           {particles.map(p => (
             <span
@@ -491,6 +518,7 @@ export default function PageClient({ page: initialPage, pageId }) {
             />
           ))}
         </div>
+      )}
 
         <StatLayout />
         <MenuButton />

@@ -53,7 +53,7 @@ export default function StatLayout() {
 
   return (
     <motion.div 
-      className="display stat-layout fixed top-4 left-4 bg-gray-900 bg-opacity-95 backdrop-blur-md text-white p-4 shadow-2xl border-2 border-gray-700 z-50 rounded-lg"
+      className="display stat-layout fixed top-4 left-4 bg-gray-900 bg-opacity-95 backdrop-blur-md text-white p-4 shadow-2xl border-2 border-gray-700 z-50"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}

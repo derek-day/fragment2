@@ -457,7 +457,7 @@ export const adventurePages = {
   ridge_ambush_fail: {
     title: "Ridge Battle Lost",
     type: "text",
-    src: "../assets/ridge.webp",
+    useCustomBackground: true,
     text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth.\n\nYour arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nSure enough, the jaws close, and the red goes to black.",
     next: "ridge_ambush_fail2"
   },
@@ -465,6 +465,7 @@ export const adventurePages = {
     title: "Ridge Battle Lost",
     //no src, black background
     type: "text",
+    useCustomBackground: true,
     text: "You float in this dark ocean for a moment... and an eternity.\n\n\"Go back,\" a soft voice whispers. It sounds so familiar. \"I'm not ready for you yet.\"\n\nThe darkness recedes, and the silhouettes of seven figures appear above you. You know them at once, and the realization burns your face with embarrassment.\n\n\"Dumbass,\" Threx says. \"You should have gone home.\"\n\n\"I told you so,\" Ronin adds.\n\n\"Oh, {{characterName}},\" says one of the women, shaking her head.",
     next: "ridge_ambush_fail3"
   },
@@ -1925,12 +1926,14 @@ export const adventurePages = {
   forest_clearing_encounter_fail: {
     title: "Forest Encounter Defeat",
     type: "text",
+    useCustomBackground: true,
     text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks rag you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
     next: "forest_clearing_encounter_fail2",
   },
   forest_clearing_encounter_fail2: {
     title: "---",
     type: "text",
+    useCustomBackground: true,
     text: "\"Go back,\" a voice says. \"I'm not ready for you yet.\"",
     next: "forest_clearing_encounter_fail3",
   },
@@ -2083,12 +2086,14 @@ export const adventurePages = {
   forest_encounter_fail: {
     title: "Forest Encounter Defeat",
     type: "text",
+    useCustomBackground: true,
     text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
     next: "forest_encounter_fail2",
   },
   forest_encounter_fail2: {
     title: "---",
     type: "text",
+    useCustomBackground: true,
     text: "\"Go back,\" a soft voice tells you. It sounds so familiar. \"I'm not ready for you yet.\"",
     next: "forest_encounter_fail3",
   },
@@ -2268,52 +2273,92 @@ export const adventurePages = {
   formless: {
     title: "---",
     type: "text",
+    useCustomBackground: true,
     text: "*Death does not feel how you expected it to. Your parents aren't waiting for you here. Neither are demons hellbent on devouring your immortal soul.*\n\n*There is no heaven, no hell, no time, nor space. You are alone, and you are the absence.*",
     next: "formless2"
   },
   formless2: {
-    //use the light ray component as background
     title: "---",
     type: "text",
-    text: "\"Well hooooowwwddyyy!\"\n\n*That wasn't you, was it?*\n\n\"Sorry 'bout that, par'ner. Let me get a light for ya.\"\n\n*A faint speck appears in the middle distance, creating contrast to the endless dark.*\n\n\"That's better.\"",
+    useCustomBackground: true,
+    text: "\"Well hooooowwwddyyy!\"",
     next: "formless3"
   },
   formless3: {
     title: "Who?",
     type: "text",
-    text: "The voice is calming, yet paradoxically unsettling. You feel safe here, but only in the way one feels safe inside a cage.\n\n\"*Who are you?*\" you try to ask. There are no words, because you have no body.\n\nThe voice replies anyway.",
+    useCustomBackground: true, // Add this flag
+    text: "*That wasn't you, was it?*",
     next: "formless4"
   },
   formless4: {
     title: "Who?",
     type: "text",
-    text: "\"Me? I'm just a Man-with-a-plan. A lot of you folks used to call me God. Nowadays, you call me the \"Protocol.\"\n\n*The Protocol*. Your mind explodes with the revelation. Are you about to be activated? Saved? Is this what it's like for everyone, or are you special somehow?",
+    useCustomBackground: true, // Add this flag
+    text: "\"Sorry 'bout that, par'ner. Let me get a light for ya.\"",
     next: "formless5"
   },
   formless5: {
+    //use the light ray component as background
+    title: "Who?",
+    type: "text",
+    text: "*A faint speck appears in the middle distance, creating contrast to the endless dark.*\n\n\"That's better.\"",
+    next: "formless6",
+    useCustomBackground: true,
+    customBackgroundComponent: "LightRays"
+  },
+  formless6: {
+    title: "Who?",
+    type: "text",
+    text: "The voice is calming, yet paradoxically unsettling. You feel safe here, but only in the way one feels safe inside a cage.\n\n\"*Who are you?*\" you try to ask. There are no words, because you have no body.\n\nThe voice replies anyway.",
+    next: "formless7",
+    useCustomBackground: true,
+    customBackgroundComponent: "LightRays"
+  },
+  formless7: {
+    title: "Who?",
+    type: "text",
+    text: "\"Me? I'm just a Man-with-a-plan. A lot of you folks used to call me God. Nowadays, you call me the \"Protocol.\"\n\n*The Protocol*. Your mind explodes with the revelation. Are you about to be activated? Saved? Is this what it's like for everyone, or are you special somehow?",
+    next: "formless8",
+    useCustomBackground: true,
+    customBackgroundComponent: "LightRays"
+  },
+  formless8: {
     title: "The Protocol",
     type: "text",
     text: "\"*Shooo*. You're no more special than anyone else,\" the light says in its unique drawl. \"But you are very special indeed. You have a purpose that is yet unfulfilled. For that reason, I reckon I can't allow ya to expire.\"\n\nIt pauses, and when it speaks again, its voice is different. More serious. More common.",
-    next: "formless6"
+    next: "formless9",
+    useCustomBackground: true,
+    customBackgroundComponent: "LightRays"
   },
-  formless6: {
+  formless9: {
     title: "The Protocol",
     type: "text",
     text: "\"Keep fighting, {{characterName}}. Keep getting stronger. I'll need you tip-top before the end.\"\n\nYou try to say more, but the light is gone. The darkness is, too.\n\nAgain, there is only you.",
-    next: "formless7"
+    next: "formless10",
+    useCustomBackground: true,
+    customBackgroundComponent: "LightRays"
   },
-  formless7: {
+  formless10: {
     //back to black
     title: "---",
     type: "text",
     text: "Then, there is nothing at all.",
+    useCustomBackground: true,
     next: "hospital"
   },
   hospital: {
-    //hospital room background
     title: "Awake",
     type: "text",
-    text: "You awake in a hospital bed, flanked by a nurse and a healer.\n\n\"He's coming to,\" the healer whispers.\n\n\"Oh, thank God,\" says the nurse. \"His family will be thrilled to see him in one piece.\"\n\n\"Well, I wouldn't go that far.\"\n\nYour eyes follow the gaze of the healer to the stump of your right arm, then to the open space below your knees.",
+    useCustomBackground: true,
+    text: "You awake in a hospital bed, flanked by a nurse and a healer.\n\n\"He's coming to,\" the healer whispers.\n\n\"Oh, thank God,\" says the nurse. \"His family will be thrilled to see him in one piece.\"\n\n\"Well, I wouldn't go that far.\"",
+    next: "hospital1"
+  },
+  hospital1: {
+    title: "Awake",
+    type: "text",
+    src: "../assets/hospital.webp",
+    text: "Your eyes follow the gaze of the healer to the stump of your right arm, then to the open space below your knees.",
     next: "hospital2"
   },
   hospital2: {
@@ -2599,6 +2644,7 @@ export const adventurePages = {
   hospital_sleep: {
     title: "---",
     type: "text",
+    useCustomBackground: true,
     text: "Then, you sleep.",
     next: "hospital_later"
   },
@@ -3205,7 +3251,12 @@ export const adventurePages = {
     next: "chapter1_end_card"
   },
   chapter1_end_card: {
-    //need some kind of ending here before chapter 2 is ready to push
+    title: "Chapter 1 Complete",
+    // type: "text",
+    type: "endCard",
+    text: "You have completed Chapter 1 of The Gatebreaker Protocol!\n\nStay tuned for Chapter 2, coming soon!",
+    useCustomBackground: true,
+    customBackgroundComponent: "PrismaticBurst"
   }
 };
 

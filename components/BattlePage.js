@@ -9,8 +9,10 @@ import { getUnlockedEquipment, useConsumable } from '../components/Equipment';
 import { awardBreakerPoints, calculateEnemyBP } from '../lib/breakerPointsService';
 import { BPNotification } from '../components/BPNotification';
 import { motion, AnimatePresence } from 'framer-motion';
+import { environmentalActions } from '../lib/environmentalActions';
+import { hasUsedEnvironmentalAction, markEnvironmentalActionUsed } from '../lib/environmentalService';
 
-const BattleSystem = ({ userStats, page, userId }) => {
+const BattleSystem = ({ userStats, page, userId, pageId }) => {
   const diceBoxRef = useRef(null);
   const containerRef = useRef(null);
   const router = useRouter();
@@ -28,6 +30,54 @@ const BattleSystem = ({ userStats, page, userId }) => {
   const [equippedWeapon, setEquippedWeapon] = useState(null);
   const [bpResult, setBPResult] = useState(null);
   const [showBPNotification, setShowBPNotification] = useState(false);
+  const [environmentalActionUsed, setEnvironmentalActionUsed] = useState(false);
+  const [environmentalAction, setEnvironmentalAction] = useState(null);
+
+  useEffect(() => {
+    const loadEnvironmental = async () => {
+      if (userId && page.environment) {
+        const used = await hasUsedEnvironmentalAction(userId, pageId);
+        setEnvironmentalActionUsed(used);
+        setEnvironmentalAction(environmentalActions[page.environment]);
+      }
+    };
+    loadEnvironmental();
+  }, [userId, page.environment]);
+
+  const handleEnvironmental = async () => {
+    if (isRolling || !environmentalAction) return;
+    setSelectedAction('environmental');
+
+    const stat = userStats[environmentalAction.stat] || 10;
+    const mod = getModifier(stat);
+    const roll = await rollDice(20);
+    const total = roll + mod;
+
+    addLog(`You attempt ${environmentalAction.name}! Roll: ${roll} + ${mod} = ${total}`, 'roll');
+
+    if (total >= environmentalAction.dc) {
+      const damage = await calculateDamage(
+        environmentalAction.damage.dice,
+        environmentalAction.damage.sides
+      );
+      setEnemyHP(prev => Math.max(0, prev - damage));
+      addLog(`Success! ${environmentalAction.name} deals ${damage} damage!`, 'success');
+      if (environmentalAction.effect) {
+        addLog(environmentalAction.effect, 'success');
+      }
+    } else {
+      addLog(`Failed! ${environmentalAction.name} misses!`, 'fail');
+    }
+
+    // Mark as used
+    await markEnvironmentalActionUsed(userId, pageId);
+    setEnvironmentalActionUsed(true);
+
+    setTimeout(() => {
+      setIsPlayerTurn(false);
+      setSelectedAction(null);
+    }, 1500);
+  };
 
   // Load player inventory
   useEffect(() => {
@@ -403,7 +453,8 @@ const BattleSystem = ({ userStats, page, userId }) => {
         </div>
 
         {/* Footer Buttons */}
-        <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-3 gap-3 shrink-0">
+        {/* <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-3 gap-3 shrink-0"> */}
+        <div className={`p-3 bg-slate-900/80 border-t border-slate-700/50 grid ${environmentalAction && !environmentalActionUsed ? 'grid-cols-4' : 'grid-cols-3'} gap-3 shrink-0`}>
           <button
             onClick={handleAttack}
             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
@@ -433,6 +484,19 @@ const BattleSystem = ({ userStats, page, userId }) => {
             <span className="text-xs">ITEMS</span>
             <span className="text-[9px] opacity-70">({consumables.length})</span>
           </button>
+
+          {environmentalAction && !environmentalActionUsed && (
+            <button
+              onClick={handleEnvironmental}
+              disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+              className="flex flex-col items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-emerald-900 active:border-b-0 active:scale-95 transition-all"
+              title={environmentalAction.description}
+            >
+              <span className="text-2xl mb-1">{environmentalAction.icon}</span>
+              <span className="text-xs">{environmentalAction.name.toUpperCase()}</span>
+              <span className="text-[9px] opacity-70">{environmentalAction.stat.slice(0, 3).toUpperCase()}</span>
+            </button>
+          )}
         </div>
       </div>
 

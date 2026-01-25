@@ -200,6 +200,7 @@ export const adventurePages = {
     title: "First Battle",
     src: "../assets/forest.webp",
     type: "battle",
+    environment: "forest",
     enemy: {
       name: "Critter",
       maxHP: 10,      // Enemy health
@@ -444,7 +445,7 @@ export const adventurePages = {
     type: "battle",
     src: "../assets/ridge.webp",
     enemy: {
-      name: "Bigger Critter", //12 of them
+      name: "Flower Beast", //12 of them
       maxHP: 10,      // Enemy health
       ac: 10,          // Armor Class (difficulty to hit)
       attack: 2,      // Attack bonus
@@ -1915,7 +1916,7 @@ export const adventurePages = {
     src: "../assets/critters.webp",
     type: "battle",
     enemy: {
-      name: "Critter",
+      name: "Flower Beast",
       maxHP: 40,      // Enemy health
       ac: 13,          // Armor Class (difficulty to hit)
       attack: 7,      // Attack bonus
@@ -2037,7 +2038,7 @@ export const adventurePages = {
     src: "../assets/critters.webp",
     type: "battle",
     enemy: {
-      name: "Minion",
+      name: "Flower Beast",
       maxHP: 20,      // Enemy health
       ac: 12,          // Armor Class (difficulty to hit)
       attack: 4,      // Attack bonus
@@ -2075,7 +2076,7 @@ export const adventurePages = {
     src: "../assets/critters.webp",
     type: "battle",
     enemy: {
-      name: "Minion",
+      name: "Flower Beast",
       maxHP: 30,      // Enemy health
       ac: 12,          // Armor Class (difficulty to hit)
       attack: 5,      // Attack bonus
@@ -3236,17 +3237,27 @@ export const adventurePages = {
     title: "Interloper Intro",
     src: "../assets/study.webp",
     type: "text",
-    text: "\"Anyway,\" The Interloper disappears entirely, and their voice continues from around the room, \"I just wanted to make an introduction, let you know you have someone looking out for you.\"\n\nA door appears in front of you. It looks exactly like the one to your apartment.\n\n\"I'll see you soon. Or maybe I'm mistaken.\" You don't see it, but you swear you feel the Interloper wink. \"I suppose the other players will decide.\"\n\nYou open the door and step into your apartment. It's empty, but not entirely. An image overlays your living room, visible only to you.",
+    text: "\"Anyway,\" The Interloper disappears entirely, and their voice continues from around the room, \"I just wanted to make an introduction, let you know you have someone looking out for you.\"\n\nA door appears in front of you. It looks exactly like the one to your apartment.\n\n\"I'll see you soon. Or maybe I'm mistaken.\"\n\nYou don't see it, but you swear you feel the Interloper wink.\n\n\"I suppose the other players will decide.\"",
+    next: "apartment"
+  },
+  apartment: {
+    title: "Your Apartment",
+    src: "../assets/apartment.webp",
+    type: "text",
+    text: "You open the door and step into your apartment. It's empty, but not entirely.\n\nAn image overlays your living room, visible only to you.",
     next: "activated"
   },
   activated: {
-    //maybe new moving background from react bits?
     //update breaker class to D
     title: "Activated!",
     src: "../assets/apartment.webp",
     type: "text",
     text: "\"Congratulations! The Protocol has activated you. You may now spend Breaker Points, get into more difficult gates, choose a path, and use the system store.\"\n\nYour Rank is D-Class.",
-    next: "activated2"
+    next: "activated2",
+    action: {
+      type: "update_class",
+      value: "D"
+    },
   },
   activated2: {
     title: "Activated!",

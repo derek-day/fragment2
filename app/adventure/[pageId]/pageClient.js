@@ -23,7 +23,8 @@ import {
   recordSacrifice,
   recordNiceToAkemi,
   recordGaveToCale,
-  recordTookEnvironmentalPotion
+  recordTookEnvironmentalPotion,
+  updateBreakerClass
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
 import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
@@ -56,6 +57,8 @@ export default function PageClient({ page: initialPage, pageId }) {
   const [userStats, setUserStats] = useState(null);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const [isPageChanging, setIsPageChanging] = useState(false);
+  const [breakerClass, setBreakerClass] = useState("Unknown");
+
 
   // Data Packet states
   const [newDataPackets, setNewDataPackets] = useState([]);
@@ -177,6 +180,7 @@ export default function PageClient({ page: initialPage, pageId }) {
           setUserStats(userData.stats || {});
           setCharacterName(userData.characterName || "My Guy");
           setClassName(userData.className || "Unknown");
+          setBreakerClass(userData.breakerClass || "Unknown");
         }
         
         // Handle conditional branching
@@ -235,6 +239,11 @@ export default function PageClient({ page: initialPage, pageId }) {
       
       // Determine next page
       let nextPageId = null;
+
+      if (page.action?.type === 'update_class') {
+        await updateBreakerClass(user.uid, page.action.value);
+        setBreakerClass(page.action.value);
+      }
 
       // Handle input type
       if (page.type === "input") {

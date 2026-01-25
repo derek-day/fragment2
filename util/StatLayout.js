@@ -78,11 +78,11 @@ export default function StatLayout() {
           </div>
           <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold flex items-center gap-2">
             <Shield size={10} />
-            {className} <span className="text-gray-600">|</span> LVL {stats.Level || 1}
+            {className} <span className="text-gray-600">-</span> LVL {stats.Level || 1}
           </div>
           <div className="text-[10px] uppercase tracking-wider text-gray-400 font-bold flex items-center gap-2">
             <Badge size={10} />
-            Breaker Class <span className="text-gray-600">|</span> {breakerClass}
+            Breaker Class <span className="text-gray-600">-</span> {breakerClass}
           </div>
         </div>
       </div>

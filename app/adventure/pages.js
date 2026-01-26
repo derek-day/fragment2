@@ -3338,18 +3338,21 @@ export const adventurePages = {
   hospital_later_alone_sacrificed: {
     title: "Note",
     type: "text",
+    src: "../assets/hospital_later.webp",
     text: "There's a letter on the end table next to your bed. It features a picture of the group you had been meant to enter with. Everyone has signed it except Ronin, your former best friend.\n\n\"Thank you for your sacrifice,\" the letter reads. \"Call us if you need anything. Threx.\"",
     next: "hospital_note"
   },
   hospital_later_alone_no_sacrifice: {
     title: "Note",
     type: "text",
-    text: "There's a nondescript letter on the end table next to your bed. You open it and find familiar, messy handwriting inside.\n\n\"People died because of you. Those who didn't still lost pieces of ourselves. I'm glad to hear you have, too, even if it wasn't enough. I considered smothering you with your pillow, but I'd rather wait until we're both at full strength.\n\nGet well soon.\"\n\n- Ronin",
+    src: "../assets/hospital_later.webp",
+    text: "There's a nondescript letter on the end table next to your bed. You open it and find familiar, messy handwriting inside.\n\n\"People died because of you. Those who didn't still lost pieces of ourselves. I'm glad to hear you have, too, even if it wasn't enough. I considered smothering you with your pillow, but I'd rather wait until we're both at full strength.\"\n\n\"Get well soon.\"\n\n- Ronin",
     next: "hospital_note"
   },
   hospital_later_team: {
     title: "Note",
     type: "text",
+    src: "../assets/hospital_later.webp",
     text: "There's a note from Akemi, longer than the others. It includes her phone number.\n\n\"Keep in touch,\" the note says.",
     next: "hospital_note"
   },

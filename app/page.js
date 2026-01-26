@@ -170,6 +170,7 @@ export default function Home() {
           gaveToCale: false,
           hasFailed: false,
           tookEnvironmentPotion: false,
+          tookHospitalNote: false,
           visitedPages: ["page_1"],
           wentAlone: false,
           minionGroups: {},

@@ -41,6 +41,11 @@ export async function checkPageCondition(userId: string, condition: any): Promis
       const wentAlone = progress.wentAlone === true;
       return toldAboutRonin || wentAlone;
 
+    case 'went_alone_or_no_note':
+      const routeCheck = await getCurrentRoute(userId);
+      const tookNote = await hasTakenHospitalNote(userId);
+      return routeCheck === 'alone' || !tookNote;
+
     case 'nice_to_akemi':
       return progress.niceToAkemi === true;
 

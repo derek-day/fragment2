@@ -3303,13 +3303,62 @@ export const adventurePages = {
     next: "ryke_project"
   },
   hospital_later: {
-    //changes depending on sacrifice/alone
+    title: "Later...",
+    src: "../assets/hospital_later.webp",
+    type: "text",
+    text: "You wake again, still in the hospital room. It's empty now, but there are hints of other visitors.",
+    //if they sacrificed themselves and went alone you go to a page. if they went together there's another page. if they went alone and did not sacrifice, there is another page
+    conditionalNext: [
+      {
+        // Went alone AND sacrificed
+        conditions: [
+          { type: 'went_alone' },
+          { type: 'sacrificed' }
+        ],
+        next: 'hospital_later_alone_sacrificed'
+      },
+      {
+        // Went alone but did NOT sacrifice
+        conditions: [
+          { type: 'went_alone' },
+          { type: 'did_not_sacrifice' }
+        ],
+        next: 'hospital_later_alone_no_sacrifice'
+      },
+      {
+        // Went with the team
+        conditions: [
+          { type: 'went_with_team' }
+        ],
+        next: 'hospital_later_team'
+      }
+    ],
+    next: "hospital_later_team" // Fallback (defaults to team path)
+  },
+  hospital_later_alone_sacrificed: {
+    title: "Note",
+    type: "text",
+    text: "There's a letter on the end table next to your bed. It features a picture of the group you had been meant to enter with. Everyone has signed it except Ronin, your former best friend.\n\n\"Thank you for your sacrifice,\" the letter reads. \"Call us if you need anything. Threx.\"",
+    next: "hospital_note"
+  },
+  hospital_later_alone_no_sacrifice: {
+    title: "Note",
+    type: "text",
+    text: "There's a nondescript letter on the end table next to your bed. You open it and find familiar, messy handwriting inside.\n\n\"People died because of you. Those who didn't still lost pieces of ourselves. I'm glad to hear you have, too, even if it wasn't enough. I considered smothering you with your pillow, but I'd rather wait until we're both at full strength.\n\nGet well soon.\"\n\n- Ronin",
+    next: "hospital_note"
+  },
+  hospital_later_team: {
+    title: "Note",
+    type: "text",
+    text: "There's a note from Akemi, longer than the others. It includes her phone number.\n\n\"Keep in touch,\" the note says.",
+    next: "hospital_note"
+  },
+  hospital_note: {
     title: "Later...",
     src: "../assets/hospital_later.webp",
     type: "choice",
-    text: "You wake again, still in the hospital room. It's empty now, but there are hints of other visitors.\n\nYou press the call button, and a new nurse enters a minute later.",
+    text: "You press the call button, and a new nurse enters a minute later.",
     choices: [
-      //add note to inventory or data journal
       { label: "Keep the note", next: "nurse_keep", action: "took_hospital_note" },
       { label: "Leave the note here", next: "nurse_leave", action: "did_not_take_hospital_note" },
     ],
@@ -3561,11 +3610,46 @@ export const adventurePages = {
     next: "study_want"
   },
   study_want: {
-    //{If the player explored the gate with the group AND collected the note in the hospital add to text: "You might not realize it, but you mean a great deal to me."}
+    //{If the player explored the gate with the group AND collected the note in the hospital, need to go to a page. if alone or if didn't take note go to a different page
     title: "Study Want",
     src: "../assets/study.webp",
     type: "choice",
-    text: "\"Your fate and mine are connected, {{characterName}}. You might not appreciate that yet, but you will in time.\"\n\n\"Unfortunately, you are still at the very beginning of your journey. There are many more hardships you must face before reaching the level I need you to be. In the meantime, I need you to do what I tell you when I tell you. You will be faced with choices that may lead you from my sight. You *must* not let that happen.\"",
+    text: "\"Your fate and mine are connected, {{characterName}}. You might not appreciate that yet, but you will in time.\"",
+    conditionalNext: [
+      {
+        // Went with team AND collected the hospital note
+        conditions: [
+          { type: 'went_with_team' },
+          { type: 'took_hospital_note' }
+        ],
+        next: 'study_together'
+      },
+      {
+        // Either went alone OR didn't take the note
+        conditions: [
+          { type: 'went_alone_or_no_note' }
+        ],
+        next: 'study_want_alone'
+      }
+    ],
+    next: "study_want_alone" // Fallback
+  },
+  study_alone: {
+    title: "Study Want",
+    src: "../assets/study.webp",
+    type: "choice",
+    text: "\"Unfortunately, you are still at the very beginning of your journey. There are many more hardships you must face before reaching the level I need you to be. In the meantime, I need you to do what I tell you when I tell you. You will be faced with choices that may lead you from my sight. You *must* not let that happen.\"",
+    choices: [
+      { label: "\"Why should I trust you?\"", next: "interloper_why" },
+      { label: "\"Okay\"", next: "interloper_ok" },
+      { label: "\"Okay\" (lie)", next: "interloper_ok_lie" },
+    ],
+  },
+  study_together: {
+    title: "Study Want",
+    src: "../assets/study.webp",
+    type: "choice",
+    text: "\"You might not realize it, but you mean a great deal to me.\"\n\n\"Unfortunately, you are still at the very beginning of your journey. There are many more hardships you must face before reaching the level I need you to be. In the meantime, I need you to do what I tell you when I tell you. You will be faced with choices that may lead you from my sight. You *must* not let that happen.\"",
     choices: [
       { label: "\"Why should I trust you?\"", next: "interloper_why" },
       { label: "\"Okay\"", next: "interloper_ok" },

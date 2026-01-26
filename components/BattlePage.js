@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Sword, Sparkles, Package, Heart, Shield, X } from 'lucide-react';
+import { Sword, Sparkles, Package, Heart, Shield, X, Swords, Target } from 'lucide-react';
 import DiceBox from "@3d-dice/dice-box";
 import { useRouter } from "next/navigation";
 import { updatePlayerHP } from '../lib/hpModifier';
@@ -11,6 +11,7 @@ import { BPNotification } from '../components/BPNotification';
 import { motion, AnimatePresence } from 'framer-motion';
 import { environmentalActions } from '../lib/environmentalActions';
 import { hasUsedEnvironmentalAction, markEnvironmentalActionUsed } from '../lib/environmentalService';
+import { recordTookEnvironmentalPotion } from '../lib/progressService';
 
 const BattleSystem = ({ userStats, page, userId, pageId }) => {
   const diceBoxRef = useRef(null);
@@ -32,6 +33,10 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
   const [showBPNotification, setShowBPNotification] = useState(false);
   const [environmentalActionUsed, setEnvironmentalActionUsed] = useState(false);
   const [environmentalAction, setEnvironmentalAction] = useState(null);
+  const [showAttackMenu, setShowAttackMenu] = useState(false);
+  const [showMagicMenu, setShowMagicMenu] = useState(false);
+  const [playerStance, setPlayerStance] = useState('normal'); // defensive, normal, aggressive
+  const [playerMissNextTurn, setPlayerMissNextTurn] = useState(false);
 
   useEffect(() => {
     const loadEnvironmental = async () => {
@@ -42,42 +47,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
       }
     };
     loadEnvironmental();
-  }, [userId, page.environment]);
-
-  const handleEnvironmental = async () => {
-    if (isRolling || !environmentalAction) return;
-    setSelectedAction('environmental');
-
-    const stat = userStats[environmentalAction.stat] || 10;
-    const mod = getModifier(stat);
-    const roll = await rollDice(20);
-    const total = roll + mod;
-
-    addLog(`You attempt ${environmentalAction.name}! Roll: ${roll} + ${mod} = ${total}`, 'roll');
-
-    if (total >= environmentalAction.dc) {
-      const damage = await calculateDamage(
-        environmentalAction.damage.dice,
-        environmentalAction.damage.sides
-      );
-      setEnemyHP(prev => Math.max(0, prev - damage));
-      addLog(`Success! ${environmentalAction.name} deals ${damage} damage!`, 'success');
-      if (environmentalAction.effect) {
-        addLog(environmentalAction.effect, 'success');
-      }
-    } else {
-      addLog(`Failed! ${environmentalAction.name} misses!`, 'fail');
-    }
-
-    // Mark as used
-    await markEnvironmentalActionUsed(userId, pageId);
-    setEnvironmentalActionUsed(true);
-
-    setTimeout(() => {
-      setIsPlayerTurn(false);
-      setSelectedAction(null);
-    }, 1500);
-  };
+  }, [userId, page.environment, pageId]);
 
   // Load player inventory
   useEffect(() => {
@@ -124,7 +94,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     essence: userStats?.Essence || 10,
     thought: userStats?.Thought || 10,
     fellowship: userStats?.Fellowship || 10,
-    AC: 10 + Math.floor(( (userStats?.Athletics || 10) - 10) / 2)
+    AC: 10 + Math.floor(( (userStats?.Athletics || 10) - 10) / 2) + (playerStance === 'defensive' ? 2 : playerStance === 'aggressive' ? -2 : 0)
   };
 
   const getModifier = (stat) => Math.floor((stat - 10) / 2);
@@ -170,24 +140,79 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     return roll.reduce((sum, die) => sum + die.value, 0);
   };
 
-  const handleAttack = async () => {
+  const handleAttack = async (attackType = 'normal') => {
     if (isRolling) return;
+    
+    // Check if player fumbled last turn
+    if (playerMissNextTurn) {
+      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      setPlayerMissNextTurn(false);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+      }, 1500);
+      return;
+    }
+    
     setSelectedAction('attack');
+    setShowAttackMenu(false);
 
     const attackStat = getAttackStat();
     const weaponBonus = equippedWeapon?.stats?.damage ? parseInt(equippedWeapon.stats.damage.replace(/\D/g, '')) || 0 : 0;
+    
+    // Light Attack: +2 to hit, -2 damage, 1d6 base damage
+    // Normal Attack: standard (1d8)
+    // Heavy Attack: -2 to hit, +4 damage, 1d10 base damage
+    let hitBonus = 0;
+    let damageBonus = 0;
+    let damageDice = { count: 1, sides: 8 };
+    let attackLabel = "attack";
+    
+    if (attackType === 'light') {
+      hitBonus = 2;
+      damageBonus = -2;
+      damageDice = { count: 1, sides: 6 };
+      attackLabel = "light attack";
+    } else if (attackType === 'heavy') {
+      hitBonus = -2;
+      damageBonus = 4;
+      damageDice = { count: 1, sides: 10 };
+      attackLabel = "heavy attack";
+    }
+    
+    // Add stance bonuses
+    const stanceDamageBonus = playerStance === 'aggressive' ? 2 : 0;
+    
     const roll = await rollDice(20);
-    const total = roll + attackStat.mod + weaponBonus;
+    
+    // Check for fumble (natural 1)
+    if (roll === 1) {
+      addLog(`💥 FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
+      setPlayerMissNextTurn(true);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+        setSelectedAction(null);
+      }, 1500);
+      return;
+    }
+    
+    const total = roll + attackStat.mod + weaponBonus + hitBonus;
 
-    addLog(`You roll ${roll} + ${attackStat.mod} (${attackStat.name}) + ${weaponBonus} (weapon) = ${total}`, 'roll');
+    addLog(`${attackLabel.toUpperCase()}: You roll ${roll} + ${attackStat.mod} (${attackStat.name}) + ${weaponBonus} (weapon)${hitBonus !== 0 ? ` + ${hitBonus} (${attackType})` : ''} = ${total}`, 'roll');
 
-    if (total >= page.enemy.ac) {
-      const baseDamage = await calculateDamage(1, 8);
-      const totalDamage = baseDamage + attackStat.mod + weaponBonus;
+    if (total >= page.enemy.ac || roll === 20) {
+      const baseDamage = await calculateDamage(damageDice.count, damageDice.sides);
+      let totalDamage = Math.max(1, baseDamage + attackStat.mod + weaponBonus + damageBonus + stanceDamageBonus);
+      
+      // Critical hit (natural 20)
+      if (roll === 20) {
+        totalDamage *= 2;
+        addLog(`⭐ CRITICAL HIT! Damage doubled!`, 'success');
+      }
+      
       setEnemyHP(prev => Math.max(0, prev - totalDamage));
-      addLog(`Hit! You deal ${totalDamage} damage${equippedWeapon ? ` with ${equippedWeapon.name}` : ''}!`, 'success');
+      addLog(`Hit! ${attackLabel} deals ${totalDamage} damage${equippedWeapon ? ` with ${equippedWeapon.name}` : ''}!`, 'success');
     } else {
-      addLog('Miss! Your attack fails to connect.', 'fail');
+      addLog(`Miss! Your ${attackLabel} fails to connect.`, 'fail');
     }
 
     setTimeout(() => {
@@ -196,23 +221,146 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     }, 1500);
   };
 
-  const handleMagic = async () => {
+  const handleMagic = async (spellType = 'normal') => {
     if (isRolling) return;
+    
+    // Check if player fumbled last turn
+    if (playerMissNextTurn) {
+      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      setPlayerMissNextTurn(false);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+      }, 1500);
+      return;
+    }
+    
     setSelectedAction('magic');
+    setShowMagicMenu(false);
 
     const spellStat = getSpellcastingStat();
-    const roll = await rollDice(20);
-    const total = roll + spellStat.mod;
-
-    addLog(`You roll ${roll} + ${spellStat.mod} (${spellStat.name}) = ${total} for magic!`, 'roll');
-
-    if (total >= page.enemy.ac) {
-      const damage = await calculateDamage(2, 6) + spellStat.mod;
-      setEnemyHP(prev => Math.max(0, prev - damage));
-      addLog(`Success! Your spell strikes for ${damage} magical damage!`, 'success');
-    } else {
-      addLog('Miss! The spell fizzles out.', 'fail');
+    
+    // Light Spell: +2 to hit, -1 damage, 2d4
+    // Normal Spell: standard (2d6)
+    // Heavy Spell: -2 to hit, +3 damage, 3d6
+    let hitBonus = 0;
+    let damageBonus = 0;
+    let damageDice = { count: 2, sides: 6 };
+    let spellLabel = "spell";
+    
+    if (spellType === 'light') {
+      hitBonus = 2;
+      damageBonus = -1;
+      damageDice = { count: 2, sides: 4 };
+      spellLabel = "minor spell";
+    } else if (spellType === 'heavy') {
+      hitBonus = -2;
+      damageBonus = 3;
+      damageDice = { count: 3, sides: 6 };
+      spellLabel = "powerful spell";
     }
+    
+    // Add stance bonuses
+    const stanceDamageBonus = playerStance === 'aggressive' ? 2 : 0;
+    
+    const roll = await rollDice(20);
+    
+    // Check for fumble (natural 1)
+    if (roll === 1) {
+      addLog(`💥 FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
+      setPlayerMissNextTurn(true);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+        setSelectedAction(null);
+      }, 1500);
+      return;
+    }
+    
+    const total = roll + spellStat.mod + hitBonus;
+
+    addLog(`${spellLabel.toUpperCase()}: You roll ${roll} + ${spellStat.mod} (${spellStat.name})${hitBonus !== 0 ? ` + ${hitBonus} (${spellType})` : ''} = ${total}`, 'roll');
+
+    if (total >= page.enemy.ac || roll === 20) {
+      const baseDamage = await calculateDamage(damageDice.count, damageDice.sides);
+      let totalDamage = Math.max(1, baseDamage + spellStat.mod + damageBonus + stanceDamageBonus);
+      
+      // Critical hit (natural 20)
+      if (roll === 20) {
+        totalDamage *= 2;
+        addLog(`⭐ CRITICAL HIT! Damage doubled!`, 'success');
+      }
+      
+      setEnemyHP(prev => Math.max(0, prev - totalDamage));
+      addLog(`Success! Your ${spellLabel} strikes for ${totalDamage} magical damage!`, 'success');
+    } else {
+      addLog(`Miss! The ${spellLabel} fizzles out.`, 'fail');
+    }
+
+    setTimeout(() => {
+      setIsPlayerTurn(false);
+      setSelectedAction(null);
+    }, 1500);
+  };
+
+  const handleEnvironmental = async () => {
+    if (isRolling || !environmentalAction) return;
+    
+    // Check if player fumbled last turn
+    if (playerMissNextTurn) {
+      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      setPlayerMissNextTurn(false);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+      }, 1500);
+      return;
+    }
+    
+    setSelectedAction('environmental');
+
+    const stat = userStats[environmentalAction.stat] || 10;
+    const mod = getModifier(stat);
+    const roll = await rollDice(20);
+    
+    // Check for fumble
+    if (roll === 1) {
+      addLog(`💥 FUMBLE! Your environmental attack backfires! You lose your next turn.`, 'fail');
+      setPlayerMissNextTurn(true);
+      await markEnvironmentalActionUsed(userId, pageId);
+      setEnvironmentalActionUsed(true);
+      setTimeout(() => {
+        setIsPlayerTurn(false);
+        setSelectedAction(null);
+      }, 1500);
+      return;
+    }
+    
+    const total = roll + mod;
+
+    addLog(`You attempt ${environmentalAction.name}! Roll: ${roll} + ${mod} = ${total}`, 'roll');
+
+    if (total >= environmentalAction.dc || roll === 20) {
+      let damage = await calculateDamage(
+        environmentalAction.damage.dice,
+        environmentalAction.damage.sides
+      );
+      
+      // Critical hit
+      if (roll === 20) {
+        damage *= 2;
+        addLog(`⭐ CRITICAL HIT! Environmental damage doubled!`, 'success');
+      }
+      
+      setEnemyHP(prev => Math.max(0, prev - damage));
+      addLog(`Success! ${environmentalAction.name} deals ${damage} damage!`, 'success');
+      if (environmentalAction.effect) {
+        addLog(environmentalAction.effect, 'success');
+      }
+    } else {
+      addLog(`Failed! ${environmentalAction.name} misses!`, 'fail');
+    }
+
+    // Mark as used
+    await markEnvironmentalActionUsed(userId, pageId);
+    setEnvironmentalActionUsed(true);
 
     setTimeout(() => {
       setIsPlayerTurn(false);
@@ -277,10 +425,16 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
           const total = roll + (page.enemy.attack || 0);
           addLog(`${page.enemy.name} rolls ${roll} + ${page.enemy.attack} = ${total}!`, 'enemy');
           
-          const playerAC = 10 + getModifier(player.athletics);
+          const playerAC = player.AC;
           
-          if (total >= playerAC) {
-            const damage = await calculateDamage(1, 6) + (page.enemy.attack || 0);
+          if (total >= playerAC || roll === 20) {
+            let damage = await calculateDamage(1, 6) + (page.enemy.attack || 0);
+            
+            if (roll === 20) {
+              damage *= 2;
+              addLog(`💀 Enemy CRITICAL HIT!`, 'damage');
+            }
+            
             setPlayerHP(prev => Math.max(0, prev - damage));
             addLog(`${page.enemy.name} hits you for ${damage} damage!`, 'damage');
           } else {
@@ -290,10 +444,16 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
           const total = roll + (page.enemy.magic || 0);
           addLog(`${page.enemy.name} casts a spell! ${total}`, 'enemy');
           
-          const playerAC = 10 + getModifier(player.athletics);
+          const playerAC = player.AC;
           
-          if (total >= playerAC) {
-            const damage = await calculateDamage(1, 8) + (page.enemy.magic || 0);
+          if (total >= playerAC || roll === 20) {
+            let damage = await calculateDamage(1, 8) + (page.enemy.magic || 0);
+            
+            if (roll === 20) {
+              damage *= 2;
+              addLog(`💀 Enemy CRITICAL HIT!`, 'damage');
+            }
+            
             setPlayerHP(prev => Math.max(0, prev - damage));
             addLog(`Spell hits for ${damage} damage!`, 'damage');
           } else {
@@ -307,7 +467,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
 
       enemyTurnAsync();
     }
-  }, [isPlayerTurn, battleEnded, enemyHP]);
+  }, [isPlayerTurn, battleEnded, enemyHP, isRolling, page.enemy, player.AC]);
 
   // Save HP and check battle end
   useEffect(() => {
@@ -359,7 +519,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     };
 
     saveAndCheck();
-  }, [playerHP, enemyHP, battleEnded]);
+  }, [playerHP, enemyHP, battleEnded, userId, maxHP, page, router]);
 
   const HPBar = ({ current, max, color }) => {
     const percentage = Math.max(0, (current / max) * 100);
@@ -385,12 +545,22 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
         {/* Header */}
         <header className="bg-slate-900/50 border-b border-slate-700/50 p-3 shrink-0 flex justify-between items-center">
           <h1 className="text-lg font-bold text-slate-100 shadow-black drop-shadow-md">{page.title}</h1>
-          <div className={`px-3 py-0.5 text-[10px] md:text-xs font-bold uppercase tracking-wider border ${
-            battleEnded 
-              ? (playerHP > 0 ? "bg-green-900/60 border-green-600 text-green-200" : "bg-red-900/60 border-red-600 text-red-200")
-              : (isPlayerTurn ? "bg-blue-900/60 border-blue-500 text-blue-200 animate-pulse" : "bg-orange-900/60 border-orange-500 text-orange-200")
-          }`}>
-            {battleEnded ? (playerHP > 0 ? "Victory" : "Defeat") : (isPlayerTurn ? "Your Turn" : "Enemy Turn")}
+          <div className="flex items-center gap-2">
+            {/* Stance Indicator */}
+            <div className={`px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border ${
+              playerStance === 'defensive' ? 'bg-blue-900/60 border-blue-500 text-blue-200' :
+              playerStance === 'aggressive' ? 'bg-red-900/60 border-red-500 text-red-200' :
+              'bg-gray-900/60 border-gray-500 text-gray-200'
+            }`}>
+              {playerStance === 'defensive' ? 'DEF' : playerStance === 'aggressive' ? 'AGG' : 'NOR'}
+            </div>
+            <div className={`px-3 py-0.5 text-[10px] md:text-xs font-bold uppercase tracking-wider border ${
+              battleEnded 
+                ? (playerHP > 0 ? "bg-green-900/60 border-green-600 text-green-200" : "bg-red-900/60 border-red-600 text-red-200")
+                : (isPlayerTurn ? "bg-blue-900/60 border-blue-500 text-blue-200 animate-pulse" : "bg-orange-900/60 border-orange-500 text-orange-200")
+            }`}>
+              {battleEnded ? (playerHP > 0 ? "Victory" : "Defeat") : (isPlayerTurn ? "Your Turn" : "Enemy Turn")}
+            </div>
           </div>
         </header>
 
@@ -431,6 +601,46 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
             <div className="h-32 md:h-48 w-full bg-slate-900/40 border-2 border-dashed border-slate-700/50 relative">
               <div id="dice-box" ref={containerRef} className="w-full h-full" />
             </div>
+
+            {/* Stance Buttons */}
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                onClick={() => setPlayerStance('defensive')}
+                disabled={!isPlayerTurn || battleEnded}
+                className={`px-2 py-1.5 text-xs font-bold transition-all ${
+                  playerStance === 'defensive' 
+                    ? 'bg-blue-600 text-white border-2 border-blue-400' 
+                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                } disabled:opacity-50`}
+              >
+                Defensive
+                <div className="text-[9px] opacity-75">+2 AC, -2 DMG</div>
+              </button>
+              <button
+                onClick={() => setPlayerStance('normal')}
+                disabled={!isPlayerTurn || battleEnded}
+                className={`px-2 py-1.5 text-xs font-bold transition-all ${
+                  playerStance === 'normal' 
+                    ? 'bg-gray-600 text-white border-2 border-gray-400' 
+                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                } disabled:opacity-50`}
+              >
+                Normal
+                <div className="text-[9px] opacity-75">Balanced</div>
+              </button>
+              <button
+                onClick={() => setPlayerStance('aggressive')}
+                disabled={!isPlayerTurn || battleEnded}
+                className={`px-2 py-1.5 text-xs font-bold transition-all ${
+                  playerStance === 'aggressive' 
+                    ? 'bg-red-600 text-white border-2 border-red-400' 
+                    : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                } disabled:opacity-50`}
+              >
+                Aggressive
+                <div className="text-[9px] opacity-75">-2 AC, +2 DMG</div>
+              </button>
+            </div>
           </div>
 
           {/* RIGHT COLUMN */}
@@ -449,6 +659,8 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
                     log.type === 'fail' ? 'text-red-300 bg-red-900/20' :
                     log.type === 'damage' ? 'text-orange-300 bg-orange-900/20' :
                     log.type === 'heal' ? 'text-blue-300 bg-blue-900/20' :
+                    log.type === 'enemy' ? 'text-yellow-300 bg-yellow-900/20' :
+                    log.type === 'roll' ? 'text-purple-300 bg-purple-900/20' :
                     'text-slate-400'
                   }`}>
                     {log.message}
@@ -460,27 +672,85 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
         </div>
 
         {/* Footer Buttons */}
-        {/* <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-3 gap-3 shrink-0"> */}
-        <div className={`p-3 bg-slate-900/80 border-t border-slate-700/50 grid ${environmentalAction && !environmentalActionUsed ? 'grid-cols-4' : 'grid-cols-3'} gap-3 shrink-0`}>
-          <button
-            onClick={handleAttack}
-            disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="flex flex-col items-center justify-center bg-gradient-to-br from-orange-600 to-red-700 hover:from-orange-500 hover:to-red-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-red-900 active:border-b-0 active:scale-95 transition-all"
-          >
-            <Sword className="w-4 h-4 mb-1" />
-            <span className="text-xs">ATTACK</span>
-            <span className="text-[9px] opacity-70">{getAttackStat().name}</span>
-          </button>
+        <div className={`p-3 bg-slate-900/80 border-t border-slate-700/50 grid ${environmentalAction && !environmentalActionUsed ? 'grid-cols-4' : 'grid-cols-3'} gap-2 shrink-0`}>
+          
+          {/* Attack Button with Menu */}
+          <div className="relative">
+            <button
+              onClick={() => setShowAttackMenu(!showAttackMenu)}
+              disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+              className="w-full flex flex-col items-center justify-center bg-gradient-to-br from-orange-600 to-red-700 hover:from-orange-500 hover:to-red-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-red-900 active:border-b-0 active:scale-95 transition-all"
+            >
+              <Sword className="w-4 h-4 mb-1" />
+              <span className="text-xs">ATTACK</span>
+              <span className="text-[9px] opacity-70">{getAttackStat().name}</span>
+            </button>
+            
+            {showAttackMenu && isPlayerTurn && !battleEnded && (
+              <div className="absolute bottom-full mb-2 left-0 right-0 bg-slate-800 border-2 border-orange-500 overflow-hidden shadow-xl z-10">
+                <button
+                  onClick={() => handleAttack('light')}
+                  className="w-full px-2 py-3 text-left hover:bg-orange-900/50 transition-colors border-b border-slate-700"
+                >
+                  <div className="text-xs font-bold text-green-300">Light</div>
+                  {/* <div className="text-[10px] text-gray-400">+2 to hit, -2 dmg, 1d6</div> */}
+                </button>
+                <button
+                  onClick={() => handleAttack('normal')}
+                  className="w-full px-2 py-3 text-left hover:bg-orange-900/50 transition-colors border-b border-slate-700"
+                >
+                  <div className="text-xs font-bold text-white">Normal</div>
+                  {/* <div className="text-[10px] text-gray-400">Standard, 1d8</div> */}
+                </button>
+                <button
+                  onClick={() => handleAttack('heavy')}
+                  className="w-full px-2 py-3 text-left hover:bg-orange-900/50 transition-colors"
+                >
+                  <div className="text-xs font-bold text-red-300">Heavy</div>
+                  {/* <div className="text-[10px] text-gray-400">-2 to hit, +4 dmg, 1d10</div> */}
+                </button>
+              </div>
+            )}
+          </div>
 
-          <button
-            onClick={handleMagic}
-            disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-            className="flex flex-col items-center justify-center bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-purple-900 active:border-b-0 active:scale-95 transition-all"
-          >
-            <Sparkles className="w-4 h-4 mb-1" />
-            <span className="text-xs">MAGIC</span>
-            <span className="text-[9px] opacity-70">{getSpellcastingStat().name}</span>
-          </button>
+          {/* Magic Button with Menu */}
+          <div className="relative">
+            <button
+              onClick={() => setShowMagicMenu(!showMagicMenu)}
+              disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+              className="w-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-purple-900 active:border-b-0 active:scale-95 transition-all"
+            >
+              <Sparkles className="w-4 h-4 mb-1" />
+              <span className="text-xs">MAGIC</span>
+              <span className="text-[9px] opacity-70">{getSpellcastingStat().name}</span>
+            </button>
+            
+            {showMagicMenu && isPlayerTurn && !battleEnded && (
+              <div className="absolute bottom-full mb-2 left-0 right-0 bg-slate-800 border-2 border-purple-500 overflow-hidden shadow-xl z-10">
+                <button
+                  onClick={() => handleMagic('light')}
+                  className="w-full px-2 py-3 text-left hover:bg-purple-900/50 transition-colors border-b border-slate-700"
+                >
+                  <div className="text-xs font-bold text-cyan-300">Minor</div>
+                  {/* <div className="text-[10px] text-gray-400">+2 to hit, -1 dmg, 2d4</div> */}
+                </button>
+                <button
+                  onClick={() => handleMagic('normal')}
+                  className="w-full px-2 py-3 text-left hover:bg-purple-900/50 transition-colors border-b border-slate-700"
+                >
+                  <div className="text-xs font-bold text-white">Standard</div>
+                  {/* <div className="text-[10px] text-gray-400">Normal power, 2d6</div> */}
+                </button>
+                <button
+                  onClick={() => handleMagic('heavy')}
+                  className="w-full px-2 py-3 text-left hover:bg-purple-900/50 transition-colors"
+                >
+                  <div className="text-xs font-bold text-purple-300">Powerful</div>
+                  {/* <div className="text-[10px] text-gray-400">-2 to hit, +3 dmg, 3d6</div> */}
+                </button>
+              </div>
+            )}
+          </div>
 
           <button
             onClick={() => setShowInventory(true)}
@@ -496,7 +766,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
             <button
               onClick={handleEnvironmental}
               disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
-              className="flex flex-col items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-emerald-900 active:border-b-0 active:scale-95 transition-all"
+              className="flex flex-col items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 px-2 font-bold shadow-lg border-b-4 border-emerald-900 active:border-b-0 active:scale-95 transition-all"
               title={environmentalAction.description}
             >
               <span className="text-2xl mb-1">{environmentalAction.icon}</span>
@@ -618,13 +888,14 @@ export default BattleSystem;
 // import { updatePlayerHP } from '../lib/hpModifier';
 // import { getUnlockedEquipment, useConsumable } from '../components/Equipment';
 // import { awardBreakerPoints, calculateEnemyBP } from '../lib/breakerPointsService';
-// import { BPNotification } from './BPNotification';
+// import { BPNotification } from '../components/BPNotification';
 // import { motion, AnimatePresence } from 'framer-motion';
+// import { environmentalActions } from '../lib/environmentalActions';
+// import { hasUsedEnvironmentalAction, markEnvironmentalActionUsed } from '../lib/environmentalService';
 
-// const BattleSystem = ({ userStats, page, userId }) => {
+// const BattleSystem = ({ userStats, page, userId, pageId }) => {
 //   const diceBoxRef = useRef(null);
 //   const containerRef = useRef(null);
-//   const logEndRef = useRef(null); // Ref for auto-scrolling
 //   const router = useRouter();
 
 //   const [gameLog, setGameLog] = useState([]);
@@ -640,11 +911,54 @@ export default BattleSystem;
 //   const [equippedWeapon, setEquippedWeapon] = useState(null);
 //   const [bpResult, setBPResult] = useState(null);
 //   const [showBPNotification, setShowBPNotification] = useState(false);
+//   const [environmentalActionUsed, setEnvironmentalActionUsed] = useState(false);
+//   const [environmentalAction, setEnvironmentalAction] = useState(null);
 
-//   // Auto-scroll log to bottom when updated
 //   useEffect(() => {
-//     logEndRef.current?.scrollIntoView({ behavior: "smooth" });
-//   }, [gameLog]);
+//     const loadEnvironmental = async () => {
+//       if (userId && page.environment) {
+//         const used = await hasUsedEnvironmentalAction(userId, pageId);
+//         setEnvironmentalActionUsed(used);
+//         setEnvironmentalAction(environmentalActions[page.environment]);
+//       }
+//     };
+//     loadEnvironmental();
+//   }, [userId, page.environment]);
+
+//   const handleEnvironmental = async () => {
+//     if (isRolling || !environmentalAction) return;
+//     setSelectedAction('environmental');
+
+//     const stat = userStats[environmentalAction.stat] || 10;
+//     const mod = getModifier(stat);
+//     const roll = await rollDice(20);
+//     const total = roll + mod;
+
+//     addLog(`You attempt ${environmentalAction.name}! Roll: ${roll} + ${mod} = ${total}`, 'roll');
+
+//     if (total >= environmentalAction.dc) {
+//       const damage = await calculateDamage(
+//         environmentalAction.damage.dice,
+//         environmentalAction.damage.sides
+//       );
+//       setEnemyHP(prev => Math.max(0, prev - damage));
+//       addLog(`Success! ${environmentalAction.name} deals ${damage} damage!`, 'success');
+//       if (environmentalAction.effect) {
+//         addLog(environmentalAction.effect, 'success');
+//       }
+//     } else {
+//       addLog(`Failed! ${environmentalAction.name} misses!`, 'fail');
+//     }
+
+//     // Mark as used
+//     await markEnvironmentalActionUsed(userId, pageId);
+//     setEnvironmentalActionUsed(true);
+
+//     setTimeout(() => {
+//       setIsPlayerTurn(false);
+//       setSelectedAction(null);
+//     }, 1500);
+//   };
 
 //   // Load player inventory
 //   useEffect(() => {
@@ -652,6 +966,8 @@ export default BattleSystem;
 //       if (userId) {
 //         const items = await getUnlockedEquipment(userId);
 //         setInventory(items);
+        
+//         // Auto-equip first weapon
 //         const weapon = items.find(item => item.type === 'Weapon');
 //         if (weapon) setEquippedWeapon(weapon);
 //       }
@@ -683,12 +999,13 @@ export default BattleSystem;
 //   }, []);
 
 //   const player = {
-//     name: userStats?.characterName || "Unknown",
+//     name: userStats?.characterName || "My Guy",
 //     maxHP: maxHP,
 //     athletics: userStats?.Athletics || 10,
 //     essence: userStats?.Essence || 10,
 //     thought: userStats?.Thought || 10,
 //     fellowship: userStats?.Fellowship || 10,
+//     AC: 10 + Math.floor(( (userStats?.Athletics || 10) - 10) / 2)
 //   };
 
 //   const getModifier = (stat) => Math.floor((stat - 10) / 2);
@@ -715,7 +1032,9 @@ export default BattleSystem;
 //   };
 
 //   const rollDice = async (sides = 20) => {
-//     if (!diceBoxRef.current) return Math.floor(Math.random() * sides) + 1;
+//     if (!diceBoxRef.current) {
+//       return Math.floor(Math.random() * sides) + 1;
+//     }
 //     diceBoxRef.current.clear();
 //     setIsRolling(true);
 //     const roll = await diceBoxRef.current.roll(`1d${sides}`);
@@ -724,7 +1043,9 @@ export default BattleSystem;
 //   };
 
 //   const calculateDamage = async (diceCount, diceSides) => {
-//     if (!diceBoxRef.current) return Math.floor(Math.random() * (diceCount * diceSides)) + diceCount;
+//     if (!diceBoxRef.current) {
+//       return Math.floor(Math.random() * (diceCount * diceSides)) + diceCount;
+//     }
 //     diceBoxRef.current.clear();
 //     const roll = await diceBoxRef.current.roll(`${diceCount}d${diceSides}`);
 //     return roll.reduce((sum, die) => sum + die.value, 0);
@@ -791,15 +1112,27 @@ export default BattleSystem;
 //         const healAmount = 10;
 //         const newHP = Math.min(playerHP + healAmount, maxHP + 10);
 //         const newMaxHP = Math.max(maxHP, newHP);
+        
 //         setPlayerHP(newHP);
 //         setMaxHP(newMaxHP);
+        
 //         addLog(`You use ${item.name} and restore ${healAmount} HP!`, 'heal');
+        
+//         // Remove from inventory
 //         const result = await useConsumable(userId, item.id);
 //         if (result.success && result.consumed) {
 //           setInventory(prev => prev.filter(i => i.id !== item.id));
 //         }
 //       } else if (item.id === 'environment_potion') {
+//         await recordTookEnvironmentalPotion(userId);
+      
 //         addLog(`You drink the ${item.name}. Environmental effects negated!`, 'heal');
+      
+//         // Remove from inventory
+//         const result = await useConsumable(userId, item.id);
+//         if (result.success && result.consumed) {
+//           setInventory(prev => prev.filter(i => i.id !== item.id));
+//         }
 //       }
 //     } else if (item.type === 'Weapon') {
 //       setEquippedWeapon(item);
@@ -824,7 +1157,9 @@ export default BattleSystem;
 //         if (enemyAction === 'attack') {
 //           const total = roll + (page.enemy.attack || 0);
 //           addLog(`${page.enemy.name} rolls ${roll} + ${page.enemy.attack} = ${total}!`, 'enemy');
+          
 //           const playerAC = 10 + getModifier(player.athletics);
+          
 //           if (total >= playerAC) {
 //             const damage = await calculateDamage(1, 6) + (page.enemy.attack || 0);
 //             setPlayerHP(prev => Math.max(0, prev - damage));
@@ -835,7 +1170,9 @@ export default BattleSystem;
 //         } else {
 //           const total = roll + (page.enemy.magic || 0);
 //           addLog(`${page.enemy.name} casts a spell! ${total}`, 'enemy');
+          
 //           const playerAC = 10 + getModifier(player.athletics);
+          
 //           if (total >= playerAC) {
 //             const damage = await calculateDamage(1, 8) + (page.enemy.magic || 0);
 //             setPlayerHP(prev => Math.max(0, prev - damage));
@@ -856,15 +1193,20 @@ export default BattleSystem;
 //   // Save HP and check battle end
 //   useEffect(() => {
 //     const saveAndCheck = async () => {
+//       // Save HP to Firestore
 //       if (userId) {
 //         await updatePlayerHP(userId, playerHP, maxHP);
 //       }
 
+//       // Check battle end
 //       if (playerHP <= 0 && !battleEnded) {
 //         addLog('You have been defeated...', 'fail');
 //         setBattleEnded(true);
+        
 //         setTimeout(() => {
-//           if (page.fail) router.push(`/adventure/${page.fail}`);
+//           if (page.fail) {
+//             router.push(`/adventure/${page.fail}`);
+//           }
 //         }, 3000);
 //       } else if (enemyHP <= 0 && !battleEnded) {
 //         addLog('Victory! You defeated the enemy!', 'success');
@@ -873,6 +1215,7 @@ export default BattleSystem;
 //         // Define result here so it's scoped for the timeout
 //         let result = null;
 
+//         // Award Breaker Points
 //         if (userId) {
 //           const bpAmount = calculateEnemyBP(page.enemy);
 //           result = await awardBreakerPoints(userId, bpAmount, `defeated ${page.enemy.name}`);
@@ -880,6 +1223,8 @@ export default BattleSystem;
 //           if (result) {
 //             setBPResult(result);
 //             setShowBPNotification(true);
+            
+//             // Auto-hide BP notification after 6 seconds (or 10 if leveled up)
 //             setTimeout(() => {
 //               setShowBPNotification(false);
 //             }, result.leveledUp ? 10000 : 6000);
@@ -887,8 +1232,10 @@ export default BattleSystem;
 //         }
         
 //         setTimeout(() => {
-//           if (page.next) router.push(`/adventure/${page.next}`);
-//         }, result?.leveledUp ? 12000 : 8000);
+//           if (page.next) {
+//             router.push(`/adventure/${page.next}`);
+//           }
+//         }, result?.leveledUp ? 12000 : 8000); // Longer delay if leveled up
 //       }
 //     };
 
@@ -914,10 +1261,7 @@ export default BattleSystem;
 
 //   return (
 //     <div className="fixed inset-0 z-10 flex items-center justify-center p-6 md:p-12 lg:p-16 pointer-events-none">
-//       {/* Key Fix 1: Added max-h-[85vh] to prevent the whole card from growing off screen.
-//         Key Fix 2: flex flex-col to organize header/body/footer.
-//       */}
-//       <div className="display w-full max-w-md md:max-w-4xl max-h-[85vh] flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
+//       <div className="display w-full max-w-md md:max-w-4xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
         
 //         {/* Header */}
 //         <header className="bg-slate-900/50 border-b border-slate-700/50 p-3 shrink-0 flex justify-between items-center">
@@ -931,13 +1275,11 @@ export default BattleSystem;
 //           </div>
 //         </header>
 
-//         {/* Key Fix 3: Main body container uses flex-1 and overflow-hidden.
-//            This forces the grid to stay inside the available height.
-//         */}
-//         <div className="flex-1 overflow-hidden p-3 md:p-5 flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6">
+//         {/* Main Content */}
+//         <div className="flex-1 overflow-y-auto p-3 md:p-5 space-y-4 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
           
 //           {/* LEFT COLUMN */}
-//           <div className="flex flex-col gap-3 shrink-0">
+//           <div className="flex flex-col gap-3">
 //             {/* Combatants */}
 //             <div className="grid grid-cols-2 gap-3">
 //               <div className="bg-slate-900/60 p-2.5 border border-blue-500/30">
@@ -945,7 +1287,7 @@ export default BattleSystem;
 //                   <div className="flex items-center gap-1.5 font-bold text-sm text-blue-100">
 //                     <Heart className="w-3.5 h-3.5 text-red-600" /> {player.name}
 //                   </div>
-//                   <span className="text-[10px] text-slate-400">{playerHP}/{maxHP}</span>
+//                   <span className="text-[10px] text-slate-400">AC: {player.AC}</span>
 //                 </div>
 //                 <HPBar current={playerHP} max={maxHP} color="bg-green-600" />
 //                 {equippedWeapon && (
@@ -960,62 +1302,47 @@ export default BattleSystem;
 //                   <div className="flex items-center gap-1.5 font-bold text-sm text-red-100">
 //                     <Shield className="w-3.5 h-3.5 text-yellow-500" /> {page.enemy.name}
 //                   </div>
-//                   <div className="text-[10px] text-slate-400 font-mono">AC:{page.enemy.ac}</div>
+//                   <div className="text-[10px] text-slate-400">AC: {page.enemy.ac}</div>
 //                 </div>
 //                 <HPBar current={enemyHP} max={page.enemy.maxHP} color="bg-red-600" />
 //               </div>
 //             </div>
 
 //             {/* Dice Tray */}
-//             <div className="h-32 md:h-48 w-full bg-slate-900/40 border-2 border-dashed border-slate-700/50 relative shrink-0">
+//             <div className="h-32 md:h-48 w-full bg-slate-900/40 border-2 border-dashed border-slate-700/50 relative">
 //               <div id="dice-box" ref={containerRef} className="w-full h-full" />
 //             </div>
 //           </div>
 
-//           {/* RIGHT COLUMN 
-//              Key Fix 4: h-full and overflow-hidden here prevents the column itself from growing.
-//           */}
-//           <div className="flex flex-col gap-3 h-full overflow-hidden">
-//             {/* Text Area - limited height */}
-//             <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5 shrink-0 max-h-[30%] overflow-y-auto">
-//               <p>{page.text}</p>
+//           {/* RIGHT COLUMN */}
+//           <div className="flex flex-col gap-3 min-h-0">
+//             <div className="bg-slate-800/30 p-2 text-sm text-slate-300 border border-white/5">
+//               <p className="line-clamp-3 md:line-clamp-none">{page.text}</p>
 //             </div>
 
-//             {/* Battle Log Container 
-//                Key Fix 5: flex-1 ensures it takes remaining space, but overflow-hidden 
-//                prevents it from pushing parent boundaries.
-//             */}
-//             <div className="flex-1 bg-black/40 border border-slate-700/50 p-2 flex flex-col overflow-hidden relative">
-//               <span className="text-[10px] font-bold text-slate-500 mb-1 uppercase tracking-wider sticky top-0 bg-black/40 w-full z-10 backdrop-blur-sm">Log</span>
-              
-//               {/* Scrollable Area
-//                  Key Fix 6: This div gets overflow-y-auto and is the ONLY thing that scrolls.
-//               */}
-//               <div className="flex-1 overflow-y-auto pr-1">
-//                 <div className="space-y-1">
-//                   {gameLog.map((log) => (
-//                     <div key={log.id} className={`text-[11px] p-1.5 border-l-2 ${
-//                       log.type === 'success' ? 'text-green-300 bg-green-900/10 border-green-500' :
-//                       log.type === 'fail' ? 'text-red-300 bg-red-900/10 border-red-500' :
-//                       log.type === 'damage' ? 'text-orange-300 bg-orange-900/10 border-orange-500' :
-//                       log.type === 'heal' ? 'text-blue-300 bg-blue-900/10 border-blue-500' :
-//                       log.type === 'roll' ? 'text-purple-300 bg-purple-900/10 border-purple-500' :
-//                       log.type === 'enemy' ? 'text-yellow-300 bg-yellow-900/10 border-yellow-500' :
-//                       'text-slate-400 border-slate-600'
-//                     }`}>
-//                       {log.message}
-//                     </div>
-//                   ))}
-//                   {/* Invisible element to force scroll to bottom */}
-//                   <div ref={logEndRef} />
-//                 </div>
+//             {/* Battle Log */}
+//             <div className="battle-log flex-1 min-h-[100px] md:min-h-0 bg-black/40 border border-slate-700/50 p-2 flex flex-col relative overflow-hidden">
+//               <span className="text-[10px] font-bold text-slate-500 mb-1 uppercase tracking-wider sticky top-0">Log</span>
+//               <div className="overflow-y-auto space-y-1 pr-1">
+//                 {gameLog.slice().reverse().map((log) => (
+//                   <div key={log.id} className={`text-[11px] p-1.5 ${
+//                     log.type === 'success' ? 'text-green-300 bg-green-900/20' :
+//                     log.type === 'fail' ? 'text-red-300 bg-red-900/20' :
+//                     log.type === 'damage' ? 'text-orange-300 bg-orange-900/20' :
+//                     log.type === 'heal' ? 'text-blue-300 bg-blue-900/20' :
+//                     'text-slate-400'
+//                   }`}>
+//                     {log.message}
+//                   </div>
+//                 ))}
 //               </div>
 //             </div>
 //           </div>
 //         </div>
 
 //         {/* Footer Buttons */}
-//         <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-3 gap-3 shrink-0">
+//         {/* <div className="p-3 bg-slate-900/80 border-t border-slate-700/50 grid grid-cols-3 gap-3 shrink-0"> */}
+//         <div className={`p-3 bg-slate-900/80 border-t border-slate-700/50 grid ${environmentalAction && !environmentalActionUsed ? 'grid-cols-4' : 'grid-cols-3'} gap-3 shrink-0`}>
 //           <button
 //             onClick={handleAttack}
 //             disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
@@ -1045,6 +1372,19 @@ export default BattleSystem;
 //             <span className="text-xs">ITEMS</span>
 //             <span className="text-[9px] opacity-70">({consumables.length})</span>
 //           </button>
+
+//           {environmentalAction && !environmentalActionUsed && (
+//             <button
+//               onClick={handleEnvironmental}
+//               disabled={!isPlayerTurn || battleEnded || selectedAction || isRolling}
+//               className="flex flex-col items-center justify-center bg-gradient-to-br from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 disabled:from-slate-700 disabled:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed py-3 font-bold shadow-lg border-b-4 border-emerald-900 active:border-b-0 active:scale-95 transition-all"
+//               title={environmentalAction.description}
+//             >
+//               <span className="text-2xl mb-1">{environmentalAction.icon}</span>
+//               <span className="text-xs">{environmentalAction.name.toUpperCase()}</span>
+//               <span className="text-[9px] opacity-70">{environmentalAction.stat.slice(0, 3).toUpperCase()}</span>
+//             </button>
+//           )}
 //         </div>
 //       </div>
 

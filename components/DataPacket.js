@@ -12,7 +12,7 @@ export const DATA_PACKETS = {
     id: 'world_state',
     title: 'The State of the World',
     category: 'Lore',
-    content: `The world as you knew it ended three years ago. The Gates appeared without warning, tearing through reality itself. Now, humanity huddles in fortified cities while the wilderness between has become unpredictable and dangerous.`,
+    content: `The world as you knew it ended over a decade ago. The Gates appeared without warning, tearing through reality itself. Now, humanity huddles in fortified cities while the wilderness between has become unpredictable and dangerous.`,
     unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },

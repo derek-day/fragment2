@@ -168,6 +168,7 @@ export default function Home() {
           toldTeamAbout: [],
           niceToAkemi: false,
           gaveToCale: false,
+          hasFailed: false,
           tookEnvironmentPotion: false,
           visitedPages: ["page_1"],
           wentAlone: false,

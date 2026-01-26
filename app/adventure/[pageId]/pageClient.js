@@ -24,7 +24,8 @@ import {
   recordNiceToAkemi,
   recordGaveToCale,
   recordTookEnvironmentalPotion,
-  updateBreakerClass
+  updateBreakerClass,
+  recordFailure
 } from '../../../lib/progressService';
 import { getConditionalNextPage } from "../../../lib/conditionService";
 import { checkAndUnlockPackets, DataPacketNotification } from "../../../components/DataPacket";
@@ -364,6 +365,10 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         if (selectedChoice.action === 'took_environment_potion') {
           await recordTookEnvironmentalPotion(user.uid);
+        }
+
+        if (selectedChoice.action === 'failure') {
+          await recordFailure(user.uid);
         }
 
         if (selectedChoice.action === 'took_hospital_note') {

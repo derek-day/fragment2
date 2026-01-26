@@ -84,39 +84,13 @@ export const EQUIPMENT_ITEMS = {
     rarity: 'Uncommon',
     description: 'A caustic purple liquid that fortifies you against harsh environmental effects for several hours.',
     stats: {
-      duration: '3 hours',
-      effect: 'Negates environment penalties'
+      effect: 'Prevents environmental damage and disorientation'
     },
-    unlocksOnPage: 'team_portal_inside',
+    unlocksOnPage: 'hold_vial',
+    unlocksOnPage: 'wait_hold',
+    unlocksOnPage: 'akemi_hold',
     icon: Zap
   },
-  // mechanical_knife: {
-  //   id: 'mechanical_knife',
-  //   name: 'E-Corp Oscillating Knife',
-  //   type: 'Weapon',
-  //   rarity: 'Rare',
-  //   description: 'An advanced weapon created by the Epoch Corporation. The blade oscillates at high frequency for devastating cuts.',
-  //   stats: {
-  //     damage: '+5',
-  //     athletics: '+2',
-  //     special: 'Ignore 2 AC'
-  //   },
-  //   unlocksOnPage: 'ronin_intro',
-  //   icon: Sword
-  // },
-  // gate_stabilizer: {
-  //   id: 'gate_stabilizer',
-  //   name: 'Gate Stabilizer',
-  //   type: 'Tool',
-  //   rarity: 'Epic',
-  //   description: 'An Epoch Corporation device that locks portals open after defeating the Tethered Being. Essential for long-term gate exploration.',
-  //   stats: {
-  //     effect: 'Prevents gate collapse',
-  //     duration: 'Permanent'
-  //   },
-  //   unlocksOnPage: 'gate_stabilizer_check',
-  //   icon: Package
-  // }
 };
 
 // Check and unlock equipment based on page
@@ -212,8 +186,16 @@ export async function useConsumable(userId, itemId) {
       };
       message = `Restored 10 HP! (${currentHP} → ${newHP})`;
     } else if (itemId === 'environment_potion') {
-      message = `Environmental resistance active!`;
+      message = `Environmental effects negated!`;
       // return { success: true, message: "Environmental resistance active!", consumed: false };
+      await recordTookEnvironmentalPotion(userId);
+            
+      // Remove from inventory
+      // const result = await useConsumable(userId, item.id);
+      // if (result.success && result.consumed) {
+      //   setInventory(prev => prev.filter(i => i.id !== item.id));
+      // }
+
     } else {
       // Generic consumable
       message = `Used ${item.name}`;

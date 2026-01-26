@@ -73,6 +73,7 @@ interface PlayerProgress {
   gaveToCale?: boolean;
   tookEnvironmentPotion?: boolean;
   tookHospitalNote?: boolean;
+  hasFailed?: boolean;
   
   // Death tracking
   deaths?: number;
@@ -120,6 +121,7 @@ export async function getPlayerProgress(userId: string): Promise<PlayerProgress>
       niceToAkemi: false,
       gaveToCale: false,
       tookEnvironmentPotion: false,
+      hasFailed: false,
       minionGroups: {},
       joinedGuild: null,
       guildOpinions: [],
@@ -605,6 +607,24 @@ export async function hasGivenToCale(userId: string): Promise<boolean> {
   return progress.gaveToCale === true;
 }
 
+export async function recordFailure(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    hasFailed: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player has failed during the chapter`);
+}
+
+export async function hasFailed(userId) {
+  const ref = doc(db, "users", userId);
+  const snap = await getDoc(ref);
+  return snap.exists() ? snap.data().hasFailed === true : false;
+}
+
+
 export async function recordTookEnvironmentalPotion(userId: string) {
   const ref = doc(db, 'users', userId);
   
@@ -616,9 +636,10 @@ export async function recordTookEnvironmentalPotion(userId: string) {
   console.log(`Player took environmental potion`);
 }
 
-export async function hasTakenEnvironmentalPotion(userId: string): Promise<boolean> {
-  const progress = await getPlayerProgress(userId);
-  return progress.tookEnvironmentPotion === true;
+export async function hasTakenEnvironmentalPotion(userId) {
+  const ref = doc(db, "users", userId);
+  const snap = await getDoc(ref);
+  return snap.exists() ? snap.data().tookEnvironmentalPotion === true : false;
 }
 
 export async function recordTookHospitalNote(userId: string) {

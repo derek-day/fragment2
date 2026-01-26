@@ -243,8 +243,15 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
           setInventory(prev => prev.filter(i => i.id !== item.id));
         }
       } else if (item.id === 'environment_potion') {
-        addLog(`You drink the ${item.name}. Environmental effects negated for this battle!`, 'heal');
-        // Could add buff effect here
+        await recordTookEnvironmentalPotion(userId);
+      
+        addLog(`You drink the ${item.name}. Environmental effects negated!`, 'heal');
+      
+        // Remove from inventory
+        const result = await useConsumable(userId, item.id);
+        if (result.success && result.consumed) {
+          setInventory(prev => prev.filter(i => i.id !== item.id));
+        }
       }
     } else if (item.type === 'Weapon') {
       setEquippedWeapon(item);

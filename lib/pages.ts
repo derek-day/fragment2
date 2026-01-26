@@ -2810,20 +2810,89 @@ export const pages = {
     type: "text",
     //need to check if player sacrificed self
     text: "You're missing three limbs!\n\nRegistering your impending panic, the healer says, \"I'm sorry. If an S-Class healer had reached you right away, they could have brought back all of you.\"",
-    next: "hospital3"
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'went_alone', value: true },
+          { type: 'sacrificed', value: true }
+        ],
+        next: 'hospital_solo_sacrifice'
+      },
+      {
+        conditions: [
+          { type: 'went_alone', value: true },
+          { type: 'did_not_sacrifice', value: true }
+        ],
+        next: 'hospital_solo_didnt_sacrifice'
+      },
+      {
+        conditions: [
+          { type: 'went_with_team', value: true },
+          { type: 'sacrificed', value: true }
+        ],
+        next: 'hospital_sacrifice'
+      },
+      {
+        conditions: [
+          { type: 'went_with_team', value: true },
+          { type: 'did_not_sacrifice', value: true }
+        ],
+        next: 'hospital_didnt_sacrifice'
+      }
+    ],
+    // Fallback
+    next: 'hospital_didnt_sacrifice'
   },
-  hospital3: {
+  hospital_solo_sacrifice: {
     title: "Silk Road",
     type: "choice",
     src: "../assets/hospital.webp",
-    text: "\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
       { label: "The Silk Road?", next: "hospital_response" },
       { label: "Where are the others?", next: "hospital_response" },
       { label: "Stay silent", next: "hospital_silent" },
       //if alone the entire way
-      //{ label: "...I'm not a member of a party", next: "hospital_response" },
+      { label: "...I'm not a member of a party", next: "hospital_response" },
+    ],
+  },
+  hospital_solo_didnt_sacrifice: {
+    title: "Silk Road",
+    type: "choice",
+    src: "../assets/hospital.webp",
+    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    choices: [
+      { label: "I'd prefer my own", next: "hospital_response" },
+      { label: "The Silk Road?", next: "hospital_response" },
+      { label: "Where are the others?", next: "hospital_response" },
+      { label: "Stay silent", next: "hospital_silent" },
+      //if alone the entire way
+      { label: "...I'm not a member of a party", next: "hospital_response" },
+    ],
+  },
+  hospital_sacrifice: {
+    title: "Silk Road",
+    type: "choice",
+    src: "../assets/hospital.webp",
+    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    choices: [
+      { label: "I'd prefer my own", next: "hospital_response" },
+      { label: "The Silk Road?", next: "hospital_response" },
+      { label: "Where are the others?", next: "hospital_response" },
+      { label: "Stay silent", next: "hospital_silent" },
+    ],
+  },
+  hospital_didnt_sacrifice: {
+    title: "Silk Road",
+    type: "choice",
+    src: "../assets/hospital.webp",
+    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    choices: [
+      { label: "I'd prefer my own", next: "hospital_response" },
+      { label: "The Silk Road?", next: "hospital_response" },
+      { label: "Where are the others?", next: "hospital_response" },
+      { label: "Stay silent", next: "hospital_silent" },
     ],
   },
   hospital_response: {
@@ -2899,6 +2968,7 @@ export const pages = {
     type: "text",
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
+    npcDeaths: ["Threx", "Harla", "Kaelion", "Mitzi", "Sheemie"],
     text: "\"We couldn't save them all,\" the healer says. \"We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least one of them will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
     next: "family"
   },
@@ -2915,6 +2985,7 @@ export const pages = {
     type: "text",
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
+    npcDeaths: ["Threx", "Harla", "Kaelion", "Mitzi", "Sheemie"],
     text: "\"What's that, hun?\" asks the nurse, shifting from her reverie.\n\nThe healer, perhaps sensing the desperation behind the noise, shushes her.\n\nTo you, she says, \"We couldn't save them all. We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least one of them will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
     next: "family"
   },

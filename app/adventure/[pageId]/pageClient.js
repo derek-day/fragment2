@@ -246,6 +246,16 @@ export default function PageClient({ page: initialPage, pageId }) {
         setBreakerClass(page.action.value);
       }
 
+      if (page.npcDeath) {
+        await recordNPCDeath(user.uid, page.npcDeath);
+      }
+
+      if (page.npcDeaths && Array.isArray(page.npcDeaths)) {
+        for (const npcName of page.npcDeaths) {
+          await recordNPCDeath(user.uid, npcName);
+        }
+      }
+
       // Handle input type
       if (page.type === "input") {
         await setDoc(ref, { 

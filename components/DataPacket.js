@@ -57,27 +57,22 @@ export const DATA_PACKETS = {
     category: 'Characters',
     content: `Friendly. Natural leader. Wants to start her own guild. Could be good relationship material. Parents were refugees from Japan during the Fracture Event.\n\nBreaker ID: 102-345-697\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy\n\nPath: Undeclared\n\nPrimary Weapon: No Primary Weapon/Alternates`,
     unlocksOnPage: 'akemi_intro',
-    updates: [
-      {
-        id: 'akemi_update_1',
-        title: 'Guild Ambitions',
-        content: `Akemi revealed her serious plans to start her own guild once she's strong enough. She's already thinking about recruitment and seems to see potential in you as a founding member.`,
-        unlocksOnPage: 'guild_thomur_guild' // or wherever she mentions this
-      },
-      {
-        id: 'akemi_update_2',
-        title: 'Combat Style',
-        content: `During the battle, you noticed Akemi favors a versatile fighting style. She doesn't seem to want to lock herself into a single specialization, preferring adaptability over raw power.`,
-        unlocksOnPage: 'team_portal_battle' // or relevant battle page
-      }
-    ]
   },
   character_threx: {
     id: 'character_threx',
     title: 'Threx Muller',
     category: 'Characters',
     content: `Leader of your first party. Strong, serious, and genuinly interested in the safety of the Breakers he manages. Used to break gates solo, but decided that parties are the better route after getting rescued in a break gone bad. Large, muscular, high-and-tight haircut, clean shaven.\n\nBreaker ID: 742-137-094\n\nBreaker Class: C-Class\n\nAssociation: Global Protocol Authority\n\nPath: Warrior\n\nPrimary Weapon: Battleaxe`,
-    unlocksOnPage: 'threx_brief'
+    unlocksOnPage: 'threx_brief',
+    updates: [
+      {
+        id: 'threx_pass',
+        title: 'Threx Pass',
+        content: `Passed during the battle with the Camper.`,
+        unlocksOnPage: 'solo_didnt_sacrifice',
+        unlocksOnPage: 'together_didnt_sacrifice2'
+      },
+    ]
   },
   character_ronin: {
     id: 'character_ronin',
@@ -91,28 +86,64 @@ export const DATA_PACKETS = {
     title: 'Harla Freeman',
     category: 'Characters',
     content: `Healer. Into gossip. Harla wears old, dented armor, hinting that she's taken many hits in her life. Middle-aged, dark complected, black hair in a bun.\n\nBreaker ID: 966-931-878\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy/ Global Protocol Authority\n\nPath: Mage (Healer)\n\nPrimary Weapon: Assorted Magic`,
-    unlocksOnPage: 'team_intro1'
+    unlocksOnPage: 'team_intro1',
+    updates: [
+      {
+        id: 'harla_pass',
+        title: 'Harla Pass',
+        content: `Passed during the battle with the Camper.`,
+        unlocksOnPage: 'solo_didnt_sacrifice',
+        unlocksOnPage: 'together_didnt_sacrifice2'
+      },
+    ]
   },
   character_kaelion: {
     id: 'character_kaelion',
     title: 'Kaelion Virehart',
     category: 'Characters',
     content: `Acts like a knight. Wears expensive-looking armor and speaks like he belongs in an old romance novel. Cool mustache.\n\nBreaker ID: 825-629-126\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Warrior\n\nPrimary Weapon: Longsword`,
-    unlocksOnPage: 'team_intro2'
+    unlocksOnPage: 'team_intro2',
+    updates: [
+      {
+        id: 'kaelion_pass',
+        title: 'Kaelion Pass',
+        content: `Passed during the battle with the Camper.`,
+        unlocksOnPage: 'solo_didnt_sacrifice',
+        unlocksOnPage: 'together_didnt_sacrifice2'
+      },
+    ]
   },
   character_sheemie: {
     id: 'character_sheemie',
     title: 'Sheemie Bauer',
     category: 'Characters',
     content: `An energetic mage specializing in plant-based abilities. Friendly. Dorky. Obssesed with trees. Sheemie is short, skinny, and his perpetually-smiling face is pitted with acne scars. Wearing green wizard robes.\n\nBreaker ID: 204-847-186\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Mage\n\nPrimary Weapon: Tree-themed Magic`,
-    unlocksOnPage: 'team_intro3'
+    unlocksOnPage: 'team_intro3',
+    updates: [
+      {
+        id: 'sheemie_pass',
+        title: 'Sheemie Pass',
+        content: `Passed during the battle with the Camper.`,
+        unlocksOnPage: 'solo_didnt_sacrifice',
+        unlocksOnPage: 'together_didnt_sacrifice2'
+      },
+    ]
   },
   character_mitzi: {
     id: 'character_mitzi',
     title: 'Mitzi',
     category: 'Characters',
     content: `Dark and edgy. Wears skin-tight black leather. Mitzi is a woman of few words. The words she uses, however, make most people wish she spoke even less. Interested in eventually joining either the Silhouette or Protocol Null.\n\nBreaker ID: 373-179-628\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Summoner\n\nPrimary Weapon: Creepy Summoning Magic`,
-    unlocksOnPage: 'team_intro4'
+    unlocksOnPage: 'team_intro4',
+    updates: [
+      {
+        id: 'mitzi_pass',
+        title: 'Mitzi Pass',
+        content: `Passed during the battle with the Camper.`,
+        unlocksOnPage: 'solo_didnt_sacrifice',
+        unlocksOnPage: 'together_didnt_sacrifice2'
+      },
+    ]
   },
   character_aleth: {
     id: 'character_aleth',

@@ -6,6 +6,7 @@ import {
   hasSacrificed,
   hasFailed,
   wasNiceToAkemi,
+  wasAkemiInterested,
   hasGivenToCale,
   hasTakenEnvironmentalPotion,
   hasTakenHospitalNote,
@@ -49,6 +50,9 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     case 'nice_to_akemi':
       return progress.niceToAkemi === true;
 
+    case 'akemi_interested':
+      return progress.akemiInterested === true;
+
     case 'gave_to_cale':
       return progress.gaveToCale === true;
     
@@ -81,6 +85,12 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     
     case 'not_nice_to_akemi':
       return !await wasNiceToAkemi(userId);
+
+    case 'akemi_interested':
+      return await wasAkemiInterested(userId);
+
+    case 'not_akemi_interested':
+      return !await wasAkemiInterested(userId);
 
     case 'gave_to_cale':
       return await hasGivenToCale(userId);

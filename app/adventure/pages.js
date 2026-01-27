@@ -253,7 +253,7 @@ export const adventurePages = {
     title: "Wait for the Others",
     type: "text",
     src: "../assets/forest.webp",
-    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class Summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
+    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
     next: "wait_others5"
   },
   wait_others5: {
@@ -261,6 +261,112 @@ export const adventurePages = {
     type: "text",
     src: "../assets/forest.webp",
     text: "You've met the others.\n\nThrex, a C-Class warrior\n\nAkemi, an E-Class undeclared\n\nHarla, a D-Class healer\n\nRonin, the —you do a double take —*D-Class* mixed.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\nYou look up at Ronin, and instead lock eyes with a member of the party you hadn't noticed before.",
+    npcsPresent: [
+      {
+        name: "Ronin",
+        description: "A mysterious warrior with a hidden past",
+        stats: {
+          maxHP: 150,
+          currentHP: 150,
+          ac: 16,
+          fellowship: 10,
+          athletics: 14,
+          thought: 10,
+          essence: 8
+        }
+      },
+      {
+        name: "Aleth",
+        description: "A similar unranked member",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Threx",
+        description: "A massive fighter",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Kaelion",
+        description: "A cultured warrior",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Harla",
+        description: "A healer",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Mitzi",
+        description: "A diminutive mage",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Sheemie",
+        description: "A summoner",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Akemi",
+        description: "The nicest member",
+        stats: {
+          maxHP: 80,
+          currentHP: 80,
+          ac: 12,
+          fellowship: 12,
+          athletics: 8,
+          thought: 16,
+          essence: 14
+        }
+      }
+    ],
     next: "wait_others6"
   },
   wait_others6: {
@@ -1065,6 +1171,112 @@ export const adventurePages = {
     src: "../assets/forest.webp",
     type: "choice",
     text: "Standing from where she had been kneeling over your corpse, a large black woman in dented armor wipes her hands.\n\n\"That might be a record,\" she says. \"I don't think I ever had to heal someone mere seconds after entering a gate before.\"\n\n\"Don't be rude, Harla!\" chastises a woman next to her. \"He was just a little overzealous. We've all been there.\" She steps forward and offers you a hand up. \"I'm Akemi.\"",
+    npcsPresent: [
+      {
+        name: "Ronin",
+        description: "A mysterious warrior with a hidden past",
+        stats: {
+          maxHP: 150,
+          currentHP: 150,
+          ac: 16,
+          fellowship: 10,
+          athletics: 14,
+          thought: 10,
+          essence: 8
+        }
+      },
+      {
+        name: "Aleth",
+        description: "A similar unranked member",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Threx",
+        description: "A massive fighter",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Kaelion",
+        description: "A cultured warrior",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Harla",
+        description: "A healer",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Mitzi",
+        description: "A diminutive mage",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Sheemie",
+        description: "A summoner",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Akemi",
+        description: "The nicest member",
+        stats: {
+          maxHP: 80,
+          currentHP: 80,
+          ac: 12,
+          fellowship: 12,
+          athletics: 8,
+          thought: 16,
+          essence: 14
+        }
+      }
+    ],
     choices: [
       { label: "Take hand and offer name", next: "friendly_return" },
       { label: "Stand on your own and offer your name", next: "neutral_return" },
@@ -2552,6 +2764,9 @@ export const adventurePages = {
     src: "../assets/shack.webp",
     text: "You do your best to keep the quiver from your voice.\n\n\"Yes. I don't know what things are like where you come from, but I suspect this is unnatural even there.\"\n\nYou take in the palace-like cabin once again, trying to understand the rationale of a creature this powerful. Why is it here? Why does it lure and prey on creatures it knows it can easily defeat?\n\nWhy is it alone?\n\nA theory comes to you. You have met humans just like this in the crumby part of town where you and your family live, people who are big fish in a small pond.",
     //conditional. if the player entered alone or went with Freelance for guild, need the text below
+    //action: "guild_opinion",
+    //guildName: "Freelance",
+    //opinion: "interested",
     next: "double_down2"
     // next: "double_down_alone"
   },
@@ -2770,19 +2985,18 @@ export const adventurePages = {
   formless3: {
     title: "Who?",
     type: "text",
-    useCustomBackground: true, // Add this flag
+    useCustomBackground: true,
     text: "*That wasn't you, was it?*",
     next: "formless4"
   },
   formless4: {
     title: "Who?",
     type: "text",
-    useCustomBackground: true, // Add this flag
+    useCustomBackground: true,
     text: "\"Sorry 'bout that, par'ner. Let me get a light for ya.\"",
     next: "formless5"
   },
   formless5: {
-    //use the light ray component as background
     title: "Who?",
     type: "text",
     text: "*A faint speck appears in the middle distance, creating contrast to the endless dark.*\n\n\"That's better.\"",
@@ -2823,7 +3037,6 @@ export const adventurePages = {
     customBackgroundComponent: "LightRays"
   },
   formless10: {
-    //back to black
     title: "---",
     type: "text",
     text: "Then, there is nothing at all.",
@@ -3469,6 +3682,7 @@ export const adventurePages = {
     title: "Note",
     type: "text",
     src: "../assets/hospital_later.webp",
+    action: "akemi_interested",
     text: "There's a note from Akemi, longer than the others. It includes her phone number.\n\n\"Keep in touch,\" the note says.",
     next: "hospital_note"
   },

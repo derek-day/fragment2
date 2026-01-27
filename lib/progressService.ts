@@ -70,6 +70,7 @@ interface PlayerProgress {
   characterName?: string;
   toldTeamAbout?: string[];
   niceToAkemi?: boolean;
+  akemiInterested?: boolean;
   gaveToCale?: boolean;
   tookEnvironmentPotion?: boolean;
   tookHospitalNote?: boolean;
@@ -119,6 +120,7 @@ export async function getPlayerProgress(userId: string): Promise<PlayerProgress>
       visitedPages: [],
       wentAlone: false,
       niceToAkemi: false,
+      akemiInterested: false,
       gaveToCale: false,
       tookEnvironmentPotion: false,
       hasFailed: false,
@@ -590,6 +592,23 @@ export async function wasNiceToAkemi(userId: string): Promise<boolean> {
   const progress = await getPlayerProgress(userId);
   return progress.niceToAkemi === true;
 }
+
+export async function recordAkemiInterested(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    akemiInterested: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Akemi is interested`);
+}
+
+export async function wasAkemiInterested(userId: string): Promise<boolean> {
+  const progress = await getPlayerProgress(userId);
+  return progress.akemiInterested === true;
+}
+
 
 export async function recordGaveToCale(userId: string) {
   const ref = doc(db, 'users', userId);

@@ -16,6 +16,7 @@ import {
   recordDeath,
   recordRevival,
   getAliveMinions,
+  recordAkemiInterested,
   recordGuildOpinion,
   joinGuild,
   getPlayerGuild,
@@ -209,6 +210,19 @@ export default function PageClient({ page: initialPage, pageId }) {
             pageId
           );
         }
+
+        if (page.npcsPresent && Array.isArray(page.npcsPresent)) {
+          for (const npc of page.npcsPresent) {
+            await recordNPCMeeting(
+              user.uid,
+              npc.name,
+              npc.description,
+              pageId,
+              npc.stats
+            );
+          }
+        }
+
       }
     });
     return () => unsub();
@@ -244,6 +258,10 @@ export default function PageClient({ page: initialPage, pageId }) {
       if (page.action?.type === 'update_class') {
         await updateBreakerClass(user.uid, page.action.value);
         setBreakerClass(page.action.value);
+      }
+
+      if (page.action?.type === 'akemi_interested') {
+        await recordAkemiInterested(user.uid);
       }
 
       if (page.npcDeath) {
@@ -359,6 +377,18 @@ export default function PageClient({ page: initialPage, pageId }) {
             pageId,
             selectedChoice.npcStats
           );
+        }
+
+        if (selectedChoice.action === 'meet_npcs' && selectedChoice.npcs) {
+          for (const npc of selectedChoice.npcs) {
+            await recordNPCMeeting(
+              user.uid,
+              npc.name,
+              npc.description,
+              pageId,
+              npc.stats
+            );
+          }
         }
 
         if (selectedChoice.action === 'sacrifice' && selectedChoice.sacrificeLocation) {

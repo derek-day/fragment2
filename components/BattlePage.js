@@ -70,9 +70,9 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
 
     const dice = new DiceBox("#dice-box", {
       assetPath: "/dice-box-assets/",
-      scale: 20,
-      size: 8,
-      gravity: 9.8,
+      scale: 16,
+      size: 6,
+      gravity: 11,
       lightIntensity: 1,
       perspective: true,
       theme: "smooth",

@@ -1190,7 +1190,8 @@ export const pages = {
   akemi_nice: {
     title: "Nice to Akemi",
     type: "choice",
-    text: "There's a a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    src: "../assets/forest.webp",
+    text: "There's a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "akemi_take" },
       { label: "Hold the vial", next: "akemi_hold" },
@@ -1199,6 +1200,7 @@ export const pages = {
   akemi_take: {
     title: "Take potion",
     action: "took_environment_potion",
+    src: "../assets/forest.webp",
     type: "text",
     text: "You drain the vial, and the ill effects of this world immediately dull.\n\n\"All potions work the same way,\" Akemi tells you. \"The effect is immediate, and it'll last for however long it is advertised! The only exception is health potions; those will heal you right up and keep you that way unless you get hurt again!\"\n\n\"And poison,\" Mitzi says, deadpan. \"That's permanent, too.\"",
     next: "threx_question"
@@ -1206,12 +1208,14 @@ export const pages = {
   akemi_hold: {
     title: "Hold potion",
     type: "text",
+    src: "../assets/forest.webp",
     text: "You thank Akemi and pocket the potion for later. This place is brutal, but it's nothing you can't handle.\n\nBetter to hold on to it until you actually need it.",
     next: "threx_question"
   },
   threx_question: {
     title: "Threx",
     type: "choice",
+    src: "../assets/forest.webp",
     text: "\"Alright!\" Threx yells. \"Let's get moving. Newbie,\" he pauses to address you directly. \"I'm... impressed you managed to take on that thing yourself. I'd like you to be up front with me so I can watch your style directly.\"",
     choices: [
       { label: "Agree (talk with Threx)", next: "agree_threx" },
@@ -1221,6 +1225,7 @@ export const pages = {
   threx_newbie: {
     title: "Threx Newbie",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"Alright!\" Threx yells. \"Let's get moving. Newbie,\" he pauses to address you directly. \"You're up front with me.\"\n\n\"Great,\" you mutter, wondering how this conversation could work to your advantage.",
     next: "agree_threx"
   },
@@ -1716,6 +1721,7 @@ export const pages = {
   team_portal_battle_fail: {
     title: "Fail",
     type: "text",
+    src: "../assets/forest.webp",
     action: "failure",
     text: "Despite your best efforts, the creature gets the better of you.\n\nYou fall, and it lunges for your throat.\n\nAleth addresses the threat, stilling it with a throwing knife to the face.",
     next: "team_portal_battle_fail2"
@@ -1723,12 +1729,14 @@ export const pages = {
   team_portal_battle_fail2: {
     title: "Fail",
     type: "text",
+    src: "../assets/forest.webp",
     text: "\"Not bad for someone who hasn't been activated,\" Threx says, patting him on the back. \"Mark my words: the Protocol will notice you yet!\"\n\nYou stand and nod a \"thank you.\" Aleth nods back.",
     next: "team_portal_battle_finish"
   },
   team_portal_battle_success: {
     title: "Success",
     type: "text",
+    src: "../assets/forest.webp",
     text: "It feels nice to have felled your first beast.\n\n\"Not bad for someone who hasn't been activated,\" Threx says, patting you on the back. \"Mark my words: the Protocol will notice you yet!\"",
     next: "team_portal_battle_finish"
   },
@@ -2011,19 +2019,22 @@ export const pages = {
   warn_shimmer_failed: {
     title: "Failed to Warn",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"The lightsource in this place is different from what you're used to.\" He says at last. \"You're probably just jumping at your own shadow.\"\n\nRonin chortles. \"Ha! Maybe you can take up the rear though, just in case.\"\n\nThe rest of the group exchanges a quick laugh, except for Akemi, who looks at you with pity.\n\nAs you continue moving, Aleth joins you at the rear.\n\n\"I feel it too. Something isn't right.\"",
     next: "forest_deeper_together"
   },
   warn_shimmer_success_warned: {
     title: "Tighten Up",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Everyone, tighten up. Aleth, cover our rear with {{characterName}}. Roland, I want you and Akemi on the right flank. Mitzi, you and Ronin take the left.\"",
     next: "forest_encounter_prepare2"
   },
   warn_shimmer_success: {
     title: "Tighten Up",
     type: "text",
-    text: "\"Everyone, tighten up. Aleth, cover our rear with (name). Roland, I want you and Akemi on the right flank. Mitzi, you and,\" he pauses when he looks at Ronin, \"*this* guy take the left.\"\n\n\"Ronin,\" your old friend whispers. \"My name is Ronin.\"",
+    src: "../assets/deeper.webp",
+    text: "\"Everyone, tighten up. Aleth, cover our rear with {{characterName}}. Roland, I want you and Akemi on the right flank. Mitzi, you and,\" he pauses when he looks at Ronin, \"*this* guy take the left.\"\n\n\"Ronin,\" your old friend whispers. \"My name is Ronin.\"",
     next: "forest_encounter_prepare2"
   },
   keep_guard: {
@@ -2180,48 +2191,56 @@ export const pages = {
   head_to_boss_fail: {
     title: "Can't convince",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Threx appraises you a moment, then shakes his head.\n\n\"We face the threat we know first, then face what we don't. Mitzi, Akemi, and Kaelion, we're going with your plan.\"",
     next: "warn_shimmer_success_warned"
   },
   head_to_boss_success: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "Threx appraies you a moment, then nods.\n\n\"Let's follow the Freelancers' plan. I'll cover the rear in case the minions show up early; the rest of you can face the Tethered-Being together.\"\n\nRonin looks at you and nods. There is too much bad blood between you for this to have meant much, but you feel like it meant something. You *had* been friends once, after all.",
     next: "head_to_boss_success2"
   },
   head_to_boss_success2: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Sure is, boss! We lodge this thing in the Tethered Being after we kill it, and that portal will be locked open!\"\n\nLike the portal itself, this is the first time you've seen a Gate Stabilizer in person. It's smaller than you imagined, and simpler. Without it, you and your companions would only have ten minutes to exit this place after killing the Tethered Being.\n\nThe alternative was being stuck here forever.",
     next: "head_to_boss_success3"
   },
   head_to_boss_success3: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "\"Thank God for E-Corp!\" Ronin exclaims. His oscillating knives are built by the same company.\n\nThrex nods. \"Make sure to get that set up right away. If we take the boss down and the minions tie us up, I don't wanna risk getting trapped in here.\"\n\nSheemie returns the nod. \"Yes, sir. You can count on me!\"\n\n\"Good. Now, we need speed and violence if we expect this plan to work. Otherwise, we'll be fighting the Tethered Being *and* its minions at the same time. Let's move.\"",
     next: "head_to_boss_success4"
   },
   head_to_boss_success4: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/deeper.webp",
     text: "The C-Class Breaker starts jogging toward the location of the Tethered Being. It doesn't take long to reach the lair. The tracks of its minions take you right to it.\n\nIt... isn't what you expected.\n\n When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.",
     next: "head_to_boss_success5"
   },
   head_to_boss_success5: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.\n\nThe shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.",
     next: "head_to_boss_success6"
   },
   head_to_boss_success6: {
     title: "Head to boss",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Threx grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.",
     next: "head_to_boss_success7"
   },
   head_to_boss_success7: {
     title: "Shack",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"I was hoping to give my pets a snack today,\"  the alien-thing says in a voice like sandpaper, \"but it seems you were keen to meet me first. No matter... They'll be dining on you soon enough.\"\n\nYour companions trade worried glances. Plenty of creatures inside the gates can talk, but none that are E-Class.\n\nOn a tree next to you, the jagged shapes move.\n\nThis thing's *pets* are coming your way.",
     choices: [
       { label: "Speak to the creature", next: "speak_together" },
@@ -2232,34 +2251,35 @@ export const pages = {
   speak_together: {
     title: "Speak",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"We thought we'd spare them,\" you say. \"Why go for the limbs when you can go for the head?\"\n\n\"Why, indeed,\" the thing replies. The corner of its mouth twists into a smile.",
     next: "speak_to_creature2"
   },
   clear_minions: {
     title: "Clear The Minions",
     type: "text",
-    src: "../assets/carving.webp",
+    src: "../assets/deeper.webp",
     text: "\"I agree with Kaelion and Mitzi,\" you say. \"Better to face what we know before facing what we don't.\"",
     next: "warn_shimmer_success_warned",
   },
   threx_decides: {
     title: "Threx Decides",
     type: "text",
-    src: "../assets/carving.webp",
+    src: "../assets/deeper.webp",
     text: "After taking a moment to reflect, Threx says, \"I agree with Mitzi and Ronin. We already know we can face the minions easily enough; better to do it early.\"",
     next: "warn_shimmer_success_warned",
   },
   forest_encounter_prepare: {
     title: "Forest Encounter Preparation",
     type: "text",
-    src: "../assets/carving.webp",
+    src: "../assets/deeper.webp",
     text: "\"Everyone, tighten up. Aleth, cover our rear with {{characterName}}. Roland, I want you and Akemi on the right flank. Mitzi, you and Ronin take the left.\"",
     next: "forest_encounter_prepare2",
   },
   forest_encounter_prepare2: {
     title: "Forest Encounter Preparation",
     type: "text",
-    src: "../assets/carving.webp",
+    src: "../assets/deeper.webp",
     text: "\"Harla, you're in the center. Keep an eye open for whoever might need healing.\" The C-Class Breaker draws his warhammer. \"And I'll strike down anything stupid enough to come at us head-on.\"\n\nThe forest is silent in the wake of this formation, sans the occasional groan of a tree-thing.\n\n\"I told you so,\" Ronin offers meekly. \"{{characterName}} is afraid of his own shadow.\"\n\nThrex ignores him. \"We're moving. Keep your guard up.\"",
     next: "forest_encounter_prepare3",
   },
@@ -2304,7 +2324,7 @@ export const pages = {
   keep_to_yourself: {
     title: "Keep It To Yourself",
     type: "text",
-    src: "../assets/carving.webp",
+    src: "../assets/deeper.webp",
     text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements. You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
     next: "keep_to_yourself2",
   },
@@ -2517,6 +2537,7 @@ export const pages = {
   sometimes_camper3: {
     title: "Sometimes",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"H-how...\" Ronin stammers.\n\n\"Impossible! Akemi adds. \"K-Kaelion was a hundred feet away, and that happened in the blink of an eye. Nothing is that fast!\"\n\nAleth grunts and nods at your blood-soaked host. \"He is.\"\n\nThe Camper ignores them. Its only interest right now is you.\n\n\"You think I'm lonely?\" it rasps.",
     choices: [
       { label: "Double down", next: "double_down" },
@@ -2526,6 +2547,7 @@ export const pages = {
   double_down: {
     title: "Double Down",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You do your best to keep the quiver from your voice.\n\n\"Yes. I don't know what things are like where you come from, but I suspect this is unnatural even there.\"\n\nYou take in the palace-like cabin once again, trying to understand the rationale of a creature this powerful. Why is it here? Why does it lure and prey on creatures it knows it can easily defeat?\n\nWhy is it alone?\n\nA theory comes to you. You have met humans just like this in the crumby part of town where you and your family live, people who are big fish in a small pond.",
     //conditional. if the player entered alone or went with Freelance for guild, need the text below
     next: "double_down2"
@@ -2534,6 +2556,7 @@ export const pages = {
   double_down_alone: {
     title: "Double Down",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "Had today gone differently, or if you proceed with your plan to break gates alone, you will likely go down a path just as solitary.\n\n\"I think you're lonely...\" you say again, \"but I also think you're scared.\"\n\n\"Scared!\" The Camper rasps a grating laugh. \"I am more powerful than you can ever hope to be! Hundreds of creatures have fallen to my blades. What could I possibly be afraid of?\"",
     choices: [
       { label: "A bigger fish", next: "bigger_fish" },
@@ -2543,6 +2566,7 @@ export const pages = {
   double_down2: {
     title: "Double Down",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"I think you're lonely...\" you say again, \"but I also think you're scared.\"\n\n\"Scared!\" The Camper rasps a grating laugh. \"I am more powerful than you can ever hope to be! Hundreds of creatures have fallen to my blades. What could I possibly be afraid of?\"",
     choices: [
       { label: "A bigger fish", next: "bigger_fish" },
@@ -2552,6 +2576,7 @@ export const pages = {
   bigger_fish: {
     title: "Bigger Fish",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"You're afraid of something out there that's even greater than you are. That's why you're hiding behind an E-Class gate.\"\n\nThe thing stops laughing.\n\n\"I'll teach you to doubt my strength.\"",
     //camper encounter
     next: ""
@@ -2559,12 +2584,14 @@ export const pages = {
   rejection: {
     title: "Rejection",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"You've sequestered yourself here, in hiding, because you're afraid of the alternative to being alone. You use violence and treasure as distractions, but it still gnaws at you.\"\n\nThe Camper follows your gaze to the others. Again, it laughs.\n\n\"I had a group like yours once. It was a fickle thing, weaker than I was alone.\"",
     next: "rejection_roll"
   },
   rejection_roll: {
     title: "Rejection",
     type: "roll",
+    src: "../assets/shack.webp",
     text: "",
     roll: {
       stat: "Fellowship",
@@ -2578,12 +2605,14 @@ export const pages = {
   rejection_success: {
     title: "Rejection",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"Get away from him, {{characterName}},\" Threx warns. \"It's a trap.\"\n\n\"Enough!\" the Camper raises a hand and your seven remaining companions freeze in place.\n\nThis creature is even more powerful than you imagined.",
     next: "rejection_success2"
   },
   rejection_success2: {
     title: "Rejection",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "\"Here's your option,\" the thing continues, speaking as if the interruption hadn't happened. \"If you fight me, and if I find you entertaining enough, your sacrifice will save your precious companions.\"\n\n\"Or,\" he added with a shrug, \"I'll release them and you can try defeating me together.\"",
     choices: [
       { label: "Save them", next: "save_team" },
@@ -2593,12 +2622,14 @@ export const pages = {
   save_team: {
     title: "Save Team",
     type: "battle",
+    src: "../assets/shack.webp",
     text: "",
     //camper battle alone, will always lead to save_team_fail
   },
   save_team_fail: {
     title: "Failure",
     type: "choice",
+    src: "../assets/shack.webp",
     text: "As the light fades from your eyes, you're faced with the last choice you'll ever make.",
     choices: [
       { label: "Keep silent but maintain eye contact with your killer", next: "eye_contact" },
@@ -2609,78 +2640,91 @@ export const pages = {
   eye_contact: {
     title: "Eye Contact",
     type: "text",
+    src: "../assets/shack.webp",
     text: "It takes every ounce of self-discipline you have, but you grit your teeth and hold the gaze of your killer.\n\nLike everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
     next: "eye_contact2"
   },
   eye_contact2: {
     title: "Eye Contact",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Instead, you are only gifted with a memory of a single moment-- a curse, really. You immediately place it, because it's one you've revisited often.\n\nThis was years before the arrival of the first gate, but the two events can be likened by how time can be measured before and after.\n\nYou see exploding windows and bodies thrown around the inside of the rolling car.",
     next: "do_it"
   },
   strike_out: {
     title: "Strike Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.",
     next: "strike_out2"
   },
   strike_out2: {
     title: "Strike Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Then, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
     next: "do_it"
   },
   do_it: {
     title: "Do It",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.",
     next: "do_it2"
   },
   do_it2: {
     title: "Do It",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The fear and the pain fade to a dull roar, leaving only anger and disappointment behind.\n\n\"Do it!\" you scream. \"Get it over with!\"\n\nThe Camper looks at you, a hint of admiration in its eyes.\n\n\"You have entertained me,\" the creature rasps. \"I have not had that in a long time. Consider your sacrifice... worth it. Because of you, I shall let the others go free.\"\n\nThe Camper's jaw widens, unhinges, and swallows your face.",
     next: "do_it3"
   },
   do_it3: {
     title: "Do It",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The last thing you see is darkness.",
     next: "camper_finish"
   },
   cry_out: {
     title: "Cry Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Like everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.\n\nInstead, you are only gifted with a memory of a single moment-- a curse, really. You immediately place it, because it's one you've revisited often.",
     next: "cry_out2"
   },
   cry_out2: {
     title: "Cry Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "This was years before the arrival of the first gate, but the two events can be likened by how time can be measured *before* and *after.*\n\n You see exploding windows and bodies thrown around the inside of the rolling car.\n\nSomehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.",
     next: "cry_out3"
   },
   cry_out3: {
     title: "Cry Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "Your older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.The pain washes out everything except your scream. All your life, you had hoped to become something greater.",
     next: "cry_out4"
   },
   cry_out4: {
     title: "Cry Out",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The camper frowns. \"Pity. You had nearly paid for the lives of the others. But now... you've only bored me.\"\n\nThe thing pauses to look over at the rest of the party. \"Perhaps one of them will be more entertaining.\"\n\nThe Camper's jaw widens, unhinges, and swallows your face.",
     next: "do_it3"
   },
   fight_together: {
     title: "Fight Together",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"I'll take my chances with them,\" you say. \"We might surprise you.\"\n\nThe Camper sucks its teeth, displeased.",
     next: "rejection_fail"
   },
   rejection_fail: {
     title: "Rejection",
     type: "text",
+    src: "../assets/shack.webp",
     text: "The Tethered Being spits on the ground, clearly disgusted with having been roped into a conversation.\n\n\"File in with your friends, little one,\" it rasps. \"I'll do you the courtesy of killing you all together.\"",
     //camper battle with team
     next: ""
@@ -2688,6 +2732,7 @@ export const pages = {
   be_silent: {
     title: "Silent",
     type: "text",
+    src: "../assets/shack.webp",
     text: "\"That's what I thought,\" it says, smiling at you through black and jagged teeth. \"Now comes my favorite part!\"",
     //camper battle
     next: ""

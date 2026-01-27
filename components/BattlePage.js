@@ -17,6 +17,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
   const diceBoxRef = useRef(null);
   const containerRef = useRef(null);
   const router = useRouter();
+  const enemyTurnInProgress = useRef(false);
 
   const [gameLog, setGameLog] = useState([]);
   const [playerHP, setPlayerHP] = useState(userStats?.HP || 20);
@@ -83,7 +84,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
 
     dice.init().then(() => {
       diceBoxRef.current = dice;
-      console.log("🎲 DiceBox ready for battle");
+      console.log("DiceBox ready for battle");
     }).catch(err => console.error("Dice init error:", err));
   }, []);
 
@@ -145,7 +146,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check if player fumbled last turn
     if (playerMissNextTurn) {
-      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      addLog('You are still recovering from your fumble! Turn skipped.', 'fail');
       setPlayerMissNextTurn(false);
       setTimeout(() => {
         setIsPlayerTurn(false);
@@ -186,7 +187,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check for fumble (natural 1)
     if (roll === 1) {
-      addLog(`💥 FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
+      addLog(`FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
       setPlayerMissNextTurn(true);
       setTimeout(() => {
         setIsPlayerTurn(false);
@@ -206,7 +207,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
       // Critical hit (natural 20)
       if (roll === 20) {
         totalDamage *= 2;
-        addLog(`⭐ CRITICAL HIT! Damage doubled!`, 'success');
+        addLog(`CRITICAL HIT! Damage doubled!`, 'success');
       }
       
       setEnemyHP(prev => Math.max(0, prev - totalDamage));
@@ -226,7 +227,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check if player fumbled last turn
     if (playerMissNextTurn) {
-      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      addLog('You are still recovering from your fumble! Turn skipped.', 'fail');
       setPlayerMissNextTurn(false);
       setTimeout(() => {
         setIsPlayerTurn(false);
@@ -266,7 +267,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check for fumble (natural 1)
     if (roll === 1) {
-      addLog(`💥 FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
+      addLog(`FUMBLE! You rolled a natural 1! You lose your next turn.`, 'fail');
       setPlayerMissNextTurn(true);
       setTimeout(() => {
         setIsPlayerTurn(false);
@@ -286,7 +287,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
       // Critical hit (natural 20)
       if (roll === 20) {
         totalDamage *= 2;
-        addLog(`⭐ CRITICAL HIT! Damage doubled!`, 'success');
+        addLog(`CRITICAL HIT! Damage doubled!`, 'success');
       }
       
       setEnemyHP(prev => Math.max(0, prev - totalDamage));
@@ -306,7 +307,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check if player fumbled last turn
     if (playerMissNextTurn) {
-      addLog('💫 You are still recovering from your fumble! Turn skipped.', 'fail');
+      addLog('You are still recovering from your fumble! Turn skipped.', 'fail');
       setPlayerMissNextTurn(false);
       setTimeout(() => {
         setIsPlayerTurn(false);
@@ -322,7 +323,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
     
     // Check for fumble
     if (roll === 1) {
-      addLog(`💥 FUMBLE! Your environmental attack backfires! You lose your next turn.`, 'fail');
+      addLog(`FUMBLE! Your environmental attack backfires! You lose your next turn.`, 'fail');
       setPlayerMissNextTurn(true);
       await markEnvironmentalActionUsed(userId, pageId);
       setEnvironmentalActionUsed(true);
@@ -346,7 +347,7 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
       // Critical hit
       if (roll === 20) {
         damage *= 2;
-        addLog(`⭐ CRITICAL HIT! Environmental damage doubled!`, 'success');
+        addLog(`CRITICAL HIT! Environmental damage doubled!`, 'success');
       }
       
       setEnemyHP(prev => Math.max(0, prev - damage));
@@ -414,7 +415,9 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
 
   // Enemy turn
   useEffect(() => {
-    if (!isPlayerTurn && !battleEnded && enemyHP > 0 && !isRolling) {
+    if (!isPlayerTurn && !battleEnded && enemyHP > 0 && !isRolling && !enemyTurnInProgress.current) {
+      enemyTurnInProgress.current = true;
+
       const enemyTurnAsync = async () => {
         await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -423,16 +426,16 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
         
         if (enemyAction === 'attack') {
           const total = roll + (page.enemy.attack || 0);
+          
+          const currentPlayerAC = 10 + Math.floor(((userStats?.Athletics || 10) - 10) / 2) + (playerStance === 'defensive' ? 2 : playerStance === 'aggressive' ? -2 : 0);
           addLog(`${page.enemy.name} rolls ${roll} + ${page.enemy.attack} = ${total}!`, 'enemy');
-          
-          const playerAC = player.AC;
-          
-          if (total >= playerAC || roll === 20) {
+
+          if (total >= currentPlayerAC || roll === 20) {
             let damage = await calculateDamage(1, 6) + (page.enemy.attack || 0);
             
             if (roll === 20) {
               damage *= 2;
-              addLog(`💀 Enemy CRITICAL HIT!`, 'damage');
+              addLog(`Enemy CRITICAL HIT!`, 'damage');
             }
             
             setPlayerHP(prev => Math.max(0, prev - damage));
@@ -442,16 +445,15 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
           }
         } else {
           const total = roll + (page.enemy.magic || 0);
+          const currentPlayerAC = 10 + Math.floor(((userStats?.Athletics || 10) - 10) / 2) + (playerStance === 'defensive' ? 2 : playerStance === 'aggressive' ? -2 : 0);
           addLog(`${page.enemy.name} casts a spell! ${total}`, 'enemy');
-          
-          const playerAC = player.AC;
-          
-          if (total >= playerAC || roll === 20) {
+                    
+          if (total >= currentPlayerAC || roll === 20) {
             let damage = await calculateDamage(1, 8) + (page.enemy.magic || 0);
             
             if (roll === 20) {
               damage *= 2;
-              addLog(`💀 Enemy CRITICAL HIT!`, 'damage');
+              addLog(`Enemy CRITICAL HIT!`, 'damage');
             }
             
             setPlayerHP(prev => Math.max(0, prev - damage));
@@ -462,12 +464,13 @@ const BattleSystem = ({ userStats, page, userId, pageId }) => {
         }
 
         await new Promise(resolve => setTimeout(resolve, 1500));
+        enemyTurnInProgress.current = false;
         setIsPlayerTurn(true);
       };
 
       enemyTurnAsync();
     }
-  }, [isPlayerTurn, battleEnded, enemyHP, isRolling, page.enemy, player.AC]);
+  }, [isPlayerTurn, battleEnded, enemyHP, isRolling]);
 
   // Save HP and check battle end
   useEffect(() => {

@@ -56,20 +56,14 @@ export const DATA_PACKETS = {
     title: 'Akemi Sato',
     category: 'Characters',
     content: `Friendly. Natural leader. Wants to start her own guild. Could be good relationship material. Parents were refugees from Japan during the Fracture Event.\n\nBreaker ID: 102-345-697\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy\n\nPath: Undeclared\n\nPrimary Weapon: No Primary Weapon/Alternates`,
-    unlocksOnPage: 'akemi_intro',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['akemi_intro', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
   },
   character_threx: {
     id: 'character_threx',
     title: 'Threx Muller',
     category: 'Characters',
     content: `Leader of your first party. Strong, serious, and genuinly interested in the safety of the Breakers he manages. Used to break gates solo, but decided that parties are the better route after getting rescued in a break gone bad. Large, muscular, high-and-tight haircut, clean shaven.\n\nBreaker ID: 742-137-094\n\nBreaker Class: C-Class\n\nAssociation: Global Protocol Authority\n\nPath: Warrior\n\nPrimary Weapon: Battleaxe`,
-    unlocksOnPage: 'threx_brief',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['threx_brief', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
     updates: [
       {
         id: 'threx_pass',
@@ -85,20 +79,14 @@ export const DATA_PACKETS = {
     title: 'Ronin Balore',
     category: 'Characters',
     content: `Like you, an orphan. Your former friend and current rival. Blames you for something he's never explained. Obsessed with the Epoch Corporation. Spiky black hair, trim build, Japanese and Irish parentage.\n\nBreaker ID: 301-246-879\n\nBreaker Class: D-Class\n\nAssociation: Unaffiliated\n\nPath: Mixed\n\nPrimary Weapon: E-Corp Self-Oscellating Blade`,
-    unlocksOnPage: 'ronin_intro',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['ronin_intro', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
   },
   character_harla: {
     id: 'character_harla',
     title: 'Harla Freeman',
     category: 'Characters',
     content: `Healer. Into gossip. Harla wears old, dented armor, hinting that she's taken many hits in her life. Middle-aged, dark complected, black hair in a bun.\n\nBreaker ID: 966-931-878\n\nBreaker Class: D-Class\n\nAssociation: Ramsey Academy/ Global Protocol Authority\n\nPath: Mage (Healer)\n\nPrimary Weapon: Assorted Magic`,
-    unlocksOnPage: 'team_intro1',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['team_intro1', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
     updates: [
       {
         id: 'harla_pass',
@@ -114,10 +102,7 @@ export const DATA_PACKETS = {
     title: 'Kaelion Virehart',
     category: 'Characters',
     content: `Acts like a knight. Wears expensive-looking armor and speaks like he belongs in an old romance novel. Cool mustache.\n\nBreaker ID: 825-629-126\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Warrior\n\nPrimary Weapon: Longsword`,
-    unlocksOnPage: 'team_intro2',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['team_intro2', 'wait_others5', 'welcome_back2', 'forest_deeper2'],
     updates: [
       {
         id: 'kaelion_pass',
@@ -133,10 +118,7 @@ export const DATA_PACKETS = {
     title: 'Sheemie Bauer',
     category: 'Characters',
     content: `An energetic mage specializing in plant-based abilities. Friendly. Dorky. Obssesed with trees. Sheemie is short, skinny, and his perpetually-smiling face is pitted with acne scars. Wearing green wizard robes.\n\nBreaker ID: 204-847-186\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Mage\n\nPrimary Weapon: Tree-themed Magic`,
-    unlocksOnPage: 'team_intro3',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['team_intro3', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
     updates: [
       {
         id: 'sheemie_pass',
@@ -152,10 +134,7 @@ export const DATA_PACKETS = {
     title: 'Mitzi',
     category: 'Characters',
     content: `Dark and edgy. Wears skin-tight black leather. Mitzi is a woman of few words. The words she uses, however, make most people wish she spoke even less. Interested in eventually joining either the Silhouette or Protocol Null.\n\nBreaker ID: 373-179-628\n\nBreaker Class: E-Class\n\nAssociation: Ramsey Academy\n\nPath: Summoner\n\nPrimary Weapon: Creepy Summoning Magic`,
-    unlocksOnPage: 'team_intro4',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['team_intro4', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
     updates: [
       {
         id: 'mitzi_pass',
@@ -171,10 +150,7 @@ export const DATA_PACKETS = {
     title: 'Aleth Achen',
     category: 'Characters',
     content: `Calm, quiet, and always seeming to notice more than most people. Aleth is skinny, average height, and overtly unactivated. He also perpetually seems to believe that "something is wrong." Unkempt blonde hair. Short, scruffy facial hair, always wearing blue jeans and a white T-shirt.\n\nBreaker ID: 401-236-879\n\nBreaker Class: No Record\n\nAssociation: Ramsey Academy\n\nPath: No Record\n\nPrimary Weapon: Throwing Knives`,
-    unlocksOnPage: 'team_intro5',
-    unlocksOnPage: 'wait_others5',
-    unlocksOnPage: 'welcome_back2',
-    unlocksOnPage: 'forest_deeper2',
+    unlocksOnPages: ['team_intro5', 'wait_others5', 'welcome_back2', 'forest_deeper2'],    
   },
   guild_gpa: {
     id: 'guild_gpa',
@@ -310,7 +286,77 @@ export const DATA_PACKETS = {
 
 };
 
-// Check and unlock packets based on page
+// // Check and unlock data packets based on page
+// export async function checkAndUnlockPackets(userId, pageId) {
+//   if (!userId) return [];
+  
+//   try {
+//     const userRef = doc(db, "users", userId);
+//     const userSnap = await getDoc(userRef);
+    
+//     if (!userSnap.exists()) return [];
+    
+//     const userData = userSnap.data();
+//     const unlockedPackets = userData.unlockedDataPackets || [];
+//     const unlockedUpdates = userData.unlockedDataPacketUpdates || [];
+    
+//     const newlyUnlocked = [];
+    
+//     // Check for new base packets
+//     Object.values(DATA_PACKETS).forEach(packet => {
+//       if (packet.unlocksOnPage === pageId && !unlockedPackets.includes(packet.id)) {
+//         newlyUnlocked.push({
+//           ...packet,
+//           isUpdate: false
+//         });
+//       }
+      
+//       // Check for packet updates
+//       if (packet.updates && packet.updates.length > 0) {
+//         packet.updates.forEach(update => {
+//           const updateKey = `${packet.id}_${update.id}`;
+//           if (update.unlocksOnPage === pageId && !unlockedUpdates.includes(updateKey)) {
+//             newlyUnlocked.push({
+//               id: packet.id,
+//               title: `${packet.title}: ${update.title}`,
+//               category: packet.category,
+//               content: update.content,
+//               isUpdate: true,
+//               updateId: update.id,
+//               parentPacketId: packet.id
+//             });
+//           }
+//         });
+//       }
+//     });
+    
+//     // Update Firestore if there are new items
+//     if (newlyUnlocked.length > 0) {
+//       const newPackets = newlyUnlocked.filter(p => !p.isUpdate).map(p => p.id);
+//       const newUpdates = newlyUnlocked.filter(p => p.isUpdate).map(p => `${p.parentPacketId}_${p.updateId}`);
+      
+//       const updates = {};
+//       if (newPackets.length > 0) {
+//         updates.unlockedDataPackets = [...unlockedPackets, ...newPackets];
+//       }
+//       if (newUpdates.length > 0) {
+//         updates.unlockedDataPacketUpdates = [...unlockedUpdates, ...newUpdates];
+//       }
+      
+//       await updateDoc(userRef, updates);
+      
+//       return newlyUnlocked;
+//     }
+    
+//     return [];
+//   } catch (error) {
+//     console.error("Error checking data packets:", error);
+//     return [];
+//   }
+// }
+
+
+// Check and unlock data packets based on page
 export async function checkAndUnlockPackets(userId, pageId) {
   if (!userId) return [];
   
@@ -328,7 +374,14 @@ export async function checkAndUnlockPackets(userId, pageId) {
     
     // Check for new base packets
     Object.values(DATA_PACKETS).forEach(packet => {
-      if (packet.unlocksOnPage === pageId && !unlockedPackets.includes(packet.id)) {
+      // Support both single page (unlocksOnPage) and multiple pages (unlocksOnPages)
+      const unlockPages = Array.isArray(packet.unlocksOnPages) 
+        ? packet.unlocksOnPages 
+        : packet.unlocksOnPage 
+          ? [packet.unlocksOnPage] 
+          : [];
+      
+      if (unlockPages.includes(pageId) && !unlockedPackets.includes(packet.id)) {
         newlyUnlocked.push({
           ...packet,
           isUpdate: false
@@ -339,7 +392,15 @@ export async function checkAndUnlockPackets(userId, pageId) {
       if (packet.updates && packet.updates.length > 0) {
         packet.updates.forEach(update => {
           const updateKey = `${packet.id}_${update.id}`;
-          if (update.unlocksOnPage === pageId && !unlockedUpdates.includes(updateKey)) {
+          
+          // Support both single and multiple unlock pages for updates
+          const updateUnlockPages = Array.isArray(update.unlocksOnPages)
+            ? update.unlocksOnPages
+            : update.unlocksOnPage
+              ? [update.unlocksOnPage]
+              : [];
+          
+          if (updateUnlockPages.includes(pageId) && !unlockedUpdates.includes(updateKey)) {
             newlyUnlocked.push({
               id: packet.id,
               title: `${packet.title}: ${update.title}`,
@@ -369,6 +430,7 @@ export async function checkAndUnlockPackets(userId, pageId) {
       
       await updateDoc(userRef, updates);
       
+      console.log(`✅ Unlocked ${newlyUnlocked.length} data packet(s) on page: ${pageId}`);
       return newlyUnlocked;
     }
     
@@ -378,6 +440,8 @@ export async function checkAndUnlockPackets(userId, pageId) {
     return [];
   }
 }
+
+
 
 // Get all unlocked packets for a user
 export async function getUnlockedPackets(userId) {

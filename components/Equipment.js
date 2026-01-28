@@ -73,8 +73,9 @@ export const EQUIPMENT_ITEMS = {
     stats: {
       healing: '10 HP'
     },
-    unlocksOnPage: 'very_dumb',
-    unlocksOnPage: 'very_dumb_fail',
+    unlocksOnPages: ['very_dumb', 'very_dumb_fail'],
+    // unlocksOnPage: 'very_dumb',
+    // unlocksOnPage: 'very_dumb_fail',
     icon: Package
   },
   environment_potion: {
@@ -86,12 +87,49 @@ export const EQUIPMENT_ITEMS = {
     stats: {
       effect: 'Prevents environmental damage and disorientation'
     },
-    unlocksOnPage: 'hold_vial',
-    unlocksOnPage: 'wait_hold',
-    unlocksOnPage: 'akemi_hold',
+    unlocksOnPages: ['hold_vial', 'wait_hold', 'akemi_hold'],
+    // unlocksOnPage: 'hold_vial',
+    // unlocksOnPage: 'wait_hold',
+    // unlocksOnPage: 'akemi_hold',
     icon: Zap
   },
 };
+
+// // Check and unlock equipment based on page
+// export async function checkAndUnlockEquipment(userId, pageId) {
+//   if (!userId) return [];
+  
+//   try {
+//     const userRef = doc(db, "users", userId);
+//     const userSnap = await getDoc(userRef);
+    
+//     if (!userSnap.exists()) return [];
+    
+//     const userData = userSnap.data();
+//     const unlockedEquipment = userData.unlockedEquipment || [];
+    
+//     // Find equipment that should unlock on this page
+//     const newEquipment = Object.values(EQUIPMENT_ITEMS).filter(
+//       item => item.unlocksOnPage === pageId && !unlockedEquipment.includes(item.id)
+//     );
+    
+//     // Update Firestore if there is new equipment
+//     if (newEquipment.length > 0) {
+//       const updatedUnlocked = [...unlockedEquipment, ...newEquipment.map(e => e.id)];
+//       await updateDoc(userRef, {
+//         unlockedEquipment: updatedUnlocked
+//       });
+      
+//       return newEquipment;
+//     }
+    
+//     return [];
+//   } catch (error) {
+//     console.error("Error checking equipment:", error);
+//     return [];
+//   }
+// }
+
 
 // Check and unlock equipment based on page
 export async function checkAndUnlockEquipment(userId, pageId) {
@@ -107,9 +145,16 @@ export async function checkAndUnlockEquipment(userId, pageId) {
     const unlockedEquipment = userData.unlockedEquipment || [];
     
     // Find equipment that should unlock on this page
-    const newEquipment = Object.values(EQUIPMENT_ITEMS).filter(
-      item => item.unlocksOnPage === pageId && !unlockedEquipment.includes(item.id)
-    );
+    // Support both single page (unlocksOnPage) and multiple pages (unlocksOnPages)
+    const newEquipment = Object.values(EQUIPMENT_ITEMS).filter(item => {
+      const unlockPages = Array.isArray(item.unlocksOnPages)
+        ? item.unlocksOnPages
+        : item.unlocksOnPage
+          ? [item.unlocksOnPage]
+          : [];
+      
+      return unlockPages.includes(pageId) && !unlockedEquipment.includes(item.id);
+    });
     
     // Update Firestore if there is new equipment
     if (newEquipment.length > 0) {
@@ -118,6 +163,7 @@ export async function checkAndUnlockEquipment(userId, pageId) {
         unlockedEquipment: updatedUnlocked
       });
       
+      console.log(`✅ Unlocked ${newEquipment.length} equipment item(s) on page: ${pageId}`);
       return newEquipment;
     }
     
@@ -127,6 +173,8 @@ export async function checkAndUnlockEquipment(userId, pageId) {
     return [];
   }
 }
+
+
 
 // Get all unlocked equipment for a user
 export async function getUnlockedEquipment(userId) {

@@ -264,6 +264,17 @@ export default function PageClient({ page: initialPage, pageId }) {
         await recordAkemiInterested(user.uid);
       }
 
+      // if (page.action === 'meet_npc' && page.npcPresent) {
+      //     await recordNPCMeeting(
+      //       user.uid, 
+      //       page.npcPresent,
+      //       // page.npcName, 
+      //       page.npcDescription,
+      //       pageId,
+      //       page.npcStats
+      //     );
+      //   }
+
       if (page.npcDeath) {
         await recordNPCDeath(user.uid, page.npcDeath);
       }
@@ -618,7 +629,8 @@ export default function PageClient({ page: initialPage, pageId }) {
           {page.type === "battle" && (
             <motion.div variants={itemVariants}>
               <BattlePage 
-                userStats={userStats} 
+                userStats={userStats}
+                playerName={characterName}
                 page={page}
                 userId={user?.uid}
               />

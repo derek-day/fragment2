@@ -110,14 +110,14 @@ export const adventurePages = {
     title: "Meet the Protocol",
     type: "text",
     src: "../assets/lab.webp",
-    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI-looking machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential Breakers in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
+    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
     next: "failed_to_connect",
   },
   failed_to_connect: {
     title: "Failed to Connect",
     src: "../assets/lab.webp",
     type: "text",
-    text: "The needles plunged into you. The machine whirred to life; the technicians and analysts took their readings.\n\nThis moment was when the AI bridged the gap, and the Protocol activated most Breakers. This was when the mysterious augmented-reality messages appeared. This was where the hero's journey was supposed to begin.\n\nThis was where yours did not.\n\n\"The Protocol has failed to connect,\" the AI told you.",
+    text: "The needles plunged into you. The machine whirred to life. The technicians and analysts took their readings.\n\nThis moment was when the AI bridged the gap, and the Protocol activated most Breakers. This was when the mysterious augmented-reality messages appeared. This was where the hero's journey was supposed to begin.\n\nThis was where yours did not.\n\n\"The Protocol has failed to connect,\" the AI told you.",
     next: "not_over_yet",
   },
   not_over_yet: {
@@ -1761,13 +1761,45 @@ export const adventurePages = {
     type: "battle",
     src: "../assets/portal.webp",
     text: "Any celebration is short-lived, though. Threx quickly shrugs off the strike, and returns with an attack of his own.",
+    // enemies: [
+    // {
+    //   name: "Alpha Critter", 
+    //   maxHP: 20, 
+    //   ac: 12, 
+    //   attack: 4, 
+    //   magic: 2, 
+    //   bp: 10 
+    // }, 
+    // { 
+    //   name: "Critter Scout", 
+    //   maxHP: 8, 
+    //   ac: 11, 
+    //   attack: 1, 
+    //   magic: 0, 
+    //   bp: 3 
+    // }, ],
+    // enemies: {
+    //   count: 2,
+    //   template: {
+    //     name: "Threx Muller",
+    //     maxHP: 100,
+    //     ac: 16,
+    //     attack: 5,
+    //     magic: 5,
+    //     bp: 5
+    //   }
+    // },
+    // allies: ["Ronin", "Threx", "Akemi"], 
     enemy: {
       name: "Threx Muller",
-      maxHP: 1000,      // Enemy health
-      ac: 16,          // Armor Class (difficulty to hit)
-      attack: 5,      // Attack bonus
-      magic: 5        // Magic attack bonus
+      maxHP: 1000,      
+      ac: 16,          
+      attack: 5,      
+      magic: 5,
+      // initiative: 15
     },
+    // initiative: "player",
+    // initiative: "enemy",
     fail: "very_dumb",
     next: "very_dumb",
   },

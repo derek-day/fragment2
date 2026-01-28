@@ -108,14 +108,14 @@ export const pages = {
     title: "Meet the Protocol",
     type: "text",
     src: "../assets/lab.webp",
-    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI-looking machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential Breakers in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
+    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
     next: "failed_to_connect",
   },
   failed_to_connect: {
     title: "Failed to Connect",
     src: "../assets/lab.webp",
     type: "text",
-    text: "The needles plunged into you. The machine whirred to life; the technicians and analysts took their readings.\n\nThis moment was when the AI bridged the gap, and the Protocol activated most Breakers. This was when the mysterious augmented-reality messages appeared. This was where the hero's journey was supposed to begin.\n\nThis was where yours did not.\n\n\"The Protocol has failed to connect,\" the AI told you.",
+    text: "The needles plunged into you. The machine whirred to life. The technicians and analysts took their readings.\n\nThis moment was when the AI bridged the gap, and the Protocol activated most Breakers. This was when the mysterious augmented-reality messages appeared. This was where the hero's journey was supposed to begin.\n\nThis was where yours did not.\n\n\"The Protocol has failed to connect,\" the AI told you.",
     next: "not_over_yet",
   },
   not_over_yet: {
@@ -251,7 +251,7 @@ export const pages = {
     title: "Wait for the Others",
     type: "text",
     src: "../assets/forest.webp",
-    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class Summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
+    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
     next: "wait_others5"
   },
   wait_others5: {
@@ -259,6 +259,112 @@ export const pages = {
     type: "text",
     src: "../assets/forest.webp",
     text: "You've met the others.\n\nThrex, a C-Class warrior\n\nAkemi, an E-Class undeclared\n\nHarla, a D-Class healer\n\nRonin, the —you do a double take —*D-Class* mixed.\n\n*How is he D-Class already?* you wonder, thinking back on all the scrapes you two got into growing up.\n\nYou look up at Ronin, and instead lock eyes with a member of the party you hadn't noticed before.",
+    npcsPresent: [
+      {
+        name: "Ronin",
+        description: "A mysterious warrior with a hidden past",
+        stats: {
+          maxHP: 150,
+          currentHP: 150,
+          ac: 16,
+          fellowship: 10,
+          athletics: 14,
+          thought: 10,
+          essence: 8
+        }
+      },
+      {
+        name: "Aleth",
+        description: "A similar unranked member",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Threx",
+        description: "A massive fighter",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Kaelion",
+        description: "A cultured warrior",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Harla",
+        description: "A healer",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Mitzi",
+        description: "A diminutive mage",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Sheemie",
+        description: "A summoner",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Akemi",
+        description: "The nicest member",
+        stats: {
+          maxHP: 80,
+          currentHP: 80,
+          ac: 12,
+          fellowship: 12,
+          athletics: 8,
+          thought: 16,
+          essence: 14
+        }
+      }
+    ],
     next: "wait_others6"
   },
   wait_others6: {
@@ -1063,6 +1169,112 @@ export const pages = {
     src: "../assets/forest.webp",
     type: "choice",
     text: "Standing from where she had been kneeling over your corpse, a large black woman in dented armor wipes her hands.\n\n\"That might be a record,\" she says. \"I don't think I ever had to heal someone mere seconds after entering a gate before.\"\n\n\"Don't be rude, Harla!\" chastises a woman next to her. \"He was just a little overzealous. We've all been there.\" She steps forward and offers you a hand up. \"I'm Akemi.\"",
+    npcsPresent: [
+      {
+        name: "Ronin",
+        description: "A mysterious warrior with a hidden past",
+        stats: {
+          maxHP: 150,
+          currentHP: 150,
+          ac: 16,
+          fellowship: 10,
+          athletics: 14,
+          thought: 10,
+          essence: 8
+        }
+      },
+      {
+        name: "Aleth",
+        description: "A similar unranked member",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Threx",
+        description: "A massive fighter",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Kaelion",
+        description: "A cultured warrior",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Harla",
+        description: "A healer",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Mitzi",
+        description: "A diminutive mage",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Sheemie",
+        description: "A summoner",
+        stats: {
+          maxHP: 200,
+          currentHP: 200,
+          ac: 18,
+          fellowship: 8,
+          athletics: 16,
+          thought: 6,
+          essence: 6
+        }
+      },
+      {
+        name: "Akemi",
+        description: "The nicest member",
+        stats: {
+          maxHP: 80,
+          currentHP: 80,
+          ac: 12,
+          fellowship: 12,
+          athletics: 8,
+          thought: 16,
+          essence: 14
+        }
+      }
+    ],
     choices: [
       { label: "Take hand and offer name", next: "friendly_return" },
       { label: "Stand on your own and offer your name", next: "neutral_return" },
@@ -1547,13 +1759,45 @@ export const pages = {
     type: "battle",
     src: "../assets/portal.webp",
     text: "Any celebration is short-lived, though. Threx quickly shrugs off the strike, and returns with an attack of his own.",
+    // enemies: [
+    // {
+    //   name: "Alpha Critter", 
+    //   maxHP: 20, 
+    //   ac: 12, 
+    //   attack: 4, 
+    //   magic: 2, 
+    //   bp: 10 
+    // }, 
+    // { 
+    //   name: "Critter Scout", 
+    //   maxHP: 8, 
+    //   ac: 11, 
+    //   attack: 1, 
+    //   magic: 0, 
+    //   bp: 3 
+    // }, ],
+    // enemies: {
+    //   count: 2,
+    //   template: {
+    //     name: "Threx Muller",
+    //     maxHP: 100,
+    //     ac: 16,
+    //     attack: 5,
+    //     magic: 5,
+    //     bp: 5
+    //   }
+    // },
+    // allies: ["Ronin", "Threx", "Akemi"], 
     enemy: {
       name: "Threx Muller",
-      maxHP: 1000,      // Enemy health
-      ac: 16,          // Armor Class (difficulty to hit)
-      attack: 5,      // Attack bonus
-      magic: 5        // Magic attack bonus
+      maxHP: 1000,      
+      ac: 16,          
+      attack: 5,      
+      magic: 5,
+      // initiative: 15
     },
+    // initiative: "player",
+    // initiative: "enemy",
     fail: "very_dumb",
     next: "very_dumb",
   },
@@ -2550,6 +2794,9 @@ export const pages = {
     src: "../assets/shack.webp",
     text: "You do your best to keep the quiver from your voice.\n\n\"Yes. I don't know what things are like where you come from, but I suspect this is unnatural even there.\"\n\nYou take in the palace-like cabin once again, trying to understand the rationale of a creature this powerful. Why is it here? Why does it lure and prey on creatures it knows it can easily defeat?\n\nWhy is it alone?\n\nA theory comes to you. You have met humans just like this in the crumby part of town where you and your family live, people who are big fish in a small pond.",
     //conditional. if the player entered alone or went with Freelance for guild, need the text below
+    //action: "guild_opinion",
+    //guildName: "Freelance",
+    //opinion: "interested",
     next: "double_down2"
     // next: "double_down_alone"
   },
@@ -2768,19 +3015,18 @@ export const pages = {
   formless3: {
     title: "Who?",
     type: "text",
-    useCustomBackground: true, // Add this flag
+    useCustomBackground: true,
     text: "*That wasn't you, was it?*",
     next: "formless4"
   },
   formless4: {
     title: "Who?",
     type: "text",
-    useCustomBackground: true, // Add this flag
+    useCustomBackground: true,
     text: "\"Sorry 'bout that, par'ner. Let me get a light for ya.\"",
     next: "formless5"
   },
   formless5: {
-    //use the light ray component as background
     title: "Who?",
     type: "text",
     text: "*A faint speck appears in the middle distance, creating contrast to the endless dark.*\n\n\"That's better.\"",
@@ -2821,7 +3067,6 @@ export const pages = {
     customBackgroundComponent: "LightRays"
   },
   formless10: {
-    //back to black
     title: "---",
     type: "text",
     text: "Then, there is nothing at all.",
@@ -3467,6 +3712,7 @@ export const pages = {
     title: "Note",
     type: "text",
     src: "../assets/hospital_later.webp",
+    action: "akemi_interested",
     text: "There's a note from Akemi, longer than the others. It includes her phone number.\n\n\"Keep in touch,\" the note says.",
     next: "hospital_note"
   },

@@ -74,8 +74,6 @@ export const EQUIPMENT_ITEMS = {
       healing: '10 HP'
     },
     unlocksOnPages: ['very_dumb', 'very_dumb_fail'],
-    // unlocksOnPage: 'very_dumb',
-    // unlocksOnPage: 'very_dumb_fail',
     icon: Package
   },
   environment_potion: {
@@ -88,48 +86,9 @@ export const EQUIPMENT_ITEMS = {
       effect: 'Prevents environmental damage and disorientation'
     },
     unlocksOnPages: ['hold_vial', 'wait_hold', 'akemi_hold'],
-    // unlocksOnPage: 'hold_vial',
-    // unlocksOnPage: 'wait_hold',
-    // unlocksOnPage: 'akemi_hold',
     icon: Zap
   },
 };
-
-// // Check and unlock equipment based on page
-// export async function checkAndUnlockEquipment(userId, pageId) {
-//   if (!userId) return [];
-  
-//   try {
-//     const userRef = doc(db, "users", userId);
-//     const userSnap = await getDoc(userRef);
-    
-//     if (!userSnap.exists()) return [];
-    
-//     const userData = userSnap.data();
-//     const unlockedEquipment = userData.unlockedEquipment || [];
-    
-//     // Find equipment that should unlock on this page
-//     const newEquipment = Object.values(EQUIPMENT_ITEMS).filter(
-//       item => item.unlocksOnPage === pageId && !unlockedEquipment.includes(item.id)
-//     );
-    
-//     // Update Firestore if there is new equipment
-//     if (newEquipment.length > 0) {
-//       const updatedUnlocked = [...unlockedEquipment, ...newEquipment.map(e => e.id)];
-//       await updateDoc(userRef, {
-//         unlockedEquipment: updatedUnlocked
-//       });
-      
-//       return newEquipment;
-//     }
-    
-//     return [];
-//   } catch (error) {
-//     console.error("Error checking equipment:", error);
-//     return [];
-//   }
-// }
-
 
 // Check and unlock equipment based on page
 export async function checkAndUnlockEquipment(userId, pageId) {
@@ -173,8 +132,6 @@ export async function checkAndUnlockEquipment(userId, pageId) {
     return [];
   }
 }
-
-
 
 // Get all unlocked equipment for a user
 export async function getUnlockedEquipment(userId) {

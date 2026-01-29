@@ -10,6 +10,7 @@ import {
   hasGivenToCale,
   hasTakenEnvironmentalPotion,
   hasTakenHospitalNote,
+  hasRemovedCamperMinions,
   getCurrentRoute
 } from './progressService';
 
@@ -55,6 +56,9 @@ export async function checkPageCondition(userId: string, condition: any): Promis
 
     case 'gave_to_cale':
       return progress.gaveToCale === true;
+
+    case 'removed_minions':
+      return progress.removedCamperMinions === true;
     
     case 'died_before':
       return (progress.deaths || 0) > 0;
@@ -97,6 +101,12 @@ export async function checkPageCondition(userId: string, condition: any): Promis
     
     case 'did_not_give_to_cale':
       return !await hasGivenToCale(userId);
+
+    case 'removed_minions':
+      return await hasRemovedCamperMinions(userId);
+    
+    case 'did_not_removed_minions':
+      return !await hasRemovedCamperMinions(userId);
 
     // Environment potion (removed duplicate)
     case 'took_environment_potion':

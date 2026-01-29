@@ -699,7 +699,7 @@ const BattleSystem = ({ userStats, playerName, page, userId, pageId }) => {
                 </div>
                 <span className="text-xs text-slate-400 bg-slate-800 px-2 py-0.5 border border-slate-700">AC: {player.AC}</span>
               </div>
-              <HPBar current={playerHP} max={maxHP} color="bg-green-600" label="Health" />
+              <HPBar current={playerHP} max={maxHP} color="bg-green-600" label="LP" />
               {equippedWeapon && (
                 <div className="mt-2 text-xs flex items-center gap-1 text-green-400">
                   <Sword size={12} /> {equippedWeapon.name} <span className="text-slate-500">({equippedWeapon.stats?.damage})</span>

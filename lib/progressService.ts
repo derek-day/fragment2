@@ -75,6 +75,7 @@ interface PlayerProgress {
   tookEnvironmentPotion?: boolean;
   tookHospitalNote?: boolean;
   hasFailed?: boolean;
+  removedCamperMinions?: boolean;
   
   // Death tracking
   deaths?: number;
@@ -124,6 +125,7 @@ export async function getPlayerProgress(userId: string): Promise<PlayerProgress>
       gaveToCale: false,
       tookEnvironmentPotion: false,
       hasFailed: false,
+      removedCamperMinions: false,
       minionGroups: {},
       joinedGuild: null,
       guildOpinions: [],
@@ -643,6 +645,22 @@ export async function hasFailed(userId) {
   return snap.exists() ? snap.data().hasFailed === true : false;
 }
 
+export async function recordRemovedCamperMinions(userId: string) {
+  const ref = doc(db, 'users', userId);
+  
+  await updateDoc(ref, {
+    removedCamperMinions: true,
+    lastUpdated: new Date()
+  });
+
+  console.log(`Player removed Camper minions`);
+}
+
+export async function hasRemovedCamperMinions(userId) {
+  const ref = doc(db, "users", userId);
+  const snap = await getDoc(ref);
+  return snap.exists() ? snap.data().removedCamperMinions === true : false;
+}
 
 export async function recordTookEnvironmentalPotion(userId: string) {
   const ref = doc(db, 'users', userId);

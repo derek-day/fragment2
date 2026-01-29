@@ -92,7 +92,7 @@ export default function StatLayout() {
         <div className="flex items-center justify-between mb-1.5">
           <div className="flex items-center gap-1.5">
             <Heart size={14} className="text-red-400" />
-            <span className="text-xs font-bold text-gray-300 tracking-wider py-1">LP</span>
+            <span className="text-xs font-bold text-gray-300 tracking-wider p-1">LP</span>
           </div>
           <span className="text-xs font-bold">
             {currentHP} <span className="text-gray-500">/</span> {maxHP}

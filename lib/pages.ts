@@ -549,12 +549,16 @@ export const pages = {
     title: "Ridge Battle",
     type: "battle",
     src: "../assets/ridge.webp",
-    enemy: {
-      name: "Flower Beast", //12 of them
-      maxHP: 10,      // Enemy health
-      ac: 10,          // Armor Class (difficulty to hit)
-      attack: 2,      // Attack bonus
-      magic: 1        // Magic attack bonus
+    enemies: {
+      count: 12,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 10,
+        attack: 2,
+        magic: 2,
+        bp: 3
+      }
     },
     text: "",
     fail: "ridge_ambush_fail",
@@ -700,6 +704,20 @@ export const pages = {
     title: "Ambush",
     src: "../assets/critters.webp",
     type: "battle",
+    enemies: {
+      count: 12,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 12,
+        attack: 4,
+        magic: 4,
+        bp: 3
+      }
+    },
+    text: "",
+    fail: "ridge_ambush_fail",
+    next: "ridge_ambush_success",
   },
   carving_alone_success: {
     title: "Carving Patterns",
@@ -1040,7 +1058,7 @@ export const pages = {
     type: "choice",
     src: "../assets/shack.webp",
     action: "failure",
-    text: "Failure is inevitable, but you are faced with a small choice in your final moments.",
+    text: "The Camper slices your right arm and both legs clean off.\n\nFailure is inevitable, but you are faced with a small choice in your final moments.",
     choices: [
       { label: "Engage", next: "camper_engage_alone" },
       { label: "Retreat", next: "camper_engage_retreat" },
@@ -1122,7 +1140,27 @@ export const pages = {
     title: "Thin The Herd",
     type: "battle",
     src: "../assets/critters.webp",
-    text: "12 beasts",
+    enemies: {
+      count: 3,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 12,
+        attack: 2,
+        magic: 2,
+        bp: 3
+      }
+    },
+    text: "",
+    fail: "ridge_ambush_fail",
+    next: "herd_success",
+  },
+  herd_success: {
+    title: "That's It?",
+    type: "text",
+    src: "../assets/critters.webp",
+    text: "When the third beast collapses, you brace for your next attacker. It doesn't come. Looking beyond the trio of corpses, you realize that the remaining seven have returned to the woods.\n\nThe rest of the group must have been spotted. Now's your chance to reach the Tethered Being unmolested.",
+    next: "tethered_lair_alone"
   },
   counter_attack_alone: {
     title: "Counter Attack",
@@ -1142,7 +1180,20 @@ export const pages = {
     title: "Counter Attack",
     type: "battle",
     src: "../assets/critters.webp",
-    text: "10 beasts",
+    text: "",
+    enemies: {
+      count: 10,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 10,
+        attack: 2,
+        magic: 2,
+        bp: 3
+      }
+    },
+    fail: "ridge_ambush_fail",
+    next: "ridge_ambush_success",
   },
   critter_death: {
     title: "---",
@@ -1888,18 +1939,6 @@ export const pages = {
     src: "../assets/forest.webp",
     type: "text",
     text: "You marvel at your new surroundings. Not only are the physical laws here different from what you're used to, but its sensory qualities also assault you. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.\n\nThe result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nAll of it, when combined, also creates an unfortunate distraction.",
-    //this next is if the player did not drink the potion, however they have the option to drink it during this page or a few beforehand. in that case the next should instead take them to team_portal_encounter_take
-    // conditionalNext: {
-    // conditions: [
-    //   {
-    //     type: 'took_environment_potion',
-    //     value: true,
-    //     next: 'team_portal_encounter_take'
-    //   }
-    // ],
-    // default: 'team_portal_encounter_hold'
-    // },
-    // next: "team_portal_encounter_hold",
     conditionalNext: [
       {
         conditions: [
@@ -2336,15 +2375,19 @@ export const pages = {
     title: "Forest Clearing Encounter",
     src: "../assets/critters.webp",
     type: "battle",
-    enemy: {
-      name: "Flower Beast",
-      maxHP: 40,      // Enemy health
-      ac: 13,          // Armor Class (difficulty to hit)
-      attack: 7,      // Attack bonus
-      magic: 5,
-      points: 15,
-      item: ""        // Magic attack bonus
+    enemies: {
+      count: 12,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 12,
+        attack: 3,
+        magic: 3,
+        bp: 3
+      }
     },
+    allies: ["Ronin", "Threx", "Akemi", "Mitzi", "Kaelion", "Aleth", "Harla", "Sheemie"], 
+    action: "removed_minions",
     text: "",
     fail: "forest_clearing_encounter_fail",
     next: "forest_encounter_success",
@@ -2361,6 +2404,7 @@ export const pages = {
     title: "---",
     type: "text",
     useCustomBackground: true,
+    customBackgroundComponent: "PrismaticBurst",
     text: "\"Go back,\" a voice says. \"I'm not ready for you yet.\"",
     next: "forest_clearing_encounter_fail3",
   },
@@ -2545,16 +2589,19 @@ export const pages = {
     title: "Forest Encounter",
     src: "../assets/critters.webp",
     type: "battle",
-    enemy: {
-      name: "Flower Beast",
-      maxHP: 20,      // Enemy health
-      ac: 12,          // Armor Class (difficulty to hit)
-      attack: 4,      // Attack bonus
-      magic: 3,
-      points: 5,
-      item: ""        // Magic attack bonus
+    enemies: {
+      count: 2,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 12,
+        attack: 3,
+        magic: 3,
+        bp: 3
+      }
     },
     text: "",
+    action: "removed_minions",
     fail: "forest_encounter_fail",
     next: "forest_prepare_encounter_success",
   },
@@ -2583,15 +2630,19 @@ export const pages = {
     title: "Forest Encounter",
     src: "../assets/critters.webp",
     type: "battle",
-    enemy: {
-      name: "Flower Beast",
-      maxHP: 30,      // Enemy health
-      ac: 12,          // Armor Class (difficulty to hit)
-      attack: 5,      // Attack bonus
-      magic: 3,
-      points: 10,
-      item: ""        // Magic attack bonus
+    enemies: {
+      count: 10,
+      template: {
+        name: "Cotton Candy Beast",
+        maxHP: 10,
+        ac: 12,
+        attack: 3,
+        magic: 3,
+        bp: 3
+      }
     },
+    action: "removed_minions",
+    allies: ["Ronin", "Threx", "Akemi", "Mitzi", "Kaelion", "Aleth", "Harla", "Sheemie"], 
     text: "",
     fail: "forest_encounter_fail",
     next: "forest_encounter_success",
@@ -2608,6 +2659,7 @@ export const pages = {
     title: "---",
     type: "text",
     useCustomBackground: true,
+    customBackgroundComponent: "PrismaticBurst",
     text: "\"Go back,\" a soft voice tells you. It sounds so familiar. \"I'm not ready for you yet.\"",
     next: "forest_encounter_fail3",
   },
@@ -2689,7 +2741,53 @@ export const pages = {
     type: "text",
     text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
-    next: "",
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'removed_minions' }
+        ],
+        next: 'camper_hunt2'
+      }
+    ],
+    next: "camper_hunt_not_removed"
+  },
+  camper_hunt_not_removed: {
+    title: "Camper Hunt",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "Red eyes stare out from the surrounding tree-things. The Tethered Being's pets have arrived. You sense their hunger and realize they intend to eat your fallen companion.\n\n*Us too,* you realize, *if we fail.*",
+    next: "camper_hunt2",
+  },
+  camper_hunt2: {
+    title: "Camper Hunt",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "\"H-how...\" Ronin stammers.\n\n\"Impossible! Akemi adds. \"K-Kaelion was a hundred feet away, and that happened in the blink of an eye. Nothing is that fast!\"\n\nAleth grunts and nods at your blood-soaked host. \"*He* is.\"\n\nThe Camper smiles through black and jagged teeth.\n\n\"Now comes my favorite part!\"",
+    next: "camper_together_battle_kael",
+  },
+  camper_together_battle_kael: {
+    title: "Camper Battle",
+    src: "../assets/shack.webp",
+    type: "battle",
+    enemy: {
+      name: "Camper",
+      maxHP: 1000,
+      ac: 18,
+      attack: 5,
+      magic: 5,
+      bp: 50
+    },
+    allies: ["Ronin", "Threx", "Akemi", "Mitzi", "Aleth", "Harla", "Sheemie"], 
+    text: "",
+    fail: "camper_together_after_kael",
+    next: "camper_together_after_kael"
+  },
+  camper_together_after_kael: {
+    title: "Camper Battle",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "Your team is massacred.\n\nYou look around and see Threx torn to shreds.\n\nHarla is crushed inside of her dented armor.\n\nMitzi has been decapitated.\n\nRonin has lost his right arm.\n\nSheemie is impaled on a nearby tree.\n\nAkemi's legs are shattered.\n\nAleth is ragdolled, thrown a hundred feet away.",
+    next: "camper_together_after"
   },
   send_a_runner: {
     title: "Send A Runner",
@@ -2711,7 +2809,184 @@ export const pages = {
     type: "text",
     text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has *become* null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
-    next: "",
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'removed_minions' }
+        ],
+        next: 'send_a_runner4'
+      }
+    ],
+    next: "camper_not_removed"
+  },
+  camper_not_removed: {
+    title: "Camper Hunt",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "Red eyes stare out from the surrounding tree-things. The Tethered Being's pets have arrived. You sense their hunger and realize they intend to eat your fallen companion.\n\n*Us too,* you realize, *if we fail.*",
+    next: "send_a_runner4",
+  },
+  send_a_runner4: {
+    title: "Send A Runner",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "\"H-how...\" Ronin stammers.\n\n\"Impossible! Akemi exclaims. \"Mitzi was a hundred feet away, and that happened in the blink of an eye. Nothing is that fast!\"\n\nAleth grunts and nods at your blood-soaked host. \"*He* is.\"\n\nThe Camper smiles through black and jagged teeth.\n\n\"Now comes my favorite part!\"",
+    next: "camper_together_battle_mitzi"
+  },
+  camper_together_battle_mitzi: {
+    title: "Camper Battle",
+    src: "../assets/shack.webp",
+    type: "battle",
+    enemy: {
+      name: "Camper",
+      maxHP: 1000,
+      ac: 18,
+      attack: 10,
+      magic: 10,
+      bp: 50
+    },
+    allies: ["Ronin", "Threx", "Akemi", "Kaelion", "Aleth", "Harla", "Sheemie"], 
+    text: "",
+    fail: "camper_together_after_mitzi",
+    next: "camper_together_after_mitzi"
+  },
+  camper_together_after_mitzi: {
+    title: "Camper Battle",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "Your team is massacred.\n\nYou look around and see Threx torn to shreds.\n\nHarla is crushed inside of her dented armor.\n\nKaelion's expensive armor is shattered with him inside.\n\nRonin has lost his right arm.\n\nSheemie is impaled on a nearby tree.\n\nAkemi's legs are shattered.\n\nAleth is ragdolled, thrown a hundred feet away.",
+    next: "camper_together_after"
+  },
+  camper_together_after: {
+    title: "Finished",
+    src: "../assets/shack.webp",
+    type: "choice",
+    text: "The Camper toys with you.\n\nYou can do nothing but watch. Not only because of the shock, but also due to the Camper slicing off your left arm and right leg.\n\nFailure is inevitable, but you are faced with a small choice in your final moments.",
+    choices: [
+      { label: "Engage", next: "together_engage" },
+      { label: "Retreat", next: "together_retreat" },
+    ],
+  },
+  together_engage: {
+    title: "Engage",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
+    next: "together_engage2"
+  },
+  together_engage2: {
+    title: "Engage",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.\n\nThere is no reason in mad worlds like these.",
+    next: "together_engage3"
+  },
+  together_engage3: {
+    title: "Engage",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "The fear and the pain fade to a dull roar, leaving only anger and disappointment behind.\n\n\"Do it!\" you scream. \"Get it over with!\"\n\nThe Camper looks at you, a hint of admiration in its eyes.\n\nThen, it fulfills your request.\n\nThe last thing you see is darkness.",
+    next: "camper_finish"
+  },
+  together_retreat: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "You back away from the creature, hellbent on prolonging your life as long as possible.\n\nRyke, Crixon, Cale-- what will they do without you?\n\nThe Camper closes on you slowly, savoring the fear of your final moments.\n\nYou crawl over body parts and fallen weapons, neither noticing nor caring.\n\n\"N-no,\" you beg. \"Please. I- I'm not supposed to go like this.\"",
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'removed_minions' }
+        ],
+        next: 'together_retreat2'
+      }
+    ],
+    next: "together_retreat_minions"
+  },
+  together_retreat_minions: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "The minions of the Camper close in around you. Some gnaw on the remains of your companions. Other bite and paw at you like a cat playing with a mouse.",
+    next: "together_retreat2"
+  },
+  together_retreat2: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "\"Pitiful,\" your killer says. \"Perhaps the next world I open mine to will send creatures who entertain me better than yours has.\"\n\nThe thing stomps on your ankle to keep you from retreating. The bone shatters.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
+    next: "together_retreat3"
+  },
+  together_retreat3: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "Somehow, you, Crixon, and an infant Ryke had emerged with only cuts. Your parents died on the scene.\n\nYour older brother Cale had been in intensive care for months, fostering an addiction that still haunts him.\n\nYou had always believed you and your siblings had been spared for a reason. Now, you know the truth.",
+    next: "together_retreat4"
+  },
+  together_retreat4: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "There is no reason in mad worlds like these.\n\nThe thing opens its mouth, and its jaw unhinges.\n\nThen, it freezes.\n\nLike an animal catching the sudden scent of a predator, the Camper sniffs at the air and bristles.",
+    next: "together_retreat5"
+  },
+  together_retreat5: {
+    title: "Retreat",
+    type: "roll",
+    src: "../assets/shack.webp",
+    text: "",
+    roll: {
+      stat: "Thought",
+      dc: 13,
+      successText: "\"You feel it, too-- a sudden shift in the air. Something powerful has just entered the area.\"",
+      failText: "\"You can't tell what the Camper is perceiving.\"",
+      nextSuccess: "together_retreat6",
+      nextFail: "together_retreat6",
+    },
+  },
+  together_retreat6: {
+    title: "Retreat",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "\"Who else is with you?\" the Camper rasps.\n\nYou have no idea, but coherent thought is failing you right now anyway.",
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'removed_minions' }
+        ],
+        next: 'together_hero'
+      }
+    ],
+    next: "together_hero_minions"
+  },
+  together_hero_minions: {
+    title: "Who Is That?",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "A minion whimpers, then goes silent. Another's growl ends abruptly.\n\nIn a moment, the area around the decadent cabin becomes markedly emptier.\n\nThe minions are all dead.",
+    next: "together_hero"
+  },
+  together_hero: {
+    title: "Who Is That?",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "The Camper steps away from you, looking scared for the first time. \"This... isn't possible. How can one of you move so quickly?\"\n\nThere's a blur to your left, and a figure in a gray throbe appears between you and the creature far more powerful than you.\n\nThis one-- more powerful still-- throws the Camper backward with a strike you hardly register.",
+    next: "together_hero2"
+  },
+  together_hero2: {
+    title: "Who Is That?",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "The creature that had just seemed unstoppable crashes into its cabin, blowing the fine materials into bits.\n\n\"It's okay,\" your savior tells you. \"I'll handle it from here. You rest.\" He pauses to take in the others. \"I'm... sorry I'm late.\"\n\nBefore darkness takes you, you register something else about the stranger's clothing.",
+    next: "together_hero3"
+  },
+  together_hero3: {
+    title: "Who Is That?",
+    src: "../assets/shack.webp",
+    type: "text",
+    text: "Yes, it is styled in the way familiar to those from Ashnhold, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.\n\nThe realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class Breaker-- is a member of the Silk Road.\n\nThen, darkness finds you at last.",
+    next: "camper_finish"
   },
   speak_to_creature: {
     title: "Speak To The Creature",
@@ -2773,10 +3048,22 @@ export const pages = {
     src: "../assets/shack.webp",
     type: "text",
     text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
-    //if they haven't cleared out the previous minions, need to add below
-//     Red eyes stare out from the surrounding tree-things. The Tethered Being's pets have arrived. You sense their hunger and realize they intend to eat your fallen companion. 
-// *Us too, you realize, if we fail.* 
-    next: "",
+    conditionalNext: [
+      {
+        conditions: [
+          { type: 'removed_minions' }
+        ],
+        next: 'sometimes_camper3'
+      }
+    ],
+    next: "sometimes_not_removed"
+  },
+  sometimes_not_removed: {
+    title: "Sometimes",
+    type: "choice",
+    src: "../assets/shack.webp",
+    text: "Red eyes stare out from the surrounding tree-things. The Tethered Being's pets have arrived. You sense their hunger and realize they intend to eat your fallen companion.\n\n*Us too,* you realize, *if we fail.*",
+    next: "sometimes_camper3"
   },
   sometimes_camper3: {
     title: "Sometimes",
@@ -2793,18 +3080,29 @@ export const pages = {
     type: "text",
     src: "../assets/shack.webp",
     text: "You do your best to keep the quiver from your voice.\n\n\"Yes. I don't know what things are like where you come from, but I suspect this is unnatural even there.\"\n\nYou take in the palace-like cabin once again, trying to understand the rationale of a creature this powerful. Why is it here? Why does it lure and prey on creatures it knows it can easily defeat?\n\nWhy is it alone?\n\nA theory comes to you. You have met humans just like this in the crumby part of town where you and your family live, people who are big fish in a small pond.",
-    //conditional. if the player entered alone or went with Freelance for guild, need the text below
-    //action: "guild_opinion",
-    //guildName: "Freelance",
-    //opinion: "interested",
+    conditionalNext: [
+      {
+        // Went alone
+        conditions: [
+          { type: 'went_alone' }
+        ],
+        next: 'double_down_alone'
+      },
+      {
+        // Interested in Freelance guild
+        conditions: [
+          { type: 'interested_in_guild', guild: 'Freelance' }
+        ],
+        next: 'double_down_alone'
+      }
+    ],
     next: "double_down2"
-    // next: "double_down_alone"
   },
   double_down_alone: {
     title: "Double Down",
     type: "choice",
     src: "../assets/shack.webp",
-    text: "Had today gone differently, or if you proceed with your plan to break gates alone, you will likely go down a path just as solitary.\n\n\"I think you're lonely...\" you say again, \"but I also think you're scared.\"\n\n\"Scared!\" The Camper rasps a grating laugh. \"I am more powerful than you can ever hope to be! Hundreds of creatures have fallen to my blades. What could I possibly be afraid of?\"",
+    text: "Had today gone differently, or if you proceed with your plan to break gates alone, you will likely go down a path just as solitary.\n\n\"I think you're lonely...\" you say again, \"but I also think you're scared.\"\n\n\"Scared!\" The Camper rasps a grating laugh. \"I am more powerful than you can ever hope to be! Hundreds of creatures have fallen to my blades. What could *I* possibly be afraid of?\"",
     choices: [
       { label: "A bigger fish", next: "bigger_fish" },
       { label: "The rejection of others", next: "rejection" },
@@ -2826,7 +3124,7 @@ export const pages = {
     src: "../assets/shack.webp",
     text: "\"You're afraid of something out there that's even greater than you are. That's why you're hiding behind an E-Class gate.\"\n\nThe thing stops laughing.\n\n\"I'll teach you to doubt my strength.\"",
     //camper encounter
-    next: ""
+    next: "camper_together_battle_kael"
   },
   rejection: {
     title: "Rejection",
@@ -2871,7 +3169,23 @@ export const pages = {
     type: "battle",
     src: "../assets/shack.webp",
     text: "",
-    //camper battle alone, will always lead to save_team_fail
+    enemy: {
+      name: "Camper",
+      maxHP: 1000,
+      ac: 18,
+      attack: 10,
+      magic: 10,
+      bp: 50
+    },
+    fail: "save_team_after",
+    next: "save_team_after"
+  },
+  save_team_after: {
+    title: "Save Team",
+    type: "text",
+    src: "../assets/shack.webp",
+    text: "The Camper toys with you.\n\nFirst your right arm is easily cut off.\n\nThen, both of your legs are removed.\n\nThe Camper lifts you into the air and impales you onto a nearby tree.\n\nTaking hit after hit as you are pinned to this tree, your companions are forced to watch.",
+    next: "save_team_fail"
   },
   save_team_fail: {
     title: "Failure",
@@ -2974,7 +3288,7 @@ export const pages = {
     src: "../assets/shack.webp",
     text: "The Tethered Being spits on the ground, clearly disgusted with having been roped into a conversation.\n\n\"File in with your friends, little one,\" it rasps. \"I'll do you the courtesy of killing you all together.\"",
     //camper battle with team
-    next: ""
+    next: "camper_together_battle_kael"
   },
   be_silent: {
     title: "Silent",
@@ -2982,7 +3296,7 @@ export const pages = {
     src: "../assets/shack.webp",
     text: "\"That's what I thought,\" it says, smiling at you through black and jagged teeth. \"Now comes my favorite part!\"",
     //camper battle
-    next: ""
+    next: "camper_together_battle_kael"
   },
   no_camper: {
     src: "../assets/shack.webp",

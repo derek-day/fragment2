@@ -25,6 +25,7 @@ import {
   recordNiceToAkemi,
   recordGaveToCale,
   recordTookEnvironmentalPotion,
+  recordRemovedCamperMinions,
   updateBreakerClass,
   recordFailure
 } from '../../../lib/progressService';
@@ -263,6 +264,11 @@ export default function PageClient({ page: initialPage, pageId }) {
       if (page.action?.type === 'akemi_interested') {
         await recordAkemiInterested(user.uid);
       }
+
+      if (page.action?.type === 'removed_minions') {
+        await recordRemovedCamperMinions(user.uid);
+      }
+
 
       // if (page.action === 'meet_npc' && page.npcPresent) {
       //     await recordNPCMeeting(

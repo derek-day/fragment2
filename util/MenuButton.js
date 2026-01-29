@@ -144,7 +144,7 @@ export default function MenuButton() {
           // whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(!isOpen)}
-          className="display bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-3 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-colors"
+          className="display bg-gray-900 bg-opacity-90 backdrop-blur-sm text-white p-2 shadow-2xl border-2 border-gray-700 hover:border-gray-600 transition-colors"
         >
           <motion.div
             animate={{ rotate: isOpen ? 90 : 0 }}

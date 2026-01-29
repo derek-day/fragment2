@@ -1040,11 +1040,11 @@ export const pages = {
     title: "Camper Encounter",
     type: "battle",
     src: "../assets/shack.webp",
-    text: "Camper Encounter",
+    text: "",
     //players loses their right arm and both legs
     //ends in a failure no matter what
     enemy: {
-      name: "The Camper",
+      name: "Camper",
       maxHP: 1000,      // Enemy health
       ac: 16,          // Armor Class (difficulty to hit)
       attack: 5,      // Attack bonus
@@ -1807,9 +1807,16 @@ export const pages = {
   },
   threx_hits: {
     title: "Threx Hits Back",
-    type: "battle",
+    type: "text",
     src: "../assets/portal.webp",
     text: "Any celebration is short-lived, though. Threx quickly shrugs off the strike, and returns with an attack of his own.",
+    next: "threx_hits_battle"
+  },
+  threx_hits_battle: {
+    title: "Threx Hits Back",
+    type: "battle",
+    src: "../assets/portal.webp",
+    text: "",
     // enemies: [
     // {
     //   name: "Alpha Critter", 
@@ -1873,7 +1880,7 @@ export const pages = {
     next: "now_what",
     hpModification: {
       type: 'add',
-      amount: 1,
+      amount: 5,
       message: 'Threx pulls you back up before you pass out.',
     }
   },

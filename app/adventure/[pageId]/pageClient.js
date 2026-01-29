@@ -596,7 +596,7 @@ export default function PageClient({ page: initialPage, pageId }) {
         )}
 
         <motion.div 
-          className="space-y-4 w-full max-w-2xl"
+          className="space-y-4 w-full max-w-xs"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

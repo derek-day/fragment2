@@ -150,10 +150,10 @@ export default function BackgroundMusic({
                   exit={{ opacity: 0 }}
                   className="flex flex-col"
                 >
-                  <span className="text-sm font-bold text-white truncate max-w-[150px]">
+                  <span className="presto-text text-sm font-bold text-white truncate max-w-[150px]">
                     {currentTrack.title}
                   </span>
-                  <span className="text-[10px] text-blue-300">
+                  <span className="presto-text text-[10px] text-blue-300">
                     {isPlaying ? "Now Playing" : "Paused"}
                   </span>
                 </motion.div>
@@ -191,7 +191,7 @@ export default function BackgroundMusic({
                 </button>
                 <button 
                   onClick={togglePlay}
-                  className="bg-blue-600 hover:bg-blue-500 text-white rounded-full p-4 shadow-lg shadow-blue-900/50 transition-transform active:scale-95 border border-blue-400"
+                  className="bg-blue-600 hover:bg-blue-500 text-white rounded-full p-3 shadow-lg shadow-blue-900/50 transition-transform active:scale-95 border border-blue-400"
                 >
                   {isPlaying ? <Pause size={28} fill="white" /> : <Play size={28} fill="white" className="ml-1" />}
                 </button>

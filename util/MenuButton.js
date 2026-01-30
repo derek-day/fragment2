@@ -46,7 +46,7 @@ export default function MenuButton() {
         setIsOpen(false);
         setShowDataPackets(true);
       },
-      color: "text-cyan-400"
+      color: "text-blue-400"
     },
     {
       icon: Package,

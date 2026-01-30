@@ -164,7 +164,7 @@ input {
 }
 
 button {
-    font-family: "segoe-ui", sans-serif;
+    /* font-family: "segoe-ui", sans-serif; */
     font-weight: 300;
     font-style: normal;
 }
@@ -306,15 +306,25 @@ label {
 
     p {
         letter-spacing: 0.5px;
-        margin-bottom: 1rem !important;
-        line-height: 1.65;
+        margin-bottom: 0.75rem !important;
+        /* line-height: 1.65; */
+        font-size: 0.95rem !important;
     }
 }
 
 button {
-    /* letter-spacing: 0.5px;
-    font-family: "ivypresto-headline", serif; */
-    font-family: "Urbanist", sans-serif;
+    letter-spacing: 0.35px;
+    font-family: "ivypresto-headline", serif;
+    /* font-family: "Urbanist", sans-serif; */
+}
+
+.presto-text {
+  letter-spacing: 0.35px;
+  font-family: "ivypresto-headline", serif;
+}
+
+.cinzel-text {
+  font-family: "Cinzel", sans-serif;
 }
 
 /* span {
@@ -346,10 +356,11 @@ button {
     font-family: "ivypresto-headline", serif; */
     font-weight: 400;
     font-weight: 300;
-    font-family: "Urbanist", sans-serif;
-    font-family: "Cinzel", serif;
+    /* font-family: "Urbanist", sans-serif;
+    font-family: "Cinzel", serif; */
     font-family: "ivypresto-headline", serif;
     font-style: normal;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
     background-color: rgba(9, 9, 19, 0.8);
     border: 1px solid white;
@@ -396,7 +407,7 @@ button {
 
     .story-text p {
         /* font-size: 0.9rem; */
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
 }
 
@@ -418,6 +429,7 @@ button {
   /* border-radius: 6px; */
   font-weight: 600;
   font-size: 1rem;
+  font-size: 0.95rem;
   transition: 0.2s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);

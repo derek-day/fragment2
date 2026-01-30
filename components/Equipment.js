@@ -514,7 +514,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <h3 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
-                    {/* <span className="w-1 h-1 bg-blue-400"></span> */}
+                    <span className="w- h-1 bg-blue-400"></span>
                     {type}
                   </h3>
                   <div className="space-y-2">

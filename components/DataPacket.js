@@ -504,7 +504,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
           <div className="flex justify-between items-center p-6 border-b border-gray-700">
             <div className="flex items-center gap-3">
               <Database className="text-blue-400" size={28} />
-              <h2 className="text-2xl font-bold text-blue-400">Data Packets</h2>
+              <h2 className="text-2xl font-bold text-blue-400 presto-text">Data Packets</h2>
             </div>
             <button
               onClick={onClose}
@@ -517,11 +517,11 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
           {/* Content */}
           <div className="flex-1 overflow-y-auto p-6">
             {loading ? (
-              <div className="text-center py-8 text-gray-400">Loading...</div>
+              <div className="text-center py-8 text-gray-400 presto-text">Loading...</div>
             ) : unlockedPackets.length === 0 ? (
               <div className="text-center py-8">
                 <Database className="mx-auto mb-4 text-gray-600" size={48} />
-                <p className="text-gray-400">
+                <p className="text-gray-400 presto-text">
                   No data packets unlocked yet. Continue the story to discover more.
                 </p>
               </div>
@@ -532,16 +532,16 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
               >
                 <button
                   onClick={() => setSelectedPacket(null)}
-                  className="text-blue-400 hover:text-blue-300 mb-4 flex items-center gap-2 transition-colors"
+                  className="text-blue-400 hover:text-blue-300 mb-4 flex items-center gap-2 transition-colors presto-text"
                 >
                   ← Back to packets
                 </button>
                 <div className={`bg-gray-900 p-6 border border-gray-700`}>
-                  <div className="text-sm text-blue-400 mb-2">{selectedPacket.category}</div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">{selectedPacket.title}</h3>
+                  <div className="text-sm text-blue-400 mb-2 cinzel-text">{selectedPacket.category}</div>
+                  <h3 className="text-xl font-bold mb-4 text-white presto-text">{selectedPacket.title}</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                      <p className="text-gray-300 leading-relaxed whitespace-pre-line presto-text text-sm">
                         {selectedPacket.content}
                       </p>
                     </div>
@@ -549,15 +549,15 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                     {/* Show unlocked updates */}
                     {selectedPacket.unlockedUpdates && selectedPacket.unlockedUpdates.length > 0 && (
                       <div className="border-t border-gray-700 pt-4 mt-4">
-                        <div className="text-sm font-semibold text-yellow-400 mb-3 flex items-center gap-2">
+                        <div className="text-sm font-semibold text-yellow-400 mb-3 flex items-center gap-2 presto-text">
                           <span>↻</span>
                           <span>Additional Information</span>
                         </div>
                         <div className="space-y-3">
                           {selectedPacket.unlockedUpdates.map((update, idx) => (
                             <div key={idx} className="bg-gray-800 p-3 border-l-2 border-yellow-400">
-                              <div className="text-sm font-medium text-yellow-400 mb-1">{update.title}</div>
-                              <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                              <div className="text-sm font-medium text-yellow-400 mb-1 presto-text">{update.title}</div>
+                              <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line presto-text">
                                 {update.content}
                               </p>
                             </div>
@@ -576,7 +576,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-blue-400 mb-3 flex items-center gap-2 cinzel-text">
                       <span className="w- h-1 bg-blue-400"></span>
                       {category}
                     </h3>
@@ -589,7 +589,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
                           className="w-full text-left px-4 py-3 bg-gray-700 hover:bg-gray-600 transition-colors flex items-center justify-between group"
                         >
                           <div className="flex items-center gap-2">
-                            <span className="text-white">{packet.title}</span>
+                            <span className="text-white presto-text">{packet.title}</span>
                             {packet.unlockedUpdates && packet.unlockedUpdates.length > 0 && (
                               <span className="text-xs bg-yellow-600 text-white px-2 py-0.5">
                                 {packet.unlockedUpdates.length} update{packet.unlockedUpdates.length > 1 ? 's' : ''}
@@ -611,7 +611,7 @@ export default function DataPacketBrowser({ isOpen, onClose, userId }) {
 
           {/* Footer */}
           <div className="p-4 border-t border-gray-700 bg-gray-900">
-            <div className="text-sm text-gray-400 text-center">
+            <div className="text-sm text-gray-400 text-center presto-text">
               {unlockedPackets.length} / {Object.keys(DATA_PACKETS).length} packets unlocked
             </div>
           </div>

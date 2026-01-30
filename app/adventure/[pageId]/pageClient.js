@@ -584,12 +584,12 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         {page.type !== 'battle' && page.type !== 'roll' && page.type !== 'endCard' && (
           <motion.div 
-            className="story-text p-2 mb-6"
+            className="story-text p-3 mb-6"
             variants={itemVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="space-y-2 m-3">
+            <div className="space-y-2 m-3 text-slate-100">
               {renderText()}
             </div>
           </motion.div>

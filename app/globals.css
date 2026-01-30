@@ -287,8 +287,10 @@ label {
 
 .story-text {
     background-color: rgba(9, 9, 19, 0.8);
-    border: 1px solid white;
-    border: 1px solid rgba(140, 230, 255, 0.35);
+    /* border: 1px solid white; */
+    /* border: 1px solid rgba(140, 230, 255, 0.35); */
+    border-color: rgb(51 65 85 / 0.5);
+    border-width: 1px;
     /* background-color: rgba(0,0,0,0.5); */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -299,10 +301,10 @@ label {
     font-style: normal;
     width: 50dvw;
     z-index: 0;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.1),
-    inset 0 0 20px rgba(0, 180, 255, 0.15);
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.075),
     inset 0 0 20px rgba(0, 180, 255, 0.1);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.1),
+    inset 0 0 20px rgba(0, 180, 255, 0.15);
 
     p {
         letter-spacing: 0.5px;
@@ -313,13 +315,13 @@ label {
 }
 
 button {
-    letter-spacing: 0.35px;
+    letter-spacing: 0.5px;
     font-family: "ivypresto-headline", serif;
     /* font-family: "Urbanist", sans-serif; */
 }
 
 .presto-text {
-  letter-spacing: 0.35px;
+  letter-spacing: 0.5px;
   font-family: "ivypresto-headline", serif;
 }
 
@@ -363,9 +365,14 @@ button {
     font-size: 0.95rem;
     letter-spacing: 0.5px;
     background-color: rgba(9, 9, 19, 0.8);
-    border: 1px solid white;
-    border: 1px solid rgba(140, 230, 255, 0.35);
+    color: rgb(241 245 249 1);
+    /* border: 1px solid white; */
+    border: 1px solid rgba(140, 230, 255, 0.25);
     /* background-color: rgba(0,0,0,0.5); */
+    /* border-color: rgb(51 65 85 / 0.5); */
+    border-width: 1px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.05),
+    inset 0 0 20px rgba(0, 180, 255, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     transition: .3s;

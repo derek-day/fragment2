@@ -421,7 +421,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
           <div className="flex items-center gap-3">
             <Package className="text-green-400" size={28} />
-            <h2 className="text-2xl font-bold text-green-400">Equipment</h2>
+            <h2 className="text-2xl font-bold text-green-400 presto-text">Inventory</h2>
           </div>
           <button
             onClick={onClose}
@@ -434,10 +434,10 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6">
           {loading ? (
-            <div className="text-center py-8 text-gray-400">Loading...</div>
+            <div className="text-center py-8 text-gray-400 presto-text">Loading...</div>
           ) : unlockedEquipment.length === 0 ? (
             <div className="text-center py-8">
-              <Package className="mx-auto mb-4 text-gray-600" size={48} />
+              <Package className="mx-auto mb-4 text-gray-600 presto-text" size={48} />
               <p className="text-gray-400">
                 No equipment unlocked yet. Continue the story to find gear.
               </p>
@@ -458,12 +458,12 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                   {selectedItem.icon && <selectedItem.icon size={48} className="text-green-400" />}
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-2xl font-bold text-white">{selectedItem.name}</h3>
+                      <h3 className="text-2xl font-bold text-white presto-text">{selectedItem.name}</h3>
                     </div>
                     <div className="flex gap-3 text-sm">
                       <span className={getRarityColor(selectedItem.rarity)}>{selectedItem.rarity}</span>
                       <span className="text-gray-500">•</span>
-                      <span className="text-blue-400">{selectedItem.type}</span>
+                      <span className="text-blue-400 presto-text">{selectedItem.type}</span>
                     </div>
                   </div>
                 </div>
@@ -474,12 +474,12 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
 
                 {selectedItem.stats && (
                   <div className="bg-gray-800 p-4 border border-gray-700 mb-4">
-                    <div className="text-sm font-semibold text-green-400 mb-2">Stats:</div>
+                    <div className="text-sm font-semibold text-green-400 mb-2 cinzel-text">Stats:</div>
                     <div className="space-y-1">
                       {Object.entries(selectedItem.stats).map(([key, value]) => (
                         <div key={key} className="flex justify-between text-sm">
-                          <span className="text-gray-400 capitalize">{key}:</span>
-                          <span className="text-white font-medium">{value}</span>
+                          <span className="text-gray-400 capitalize cinzel-text">{key}:</span>
+                          <span className="text-white font-medium presto-text">{value}</span>
                         </div>
                       ))}
                     </div>
@@ -492,12 +492,12 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
                     <button
                       onClick={() => handleUseItem(selectedItem)}
                       disabled={isUsing}
-                      className="w-full px-4 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold transition-colors mb-2"
+                      className="w-full px-4 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold transition-colors mb-2 presto-text"
                     >
                       {isUsing ? "Using..." : "Use Item"}
                     </button>
                     {useMessage && (
-                      <div className="text-center text-sm text-green-400 bg-gray-800 p-2">
+                      <div className="text-center text-sm text-green-400 bg-gray-800 p-2 presto-text">
                         {useMessage}
                       </div>
                     )}

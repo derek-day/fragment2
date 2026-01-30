@@ -288,7 +288,7 @@ export function EquipmentNotification({ items, onClose, onOpenItem }) {
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-3">
-          <div className="text-green-400 font-bold text-lg">Item Acquired</div>
+          <div className="text-green-400 font-bold text-lg presto-text">Item Acquired</div>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-200 transition-colors"

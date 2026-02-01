@@ -892,7 +892,7 @@ const BattleSystem = ({ userStats, playerName, page, userId, pageId }) => {
                 <span className="text-[10px] md:text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider sticky top-0 bg-black/20 w-full cinzel-text">Combat Log</span>
                 <div className="overflow-y-auto space-y-0.5 md:space-y-1 pr-1 flex-1">
                   {gameLog.slice().reverse().map((log) => (
-                    <div key={log.id} className={`text-[11px] md:text-[12px] p-1 md:p-1.5 border-l-2 presto-text ${
+                    <div key={log.id} className={`text-[12px] md:text-[12px] p-1 md:p-1.5 border-l-2 presto-text ${
                       log.type === 'success' ? 'border-green-500 text-green-300 bg-green-900/10' :
                       log.type === 'fail' ? 'border-red-500 text-red-300 bg-red-900/10' :
                       log.type === 'damage' ? 'border-orange-500 text-orange-300 bg-orange-900/10' :

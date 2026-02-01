@@ -129,7 +129,8 @@ export default function MenuButton() {
 
   return (
     <>
-      <div className="fixed top-4 right-4 z-50" style={{ top: 10 }}>
+      {/* <div className="fixed top-4 right-4 z-50" style={{ top: 10 }}> */}
+      <div className="fixed top-4 right-4 z-50">
         {/* Menu Toggle Button */}
         <motion.button
           variants={containerVariants}

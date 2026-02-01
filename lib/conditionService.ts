@@ -151,7 +151,7 @@ export async function getConditionalNextPage(userId: string, page: any): Promise
     }
     
     if (allConditionsMet) {
-      console.log(`✅ Conditional branch met, redirecting to: ${branch.next}`);
+      console.log(`Conditional branch met, redirecting to: ${branch.next}`);
       return branch.next;
     }
   }

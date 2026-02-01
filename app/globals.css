@@ -231,6 +231,7 @@ button {
 
 .battle-log {
   max-height: 15rem;
+  max-height: 18rem;
 }
 
 .login-div {
@@ -424,7 +425,7 @@ button {
   }
 
   .battle-log {
-    max-height: 10rem;
+    max-height: 7rem;
   }
 }
 
@@ -446,7 +447,6 @@ button {
   z-index: 1;
   position: relative;
   margin-top: 1.5rem !important;
-  float: right;
 }
 
 /* Enabled State — Solo Leveling Glow */

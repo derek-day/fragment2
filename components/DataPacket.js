@@ -360,7 +360,7 @@ export async function checkAndUnlockPackets(userId, pageId) {
       
       await updateDoc(userRef, updates);
       
-      console.log(`✅ Unlocked ${newlyUnlocked.length} data packet(s) on page: ${pageId}`);
+      console.log(`Unlocked ${newlyUnlocked.length} data packet(s) on page: ${pageId}`);
       return newlyUnlocked;
     }
     

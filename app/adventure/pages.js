@@ -1045,12 +1045,16 @@ export const adventurePages = {
     text: "",
     //players loses their right arm and both legs
     //ends in a failure no matter what
-    enemy: {
-      name: "Camper",
-      maxHP: 1000,      // Enemy health
-      ac: 16,          // Armor Class (difficulty to hit)
-      attack: 5,      // Attack bonus
-      magic: 5        // Magic attack bonus
+    enemies: {
+      count: 1,
+      template: {
+        name: "Camper",
+        maxHP: 1000,
+        ac: 18,
+        attack: 5,
+        magic: 5,
+        bp: 50
+      }
     },
     fail: "camper_fail_alone",
     next: "camper_fail_alone",
@@ -1819,6 +1823,17 @@ export const adventurePages = {
     type: "battle",
     src: "../assets/portal.webp",
     text: "",
+    enemies: {
+      count: 1,
+      template: {
+        name: "Threx Muller",
+        maxHP: 100,
+        ac: 16,
+        attack: 5,
+        magic: 5,
+        bp: 5
+      }
+    },
     // enemies: [
     // {
     //   name: "Alpha Critter", 
@@ -1836,26 +1851,15 @@ export const adventurePages = {
     //   magic: 0, 
     //   bp: 3 
     // }, ],
-    // enemies: {
-    //   count: 2,
-    //   template: {
-    //     name: "Threx Muller",
-    //     maxHP: 100,
-    //     ac: 16,
-    //     attack: 5,
-    //     magic: 5,
-    //     bp: 5
-    //   }
-    // },
     // allies: ["Ronin", "Threx", "Akemi"], 
-    enemy: {
-      name: "Threx Muller",
-      maxHP: 1000,      
-      ac: 16,          
-      attack: 5,      
-      magic: 5,
-      // initiative: 15
-    },
+    // enemy: {
+    //   name: "Threx Muller",
+    //   maxHP: 1000,      
+    //   ac: 16,          
+    //   attack: 5,      
+    //   magic: 5,
+    //   // initiative: 15
+    // },
     // initiative: "player",
     // initiative: "enemy",
     fail: "very_dumb",
@@ -1973,13 +1977,16 @@ export const adventurePages = {
     src: "../assets/forest.webp",
     type: "battle",
     environment: "forest",
-    enemy: {
-      name: "Critter",
-      maxHP: 10,      // Enemy health
-      ac: 10,          // Armor Class (difficulty to hit)
-      attack: 2,      // Attack bonus
-      magic: 1,        // Magic attack bonus
-      bp: 5
+    enemies: {
+      count: 1,
+      template: {
+        name: "Critter",
+        maxHP: 10,
+        ac: 10,
+        attack: 2,
+        magic: 1,
+        bp: 5
+      }
     },
     text: "",
     fail: "team_portal_battle_fail",
@@ -2778,13 +2785,16 @@ export const adventurePages = {
     title: "Camper Battle",
     src: "../assets/shack.webp",
     type: "battle",
-    enemy: {
-      name: "Camper",
-      maxHP: 1000,
-      ac: 18,
-      attack: 5,
-      magic: 5,
-      bp: 50
+    enemies: {
+      count: 1,
+      template: {
+        name: "Camper",
+        maxHP: 1000,
+        ac: 18,
+        attack: 5,
+        magic: 5,
+        bp: 50
+      }
     },
     allies: ["Ronin", "Threx", "Akemi", "Mitzi", "Aleth", "Harla", "Sheemie"], 
     text: "",
@@ -2846,13 +2856,16 @@ export const adventurePages = {
     title: "Camper Battle",
     src: "../assets/shack.webp",
     type: "battle",
-    enemy: {
-      name: "Camper",
-      maxHP: 1000,
-      ac: 18,
-      attack: 10,
-      magic: 10,
-      bp: 50
+    enemies: {
+      count: 1,
+      template: {
+        name: "Camper",
+        maxHP: 1000,
+        ac: 18,
+        attack: 5,
+        magic: 5,
+        bp: 50
+      }
     },
     allies: ["Ronin", "Threx", "Akemi", "Kaelion", "Aleth", "Harla", "Sheemie"], 
     text: "",
@@ -3178,13 +3191,16 @@ export const adventurePages = {
     type: "battle",
     src: "../assets/shack.webp",
     text: "",
-    enemy: {
-      name: "Camper",
-      maxHP: 1000,
-      ac: 18,
-      attack: 10,
-      magic: 10,
-      bp: 50
+    enemies: {
+      count: 1,
+      template: {
+        name: "Camper",
+        maxHP: 1000,
+        ac: 18,
+        attack: 5,
+        magic: 5,
+        bp: 50
+      }
     },
     fail: "save_team_after",
     next: "save_team_after"

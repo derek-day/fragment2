@@ -151,7 +151,7 @@ export async function recordCombatFailure(userId: string, battlePageId: string) 
     lastUpdated: new Date()
   });
   
-  console.log(`📉 Recorded combat failure at ${battlePageId}`);
+  console.log(`Recorded combat failure at ${battlePageId}`);
 }
 
 // Track roll failure
@@ -164,7 +164,7 @@ export async function recordRollFailure(userId: string, rollPageId: string) {
     lastUpdated: new Date()
   });
   
-  console.log(`🎲 Recorded roll failure at ${rollPageId}`);
+  console.log(`Recorded roll failure at ${rollPageId}`);
 }
 
 // Track NPC meeting with full stats
@@ -216,7 +216,7 @@ export async function recordNPCMeeting(
       lastUpdated: new Date()
     });
     
-    console.log(`👋 Met ${npcName}`);
+    console.log(`Met ${npcName}`);
   }
 }
 
@@ -245,7 +245,7 @@ export async function updateNPCHP(userId: string, npcName: string, newHP: number
     lastUpdated: new Date()
   });
   
-  console.log(`💊 Updated ${npcName} HP to ${newHP}`);
+  console.log(`Updated ${npcName} HP to ${newHP}`);
 }
 
 // Get NPC current stats
@@ -282,7 +282,7 @@ export async function recordNPCDeath(userId: string, npcName: string, deathLocat
       lastUpdated: new Date()
     });
     
-    console.log(`💀 ${npcName} has died at ${deathLocation || 'unknown location'}`);
+    console.log(`${npcName} has died at ${deathLocation || 'unknown location'}`);
   }
 }
 
@@ -297,7 +297,7 @@ export async function recordToldTeam(userId: string, npcName: string) {
       lastUpdated: new Date()
     });
     
-    console.log(`🗣️ Told team about ${npcName}`);
+    console.log(`Told team about ${npcName}`);
   }
 }
 
@@ -312,7 +312,7 @@ export async function recordDeath(userId: string, deathLocation: string) {
     lastUpdated: new Date()
   });
   
-  console.log(`☠️ Player died at ${deathLocation}. Total deaths: ${(progress.deaths || 0) + 1}`);
+  console.log(`Player died at ${deathLocation}. Total deaths: ${(progress.deaths || 0) + 1}`);
 }
 
 // Track revival
@@ -325,7 +325,7 @@ export async function recordRevival(userId: string) {
     lastUpdated: new Date()
   });
   
-  console.log(`✨ Player revived. Total revivals: ${(progress.revivals || 0) + 1}`);
+  console.log(`Player revived. Total revivals: ${(progress.revivals || 0) + 1}`);
 }
 
 // Track going alone
@@ -344,7 +344,7 @@ export async function recordWentAlone(userId: string, characterName?: string) {
   
   await updateDoc(ref, updates);
   
-  console.log(`🚶 Player went alone${characterName ? ` as ${characterName}` : ''}`);
+  console.log(`Player went alone${characterName ? ` as ${characterName}` : ''}`);
 }
 
 // Initialize minion group
@@ -362,7 +362,7 @@ export async function initializeMinionGroup(userId: string, groupName: string, m
       lastUpdated: new Date()
     });
     
-    console.log(`🎯 Initialized minion group: ${groupName} with ${minions.length} minions`);
+    console.log(`Initialized minion group: ${groupName} with ${minions.length} minions`);
   }
 }
 
@@ -390,7 +390,7 @@ export async function recordMinionDeath(userId: string, groupName: string, minio
     lastUpdated: new Date()
   });
   
-  console.log(`💀 Minion ${minionName} killed. Total in group: ${totalKilled}`);
+  console.log(`Minion ${minionName} killed. Total in group: ${totalKilled}`);
   return totalKilled;
 }
 
@@ -418,7 +418,7 @@ export async function recordRouteCompletion(userId: string, routeName: string) {
       lastUpdated: new Date()
     });
     
-    console.log(`🎯 Completed route: ${routeName}`);
+    console.log(`Completed route: ${routeName}`);
   }
 }
 
@@ -511,7 +511,7 @@ export async function recordGuildOpinion(
     lastUpdated: new Date()
   });
   
-  console.log(`🏛️ Recorded ${opinion} opinion for ${guildName}`);
+  console.log(`Recorded ${opinion} opinion for ${guildName}`);
 }
 
 // Join a guild
@@ -524,7 +524,7 @@ export async function joinGuild(userId: string, guildName: string) {
     lastUpdated: new Date()
   });
   
-  console.log(`🎉 Joined guild: ${guildName}`);
+  console.log(`Joined guild: ${guildName}`);
 }
 
 // Get guild opinion
@@ -569,7 +569,7 @@ export async function recordSacrifice(userId: string, location: string) {
     lastUpdated: new Date()
   });
   
-  console.log(`🛡️ Player sacrificed themselves at ${location}`);
+  console.log(`Player sacrificed themselves at ${location}`);
 }
 
 // Check if player sacrificed themselves

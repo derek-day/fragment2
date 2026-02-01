@@ -148,9 +148,9 @@ export default function PageClient({ page: initialPage, pageId }) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Page Not Found</h1>
-          <p className="mb-4">The page "{pageId}" does not exist.</p>
-          <p className="text-sm text-gray-400">Redirecting to your last saved page...</p>
+          <h1 className="text-3xl font-bold mb-4 presto-text">Page Not Found</h1>
+          <p className="mb-4 presto-text">The page "{pageId}" does not exist.</p>
+          <p className="text-sm text-gray-400 presto-text">Redirecting to your last saved page...</p>
         </div>
       </div>
     );
@@ -757,24 +757,24 @@ export default function PageClient({ page: initialPage, pageId }) {
               exit={{ opacity: 0, y: -50 }}
               className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40"
             >
-              <div className={`px-6 py-4 shadow-2xl border-2 ${
+              <div className={`px-6 py-4 shadow-2xl border-2 presto-text ${
                 hpModResult.newHP < hpModResult.oldHP 
                   ? 'bg-red-900 border-red-600' 
                   : 'bg-green-900 border-green-600'
               }`}>
                 <div className="text-center">
-                  <div className="text-sm font-semibold mb-1">
+                  <div className="text-sm font-semibold mb-1 presto-text">
                     {page.hpModification.message || hpModResult.message}
                   </div>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold presto-text">
                     <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-300' : 'text-green-300'}>
                       {hpModResult.oldHP}
                     </span>
-                    <span className="text-gray-400 mx-2">→</span>
+                    <span className="text-gray-400 mx-2 presto-text">→</span>
                     <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-100' : 'text-green-100'}>
                       {hpModResult.newHP}
                     </span>
-                    <span className="text-gray-400 text-sm ml-2">HP</span>
+                    <span className="text-gray-400 text-sm ml-2 presto-text">LP</span>
                   </div>
                 </div>
               </div>

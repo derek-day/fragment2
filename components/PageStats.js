@@ -103,7 +103,7 @@ export default function PageStats({ onStatsChange }) {
                     <div className="font-bold text-white text-lg">{stat}
                       <button 
                         onClick={() => setActiveInfo(isShowingInfo ? null : stat)}
-                        className={`ml-1 rounded-full transition-colors ${isShowingInfo ? 'text-blue-400 bg-blue-900/30' : 'text-gray-500 hover:text-gray-300'}`}
+                        className={`ml-1 mr-4 rounded-full transition-colors ${isShowingInfo ? 'text-blue-400 bg-blue-900/30' : 'text-gray-500 hover:text-gray-300'}`}
                       >
                         <Info size={16} />
                       </button>

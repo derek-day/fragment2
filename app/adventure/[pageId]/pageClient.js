@@ -545,7 +545,8 @@ export default function PageClient({ page: initialPage, pageId }) {
         animate={backgroundLoaded ? "visible" : "hidden"}
         exit="exit"
         variants={backgroundVariants}
-        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
+        // className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white p-6 story-hero"
+        className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center text-white pt-24 px-6 pb-6 md:p-6 story-hero"
         style={{ backgroundImage: page.src ? `url(${page.src})` : 'none',
         backgroundColor: page.useCustomBackground ? '#000' : undefined}}
       >

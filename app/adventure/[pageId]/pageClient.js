@@ -755,6 +755,39 @@ export default function PageClient({ page: initialPage, pageId }) {
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
+              className="fixed top-20 inset-x-0 z-40 max-w-md mx-auto px-4"
+            >
+              <div className={`px-6 py-4 shadow-2xl border-2 ${
+                hpModResult.newHP < hpModResult.oldHP 
+                  ? 'bg-red-900 border-red-600' 
+                  : 'bg-green-900 border-green-600'
+              }`}>
+                <div className="text-center">
+                  <div className="text-sm font-semibold mb-1 presto-text">
+                    {page.hpModification.message || hpModResult.message}
+                  </div>
+                  <div className="text-2xl font-bold presto-text">
+                    <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-300' : 'text-green-300'}>
+                      {hpModResult.oldHP}
+                    </span>
+                    <span className="text-gray-400 mx-2">→</span>
+                    <span className={hpModResult.newHP < hpModResult.oldHP ? 'text-red-100' : 'text-green-100'}>
+                      {hpModResult.newHP}
+                    </span>
+                    <span className="text-gray-400 text-sm ml-2">LP</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* <AnimatePresence>
+          {showHPNotification && hpModResult && (
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
               className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40"
             >
               <div className={`px-6 py-4 shadow-2xl border-2 presto-text ${
@@ -780,7 +813,7 @@ export default function PageClient({ page: initialPage, pageId }) {
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
       </motion.div>
     </AnimatePresence>

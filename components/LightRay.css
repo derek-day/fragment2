@@ -7,8 +7,9 @@
   overflow: hidden;
 }
 
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
   .light-rays-container {
-    filter: brightness(100%);
+    /* filter: brightness(200%); */
+    margin-top: -6rem;
   }
-} */
+}

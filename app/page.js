@@ -213,9 +213,29 @@ export default function Home() {
     }
   };
 
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-auth hero">
+        <style jsx>{`
+          @keyframes rotate3d {
+            0% {
+              transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+            }
+            50% {
+              transform: perspective(1000px) rotateY(180deg) rotateX(10deg);
+            }
+            100% {
+              transform: perspective(1000px) rotateY(360deg) rotateX(0deg);
+            }
+          }
+          
+          .logo-3d {
+            animation: rotate3d 2s ease-in-out infinite;
+            transform-style: preserve-3d;
+          }
+        `}</style>
+        
         <div className="screen-particles">
           {particles.map(p => (
             <span
@@ -233,10 +253,42 @@ export default function Home() {
           ))}
         </div>
 
-        <p className="text-white text-xl">Loading...</p>
+        <div className="logo-3d">
+          <img 
+            src="/assets/logocircle.png" 
+            alt="Loading" 
+            className="w-24 h-24 md:w-32 md:h-32"
+          />
+        </div>
       </div>
     );
   }
+
+
+  // if (loading) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center bg-auth hero">
+  //       <div className="screen-particles">
+  //         {particles.map(p => (
+  //           <span
+  //             key={p.id}
+  //             style={{
+  //               width: `${p.size}px`,
+  //               height: `${p.size}px`,
+  //               left: `${p.left}%`,
+  //               top: `${p.top}%`,
+  //               filter: 'blur(0.8px) saturate(1.1) contrast(1.1)',
+  //               animationDuration: `${p.duration}s`,
+  //               animationDelay: `${p.delay}s`
+  //             }}
+  //           />
+  //         ))}
+  //       </div>
+
+  //       <p className="text-white text-xl">Loading...</p>
+  //     </div>
+  //   );
+  // }
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },

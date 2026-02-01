@@ -37,13 +37,6 @@ export const DATA_PACKETS = {
     content: `A mysterious entity that bridges the gap between humanity and supernatural power. Accessed through the Halcyon AI in Activation Chambers, the Protocol grants abilities beyond normal human capacity. Its true nature and intentions remain unknown.`,
     unlocksOnPage: 'protocol_intro'
   },
-  activation_chamber: {
-    id: 'activation_chamber',
-    title: 'Activation Chamber',
-    category: 'Technology',
-    content: `The place where potential Breakers interface with the Protocol through the Halcyon AI. Success grants supernatural abilities and AR displays. Failure means relying on digital readers and hoping activation occurs in the field.`,
-    unlocksOnPage: 'failed_to_connect'
-  },
   breaker_stats: {
     id: 'breaker_stats',
     title: 'Breaker Statistics',

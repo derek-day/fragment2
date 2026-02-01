@@ -1821,6 +1821,17 @@ export const pages = {
     type: "battle",
     src: "../assets/portal.webp",
     text: "",
+    enemies: {
+      count: 1,
+      template: {
+        name: "Threx Muller",
+        maxHP: 100,
+        ac: 16,
+        attack: 5,
+        magic: 5,
+        bp: 5
+      }
+    },
     // enemies: [
     // {
     //   name: "Alpha Critter", 
@@ -1838,17 +1849,6 @@ export const pages = {
     //   magic: 0, 
     //   bp: 3 
     // }, ],
-    enemies: {
-      count: 1,
-      template: {
-        name: "Threx Muller",
-        maxHP: 100,
-        ac: 16,
-        attack: 5,
-        magic: 5,
-        bp: 5
-      }
-    },
     // allies: ["Ronin", "Threx", "Akemi"], 
     // enemy: {
     //   name: "Threx Muller",
@@ -2418,7 +2418,7 @@ export const pages = {
     title: "---",
     type: "text",
     useCustomBackground: true,
-    customBackgroundComponent: "PrismaticBurst",
+    customBackgroundComponent: "LightRays",
     text: "\"Go back,\" a voice says. \"I'm not ready for you yet.\"",
     next: "forest_clearing_encounter_fail3",
   },
@@ -2673,7 +2673,7 @@ export const pages = {
     title: "---",
     type: "text",
     useCustomBackground: true,
-    customBackgroundComponent: "PrismaticBurst",
+    customBackgroundComponent: "LightRays",
     text: "\"Go back,\" a soft voice tells you. It sounds so familiar. \"I'm not ready for you yet.\"",
     next: "forest_encounter_fail3",
   },

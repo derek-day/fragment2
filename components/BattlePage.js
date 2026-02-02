@@ -363,7 +363,7 @@ const BattleSystem = ({ userStats, playerName, page, userId, pageId }) => {
     }
     
     const total = roll + attackStat.mod + weaponBonus + hitBonus;
-    addLog(`ATTACK vs ${targetEnemy.name}: ${roll} + ${attackStat.mod} + ${weaponBonus} = ${total}`, 'roll');
+    addLog(`ATTACK vs ${targetEnemy.name}: ${roll} + ${attackStat.mod} + ${hitBonus} + ${weaponBonus} = ${total}`, 'roll');
 
     if (total >= targetEnemy.ac || roll === 20) {
       const baseDamage = await calculateDamage(damageDice.count, damageDice.sides);
@@ -425,7 +425,7 @@ const BattleSystem = ({ userStats, playerName, page, userId, pageId }) => {
     }
     
     const total = roll + spellStat.mod + hitBonus;
-    addLog(`CAST SPELL at ${targetEnemy.name}: ${roll} + ${spellStat.mod} = ${total}`, 'roll');
+    addLog(`CAST SPELL at ${targetEnemy.name}: ${roll} + ${spellStat.mod} + ${hitBonus} = ${total}`, 'roll');
 
     if (total >= targetEnemy.ac || roll === 20) {
       const baseDamage = await calculateDamage(damageDice.count, damageDice.sides);

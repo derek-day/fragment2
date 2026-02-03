@@ -46,6 +46,7 @@ import { applyPageHPModification, hasVisitedPage } from "../../../lib/hpModifier
 import LightRay from "../../../components/LightRay";
 import PrismaticBurst from "../../../components/PrismaticBurst";
 import ChapterEndCard from "../../../components/ChapterEndCard";
+import RestartAdventure from "../../../components/RestartAdventure";
 
 export default function PageClient({ page: initialPage, pageId }) {
   const router = useRouter();
@@ -650,6 +651,13 @@ export default function PageClient({ page: initialPage, pageId }) {
               deathMessage={page.deathMessage || "Darkness consumes you..."}
               deathLocation={page.deathLocation || pageId}
               respawnPage={page.next || "page_1"}
+            />
+          )}
+
+          {page.type === "end" && (
+            <RestartAdventure 
+                userId={user?.uid}
+                userName={user?.characterName}
             />
           )}
 

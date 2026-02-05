@@ -5,8 +5,8 @@ import Veil from '../components/Veil'; // Adjust path to where you saved the bac
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-
-const NotFound = ({ }) => {
+export default async function NotFound() {
+// const NotFound = ({ }) => {
 //   const { title, text } = config;
   const router = useRouter();
 
@@ -147,4 +147,4 @@ styleSheet.innerText = `
 `;
 document.head.appendChild(styleSheet);
 
-export default NotFound;
+// export default NotFound;

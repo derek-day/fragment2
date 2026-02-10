@@ -14,7 +14,7 @@ export const pages = {
     title: "Step into the Portal",
     src: "../assets/portal.webp",
     type: "choice",
-    text: "You step forward, prepared to enter, when a strong hand grabs your wrist.\n\n\"What are you doing!?\" Threx, the highest-ranked Breaker and leader of your party, yells. \"We haven't even gone over the game plan yet! No one here knows a damn thing about you! Get back with the others!\"",
+    text: "A strong hand grabs your wrist.\n\n\"What are you doing!?\" Threx, the leader of your party, yells. \"We haven't even gone over the game plan yet! Get back with the others!\"",
     choices: [
       { label: "Return to the entrance", next: "return_to_entrance" },
       { label: "Pull away and enter the portal on your own", next: "pull_away_portal" },
@@ -25,35 +25,35 @@ export const pages = {
     src: "../assets/portal.webp",
     type: "route",
     route: "alone",
-    text: "\"Dumbass,\" Threx hisses as you pull free and enter the portal anyway.\n\nWho is he to stand in the way of your destiny?\n\nYou emerge on the other side, in another world. The rules are different here. You were hoping for a world less punishing than you own. In this one, however, where the gravity is heavier and the air thinner, each step and every breath is a struggle.",
+    text: "\"Dumbass,\" Threx hisses as you pull free and enter the portal anyway.",
     next: "portal_entrance",
   },
   portal_entrance: {
     title: "Portal Entrance",
     src: "../assets/forest.webp",
     type: "text",
-    text: "Even more, the place's qualities assault your senses. The sweet aroma makes your mouth water, and the visual cues induce vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, breaking it up into a patchwork of assorted purples. The liquid reflects the ground opposite it, where more streams do the same.",
+    text: "You emerge on the other side, in another world. The rules are different here. The gravity is heavier; the air, thinner. Its sweet and sour aroma makes your mouth water and your head spin in equal measure.\n\nWorst of all is the vertigo.",
     next: "portal_view",
   },
   portal_view: {
     title: "Portal View",
     src: "../assets/forest.webp",
     type: "text",
-    text: "The result is a muted kaleidoscope. It's beautiful, but it can also be brain-breaking.\n\nThe lack of an immediate threat gives you the chance to strategize. You take a moment to index your gear and think back on your training, of what little there was. You had signed up for this Break at the last minute, after several long days of soul-searching.\n\nThe thought leads you to a memory--  your experience in the Activation Chamber at the GPA. It... wasn't exactly what you were expecting...",
+    text: "The land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, reflecting the ground above in a muted kaleidoscope.\n\nYou take a moment to center yourself and index your gear, hoping you haven't just made the worst mistake of your life.\n\nThe thought leads you to a memory--  your experience in the Activation Chamber at the GPA. It... wasn't exactly what you were expecting...",
     next: "protocol_intro",
   },
   inspect_edges: {
     title: "Inspect the Edges",
     type: "text",
     src: "../assets/portal.webp",
-    text: "Curious, you trace your eyes along the portal's circumference. This is the first time you've seen one up close. It's smaller than you imagined....\n\nAnd noisier.\n\nThe thing sloshes, buzzes, and whispers. It sounds like a beach, a server farm, and a distant train station all in one.",
+    text: "You trace your eyes along the portal's circumference. This is the first time you've seen one up close. It's smaller than you imagined.... and noisier.\n\nThe thing sloshes, buzzes, and whispers. It sounds like a beach, a server farm, and a distant train station all in one.",
     next: "edges_continued",
   },
   edges_continued: {
     title: "The First Gate",
     type: "choice",
     src: "../assets/portal.webp",
-    text: "There are all kinds of portals, and each hints at the dangers waiting on the other side.\n\nSome appear as buildings. Others as holes or spheres. Sometimes, their color gives the creatures inside away. Other times, the color may be an intentional trap.\n\nGold portals usually indicate treasure, and this one was already measured to be E-rank, the easiest there is.",
+    text: "There are all kinds of gates, and each hints at the dangers waiting on the other side. Some appear as buildings. Others as holes or spheres. Sometimes, their color gives away the creatures hiding inside. Other times, the color may be an intentional trap.\n\nGold portals usually indicate treasure, and the drones of the Global Protocol Authority have already measured this one to be E-Class, the easiest there is.",
     choices: [
       { label: "Step into the portal", next: "step_into_portal" },
       { label: "Return to the entrance", next: "return_to_entrance" },
@@ -64,14 +64,14 @@ export const pages = {
     type: "route",
     route: "team",
     src: "../assets/portal.webp",
-    text: "Better play it safe. Too many Breakers have lost their lives rushing into gates they weren't ready for.\n\nYour companions welcome you back. A few smile as you approach. Others watch the portal with nervous or excited expressions.\n\nOne sneers at you. This is the only person you know here, and he hates your guts.",
+    text: "Your companions welcome you back. A few smile as you approach. Others watch the portal with nervous or excited expressions.\n\nOne sneers at you. He's the only person you know here, and he hates your guts.",
     next: "team_intro",
   },
   team_intro: {
     title: "Meet Your Team",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"Scared to enter the portal on your own, huh?\" Ronin teases. \"It would have been better if you did; it would spare the rest of us the liability of having you on the team.\"\n\n\"That's not very nice,\" a woman says from behind him. She steps around Ronin and extends a hand in greeting. \"I'm Akemi, and apparently *he's* an asshole.\"",
+    text: "\"Scared to enter on your own, huh?\" Ronin teases. \"It would have been better if you did. At least then it would spare the rest of us the liability of having you on the team.\"\n\n\"That's not very nice,\" a woman says from behind him. She steps forward and extends a hand in greeting. \"I'm Akemi, and apparently *he's* an asshole.\"",
     next: "choose_name",
   },
   choose_name: {
@@ -89,7 +89,7 @@ export const pages = {
     title: "Meet Akemi",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"Nice to meet you, {{characterName}}.\" Akemi smiles. \"The rest of us went to the Ramsey Training Academy together. I'll introduce you.\" She pushes past Ronin and gestures for the others to gather around.\n\n\"What's your class and ranking?\" She whispers before the others are in earshot. \"I don't remember seeing your name on the docket for today.\"\n\n\You nod. She wouldn't have. You signed up for this Break last minute and only after long days of soul-searching.\n\nThe question makes you think back to your experience in the Activation Chamber at the GPA. Your time there wasn't exactly what you were expecting...",
+    text: "\"Nice to meet you, {{characterName}}.\" Akemi smiles. \"The rest of us went to the Ramsey Training Academy together. I'll introduce you.\" She pushes past Ronin and gestures for the others to gather around.\n\n\"What's your class and ranking?\" she whispers. \"I don't remember seeing your name on the docket for today.\"\n\nYou nod. She wouldn't have. You signed up for this Break last minute and only after long days of soul-searching.\n\nThe question makes you think back to your experience in the Activation Chamber at the GPA. Your time there wasn't exactly what you were expecting...",
     next: "protocol_intro",
     npcPresent: "Akemi",
     npcDescription: "Akemi",
@@ -108,21 +108,21 @@ export const pages = {
     title: "Meet the Protocol",
     type: "text",
     src: "../assets/lab.webp",
-    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI told you. From where you stood in the vertical MRI machine, a dozen needles pointed your way.\n\nBeyond them were the half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n\"Yeah,\" you remember whispering. \"Nothing to be alarmed about here.\"",
+    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI intones. From where you stand in the vertical MRI machine, a dozen needles are pointed your way.\n\nBeyond them stand a half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n*Sure,* you think, *nothing to be alarmed about here.*",
     next: "failed_to_connect",
   },
   failed_to_connect: {
     title: "Failed to Connect",
     src: "../assets/lab.webp",
     type: "text",
-    text: "The needles plunged into you. The machine whirred to life. The technicians and analysts took their readings.\n\nThis moment was when the AI bridged the gap, and the Protocol activated most Breakers. This was when the mysterious augmented-reality messages appeared. This was where the hero's journey was supposed to begin.\n\nThis was where yours did not.\n\n\"The Protocol has failed to connect,\" the AI told you.",
+    text: "The needles plunge into you. The machine whirs to life. The technicians and analysts take their readings.\n\nThis moment is supposed to be when the AI bridges the gap, and the Protocol activates most Breakers. This is when the mysterious augmented-reality messages are meant to appear. This is where the hero's journey was supposed to begin.\n\nThis is where yours does not.\n\n\"The Protocol has failed to connect,\" the AI tells you, winding down.",
     next: "not_over_yet",
   },
   not_over_yet: {
     title: "Not Over Yet",
     src: "../assets/lab.webp",
     type: "text",
-    text: "Your clothes were handed back to you, and you were escorted outside. A digital reader replaced the AR display you were hoping for, tailored to your time in the chamber. It was make-believe, a cosplay of the version of yourself you had just been denied.\n\nSome Breakers were insane enough to brave gates without being activated yet. Their hope-- before their skulls were usually crushed by whatever beasts waited inside-- was that the Protocol would change its mind.\n\nYou, apparently, were one of the insane ones, because you entered your wish, hoping it would be made real.",
+    text: "Your clothes are handed back to you, and you are escorted outside. A digital reader replaced the AR display you were hoping for, tailored to your time in the chamber. It's make-believe, a cosplay of the version of yourself you had just been denied.\n\nSome Breakers are insane enough to brave gates without being activated. Their hope-- before their skulls were usually crushed by whatever beasts waited inside-- was that the Protocol would change its mind.\n\nYou, apparently, are one of the insane ones, because you entered your wishful stats anyway, hoping it would be made real.",
     next: "stat_intro",
   },
   stat_intro: {
@@ -215,7 +215,7 @@ export const pages = {
     title: "Win!",
     type: "choice",
     src: "../assets/forest.webp",
-    text: "The creature may have taken you by surprise, but you bested it in the end. On one hand, it feels great to have the first notch in your belt (and to know that regular humans aren't hopeless against E-ranked creatures).\n\nOn the other hand, that thing was a lot stronger than you anticipated. You wonder whether moving forward with the others would be the better path...",
+    text: "It feels great to have the first notch in your belt (and to know that regular humans aren't hopeless against E-ranked creatures).\n\nStill, that thing was a lot stronger than you anticipated. You wonder whether it would be safer waiting for the others...",
     choices: [
       { label: "Wait for the others", next: "wait_others" },
       { label: "Keep moving", next: "keep_moving_alone" },
@@ -226,7 +226,7 @@ export const pages = {
     type: "route",
     src: "../assets/forest.webp",
     route: "team",
-    text: "This strange, purple world waits with you, feeling more peaceful than it has a right to.\n\nTen minutes later, your companions arrive. Threx is the first, and he glares at you before taking stock of your surroundings.\n\nRonin emerges next. Out of everyone you were meant to clear this world with, he is the only one you know, and he hates your guts.\n\n\"Damn,\" he says when he sees you. \"I was hoping this place would have taken care of you by now.\"\n\n\"What an unkind thing to say!\" The woman who emerged behind Ronin pushes past him and offers you a hand. \"I, for one, am glad you're still in one piece. I'm Akemi.\"",
+    text: "Your companions arrive ten minutes later. Threx is the first inside, and he glares at you before taking stock of your surroundings.\n\nRonin emerges next. Out of everyone you were meant to clear this world with, he is the only one you know, and he hates your guts.\n\n\"Damn,\" he says when he sees you. \"I was hoping this place would have taken care of you by now.\"\n\n\"What an unkind thing to say!\" The woman who emerged behind Ronin pushes past him and offers you a hand. \"I, for one, am glad you're still in one piece. I'm Akemi.\"",
     next: "wait_others2"
   },
   wait_others2: {
@@ -244,14 +244,14 @@ export const pages = {
     title: "Wait for the Others",
     type: "text",
     src: "../assets/forest.webp",
-    text: "\"It's very nice to meet you, {{characterName}}. I also think it was very brave of you to rush into things. Though, maybe you can hold off in the future? We are a team, after all, right?\"\n\n\"I'm also glad you're in one piece,\" says a black woman in dented armor. She had emerged just in time to catch Akemi's comment. \"Otherwise, I would have had to save your sorry ass.\" She pauses. \"Which probably would have been a record.\"\n\n\"Don't be rude, Harla!\" Akemi says. \"He was just a little overzealous. We've all been there. At least he waited for us, right? He could have been deep in the woods by now.\"",
+    text: "\"It's very nice to meet you, {{characterName}}. I think it was very brave of you to rush into things. Though, maybe you can hold off in the future? We are a team, after all, right?\"\n\n\"I'm also glad you're in one piece,\" says a black woman in dented armor. She had emerged just in time to catch Akemi's comment. \"Otherwise, I would have had to save your sorry ass.\" She pauses. \"Which probably would have been a record.\"\n\n\"Don't be rude, Harla!\" Akemi says. \"He was just a little overzealous. We've all been there. At least he waited for us, right? He could have been deep in the woods by now.\"",
     next: "wait_others4"
   },
   wait_others4: {
     title: "Wait for the Others",
     type: "text",
     src: "../assets/forest.webp",
-    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be a little too muh for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the gate docket in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
+    text: "Ronin chuckles and nudges the creature you killed with his boot. \"He's probably just scared. Realized these things might be too much for him.\"\n\nAs he speaks, four others emerge from the portal. You consult the data packets in your digital readout for quick blurbs on each.\n\nThe mustachioed man in fine armor is Kaelion Virehart, an E-Class warrior.\n\nThe girl in skin-tight leather is Mitzi, an E-Class summoner.\n\nThe dorky one in wizard's robes is Sheemie Bauer, an E-Class mage.",
     next: "wait_others5"
   },
   wait_others5: {
@@ -371,7 +371,7 @@ export const pages = {
     title: "Wait for the Others",
     type: "choice",
     src: "../assets/forest.webp",
-    text: "He had been watching you intently and doesn't look away now that you've noticed him.\n\nIt's creepy.\n\n\"Aleth Achen,\" reads your digital readout when you scroll to the final entry. \"Unactivated.\"\n\nJust like you.\n\nThere's a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    text: "He had been watching you intently and doesn't look away now that you've noticed him.\n\nIt's creepy.\n\n\"Aleth Achen,\" reads your digital readout when you scroll to the final entry. \"Unactivated.\"\n\nJust like you.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "wait_take" },
       { label: "Hold off for now", next: "wait_hold" },
@@ -501,14 +501,14 @@ export const pages = {
     title: "Deeper In",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "So, alone, you enter the alien forest, and the big picture of the place disappears behind the purple tree-things.\n\nThey smell like sour milk and groan against an invisible breeze. Their tubes resemble scales more than bark, and they are adorned with intricate patterns. No two are alike.\n\nAs you walk, you revel in the knowledge that you are the first person ever to tread this path. You think, too, of the stranglehold that the various guilds and factions have on the worlds inside the gates. The Global Protocol Authority, the Sihlouette, Protocol Null, the Veil Cult, the Silk Road-- each takes as much as they can, leaving less and less for freelancers like yourself.",
+    text: "So, alone, you enter the alien forest, and the big picture of the place disappears behind the purple tree-things.\n\nThey smell like sour milk and groan against an invisible breeze. Their tubes resemble scales more than bark, and intricate patterns adorn them. No two are alike.\n\nAs you walk, you revel in the knowledge that you are the first person to tread this path. You think, too, of the stranglehold that the various guilds and factions have on the worlds inside the gates. The Global Protocol Authority, the Sihlouette, Protocol Null, the Veil Cult, the Silk Road-- each takes as much as they can, leaving less for freelancers like yourself.",
     next: "forest_deeper2"
   },
   forest_deeper2: {
     title: "Deeper In",
     type: "choice",
     src: "../assets/deeper.webp",
-    text: "If you hadn't come here under the auspices of being with a group, you would've never been allowed within five hundred feet of the place.\n\nYou look again at the carvings on the trees. They remind you of advertisements you've seen for the Thomur Guild, an up-and-coming faction in Arclight Haven. The guild specializes in abilities that most Breakers tend to ignore —speaking to animals, breathing underwater, living without sleep, etc. —and they've recently taken an interest in botany. If Threx and his crew hadn't gotten the bid first, they'd be here instead.\n\nThey'd be obsessed with this stuff.",
+    text: "If you hadn't come here under the auspices of being with a group, you'd have had trouble getting within five hundred feet of the place.\n\nYou look again at the carvings on the trees. They remind you of advertisements you've seen for the Thomur Guild, an up-and-coming faction in Arclight Haven, your home. Unlike the others, the Thomur Guild specializes in abilities that most breakers tend to ignore —speaking to animals, breathing underwater, living without sleep, etc. —and they've recently taken an interest in botany. If Threx and his crew hadn't gotten the bid first, they'd be here instead.\n\nThey'd be obsessed with this stuff.",
     choices: [
       { label: "Inspect the carvings", next: "inspect_alone" },
       { label: "Keep moving", next: "keep_moving_alone_carvings" },
@@ -518,7 +518,7 @@ export const pages = {
     title: "Keep Moving",
     type: "roll",
     src: "../assets/deeper.webp",
-    text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery. You don't care much for the Thomur Guild anyway.\n\nAfter all, you plan on doing this Gatebreaker thing solo.",
+    // text: "This place is dangerous. It's more important to keep an eye open for threats than to admire the scenery.",
     roll: {
       stat: "Thought",
       dc: 15,
@@ -542,7 +542,7 @@ export const pages = {
     title: "Use Cover",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "You exit the well-defined footpath begin moving along a slight ridge running parallel to it.\n\nThe going is slower along this route, but you're more protected.\n\nEventually, the path leads into a clearing. It would have been a perfect place for an ambush.\n\nInstead, when the creatures inevitably come, the ridge protects your flank.\n\nOne by one, they come for you.\n\nThere are twelve.",
+    text: "You exit the well-defined footpath and move along a slight ridge running parallel to it.\n\nThe going is slower along this route, but you're more protected.\n\nEventually, the path leads into a clearing. It would have been a perfect place for an ambush.\n\nInstead, when the creatures inevitably come, the ridge protects your flank.\n\nOne by one, they come for you.\n\nThere are twelve.",
     next: "ridge_ambush"
   },
   ridge_ambush: {
@@ -569,7 +569,7 @@ export const pages = {
     type: "text",
     useCustomBackground: true,
     action: "failure",
-    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth.\n\nYour arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nSure enough, the jaws close, and the red goes to black.",
+    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh, and their muscular necks ragdoll you back and forth.\n\nYour arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
     next: "ridge_ambush_fail2"
   },
   ridge_ambush_fail2: {
@@ -617,7 +617,7 @@ export const pages = {
     title: "Ridge Battle Won",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "You stand amidst a pile of fresh corpses, out of breath and bleeding from a hundred cuts. Despite the odds, you've somehow survived the counter.\n\n\"That... just leaves the Tethered Being,\" you say aloud.\n\n\"Holy... crap.\"\n\nYou reel to face the voice and discover seven sets of wide eyes looking back at you.\n\n\"You killed all of these things?\" Threx asks. \"I'm... actually impressed.\"",
+    text: "You stand amidst a pile of fresh corpses, out of breath and bleeding from a hundred cuts. Despite the odds, you've somehow survived the counter.\n\n\"That... just leaves the Tethered Being,\" you say aloud.\n\n\"Holy... crap.\"\n\nYou reel to face the unexpected voice and discover seven sets of wide eyes looking back at you.\n\n\"You killed all of these things?\" Threx asks. \"I'm... actually impressed.\"",
     next: "ridge_ambush_success2"
   },
   ridge_ambush_success2: {
@@ -649,7 +649,7 @@ export const pages = {
     title: "Accept Healing",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "You sigh and offer a weak nod. The effect is immediate.",
+    text: "You sigh and offer a weak nod. The effect is immediate.\n\n\"Sheemie,\" Threx says. \"Is the Gate Stabilizer okay after our run here?\"\n\nThe dorky one pulls a gray sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     hpModification: {
       type: 'add',
       amount: 20,
@@ -675,7 +675,7 @@ export const pages = {
     title: "Inspect The Carvings",
     type: "roll",
     src: "../assets/carving.webp",
-    text: "You might not have an interest in joining the Thomur Guild, but you can still allow yourself to admire the same things they do.\n\nYou take a moment to inspect the carvings. They are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes?",
+    text: "You might not have an interest in joining the Thomur Guild, but you admire the beauty of the trees anyway.\n\nThe carvings are deep and no wider than the width of your pinky. Did a creature create these, or are they beautifully natural, like snowflakes?",
     roll: {
       stat: "Thought",
       dc: 10,
@@ -690,14 +690,14 @@ export const pages = {
     type: "text",
     src: "../assets/ridge.webp",
     action: "failure",
-    text: "At last, the path leads into a clearing. For the first time since entering this place, you see a color other than purple.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.",
+    text: "At last, the path leads into a clearing. For the first time since entering this place, you see a color other than purple.\n\nThe yellow pattern is comprised of neither rock nor flower, yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.",
     next: "carving_alone_fail2"
   },
   carving_alone_fail2: {
     title: "Carving Failed",
     type: "text",
     src: "../assets/critters.webp",
-    text: "Unfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge at you. They are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou walked right into an ambush.",
+    text: "Unfortunately, reality returns all too quickly.\n\nTwelve creatures emerge from the underbrush and charge at you. They are cotton candy colored, just like the trees, and larger than the one you faced near the gate.\n\nYou walked right into an ambush.",
     next: "ambush_alone"
   },
   ambush_alone: {
@@ -741,7 +741,7 @@ export const pages = {
     choices: [
       { label: "Counter-attack the minions", next: "counter_attack_alone" },
       { label: "Thin the herd from the surrounding ridge", next: "ridge_alone" },
-      { label: "Move for the Tethered-Being", next: "tethered_alone" },
+      { label: "Move for the Tethered-Being", next: "tethered_lair_alone" },
     ],
   },
   tethered_alone: {
@@ -755,14 +755,14 @@ export const pages = {
     title: "Tethered Lair",
     type: "text",
     src: "../assets/shack.webp",
-    text: "It doesn't take long to reach the lair. The tracks of the boss's minions take you right to it.\n\nIt... isn't what you expected. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\nThe shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.",
+    text: "It doesn't take long to reach the lair. The tracks of the boss's minions take you right to it.\n\nIt... isn't what you expected.\n\nThe shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.",
     next: "tethered_lair_alone2"
   },
   tethered_lair_alone2: {
     title: "Tethered Lair",
     type: "text",
     src: "../assets/shack.webp",
-    text: "The thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"I was hoping to give my pets a snack today,\"  the alien-thing says in a voice like sandpaper, \"but it seems you were keen to meet me first. No matter... They'll be dining on you soon enough.\"",
+    text: "\"I was hoping to give my pets a snack today,\"  the alien-thing says in a voice like sandpaper, \"but it seems you were keen to meet me first. No matter... They'll be dining on you soon enough.\"",
     next: "tethered_lair_alone3",
   },
   tethered_lair_alone3: {
@@ -780,7 +780,7 @@ export const pages = {
     title: "Speak To Camper",
     type: "choice",
     src: "../assets/shack.webp",
-    text: "\"I wouldn't be too sure about the kibble thing,\" you say. \"In a few minutes, I doubt you'll have any pets left to feed.\"\n\nThe thing cocks its head. \"Hmm, I suppose you're right. You creatures possess such little power that you're nearly invisible to me at a distance.\"\n\nThe Camper pauses. \"Even though I'm speaking to you right now, I hardly sense that flavor of energy at all. It's almost as if... you are nothing.\"",
+    text: "\"I wouldn't be too sure about the kibble thing,\" you say. \"In a few minutes, I doubt you'll have any pets left to feed.\"\n\nThe thing cocks its head. \"Hmm, I suppose you're right. You creatures possess such little power that you're nearly invisible to me at a distance. Take you, for instance. I hardly sense a thing. It's almost as if... you are nothing.\"",
     choices: [
       { label: "Keep talking", next: "keep_talking_alone" },
       { label: "Attack", next: "attack_camper_alone" },
@@ -807,7 +807,7 @@ export const pages = {
     title: "Shrug",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You shrug. \"That depends on the person, I guess. Some people are lonelier than others.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
+    text: "You shrug. \"That depends on the human, I guess. Some people are lonelier than others.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
     next: "sometimes_alone2",
   },
   sometimes_alone2: {
@@ -828,7 +828,7 @@ export const pages = {
     title: "Camper Attack",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You feel the wound an instant later, a burning across your left side. The Camper hasn't done enough to mortally wound you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\" The Camper returns its weapon to its sheath, then lays it on the porch with its armor. Its body is scarred and burned, aged, but also incredibly muscular.",
+    text: "You feel the wound an instant later, a burning across your left side. The Camper has only nicked you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\" The Camper returns its weapon to its sheath, then lays it on the porch with its armor. Its body is scarred and burned, aged, but also incredibly muscular.",
     next: "sometimes_alone5",
     hpModification: {
       type: 'halve',
@@ -907,14 +907,14 @@ export const pages = {
     title: "Strike Camper",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
+    text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps, before hitting you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
     next: "memory_alone"
   },
   maintain_alone: {
     title: "Maintain Contact",
     type: "text",
     src: "../assets/shack.webp",
-    text: "It takes every ounce of self-discipline you have, but you grit your teeth and hold the gaze of your killer.\n\nLike everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
+    text: "Like everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
     next: "maintain_alone2"
   },
   maintain_alone2: {
@@ -976,7 +976,7 @@ export const pages = {
     title: "Party Fight",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You've been punished enough, and darkness is coming fast. Speaking to this thing was a mistake.\n\nYou collapse, defeated, and the party you abandoned rushes to help you.\n\n\"Good,\" the Camper says, revealing his hidden arm and leg before swatting the party leader away like a bug. \"Maybe one of these will actually entertain me.\"",
+    text: "You collapse, defeated, and the party you abandoned rushes to help you.\n\n\"Good,\" the Camper says, revealing his hidden arm and leg before swatting the party leader away like a bug. \"Maybe one of these will actually entertain me.\"",
     next: "party_fight_alone2",
   },
   party_fight_alone2: {
@@ -997,14 +997,14 @@ export const pages = {
     title: "Camper Charge",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You're here to kill this thing. The fact it can speak doesn't change a thing.\n\nSensing your intent, the corner of the thing's mouth curls into a sick grin.\n\n\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"",
+    text: "Sensing your intent, the corner of the thing's mouth curls into a sick grin.\n\n\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"",
     next: "camper_blur_alone"
   },
   remain_silent_alone: {
     title: "Remain Silent",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You keep quiet, unsure of how to best handle creatures of this potential magnitude.\n\n\"Not what you were expecting, hmm?\" The thing croaks a chuckle. \"There are several heads on my mantle of creatures who felt the same way. You'll be in good company.\"",
+    text: "\"Not what you were expecting, hmm?\" The thing croaks a chuckle. \"There are several heads on my mantle of creatures who felt the same way. You'll be in good company.\"",
     next: "camper_blur_alone"
   },
   camper_blur_alone: {
@@ -1018,7 +1018,7 @@ export const pages = {
     title: "Camper Appearance",
     type: "text",
     src: "../assets/shack.webp",
-    text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.\n\nYou feel the wound an instant later, a burning across your left side. The Camper hasn't done enough to mortally wound you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\"",
+    text: "Worst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire below.\n\n*Your* blood.\n\nYou feel the wound an instant later, a burning across your left side. The Camper has only nicked you, but the attack has served its purpose. It licks your blood from its katana, then frowns.\n\n\"Disappointing. I was hoping for a more worthy adversary.\"",
     next: "camper_blur_alone3",
     //life points need halved
   },
@@ -1072,7 +1072,7 @@ export const pages = {
     title: "Engage",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You lash out, refusing to go down without a fight.\n\nThe Camper smiles and leans into it. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps.\n\nThen, it hits you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
+    text: "The Camper smiles and leans into your punch. You deal a direct blow, drawing a small trickle of blood.\n\n\"Good,\" it rasps before hitting you so hard your vision explodes.\n\nIn the flash of pain, you see a car crash. You see exploding windows and bodies thrown around the cabin as it rolls downhill.",
     next: "camper_engage_alone2"
   },
   camper_engage_alone2: {
@@ -1093,7 +1093,7 @@ export const pages = {
     title: "Engage",
     type: "text",
     src: "../assets/shack.webp",
-    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Simon, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class Breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThe Camper obliges, and the last thing you see is darkness.",
+    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Threx, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class Breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThen, darkness.",
     action: "sacrifice", 
     sacrificeLocation: "camper_encounter",
     next: "camper_finish"
@@ -1137,7 +1137,7 @@ export const pages = {
     title: "Thin The Herd",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "There's a wide and well-defined footpath next to you, but you follow the slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come for you, the ridge protects your flank.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou count twelve heading your way.",
+    text: "There's a wide and well-defined footpath next to you, but you follow the slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come for you, the ridge protects your flank.\n\nThe beasts of this world are cotton candy colored, just like the trees, and are larger than the one you faced near the gate.\n\nYou count twelve heading your way.",
     next: "herd_battle",
   },
   herd_battle: {
@@ -1170,14 +1170,14 @@ export const pages = {
     title: "Counter Attack",
     type: "text",
     src: "../assets/critters.webp",
-    text: "You entered this gate alone to get yourself noticed by the Protocol. You checked the risks associated with that goal at the preverbial door.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements.",
+    text: "When you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower, yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\nIt's also a trap.",
     next: "counter_attack_alone2"
   },
   counter_attack_alone2: {
     title: "Counter Attack",
     type: "text",
     src: "../assets/critters.webp",
-    text: "You decapitate one yellow flower, then another. Two geysers of blood follow, as the creatures beneath them howl in anguish.\n\nTwo of your enemies are already out of the fight.\n\nThe field becomes chaos the next instant. Ten more creatures emerge from the underbrush and charge you. They are cotton candy colored, just like the trees, and larger than the one you faced near the gate. Their tusked teeth are stained with the blood of other creatures they've killed.\n\nYou smile and charge them back.\n\nThe Protocol will *have* to activate you after today.",
+    text: "You decapitate one yellow flower, then another. Two geysers of blood follow, as the creatures beneath them howl in anguish.\n\nTwo of your enemies are already out of the fight, but ten more creatures emerge from the underbrush and charge you. They are cotton candy colored, just like the trees, and larger than the one you faced near the gate.\n\nYou smile and charge them back.\n\nThe Protocol will *have* to activate you after today.",
     next: "counter_attack_battle"
   },
   counter_attack_battle: {
@@ -1359,7 +1359,7 @@ export const pages = {
     title: "Akemi Intro",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Well, I think it's very nice to meet you {{characterName}}. I also think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
+    text: "\"Well, I think it's very nice to meet you {{characterName}}. I think it was very brave of you to rush right in here... Though, maybe you can hold off in the future? We are a team, after all, right?\"",
     next: "threx_collar"
   },
   neutral_return: {
@@ -1458,7 +1458,7 @@ export const pages = {
     title: "Nice to Akemi",
     type: "choice",
     src: "../assets/forest.webp",
-    text: "There's a tap on your shoulder, forcing you to look up.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    text: "\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "akemi_take" },
       { label: "Hold the vial", next: "akemi_hold" },
@@ -1515,35 +1515,35 @@ export const pages = {
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"You and Kaelion will get along great then,\" Akemi says, gesturing to a man in armor so fancy it could have supported your family for a month.\n\nYou doubt her assumption. There aren't too many rich people on your side of town.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. That should be apparent to anyone who bothers looking you up on their AR display.\n\n\"You and Kaelion will get along great then,\" Akemi says, gesturing to a man in armor so fancy it could have supported your family for a month.\n\nYou doubt her assumption.",
   },
   team_Mage: {
     title: "Mage",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\nAkemi smiles. \"I'm sure you and Sheemie will have plenty to talk about.\" She leans in, and you detect a hint of lavender and sandalwood. \"Just don't get him started on ecology.\"\n\nYou cock your head, unsure of how to take the advice.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. That should be apparent to anyone who bothers looking you up on their AR display.\n\nAkemi smiles. \"I'm sure you and Sheemie will have plenty to talk about.\" She leans in, and you detect a hint of lavender and sandalwood. \"Just don't get him started on ecology.\"\n\nYou cock your head, unsure of how to take the advice.",
   },
   team_Summoner: {
     title: "Summoner",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\nAkemi smirks. \"As long as your goal isn't to summon the creepy things Mitzi talks about, I think we'll still get along fine!\"\n\nYou consider asking for specifics, but decide now might not be the time.",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. That should be apparent to anyone who bothers looking you up on their AR display.\n\nAkemi smirks. \"As long as your goal isn't to summon the creepy things Mitzi talks about, I think we'll still get along fine!\"\n\nYou consider asking for specifics, but decide now might not be the time.",
   },
   team_Undecided: {
     title: "Undecided",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. That should be apparent to anyone who bothers looking you up on their AR display.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
   },
   team_Mixed: {
     title: "Mixed",
     type: "text",
     src: "../assets/portal.webp",
     next: "team_intro1",
-    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. They'll eventually know anyway, if they bother to read your file. For now, though, it's better if only Ronin thinks you're a liability.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
+    text: "You tell the others what your selection was, careful not to mention your unranked status or that you're not activated. That should be apparent to anyone who bothers looking you up on their AR display.\n\n\"Same here!\" Akemi exclaims. \"Well, kinda. I just don't wanna get stuck with a specific skillset, yaknow?\"\n\nYou nod, knowing exactly how she feels. If you ever do get activated, there would be a million different paths to take. How could anyone ever decide on just one?",
   },
   team_intro1: {
     title: "Harla",
@@ -1917,7 +1917,7 @@ export const pages = {
     title: "Team Portal Inside",
     src: "../assets/forest.webp",
     type: "choice",
-    text: "You emerge on the other side, in another world. The rules are different here, like in most portals. Gravity is heavier; the air has less oxygen.\n\n*Shit*, you think. You had been hoping for a world less punishing than your own; on one of those, you would have felt stronger. On this one, you must fight for every breath and every step.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
+    text: "You emerge on the other side, in another world. The rules are different here. The gravity is heavier; the air, thinner. Its sweet and sour aroma makes your mouth water and your head spin in equal measure.\n\nWorst of all is the vertigo.\n\nThe land stretches out and up, culminating in an inverted sphere fifty miles across. Spindly purple flora obscures most of the ground itself... and whatever creatures lurk beneath. Crystal clear streams vein between the overgrowth, reflecting the ground above in a muted kaleidoscope.\n\n\"Here,\" Akemi says, handing you a vial of caustic purple liquid. \"It'll fortify you against the environment for the next few hours.\"",
     choices: [
       { label: "Take the vial", next: "take_vial" },
       { label: "Hold off for now", next: "hold_vial" },
@@ -1928,15 +1928,15 @@ export const pages = {
     type: "text",
     action: "took_environment_potion",
     src: "../assets/forest.webp",
-    text: "You drain the vial, and the ill effects of this world immediately dull.\n\n\"All potions work the same way,\" Akemi tells you. \"The effect is immediate, and it'll last for however long it is advertised! The only exception is health potions; those will heal you right up and keep you that way unless you get hurt again!\"\n\n\"And poison,\" Mitzi says, deadpan. \"That's permanent, too.\"",
-    next: "team_portal_view_take"
+    text: "You drain the vial, and the ill effects of this world immediately dull.\n\n\"All potions work the same way,\" Akemi explains. \"The effect is immediate, and it'll last for however long it is advertised! The only exception is health potions; those will heal you right up and keep you that way unless you get hurt again!\"\n\n\"And poison,\" Mitzi says, deadpan. \"That's permanent, too.\"",
+    next: "team_portal_encounter_take"
   },
   hold_vial: {
     title: "Hold Off For Now",
     type: "text",
     src: "../assets/forest.webp",
     text: "You thank Akemi and pocket the potion for later. This place is brutal, but it's nothing you can't handle.\n\nBetter to hold on to it until you actually need it.\n\nItem Added to Inventory",
-    next: "team_portal_view_hold"
+    next: "team_portal_encounter_hold"
   },
   team_portal_view_take: {
     title: "Team Portal View",
@@ -2158,7 +2158,7 @@ export const pages = {
     title: "Global Protocol Authority",
     type: "text",
     src: "../assets/forest.webp",
-    text: "You shrug. \"The GPA, probably. There's a global element there, and they tend to get priority with Breaks.\" You pause before adding, \"Plus, they're the closest thing we have to what existed before the gates.\"\n\n\"That's understandable,\" Akemi says. \"The GPA is the route the Ramsey Academy pushed most of us to go in, too. It makes sense, seeing as they fund the place and everything.\" With a wink, she adds, \"You'd fit in nicely there; they always get the cutest Breakers.\"\n\nYou're not sure if she's joking, but you chuckle just to be safe.",
+    text: "You shrug. \"The GPA, probably. There's a global element there, and they tend to get priority with Breaks.\" You pause before adding, \"Plus, they're the closest thing we have to what existed before the gates.\"\n\n\"That's understandable,\" Akemi says. \"The Ramsey Academy pushed most of us to go that way, too. It makes sense, seeing as they fund the place and everything.\" With a wink, she adds, \"You'd fit in nicely there; they always get the cutest Breakers.\"\n\nYou're not sure if she's joking, but you chuckle just to be safe.",
     next: "keep_moving",
   },
   guild_epoch: {
@@ -2375,14 +2375,14 @@ export const pages = {
     title: "Deeper In The Forest",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "Threx leads you deeper into the forest, following a wide and well-defined footpath.\n\n\"It's weird nothing else has tried to kill us,\" Mitzi says.\n\n The party leader nods. \"I agree. This place isn't very large, and we definitely stand out against all the purple.\"\n\n\"I hate purple.\"\n\n\"You hate everything.\"\n\nMitzi smirks. \"True.\"\n\nAt last, the path leads into a clearing. For the first time since entering the gate, you see a color other than purple.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment, and you have to agree.\n\nThe yellow pattern before you is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.",
+    text: "Threx leads you deeper into the forest, following a wide and well-defined footpath.\n\n\"It's weird nothing else has tried to kill us,\" Mitzi says.\n\n The party leader nods. \"I agree. This place isn't very large, and we definitely stand out against all the purple.\"\n\n\"I hate purple.\"\n\n\"You hate everything.\"\n\nMitzi smirks. \"True.\"\n\nAt last, the path leads into a clearing. For the first time since entering the gate, you see a color other than purple.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment, and you have to agree.\n\nThe yellow pattern is comprised of neither rock nor flower, yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.",
     next: "forest_clearing",
   },
   forest_clearing: {
     title: "Forest Clearing",
     src: "../assets/ridge.webp",
     type: "text",
-    text: "You feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.\n\n\"It's like something out of a fantasy,\" Mitzi says, smiling. \"I... don't hate this.\"\n\nUnfortunately, reality returns all too quickly.\n\nAll at once, the field becomes chaos. Twelve creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"",
+    text: "You feel mollified. Content. You're not worrying about your family, or your need to prove yourself, or even how dangerous this world may be. For a moment, there is only this moment.\n\n\"It's like something out of a fantasy,\" Mitzi says, smiling. \"I... don't hate this.\"\n\nUnfortunately, reality returns all too quickly.\n\nTwelve creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees, and are larger than the one you faced near the gate.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"",
     next: "forest_clearing_encounter",
   },
   forest_clearing_encounter: {
@@ -2411,7 +2411,7 @@ export const pages = {
     type: "text",
     action: "failure",
     useCustomBackground: true,
-    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks rag you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
+    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh, and their muscular necks rag you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
     next: "forest_clearing_encounter_fail2",
   },
   forest_clearing_encounter_fail2: {
@@ -2522,7 +2522,7 @@ export const pages = {
     title: "Head to boss",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "The C-Class Breaker starts jogging toward the location of the Tethered Being. It doesn't take long to reach the lair. The tracks of its minions take you right to it.\n\nIt... isn't what you expected.\n\n When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.",
+    text: "The C-Class Breaker starts jogging toward the location of the Tethered Being. It doesn't take long to reach the lair. The tracks of its minions take you right to it.\n\nIt... isn't what you expected.",
     next: "head_to_boss_success5"
   },
   head_to_boss_success5: {
@@ -2536,7 +2536,7 @@ export const pages = {
     title: "Head to boss",
     type: "text",
     src: "../assets/shack.webp",
-    text: "Threx grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.",
+    text: "Threx grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *hmm* from the porch. When you see the source, you shudder.",
     next: "head_to_boss_success7"
   },
   head_to_boss_success7: {
@@ -2589,7 +2589,7 @@ export const pages = {
     title: "Forest Encounter Preparation",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "He leads you through the forest. There's a wide and well-defined footpath next to you, but he takes you along a slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come, the ridge protects your flank.\n\n\"Good call, freelancer,\" Threx yells as the horde of creatures screams your way. \"We would have been surrounded if you hadn't said something.\"\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Reverse phalanx!\" Threx commands.",
+    text: "He leads you through the forest. There's a wide and well-defined footpath next to you, but he takes you along a slight ridge running parallel to it instead. Eventually, the path leads into a clearing that would have been ideal for an ambush. Instead, when the creatures inevitably come, the ridge protects your flank.\n\n\"Good call, freelancer,\" Threx yells as the horde of creatures screams your way. \"We would have been surrounded if you hadn't said something.\"\n\nThe beasts of this world are cotton candy colored, just like the trees, and are larger than the one you faced near the gate.\n\n\"Reverse phalanx!\" Threx commands.",
     next: "forest_encounter_prepare4",
   },
   forest_encounter_prepare4: {
@@ -2630,14 +2630,14 @@ export const pages = {
     title: "Keep It To Yourself",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower. Yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements. You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
+    text: "Most of your companions are graduates of the prestigious Ramsey Academy. Surely they can take care of themselves.\n\nWhen you arrive at the clearing, you see a color other than purple. The yellow pattern is comprised of neither rock nor flower, yet, the material carries properties of both. It smells better than the trees, too. Instead of sour milk, the clearing smells almost like lilacs and chocolate.\n\n\"It's beautiful!\" Akemi exclaims. Others echo the same sentiment.\n\nYou don't have time to marvel at the scenery. Your attackers are already moving, using the breathtaking sight to mask their movements. You decapitate one yellow flower, then another.\n\n\"What are you doing!?\" Harla cries.",
     next: "keep_to_yourself2",
   },
   keep_to_yourself2: {
     title: "Keep It To Yourself",
     type: "text",
     src: "../assets/critters.webp",
-    text: "Two geysers of blood answer her as the creatures beneath the flowers howl in anguish. Already, two of your enemies are out of the fight.\n\nAll at once, the field becomes chaos. Ten more creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees. These are larger than the one you faced near the gate, and their tusked teeth are stained with the blood of other creatures they've killed.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"\n\nYou smile, already charging into the fight. While the others take their time to regroup, you prepare to add more notches to your belt.\n\nThe Protocol will *have* to activate you after today.",
+    text: "Two geysers of blood answer her as the creatures beneath the flowers howl in anguish. Already, two of your enemies are out of the fight.\n\nTen more creatures emerge from the underbrush and charge you and your companions.\n\nThe beasts of this world are cotton candy colored, just like the trees, and are larger than the one you faced near the gate.\n\n\"Shit!\" Threx yells, drawing his warhammer. \"We walked right into an ambush! Everyone, form up on me!\"\n\nYou smile, already charging into the fight. While the others take their time to regroup, you prepare to add more notches to your belt.\n\nThe Protocol will *have* to activate you after today.",
     next: "forest_encounter",
   },
   forest_encounter: {
@@ -2666,7 +2666,7 @@ export const pages = {
     type: "text",
     action: "failure",
     useCustomBackground: true,
-    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh. Their muscular necks ragdoll you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
+    text: "The viciousness of these things is too much for you to handle. Their sharp teeth tear into your flesh, and their muscular necks ragdoll you back and forth. Your arm is disabled first, then a leg. Chunks are ripped from you, and the world goes from purple to red.\n\nYou scream, but blood fills your throat.\n\nYou feel a powerful set of jaws close around your neck.\n\nThis is it.\n\nThe jaws close, and the red goes to black.",
     next: "forest_encounter_fail2",
   },
   forest_encounter_fail2: {
@@ -2728,14 +2728,14 @@ export const pages = {
     title: "Gate Stabilizer Check",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "\"*After,*\" Threx says, already following the most well-defined path of the creatures. \"We can't afford to let our guards down yet.\"\n\nIt doesn't take long to reach the lair of the gate's Tethered Being. The tracks of your former attackers take you along the path of least resistance. When you finally lay eyes on it, your heart flutters. So far, everything about this world has seemed so... natural. Even the beasts felt akin to forest animals.\n\nThis place eliminates that facade.\n\n\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.",
+    text: "\"*After,*\" Threx says, already following the most well-defined path of the creatures. \"We can't afford to let our guards down yet.\"\n\nIt doesn't take long to reach the lair of the gate's Tethered Being. The tracks of your former attackers take you along the path of least resistance.\n\n\"It's so... gawdy,\" Akemi whispers, scrunching her nose.\n\n\"I think it looks regal!\" Kaelion Virehart argues. \"The creature inside must be a fine specimen!\"\n\n\"I think,\" Aleth says, \"that there is something wrong about this place.\"\n\nYou think he might be right.",
     next: "forest_shack",
   },
   forest_shack: {
     title: "Forest Shack",
     type: "choice",
     src: "../assets/shack.webp",
-    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* that comes from the porch. When you see the source, you shudder.\n\nThe thing is sitting atop a throne at the porch's corner, overlooking a pristine view of the inverted sphere. You only see a side profile, but the thing appears to be as alien to this world as you are.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
+    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* that comes from the porch. When you see the source, you shudder.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
     choices: [
       { label: "Speak to the creature", next: "speak_to_creature" },
       { label: "Send a runner back through the gate for help", next: "send_a_runner" },
@@ -3225,7 +3225,7 @@ export const pages = {
     title: "Eye Contact",
     type: "text",
     src: "../assets/shack.webp",
-    text: "It takes every ounce of self-discipline you have, but you grit your teeth and hold the gaze of your killer.\n\nLike everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
+    text: "Like everyone else, you've heard stories about near-death experiences. You've heard about people's lives flashing before their eyes.\n\nYou don't get that.",
     next: "eye_contact2"
   },
   eye_contact2: {

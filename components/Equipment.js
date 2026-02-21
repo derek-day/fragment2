@@ -54,12 +54,12 @@ export const EQUIPMENT_ITEMS = {
   },
   crossbow: {
     id: 'crossbow',
-    name: 'Nullbite (1 of 2)',
+    name: 'Nullbite',
     type: 'Weapon',
-    rarity: 'Common',
-    description: 'A simple crossbow that can be used to shoot arrows.',
+    rarity: 'Unique',
+    description: 'A crossbow that can be used to shoot arrows.',
     stats: {
-      damage: '+5'
+      damage: '+2'
     },
     unlocksOnPage: 'study_defense',
     icon: BowArrow
@@ -385,6 +385,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
       case 'Rare': return 'text-blue-400';
       case 'Epic': return 'text-purple-400';
       case 'Legendary': return 'text-orange-400';
+      case 'Unique': return 'text-white-400';
       default: return 'text-gray-400';
     }
   };
@@ -396,6 +397,7 @@ export default function EquipmentBrowser({ isOpen, onClose, userId }) {
       case 'Rare': return 'border-blue-600';
       case 'Epic': return 'border-purple-600';
       case 'Legendary': return 'border-orange-600';
+      case 'Unique': return 'border-white-600';
       default: return 'border-gray-600';
     }
   };

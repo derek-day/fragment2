@@ -4191,7 +4191,7 @@ export const adventurePages = {
     src: "../assets/study.webp",
     title: "Arclight Study",
     type: "text",
-    text: "Instead, you find yourself standing on the bottom floor of a two-story study. Bookcases stretch out and up from you, spines reflecting the cozy fire that's cracking in the corner hearth.\n\nYou spin and realize the door behind you is gone. You're stuck here, wherever here is. You've always known that gates can appear as anything, and their insides can contain any manner of world.\n\nStill, you feel a sense of displacement here—a strange vertigo.",
+    text: "Instead, you find yourself standing on the bottom floor of a two-story study. Bookcases stretch out and up from you, spines reflecting the cozy fire that's crackling in the corner hearth.\n\nYou spin and realize the door behind you is gone. You're stuck here, wherever here is. You know that gates can appear as anything, and their insides can contain any manner of world, but you feel a profound sense of displacement here anyway.\n\nA strange vertigo.",
     next: "arclight_study2"
   },
   arclight_study2: {

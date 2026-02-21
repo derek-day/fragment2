@@ -4331,10 +4331,10 @@ export const adventurePages = {
         conditions: [
           { type: 'went_alone_or_no_note' }
         ],
-        next: 'study_want_alone'
+        next: 'study_alone'
       }
     ],
-    next: "study_want_alone" // Fallback
+    next: "study_alone" // Fallback
   },
   study_alone: {
     title: "Study Want",

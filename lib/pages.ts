@@ -816,7 +816,7 @@ export const pages = {
     title: "Camper Appearance",
     type: "text",
     src: "../assets/shack.webp",
-    text: "The thing is two heads taller than you and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
+    text: "The thing is two heads taller than you and sports golden armor that is one part duster and one part hooded cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
     next: "sometimes_alone3",
   },
   sometimes_alone3: {
@@ -972,7 +972,7 @@ export const pages = {
     title: "A Savior Arrives",
     type: "text",
     src: "../assets/shack.webp",
-    text: "The realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class breaker-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
+    text: "Your savior-- who must be a S-Class breaker-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
   }, 
   party_fight_alone: {
     title: "Party Fight",
@@ -1013,7 +1013,7 @@ export const pages = {
     title: "Shouldn't Be Here",
     type: "text",
     src: "../assets/shack.webp",
-    text: "There's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is two heads taller than you and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
+    text: "There's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is two heads taller than you and sports golden armor that is one part duster and one part hooded cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.",
     next: "camper_blur_alone2"
   },
   camper_blur_alone2: {
@@ -2440,7 +2440,7 @@ export const pages = {
     title: "Revived",
     type: "text",
     src: "../assets/critters.webp",
-    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\n\"Sheemie,\" Threx says. \"Is the gate stabilizer still intact after that hit you took?\"\n\nAlready back to full strength, the plant aficionado pulls a grey sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
+    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitzi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\n\"Sheemie,\" Threx says. \"Is the gate stabilizer still intact after that hit you took?\"\n\nAlready back to full strength, the plant aficionado pulls a grey sphere from his robe. The Epoch Corporation logo is clearly visible across it.",
     next: "gate_stabilizer_check",
   },
   inspect_success: {
@@ -2695,7 +2695,7 @@ export const pages = {
     title: "Revieved",
     type: "text",
     src: "../assets/critters.webp",
-    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitsi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\nA strong hand grabs your shoulder.\n\n\"You did good with that warning,\" Threx says. \"We would have lost more people if we had walked into that ambush. Maybe permanently.\"",
+    text: "\"You're okay,\" Harla whispers.\n\nDead beasts litter the ground around you, and your companions appear battered but standing.\n\n\"Can't believe you went down,\" Ronin huffs. His armor and mechanical knife are covered in viscera.\n\n\"Don't feel bad,\" Sheemi offers, nursing his arm. \"Mitzi and I got injured, too. That's why we have such a great healer!\"\n\nHarla shrugs. \"I am pretty great, aren't I?\"\n\nA strong hand grabs your shoulder.\n\n\"You did good with that warning,\" Threx says. \"We would have lost more people if we had walked into that ambush. Maybe permanently.\"",
     next: "threx_sweat",
   },
   threx_sweat: {
@@ -2737,7 +2737,7 @@ export const pages = {
     title: "Forest Shack",
     type: "choice",
     src: "../assets/shack.webp",
-    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* that comes from the porch. When you see the source, you shudder.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
+    text: "The shack stands in sharp contrast to the surrounding purple. Its walls are tiled with amber, gold, and sapphire. It isn't large, but it holds enough material to justify the gate's golden appearance.\n\nThrex grunts. \"I don't think this place belongs to the creature we're looking for. I... think it's just being kept here... as bait.\"\n\nThere is a faint *tsk tsk tsk* comes from the porch. When you see the source, you shudder.\n\n\"You killed my pets,\" the alien-thing says in a voice like sandpaper.\n\nYour companions trade worried glances. Plenty of creatures inside of gates can talk, but none that are E-Class.",
     choices: [
       { label: "Speak to the creature", next: "speak_to_creature" },
       { label: "Send a runner back through the gate for help", next: "send_a_runner" },
@@ -2755,7 +2755,7 @@ export const pages = {
     title: "Camper Hunt",
     src: "../assets/shack.webp",
     type: "text",
-    text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
+    text: "\"Good,\" the Camper rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.\n\nThe thing is a head taller than Threx and sports golden armor that is one part duster and one part hooded cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the *other* thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
     conditionalNext: [
       {
@@ -2812,7 +2812,7 @@ export const pages = {
     title: "Send A Runner",
     src: "../assets/shack.webp",
     type: "text",
-    text: "\"Mitzi,\" you whisper. \"Run back to the gate and get us some help. Aleth is right; something about this feels off.\"\n\nThe woman blinks at you. \"Excuse me? If you're so worried about it, why don't you go? I'm here to get stronger. I can't do that if I'm running away, can I?\"\n\n\"Mitzi,\" Threx hisses. \"Do what he's telling you. Inform the GPA that our Tethered Being is a Camper.\"\n\n\"A what?\" Mitsi is incredulous. \"No way! I'm not going anywhere.\"\n\n\"Now!\"",
+    text: "\"Mitzi,\" you whisper. \"Run back to the gate and get us some help. Aleth is right; something about this feels off.\"\n\nThe woman blinks at you. \"Excuse me? If you're so worried about it, why don't you go? I'm here to get stronger. I can't do that if I'm running away, can I?\"\n\n\"Mitzi,\" Threx hisses. \"Do what he's telling you. Inform the GPA that our Tethered Being is a Camper.\"\n\n\"A what?\" Mitzi is incredulous. \"No way! I'm not going anywhere.\"\n\n\"Now!\"",
     next: "send_a_runner2",
   },
   send_a_runner2: {
@@ -2826,7 +2826,7 @@ export const pages = {
     title: "Send A Runner",
     src: "../assets/shack.webp",
     type: "text",
-    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has *become* null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
+    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part hooded cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Mitzi!\" Akemi screams.\n\nThe girl with hopes of joining Protocol Null has *become* null. She collapses into chunks of butchered meat.\n\nShe didn't even have time to scream.",
     //if they haven't cleared out the previous minions, there is another page before the battle
     conditionalNext: [
       {
@@ -3007,7 +3007,7 @@ export const pages = {
     title: "Who Is That?",
     src: "../assets/shack.webp",
     type: "text",
-    text: "Yes, it is styled in the way familiar to those from Ashnhold, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.\n\nThe realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class breaker-- is a member of the Silk Road.\n\nThen, darkness finds you at last.",
+    text: "Yes, it is styled in the way familiar to those from Ashnhold, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.\n\nYour savior-- who must be a S-Class breaker-- is a member of the Silk Road.\n\nThen, darkness finds you at last.",
     next: "camper_finish"
   },
   speak_to_creature: {
@@ -3069,7 +3069,7 @@ export const pages = {
     title: "Sometimes",
     src: "../assets/shack.webp",
     type: "text",
-    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
+    text: "The thing is a head taller than Threx and sports golden armor that is one part duster and one part hooded cloak. A black katana hangs from its hip. Its mouth is curled into a permanent snarl, and its shiny pink skin gives it the appearance of a burn victim.\n\nAnd the scars... There are too many to count.\n\nWorst of all is the other thing it's wearing. Fresh blood coats the creature like a crimson robe. It drips onto the decadent porch, adding faux-ruby to the amber, gold, and sapphire.\n\n\"Kael!\" Harla screams.\n\nThe knight collapses into chunks of butchered meat. He doesn't even have time to scream.",
     conditionalNext: [
       {
         conditions: [
@@ -3476,7 +3476,7 @@ export const pages = {
     title: "Silk Road",
     type: "choice",
     src: "../assets/hospital.webp",
-    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you,\" the nurse takes over, \"the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
       { label: "The Silk Road?", next: "hospital_response" },
@@ -3490,7 +3490,7 @@ export const pages = {
     title: "Silk Road",
     type: "choice",
     src: "../assets/hospital.webp",
-    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you,\" the nurse takes over, \"the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
       { label: "The Silk Road?", next: "hospital_response" },
@@ -3504,7 +3504,7 @@ export const pages = {
     title: "Silk Road",
     type: "choice",
     src: "../assets/hospital.webp",
-    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    text: "\"But it took your party's healer time to get to you in the chaos,\" the nurse adds. \"And, though she's very skilled, she lacked the skill to restore limbs.\"\n\n\"Luckily for you,\" the nurse takes over, \"the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
       { label: "The Silk Road?", next: "hospital_response" },
@@ -3516,7 +3516,7 @@ export const pages = {
     title: "Silk Road",
     type: "choice",
     src: "../assets/hospital.webp",
-    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you, the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
+    text: "\"But that thing in there really did a number on you guys. If the healer in your party had survived, maybe she...\"\n\n\"Luckily for you,\" the nurse takes over, \"the Silk Road is paying for the best artificial limbs the Epoch Corporation has to offer... which, honestly, might be better than the real thing.\"",
     choices: [
       { label: "I'd prefer my own", next: "hospital_response" },
       { label: "The Silk Road?", next: "hospital_response" },
@@ -3542,14 +3542,14 @@ export const pages = {
     title: "Veyr Singrave",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "You've heard of Veyr Singrave. The S-Class breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
+    text: "You've heard of Veyr Singrave. The S-Class breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top ten list of breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
     next: "veyr2"
   },
   veyr2: {
     title: "Veyr Singrave",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class breaker.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
+    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by someone so strong.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
     //depends on if they were solo/together and sacrificed
     conditionalNext: [
     {
@@ -3598,14 +3598,14 @@ export const pages = {
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
     npcDeaths: ["Threx", "Harla", "Kaelion", "Mitzi", "Sheemie"],
-    text: "\"We couldn't save them all,\" the healer says. \"We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least one of them will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
+    text: "\"We couldn't save them all,\" the healer says. \"We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least Akemi will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
     next: "family"
   },
   together_didnt_sacrifice: {
     title: "Companions",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "You aren't the only survivor!\n\nDid Akemi make it out? Did Aleth? Sheemie? Threx and some of the others had been obliterated when you last saw them, but so had you!\n\n\"*Are they nearby?*\" you try to ask. \"*Are they close?*\"What comes out sounds more like, \"Ehhhrrr!\"",
+    text: "You aren't the only survivor!\n\nDid Akemi make it out? Did Aleth? Sheemie? Threx and some of the others had been obliterated when you last saw them, but so had you!\n\n\"*Are they nearby?*\" you try to ask. \"*Are they close?*\"\n\nWhat comes out sounds more like, \"Ehhhrrr!\"",
     next: "together_didnt_sacrifice2"
   },
   together_didnt_sacrifice2: {
@@ -3615,7 +3615,7 @@ export const pages = {
     //Akemi Sato, Aleth Achen, and Ronin Balore are the only survivors
     //need to update data journal with deathes
     npcDeaths: ["Threx", "Harla", "Kaelion", "Mitzi", "Sheemie"],
-    text: "\"What's that, hun?\" asks the nurse, shifting from her reverie.\n\nThe healer, perhaps sensing the desperation behind the noise, shushes her.\n\nTo you, she says, \"We couldn't save them all. We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least one of them will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
+    text: "\"What's that, hun?\" asks the nurse, shifting from her reverie.\n\nThe healer, perhaps sensing the desperation behind the noise, shushes her.\n\nTo you, she says, \"We couldn't save them all. We wish we could. Sometimes, people are too hurt for too long. You probably made it by moments. The others...\" She drifts off before restarting. \"Akemi Sato, Aleth Achen, and Ronin Balore have been stabilized. I'm afraid the others weren't as lucky.\"\n\n\"But at least Akemi will be visiting once she recovers,\" the nurse adds. \"I'm sure the others will, too.\"",
     next: "family"
   },
   together_sacrifice: {
@@ -3687,21 +3687,21 @@ export const pages = {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
+    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"",
     next: "family_visit2"
   },
   family_visit2: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
+    text: "\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.",
     next: "family_visit3",
   },
   family_visit3: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"How long?\" you ask.\n\nCrixon replies quickly. If he were a little older, you'd have less to worry about with the household. He's responsible. Dependable.\n\n\"Three days.\"\n\nYou sigh. \"Has my pay already been deposited into the account?\"\n\nYour younger brother sneaks a glance at the older one, who looks away.\n\n\"Yeah, it was in there.\"\n\n\"*Was?*\"",
+    text: "\"How long?\" you ask.\n\nCrixon replies quickly. If he were a little older, you'd have less to worry about with the household. He's responsible. Dependable.\n\n\"Three days.\"\n\nYou sigh. \"Has my pay already been deposited into the account?\"\n\nYour younger brother sneaks a glance at the older one, who looks away.\n\n\"Yeah, it was in there.\"\n\n\"*Was?*\"",
     next: "family_visit4"
   },
   family_visit4: {
@@ -3757,7 +3757,7 @@ export const pages = {
     title: "Cale",
     src: "../assets/hospital.webp",
     type: "text",
-    text: "\"Great,\" Crixen says. \"It was almost a week before he came home the last time he stormed off.\"",
+    text: "\"Great,\" Crixon says. \"It was almost a week before he came home the last time he stormed off.\"",
     next: "ryke"
   },
   cale_change: {
@@ -3771,7 +3771,7 @@ export const pages = {
     title: "Ryke",
     src: "../assets/hospital.webp",
     type: "text",
-    text: "\"The Gates! I had a-- Thewh was a gate that lea to a big cave! I made it out of slime! And then, in that cave, I made anothewh gate that looked like Momma and Dadda's monolith. It was so cool!\"\n\n\"Wow! A gate inside another gate? That is cool.\" You look at Crixon. \"That sounds like a lot of work.\"\n\nYour younger brother nods, and Ryke continues speaking in her stream-of-consciousness kind of way.You take it all in and smile. Despite the pain and the bits of you forever lost to your first gate, and the financial drama, and the family drama, you feel content.",
+    text: "\"The Gates! I had a-- Thewh was a gate that lea to a big cave! I made it out of slime! And then, in that cave, I made anothewh gate that looked like Momma and Dadda's monolith. It was so cool!\"\n\n\"Wow! A gate inside another gate? That is cool.\" You look at Crixon. \"That sounds like a lot of work.\"\n\nYour younger brother nods, and Ryke continues speaking in her stream-of-consciousness kind of way.\n\nYou take it all in and smile. Despite the pain and the bits of you forever lost to your first gate, and the financial drama, and the family drama, you feel content.",
     next: "ryke_project2",
   },
   ryke_project2: {
@@ -3810,28 +3810,28 @@ export const pages = {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
+    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"",
     next: "family_painkiller2"
   },
   family_painkiller2: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
+    text: "\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.",
     next: "family_painkiller3",
   },
   family_painkiller3: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
+    text: "\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
     next: "family_painkiller4"
   },
   family_painkiller4: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixen shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
+    text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixon shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
     next: "family_painkiller5"
   },
   family_painkiller5: {
@@ -3859,35 +3859,35 @@ export const pages = {
     title: "Visit",
     src: "../assets/hospital.webp",
     type: "text",
-    text: "\"Travis,\" you whisper, hoping to have already heard that name for the last time.\n\nCale says more, but you have trouble registering it. You're so tired.\n\nYou realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
+    text: "\"Travis,\" you whisper, preferring not to have heard the name again.\n\nCale says more, but you have trouble registering it. You're so tired.\n\nYou realize, before fading, that there is still no augmented reality mapped atop your own.\n\nEven now, the Protocol has kept you unactivated.\n\nYour sigh becomes a snore.",
     next: "hospital_later"
   },
   family_address: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"\n\nThe healer smiles at you. For the first time, you notice the name badge on her Beatles scrubs.",
+    text: "\"Yeeeaahhhh,\" you manage.\n\nThe nurse fiddles with your IV, and a wave of relief washes over you in an instant.\n\nWords finally form on your lips. \"Thank... you.\"\n\n\"Don't get too comfortable,\" she warns. \"It'll only last a few minutes, then you'll need to rest anyway.\"",
     next: "family_address2"
   },
   family_address2: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Indy.\"\n\nYou can't help but think it stands for \"Indominable.\"\n\n\"There's a call button right there if you need anything.\" She nods at the blue remote next to you.\n\n\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.\n\nYou get a look at the latter's badge right before she turns from you.",
+    text: "\"Thank you,\" you say again. The words come easier this time.\n\n\"And *thank you* for keeping the rest of us safe from those gates,\" she replies before leaving the room with the nurse.",
     next: "family_address3",
   },
   family_address3: {
     title: "Visit",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Rue.\"\n\nRight now, you feel like an unholy mix of both.\n\n\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
+    text: "\"Cale first,\" you say, casting a sideways glance at Crixon and Ryke. \"Privately. I... wanna hear about how these ones have been behaving.\"Crixon, too young to be this observant, rolls his eyes at you. You know he knows the meaning behind the request.\n\n\"C'mon, Ry,\" he says, already moving for the door. \"Let's let these two discuss boring grown up things. We can get more of that candy you like from the vending machine.\"",
     next: "family_address4"
   },
   family_address4: {
     title: "Visit",
     src: "../assets/hospital.webp",
     type: "text",
-    text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixen shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
+    text: "\"Weally? I thought you werhr all out of money?\"\n\nCrixon shrugs and looks past you to your older brother.\n\n\"I lied.\"\n\nYour little sister is out of bed and across the room before you can register the dull pain she left behind.\n\nOnce they leave, you turn to Cale.",
     next: "family_address5"
   },
   family_address5: {
@@ -4083,7 +4083,7 @@ export const pages = {
     title: "Nurse",
     src: "../assets/hospital_later.webp",
     type: "text",
-    text: "The nurse leaves your view and returns a moment later, carrying dismembered limbs\n\n\"We already installed the chip for these babies while you were out. It should feel no different from moving your old arms and legs.\"\n\n\"You... did *brain surgery* on me?\"\n\nThe nurse blinks. \"Well, yeah. Didn't your brother tell you already? I was told he and your other siblings came to visit the other day. He *is* your next of kin, after all.\"",
+    text: "The nurse leaves your view and returns a moment later with an armful of severed limbs.\n\n\"We already installed the chip for these babies while you were out. It should feel no different from moving your old arms and legs.\"\n\n\"You... did *brain surgery* on me?\"\n\nThe nurse blinks. \"Well, yeah. Didn't your brother tell you already? I was told he and your other siblings came to visit the other day. He *is* your next of kin, after all.\"",
     next: "nurse3"
   },
   nurse3: {
@@ -4098,7 +4098,7 @@ export const pages = {
     src: "../assets/arclight.webp",
     title: "Arclight Haven",
     type: "text",
-    text: "Fifteen minutes later, you leave the hospital behind and re-enter the city you've always known as home. Your new limbs feel odd, but natural, too. Stronger, maybe, but certainly different.\n\nJust like your city.\n\nArclight Haven sits on swampland. It sprawls like a rash, and no buildings are taller than three stories. It's as if the whole place had been knocked down once, and it's now too afraid to stand back up.\n\nIn a way, that's true. In another way, it isn't.",
+    text: "Fifteen minutes later, you leave the hospital behind and re-enter the city you've always known as home. Your new limbs and rebuilt spine feel odd, but surprisingly natural. Stronger maybe, but certainly different.\n\nJust like your city.\n\nArclight Haven sits on swampland. It sprawls like a rash, and no buildings are taller than three stories. It's as if the whole place had been knocked down once, and it's now too afraid to stand back up.\n\nIn a way, that's true. In another way, it isn't.",
     next: "arclight2"
   },
   arclight2: {
@@ -4136,7 +4136,7 @@ export const pages = {
     title: "Arclight Walk",
     src: "../assets/arclight.webp",
     type: "choice",
-    text: "On the corner is the bodega you usually visit while walking this route. It's been a while since you've had food of your own choosing.",
+    text: "On the corner is the GPA-affiliated bodega you usually visit while walking this route. It's also the same shop you had purchased your dissappointing gatebreaking tools from.",
     choices: [
       { label: "Go inside", next: "arclight_go_inside" },
       { label: "Keep walking", next: "arclight_keep_walking" },
@@ -4153,7 +4153,7 @@ export const pages = {
     title: "Arclight Walk",
     src: "../assets/arclight.webp",
     type: "text",
-    text: "For now, at least, you pass by the store. Now that you have the means, walking sounds like too good a thing to give up.\n\nYou travel block after block, tired but not in your new limbs. Before long, you realize your stroll has taken you on a detour. You've reached the memorials of the old National Mall. The recently repaired reflecting pool offers you glimpses of yourself.\n\nYou don't look too bad for someone who has just left the hospital.",
+    text: "For now, at least, you pass by the store. Now that you have the means, walking sounds like too good a thing to give up.\n\nYou travel block after block, tired but content. Before long, you realize your stroll has taken you on a detour. You've reached the memorials of the old National Mall. The recently repaired reflecting pool offers you glimpses of yourself.\n\nYou don't look too bad for someone who has just left the hospital.",
     next: "arclight_keep_walking2"
   },
   arclight_keep_walking2: {
@@ -4191,7 +4191,7 @@ export const pages = {
     src: "../assets/study.webp",
     title: "Arclight Study",
     type: "text",
-    text: "Instead, you find yourself standing on the bottom floor of a two-story study. Bookcases stretch out and up from you, spines reflecting the cozy fire that's cracking in the corner hearth.\n\nYou spin and realize the door behind you is gone. You're stuck here, wherever here is. You've always known that gates can appear as anything, and their insides can contain any manner of world.\n\nStill, you feel a sense of displacement here—a strange vertigo.",
+    text: "Instead, you find yourself standing on the bottom floor of a two-story study. Bookcases stretch out and up from you, spines reflecting the cozy fire that's crackling in the corner hearth.\n\nYou spin and realize the door behind you is gone. You're stuck here, wherever here is. You know that gates can appear as anything, and their insides can contain any manner of world, but you feel a profound sense of displacement here anyway.\n\nA strange vertigo.",
     next: "arclight_study2"
   },
   arclight_study2: {
@@ -4331,10 +4331,10 @@ export const pages = {
         conditions: [
           { type: 'went_alone_or_no_note' }
         ],
-        next: 'study_want_alone'
+        next: 'study_alone'
       }
     ],
-    next: "study_want_alone" // Fallback
+    next: "study_alone" // Fallback
   },
   study_alone: {
     title: "Study Want",

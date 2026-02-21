@@ -4315,7 +4315,8 @@ export const pages = {
     //{If the player explored the gate with the group AND collected the note in the hospital, need to go to a page. if alone or if didn't take note go to a different page
     title: "Study Want",
     src: "../assets/study.webp",
-    type: "choice",
+    type: "text",
+    // type: "choice",
     text: "\"Your fate and mine are connected, {{characterName}}. You might not appreciate that yet, but you will in time.\"",
     conditionalNext: [
       {

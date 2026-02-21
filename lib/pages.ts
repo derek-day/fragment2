@@ -1,3 +1,5 @@
+import { m } from "framer-motion";
+
 export const pages = {
   page_1: {
     title: "My First Raid",
@@ -89,7 +91,7 @@ export const pages = {
     title: "Meet Akemi",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"Nice to meet you, {{characterName}}.\" Akemi smiles. \"The rest of us went to the Ramsey Training Academy together. I'll introduce you.\" She pushes past Ronin and gestures for the others to gather around.\n\n\"What's your class and ranking?\" she whispers. \"I don't remember seeing your name on the docket for today.\"\n\nYou nod. She wouldn't have. You signed up for this Break last minute and only after long days of soul-searching.\n\nThe question makes you think back to your experience in the Activation Chamber at the GPA. Your time there wasn't exactly what you were expecting...",
+    text: "\"Nice to meet you, {{characterName}}.\" Akemi smiles. \"The rest of us went to the Ramsey Training Academy together. I'll introduce you.\" She pushes past Ronin and gestures for the others to gather around.\n\n\"What's your class and ranking?\" she whispers. \"I don't remember seeing your name on the docket for today.\"\n\nYou nod. She wouldn't have. You signed up for this break last minute and only after long days of soul-searching.\n\nThe question makes you think back to your experience in the Activation Chamber at the GPA. Your time there wasn't exactly what you were expecting...",
     next: "protocol_intro",
     npcPresent: "Akemi",
     npcDescription: "Akemi",
@@ -108,21 +110,21 @@ export const pages = {
     title: "Meet the Protocol",
     type: "text",
     src: "../assets/lab.webp",
-    text: "\"Please don't be alarmed,\" the androgenous voice of the Halycon AI intones. From where you stand in the vertical MRI machine, a dozen needles are pointed your way.\n\nBeyond them stand a half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential operatives in here, and most had run out screaming.\n\n*Sure,* you think, *nothing to be alarmed about here.*",
+    text: "\"Please don't be alarmed,\" the androgenous voice of the Halcyon AI intones. From where you stand in the vertical MRI machine, a dozen needles point your way.\n\nBeyond them stand a half-dozen technicians and essence analysts of the Global Protocol Authority (GPA), their faces lit by computer screens and flashing medical equipment. You had followed a line of other potential breakers in here, and most had run out screaming.\n\n*Sure,* you think, *nothing to be alarmed about here.*",
     next: "failed_to_connect",
   },
   failed_to_connect: {
     title: "Failed to Connect",
     src: "../assets/lab.webp",
     type: "text",
-    text: "The needles plunge into you. The machine whirs to life. The technicians and analysts take their readings.\n\nThis moment is supposed to be when the AI bridges the gap, and the Protocol activates most Breakers. This is when the mysterious augmented-reality messages are meant to appear. This is where the hero's journey was supposed to begin.\n\nThis is where yours does not.\n\n\"The Protocol has failed to connect,\" the AI tells you, winding down.",
+    text: "The needles plunge into you. The machine whirs to life. The technicians and analysts take their readings.\n\nThis moment is supposed to be when the AI bridges the gap, and the Protocol activates most breakers. This is when the mysterious augmented-reality messages are meant to appear. This is where the hero's journey is supposed to begin.\n\nThis is where yours does not.\n\n\"The Protocol has failed to connect,\" the AI tells you, winding down.",
     next: "not_over_yet",
   },
   not_over_yet: {
     title: "Not Over Yet",
     src: "../assets/lab.webp",
     type: "text",
-    text: "Your clothes are handed back to you, and you are escorted outside. A digital reader replaced the AR display you were hoping for, tailored to your time in the chamber. It's make-believe, a cosplay of the version of yourself you had just been denied.\n\nSome Breakers are insane enough to brave gates without being activated. Their hope-- before their skulls were usually crushed by whatever beasts waited inside-- was that the Protocol would change its mind.\n\nYou, apparently, are one of the insane ones, because you entered your wishful stats anyway, hoping it would be made real.",
+    text: "An analyst hands your clothes back to you and escorts you back outside. A digital reader replaced the AR display you were hoping for, tailored to your time in the chamber. It's make-believe, a cosplay of the version of yourself you had just been denied.\n\nSome breakers are insane enough to brave gates without being activated. Their hope-- before their skulls were usually crushed by whatever beasts waited inside-- was that the Protocol would change its mind.\n\nYou, apparently, are one of the insane ones, because you entered your wishful stats anyway, hoping it would be made real.",
     next: "stat_intro",
   },
   stat_intro: {
@@ -427,7 +429,7 @@ export const pages = {
     title: "Agree with Threx",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *the Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
+    text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join the *Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
     next: "agree_threx5"
   },
   agree_threx5: {
@@ -441,7 +443,7 @@ export const pages = {
     title: "Agree with Threx",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If *The Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
+    text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If the *Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
     next: "agree_threx7"
   },
   agree_threx7: {
@@ -624,7 +626,7 @@ export const pages = {
     title: "Ridge Battle Won",
     type: "text",
     src: "../assets/ridge.webp",
-    text: "You scan the faces of the others, vaguely remembering their portfolios from your time investigating the Break.\n\nThere's Kaelion Virehart, an E-Class warrior with a handlebar mustache and fine armor.\n\nThere's Mitzi, an E-Class summoner, wearing skin-tight black leather.\n\nThere's Sheemie Bauer, a dorky-looking E-Class mage.\n\nThere's Harla, a D-Class Healer in heavily-dented armor.",
+    text: "You scan the faces of the others, vaguely remembering their portfolios from your time investigating the break.\n\nThere's Kaelion Virehart, an E-Class warrior with a handlebar mustache and fine armor.\n\nThere's Mitzi, an E-Class summoner, wearing skin-tight black leather.\n\nThere's Sheemie Bauer, a dorky-looking E-Class mage.\n\nThere's Harla, a D-Class Healer in heavily-dented armor.",
     next: "ridge_ambush_success3"
   },
   ridge_ambush_success3: {
@@ -723,7 +725,7 @@ export const pages = {
     title: "Carving Patterns",
     type: "text",
     src: "../assets/carving.webp",
-    text: "There are many with curved edges. These are the tree-things.\n\nThere are several longer, squigly ones. These are the streams.\n\nThere are a few jagged ones. You're not sure what they are, but most are congregated in two locations across these various tapestries.\n\nMovement catches your eye amongst a grouping of seven small dots. Those must be the Breakers you were supposed to enter with.",
+    text: "There are many with curved edges. These are the tree-things.\n\nThere are several longer, squigly ones. These are the streams.\n\nThere are a few jagged ones. You're not sure what they are, but most are congregated in two locations across these various tapestries.\n\nMovement catches your eye amongst a grouping of seven small dots. Those must be the breakers you were supposed to enter with.",
     next: "carving_alone_success2"
   },
   carving_alone_success2: {
@@ -970,7 +972,7 @@ export const pages = {
     title: "A Savior Arrives",
     type: "text",
     src: "../assets/shack.webp",
-    text: "The realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class Breaker-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
+    text: "The realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class breaker-- is a member of the Silk Road guild.\n\nThen, the darkness finds you at last."
   }, 
   party_fight_alone: {
     title: "Party Fight",
@@ -1093,7 +1095,7 @@ export const pages = {
     title: "Engage",
     type: "text",
     src: "../assets/shack.webp",
-    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Threx, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class Breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThen, darkness.",
+    text: "All of them-- even Ronin, the only one you actually know and who can't stand you-- steel themselves to come to your aid.\n\nYou lock eyes with the leader, Threx, and shake your head.\n\nPerhaps sensing the power of the creature you're up against, the C-Class breaker orders the others to stand down.\n\nAs content as you can be, you turn back to the Camper.\n\n\"Get it... over with,\" you repeat.\n\nThen, darkness.",
     action: "sacrifice", 
     sacrificeLocation: "camper_encounter",
     next: "camper_finish"
@@ -1507,7 +1509,7 @@ export const pages = {
     title: "Leave, then Sneak Back In",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Fine,\" you hiss, pulling yourself away from the Class-C Breaker. You don't need him, anyway. You don't need any of them.\n\nRonin is laughing as you exit the portal, but that's okay. The joke will be on him soon enough.\n\nFor a brief moment, you're looking back at your city again. Arclight Haven is only just waking up, and the hum of traffic is still faint. You look at the obelisk at the edge of the city, thinking of your family and the promise you made to keep them safe.\n\nYou *can't* pick another career. There is too much riding on this one. You count to a hundred fifteen times, giving your ex-companions time to move on, then re-enter.",
+    text: "\"Fine,\" you hiss, pulling yourself away from the Class-C breaker. You don't need him, anyway. You don't need any of them.\n\nRonin is laughing as you exit the portal, but that's okay. The joke will be on him soon enough.\n\nFor a brief moment, you're looking back at your city again. Arclight Haven is only just waking up, and the hum of traffic is still faint. You look at the obelisk at the edge of the city, thinking of your family and the promise you made to keep them safe.\n\nYou *can't* pick another career. There is too much riding on this one. You count to a hundred fifteen times, giving your ex-companions time to move on, then re-enter.",
     next: "forest_deeper",
   },
   team_Warrior: {
@@ -1656,7 +1658,7 @@ export const pages = {
         essence: 10
     },
     src: "../assets/portal.webp",
-    text: "You look at Ronin, who has distanced himself from the others. Like Aleth, the Breaker-in-training has his attention firmly on the portal. Unlike Aleth, it seems he is doing it to avoid you and the others.",
+    text: "You look at Ronin, who has distanced himself from the others. Like Aleth, the breaker-in-training has his attention firmly on the portal. Unlike Aleth, it seems he is doing it to avoid you and the others.",
     choices: [
       { label: "Introduce Ronin to the others", action: "tell_team", npcName: "Ronin", next: "introduce_ronin" },
       { label: "Say nothing", next: "nothing_ronin" },
@@ -1666,7 +1668,7 @@ export const pages = {
     title: "Introduce Ronin",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"That's Ronin,\" you say. \"He's usually a lot friendlier than this. He just *really* doesn't like me.\"\n\n\"Why doesn't he like you?\" Harla asks. She is leaning forward, hungry for gossip.",
+    text: "\"That's Ronin,\" you say. \"He's usually a lot friendlier than this. He just *really* doesn't like me.\"\n\n\"Why doesn't he like you?\" Harla asks. She is leaning forward, hungry for gossip.\n\nYou open your mouth to reply, but a yell from your party leader stops you short.",
     next: "threx_brief",
   },
   nothing_ronin: {
@@ -1744,7 +1746,7 @@ export const pages = {
     title: "Threx Briefing",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"The world before this one failed. We cannot fail.\n\nWe have two things the old world did not. The first is the Protocol. Without it, we would be the weak, biologically-damned beings that our ancestors were. Without it, we'd be no match for most of what's in these gates. Halycon has connected us to that entity, and we're stronger now because of it.\n\nThe second things is each other.\n\nNow, let's check our gear a final time and then kick some ass!\"",
+    text: "\"The world before this one failed. We cannot fail.\n\nWe have two things the old world did not. The first is the Protocol. Without it, we would be the weak, biologically-damned beings that our ancestors were. Without it, we'd be no match for most of what's in these gates. Halcyon has connected us to that entity, and we're stronger now because of it.\n\nThe second things is each other.\n\nNow, let's check our gear a final time and then kick some ass!\"",
     // next: "team_equipment",
     next: "team_portal_entry",
   },
@@ -1759,21 +1761,21 @@ export const pages = {
     title: "Waste of Time",
     type: "text",
     src: "../assets/portal.webp",
-    text: "Threx talks about the fall of the world that existed before the gates. He talks about the arrival of the Protocol, and how the Halycon AI bridged the gap between it and humanity. He talks about the importance of staying together as a species.\n\nYou tune most of it out.\n\nAt least, up until the moment the big man claps his hands in your face.",
+    text: "Threx talks about the fall of the world that existed before the gates. He talks about the arrival of the Protocol, and how the Halcyon AI bridged the gap between it and humanity. He talks about the importance of staying together as a species.\n\nYou tune most of it out.\n\nAt least, up until the moment the big man claps his hands in your face.",
     next: "waste3",
   },
   waste3: {
     title: "Waste of Time",
     type: "text",
     src: "../assets/portal.webp",
-    text: "\"I'm sorry, am I boring you?\" He looks between you and Ronin. \"I was worried about you two freelancers before, but now I'm *concerned*.\"\n\n\"Don't lump me in with him!\" Ronin snaps. \"I'm paying attention. I have my gear. I'm ready to do this thing. Besides,\" he squares up with the C-Class Breaker, \"Silas Knorrs is freelance. Ember Naes, too. Give us more credit!\"",
+    text: "\"I'm sorry, am I boring you?\" He looks between you and Ronin. \"I was worried about you two freelancers before, but now I'm *concerned*.\"\n\n\"Don't lump me in with him!\" Ronin snaps. \"I'm paying attention. I have my gear. I'm ready to do this thing. Besides,\" he squares up with the C-Class breaker, \"Silas Knorrs is freelance. Ember Naes, too. Give us more credit!\"",
     next: "waste4",
   },
   waste4: {
     title: "Waste of Time",
     type: "choice",
     src: "../assets/portal.webp",
-    text: "\"That's true. Half of our top Breakers *are* freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
+    text: "\"That's true. Half of our top breakers *are* freelance.\" Threx leans forward. \"But so are three-quarters of the bodies we bring back. Are you sure you wanna do this?\"\n\nRonin turns back to the portal, and Threx's attention turns to you.\n\n\"What about you? It isn't too late to back out, kid.\"",
     choices: [
       { label: "Go home", next: "go_home" },
       { label: "Punch Threx in the face", next: "punch_threx" },
@@ -1799,7 +1801,7 @@ export const pages = {
     title: "Punch Threx In The Face",
     type: "roll",
     src: "../assets/portal.webp",
-    text: "You could argue your point, but it's easier to show than to tell. This'll teach him to doubt a freelance Breaker!",
+    text: "You could argue your point, but it's easier to show than to tell. This'll teach him to doubt a freelance breaker!",
     roll: {
       stat: "Athletics",
       dc: 12,
@@ -1907,7 +1909,7 @@ export const pages = {
   },
   team_portal_entry: {
     title: "Team Portal Entry",
-    src: "../assets/forest.webp",
+    src: "../assets/portal.webp",
     type: "text",
     action: "nice_to_akemi",
     text: "With your gear checked and your role in the party understood as best it can be, you follow the others to the portal.\n\nIt crackles, sloshes, and whispers at your approach, speaking in a language even its denizens fail to understand. Its surface runs like quicksilver. Its golden facade sparkles against the sun. It's the most beautiful thing you've ever seen.\n\nAnd also the most terrifying.\n\nYou enter... and all you've ever known disappears behind you.",
@@ -2055,28 +2057,28 @@ export const pages = {
     title: "Critter Defeated",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"That's not fair!\" Ronin yells, arriving with his own blade a moment too late. \"Unactivated people only get pretend points. I'm activated, like most of you. Why wasn't it split between us evenly?\"\n\n\"The Protocol registers assists somehow,\" Akemi explains. \"It knows who put the work in. There's nothing 'pretend' about that.\"\n\n\"You just need to be faster, my friend,\" Kaelion says, flashing Ronin a playful grin.\"",
+    text: "\"That's not fair!\" Ronin yells, arriving with his own blade a moment too late. \"Unactivated people only get pretend points. I'm activated, like most of you. Why wasn't it split between us evenly?\"\n\n\"The Protocol registers assists somehow,\" Akemi explains. \"It knows who put the work in. There's nothing 'pretend' about that.\"\n\n\"You just need to be faster, my friend,\" Kaelion says, flashing Ronin a playful grin.",
     next: "team_portal_victory",
   },
   team_portal_victory: {
     title: "Breaker Points?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"I can't wait to start investing my Breaker points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the *Thomur Guild*. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
+    text: "\"I can't wait to start investing my Breaker Points into Mage abilities!\" Sheemie exclaims. \"I'd love to specialize in something plant-based.\"\n\n\"Poor kid never left his treehouse,\" Mitzi says in a stage whisper.\n\n\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the *Thomur Guild*. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"",
     next: "team_portal_victory2",
   },
   team_portal_victory2: {
     title: "Guilds?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *The Silhouettes* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either *The Silhouettes* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
+    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join the *Silhouettes* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either the *Silhouette* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
     next: "team_portal_victory3",
   },
   team_portal_victory3: {
     title: "Destroy The Protocol?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"How can one be so ambivalent toward the Protocol?\" Kaelion Virehart asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"\n\nMitzi shrugged. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If The Silhouettes or Protocol Null get me closer to an answer, then that's where I'm heading.\"",
+    text: "\"How can one be so ambivalent toward the Protocol?\" Kaelion Virehart asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"\n\nMitzi shrugged. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If the Silhouette or Protocol Null get me closer to an answer, then that's where I'm heading.\"",
     next: "team_portal_victory4",
   },
   team_portal_victory4: {
@@ -2158,7 +2160,7 @@ export const pages = {
     title: "Global Protocol Authority",
     type: "text",
     src: "../assets/forest.webp",
-    text: "You shrug. \"The GPA, probably. There's a global element there, and they tend to get priority with Breaks.\" You pause before adding, \"Plus, they're the closest thing we have to what existed before the gates.\"\n\n\"That's understandable,\" Akemi says. \"The Ramsey Academy pushed most of us to go that way, too. It makes sense, seeing as they fund the place and everything.\" With a wink, she adds, \"You'd fit in nicely there; they always get the cutest Breakers.\"\n\nYou're not sure if she's joking, but you chuckle just to be safe.",
+    text: "You shrug. \"The GPA, probably. There's a global element there, and they tend to get priority with breaks.\" You pause before adding, \"Plus, they're the closest thing we have to what existed before the gates.\"\n\n\"That's understandable,\" Akemi says. \"The Ramsey Academy pushed most of us to go that way, too. It makes sense, seeing as they fund the place and everything.\" With a wink, she adds, \"You'd fit in nicely there; they always get the cutest breakers.\"\n\nYou're not sure if she's joking, but you chuckle just to be safe.",
     next: "keep_moving",
   },
   guild_epoch: {
@@ -2172,7 +2174,7 @@ export const pages = {
     title: "The Silhouette",
     type: "text",
     src: "../assets/forest.webp",
-    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included *the Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halycon Refract-- where they are strongest-- is close to home.",
+    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included the *Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halcyon Refract-- where they are strongest-- is close to home.",
     next: "keep_moving",
   },
   guild_protocol_null: {
@@ -2210,7 +2212,7 @@ export const pages = {
     title: "Thomur",
     type: "text",
     src: "../assets/forest.webp",
-    text: "\"Probably Thomur,\" you reply. \"Their rise to prominence  this year has been inspiring. I really think they might be a top-five guild one day.\"\n\n\"Boo!\" Akemi says with a playful pout. \"And here I was about to invite you into the one I'll be starting.\"\n\nYou perk up at this. Starting one's own guild is probably even harder than being a Breaker.",
+    text: "\"Probably Thomur,\" you reply. \"Their rise to prominence  this year has been inspiring. I really think they might be a top-five guild one day.\"\n\n\"Boo!\" Akemi says with a playful pout. \"And here I was about to invite you into the one I'll be starting.\"\n\nYou perk up at this. Starting one's own guild is probably even harder than being a breaker.",
     next: "keep_moving",
   },
   anything_new_choice: {
@@ -2224,7 +2226,7 @@ export const pages = {
     title: "Freelance",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"I'm freelance all the way.\"\n\nAkemi laughs. \"I figured as much based on how you approached today's gate. Plenty of Breakers have made a name for themselves by going freelance. Who knows, maybe you'll  be one of them!\"\n\nYou doubt it, but appreciate the positivity. In truth, joining a guild always felt like a pipe dream. One has to be C-Class just to apply, and even then, it doesn't guarantee anything.\n\n\"Maybe,\" you say instead, feigning her same positivity.\n\n\"Well, if you ever decide not to do this solo, keep me in mind. It won't be for a while yet, but I plan to start my own guild one day.\"\n\nYou perk up at this. Starting one's own guild is probably harder than being a successful freelancer.\n\n\"Did you have a name in mind?\" you ask.\n\nBefore Akemi can respond, a stern voice calls out from ahead of you.",
+    text: "\"I'm freelance all the way.\"\n\nAkemi laughs. \"I figured as much based on how you approached today's gate. Plenty of breakers have made a name for themselves by going freelance. Who knows, maybe you'll  be one of them!\"\n\nYou doubt it, but appreciate the positivity. In truth, joining a guild always felt like a pipe dream. One has to be C-Class just to apply, and even then, it doesn't guarantee anything.\n\n\"Maybe,\" you say instead, feigning her same positivity.\n\n\"Well, if you ever decide not to do this solo, keep me in mind. It won't be for a while yet, but I plan to start my own guild one day.\"\n\nYou perk up at this. Starting one's own guild is probably harder than being a successful freelancer.\n\n\"Did you have a name in mind?\" you ask.\n\nBefore Akemi can respond, a stern voice calls out from ahead of you.",
     next: "keep_moving",
   },  
   guild_no_preference: {
@@ -2461,7 +2463,7 @@ export const pages = {
     title: "Alert The Team",
     type: "choice",
     src: "../assets/carving.webp",
-    text: "\"We could skip all its minions and head right for it,\" Harla offers. \"I bet all those squiggles around it are its horde.\"\n\n\"And then what?\" Kaelion Virehart retorts. \"We must dispense with the minions so the mining crew has sanctuary for their work.\"\n\n\"The minions will have less cause to fight if we slay their leader first,\" Ronin offers. \"Look at how many are up there waiting for us; we could use that to our advantage.\"\n\nAkemi shakes her head. \"Or we can step into the ambush prepared. If we head to the boss first, and it proves powerful enough to stall us, that risks us getting flanked by the minions.\"\n\n\"True,\" Mitzi agrees. \"They'd see us changing course. We have no idea how fast they are, either.\"\n\nThe group looks to Threx for an answer. The C-Class Breaker mulls over his options.\n\nNow's your chance to voice your own two cents.",
+    text: "\"We could skip all its minions and head right for it,\" Harla offers. \"I bet all those squiggles around it are its horde.\"\n\n\"And then what?\" Kaelion Virehart retorts. \"We must dispense with the minions so the mining crew has sanctuary for their work.\"\n\n\"The minions will have less cause to fight if we slay their leader first,\" Ronin offers. \"Look at how many are up there waiting for us; we could use that to our advantage.\"\n\nAkemi shakes her head. \"Or we can step into the ambush prepared. If we head to the boss first, and it proves powerful enough to stall us, that risks us getting flanked by the minions.\"\n\n\"True,\" Mitzi agrees. \"They'd see us changing course. We have no idea how fast they are, either.\"\n\nThe group looks to Threx for an answer. The C-Class breaker mulls over his options.\n\nNow's your chance to voice your own two cents.",
     choices: [
       { label: "Go after the boss first", next: "head_to_boss" },
       { label: "Clear the minions first", next: "clear_minions" },
@@ -2522,7 +2524,7 @@ export const pages = {
     title: "Head to boss",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "The C-Class Breaker starts jogging toward the location of the Tethered Being. It doesn't take long to reach the lair. The tracks of its minions take you right to it.\n\nIt... isn't what you expected.",
+    text: "The C-Class breaker starts jogging toward the location of the Tethered Being. It doesn't take long to reach the lair. The tracks of its minions take you right to it.\n\nIt... isn't what you expected.",
     next: "head_to_boss_success5"
   },
   head_to_boss_success5: {
@@ -2582,7 +2584,7 @@ export const pages = {
     title: "Forest Encounter Preparation",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "\"Harla, you're in the center. Keep an eye open for whoever might need healing.\" The C-Class Breaker draws his warhammer. \"And I'll strike down anything stupid enough to come at us head-on.\"\n\nThe forest is silent in the wake of this formation, sans the occasional groan of a tree-thing.\n\n\"I told you so,\" Ronin offers meekly. \"{{characterName}} is afraid of his own shadow.\"\n\nThrex ignores him. \"We're moving. Keep your guard up.\"",
+    text: "\"Harla, you're in the center. Keep an eye open for whoever might need healing.\" The C-Class breaker draws his warhammer. \"And I'll strike down anything stupid enough to come at us head-on.\"\n\nThe forest is silent in the wake of this formation, sans the occasional groan of a tree-thing.\n\n\"I told you so,\" Ronin offers meekly. \"{{characterName}} is afraid of his own shadow.\"\n\nThrex ignores him. \"We're moving. Keep your guard up.\"",
     next: "forest_encounter_prepare3",
   },
   forest_encounter_prepare3: {
@@ -2746,7 +2748,7 @@ export const pages = {
     title: "Remain Silent",
     type: "text",
     src: "../assets/shack.webp",
-    text: "You keep quiet, unsure how to talk to Tethered Beings.\n\n\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" the wannabee knight yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"\n\n\"We have a better chance fighting this thing together!\" Ronin protests. \"I--\"\n\n\"Now!\"\n\nThe C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Ronin stops arguing and files behind Threx with you and the others. Behind all of you, Kaelion drops the last of his armor and begins his sprint to the exit.",
+    text: "You keep quiet, unsure how to talk to Tethered Beings.\n\n\"Kaelion,\" Threx hisses, \"down your armor and get back to the gate. Tell the GPA that our Tethered Being is a Camper.\"\n\n\"Yessir!\" the wannabee knight yells, dropping his chest plate.\n\n\"The rest of you,\" Threx takes a step forward and angles his warhammer sideways, \"get behind me.\"\n\n\"We have a better chance fighting this thing together!\" Ronin protests. \"I--\"\n\n\"Now!\"\n\nThe C-Class breaker reveals his full strength for the first time. It dwarfs the rest of you. Ronin stops arguing and files behind Threx with you and the others. Behind all of you, Kaelion drops the last of his armor and begins his sprint to the exit.",
     next: "camper_hunt",
   },
   camper_hunt: {
@@ -2817,7 +2819,7 @@ export const pages = {
     title: "Send A Runner",
     src: "../assets/shack.webp",
     type: "text",
-    text: "The C-Class Breaker reveals his full strength for the first time. It dwarfs the rest of you. Mitzi stops arguing and spins around. She's moving at a full sprint before the creature speaks again.\n\n\"Good,\" it rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
+    text: "The C-Class breaker reveals his full strength for the first time. It dwarfs the rest of you. Mitzi stops arguing and spins around. She's moving at a full sprint before the creature speaks again.\n\n\"Good,\" it rasps. \"I was hoping for lively sport today.\"\n\nThere's a blur across the porch, and the creature is suddenly standing at the top of the stairs.\n\nYou see it in its full glory now... and shudder.",
     next: "send_a_runner3",
   },
   send_a_runner3: {
@@ -3005,7 +3007,7 @@ export const pages = {
     title: "Who Is That?",
     src: "../assets/shack.webp",
     type: "text",
-    text: "Yes, it is styled in the way familiar to those from Ashnhold, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.\n\nThe realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class Breaker-- is a member of the Silk Road.\n\nThen, darkness finds you at last.",
+    text: "Yes, it is styled in the way familiar to those from Ashnhold, but it is clearly westernized, too.\n\nPerfectly fitted, like a business suit.\n\nThe realization hits you a moment before unconsciousness does.\n\nYour savior-- who must be a S-Class breaker-- is a member of the Silk Road.\n\nThen, darkness finds you at last.",
     next: "camper_finish"
   },
   speak_to_creature: {
@@ -3019,7 +3021,7 @@ export const pages = {
     title: "Speak To The Creature",
     src: "../assets/shack.webp",
     type: "text",
-    text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The *what?*\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class Breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
+    text: "\"Don't engage with the Camper,\" Threx warns.\n\n\"The *what?*\" asks Akemi.\n\n\"It's a creature that doesn't belong here,\" the C-Class breaker replies. \"It came the same way we did, through some other gate. It isn't connected to the world itself, which is why the portal didn't register a higher threat.\"\n\nAleth says, \"It waits in places like this one... so it can ambush lower-level explorers.\"",
     next: "speak_to_creature3",
   },
   speak_to_creature3: {
@@ -3043,7 +3045,7 @@ export const pages = {
     title: "Threx Ahead",
     type: "text",
     src: "../assets/shack.webp",
-    text: "For the first time since you've met him, the C-Class Breaker reveals his full power. It dwarfs the rest of you.\n\nKaelion drops the last of his armor and begins his sprint to the exit.",
+    text: "For the first time since you've met him, the C-Class breaker reveals his full power. It dwarfs the rest of you.\n\nKaelion drops the last of his armor and begins his sprint to the exit.",
     next: "camper_hunt",
   },
   continue_talking: {
@@ -3526,28 +3528,28 @@ export const pages = {
     title: "Try Talking",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"Uhhhhnnngggrrraa,\" you say.\n\nThe nurse and healer exchange a look.\n\n\"These damned Breakers never listen,\" mutters the latter. \"It doesn't matter whether they are E-Rank like this one, or S like the one who brought them in.\"\n\n\"Oh, you can't blame Veyr for having places to be!\" argues the latter. Her eyes grow wide with admiration. \"I still can't believe we got to see *the* Veyr Singrave in person! Ahh! He's so dreamy!\"",
+    text: "\"Uhhhhnnngggrrraa,\" you say.\n\nThe nurse and healer exchange a look.\n\n\"These damned breakers never listen,\" mutters the latter. \"It doesn't matter whether they are E-Rank like this one, or S like the one who brought them in.\"\n\n\"Oh, you can't blame Veyr for having places to be!\" argues the latter. Her eyes grow wide with admiration. \"I still can't believe we got to see *the* Veyr Singrave in person! Ahh! He's so dreamy!\"",
     next: "veyr"
   },
   hospital_silent: {
     title: "Silence",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "The healer continues. \"You're lucky to be alive. If not for that S-Class Breaker, you and the others would be dead in that other world.\"\n\nThe nurse squeals. \"I still can't believe we got to see *the* Veyr Singrave in the flesh!\" Her eyes grow wide with admiration. \"He's so dreamy!\"",
+    text: "The healer continues. \"You're lucky to be alive. If not for that S-Class breaker, you and the others would be dead in that other world.\"\n\nThe nurse squeals. \"I still can't believe we got to see *the* Veyr Singrave in the flesh!\" Her eyes grow wide with admiration. \"He's so dreamy!\"",
     next: "veyr"
   },
   veyr: {
     title: "Veyr Singrave",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "You've heard of Veyr Singrave. The S-Class Breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of Breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
+    text: "You've heard of Veyr Singrave. The S-Class breaker and poster child of the Silk Road is a rising star across the eastern seaboard.\n\nHe's recently broken into the top 100 list of breakers registered with the Protocol.\n\nWhat was he doing in that portal?\n\nThankfully, the nurse answers your question before you can struggle to ask it.",
     next: "veyr2"
   },
   veyr2: {
     title: "Veyr Singrave",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class Breaker.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
+    text: "\"I hate that Veyr has a girlfriend, but she's probably the reason he was in the area. She was in charge of overseeing the mining operation after the gate was cleared.\"\n\nYou dwell a moment longer on the providence of being rescued by a top 100 S-Class breaker.\n\nThen, your mind drifts to the other part of what the healer had said.\n\n\"*S-Class who brought THEM in.*\"",
     //depends on if they were solo/together and sacrificed
     conditionalNext: [
     {
@@ -4103,7 +4105,7 @@ export const pages = {
     title: "Arclight Haven",
     src: "../assets/arclight.webp",
     type: "text",
-    text: "This place was once the capital of an empire. It saw itself as the helm of the world, the center of the universe.\n\nThe arrival of the gates shattered that hubris.\n\nStill, there is power here. The GPA is here. Two top ten Breakers are here. Your family-- and you-- are here, despite all the reasons you shouldn't be.\n\nIn the distance is an old memorial to an even older ideal. The obelisk watches over the city like a sentry, reminding it of better times and promising a renewal.",
+    text: "This place was once the capital of an empire. It saw itself as the helm of the world, the center of the universe.\n\nThe arrival of the gates shattered that hubris.\n\nStill, there is power here. The GPA is here. Two top ten breakers are here. Your family-- and you-- are here, despite all the reasons you shouldn't be.\n\nIn the distance is an old memorial to an even older ideal. The obelisk watches over the city like a sentry, reminding it of better times and promising a renewal.",
     next: "arclight3"
   },
   arclight3: {
@@ -4391,7 +4393,7 @@ export const pages = {
     title: "Tell Me",
     src: "../assets/study.webp",
     type: "choice",
-    text: "\"If you know what you claim to know, then yes, I want to know my future.\"\n\nThe Interloper laughs, but the sound is welcoming-- not at all like the Camper.\n\n\"In the weeks ahead, you'll be asked to go break a gate in Halycon Refract. When you're there, you'll learn something interesting about the Gatebreaker Protocol.\"\n\nYou blink. \"I'm... not even an official E-Class. Why would anyone call me in to help with a gate thousands of miles away?\"\n\n\"Because things are about to change for you. If you make the right choices, you will amass enough power to change the world.\"",
+    text: "\"If you know what you claim to know, then yes, I want to know my future.\"\n\nThe Interloper laughs, but the sound is welcoming-- not at all like the Camper.\n\n\"In the weeks ahead, you'll be asked to go break a gate in Halcyon Refract. When you're there, you'll learn something interesting about the Gatebreaker Protocol.\"\n\nYou blink. \"I'm... not even an official E-Class. Why would anyone call me in to help with a gate thousands of miles away?\"\n\n\"Because things are about to change for you. If you make the right choices, you will amass enough power to change the world.\"",
     choices: [
       { label: "\"That's great!\"", next: "interloper_great" },
       { label: "\"What about my family?\"", next: "interloper_family" },
@@ -4469,7 +4471,7 @@ export const pages = {
     title: "Activated!",
     src: "../assets/apartment.webp",
     type: "text",
-    text: "\"Congratulations! The Protocol has activated you. You may now spend Breaker Points, get into more difficult gates, choose a path, and use the system store.\"\n\nYour Rank is D-Class.",
+    text: "\"Congratulations! The Protocol has activated you. You may now spend breaker Points, get into more difficult gates, choose a path, and use the system store.\"\n\nYour Rank is D-Class.",
     next: "activated2",
     action: {
       type: "update_class",
@@ -4497,3 +4499,40 @@ export const pages = {
     customBackgroundComponent: "PrismaticBurst"
   }
 };
+
+// if (typeof window !== 'undefined') {
+//   // Browser environment - run checks
+//   const checkPages = () => {
+//     console.log('🔍 Checking critical pages:');
+    
+//     const criticalPages = ['excited3', 'nervous', 'threx_brief2', 'threx_brief3'];
+    
+//     criticalPages.forEach(pageId => {
+//       const exists = adventurePages.hasOwnProperty(pageId);
+//       console.log(`${exists ? '✅' : '❌'} ${pageId}`, exists ? adventurePages[pageId].next : 'MISSING');
+//     });
+    
+//     // Check the chain
+//     console.log('\n🔗 Checking navigation chain:');
+//     let current = 'excited3';
+//     let depth = 0;
+//     const maxDepth = 10;
+    
+//     while (current && depth < maxDepth) {
+//       if (!adventurePages[current]) {
+//         console.log(`❌ BROKEN: ${current} not found!`);
+//         break;
+//       }
+      
+//       const page = adventurePages[current];
+//       console.log(`${depth}. ${current} → ${page.next || 'END'}`);
+      
+//       if (!page.next) break;
+//       current = page.next;
+//       depth++;
+//     }
+//   };
+  
+//   // Run check after a short delay
+//   setTimeout(checkPages, 100);
+// }

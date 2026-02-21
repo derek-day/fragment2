@@ -429,7 +429,7 @@ export const adventurePages = {
     title: "Agree with Threx",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *the Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
+    text: "\"Who *doesn't* love a good treehouse?\" Sheemie laughs. \"Nah, I just really wanna get into the Thomur Guild. I heard they have a penchant for recruits who hyper-specialize in things most people don't think about.\"\n\n\"But...plants?\"\n\n\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join the *Silhouette* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"",
     next: "agree_threx5"
   },
   agree_threx5: {
@@ -443,7 +443,7 @@ export const adventurePages = {
     title: "Agree with Threx",
     type: "text",
     src: "../assets/deeper.webp",
-    text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If *The Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
+    text: "Mitzi shrugs. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If the *Silhouette* or *Protocol Null* get me closer to the truth, then that's where I'm heading.\"\n\n\"You could always join the *Veil Cult*,\" Harla offers. \"They claim to know all the answers.\"\n\nAkemi says something, but her words disappear behind Threx's. The party leader clears his throat.",
     next: "agree_threx7"
   },
   agree_threx7: {
@@ -2057,7 +2057,7 @@ export const adventurePages = {
     title: "Critter Defeated",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"That's not fair!\" Ronin yells, arriving with his own blade a moment too late. \"Unactivated people only get pretend points. I'm activated, like most of you. Why wasn't it split between us evenly?\"\n\n\"The Protocol registers assists somehow,\" Akemi explains. \"It knows who put the work in. There's nothing 'pretend' about that.\"\n\n\"You just need to be faster, my friend,\" Kaelion says, flashing Ronin a playful grin.\"",
+    text: "\"That's not fair!\" Ronin yells, arriving with his own blade a moment too late. \"Unactivated people only get pretend points. I'm activated, like most of you. Why wasn't it split between us evenly?\"\n\n\"The Protocol registers assists somehow,\" Akemi explains. \"It knows who put the work in. There's nothing 'pretend' about that.\"\n\n\"You just need to be faster, my friend,\" Kaelion says, flashing Ronin a playful grin.",
     next: "team_portal_victory",
   },
   team_portal_victory: {
@@ -2071,14 +2071,14 @@ export const adventurePages = {
     title: "Guilds?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join *The Silhouettes* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\"\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either *The Silhouettes* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
+    text: "\"Oh, please,\" Harla cuts in. \"Like you're one to talk, Mitzi. Don't you plan to join the *Silhouettes* once you're strong enough? Those people are weirder than some tiny guild no one has heard about.\"\n\n\"Hey!\" Sheemie exclaims in his high-pitched way.\n\nMitzi ignores the outburst. \"Well, yeah. I mean, either the *Silhouette* or *Protocol Null*.\"\n\nShe doesn't elaborate. She doesn't need to. Everyone knows about the two major breakaway factions.",
     next: "team_portal_victory3",
   },
   team_portal_victory3: {
     title: "Destroy The Protocol?",
     src: "../assets/forest.webp",
     type: "text",
-    text: "\"How can one be so ambivalent toward the Protocol?\" Kaelion Virehart asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"\n\nMitzi shrugged. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If The Silhouettes or Protocol Null get me closer to an answer, then that's where I'm heading.\"",
+    text: "\"How can one be so ambivalent toward the Protocol?\" Kaelion Virehart asks. \"You used the Activation Chamber like the rest of us. You've embarked upon this quest like the rest of us, too. Do you surely intend to use the Protocol to evolve... so that you can destroy the Protocol?\"\n\nMitzi shrugged. \"I'd settle for understanding it. It seems to me like no one else is questioning what this thing is. I mean, what does it want? Is it really on our side? If the Silhouette or Protocol Null get me closer to an answer, then that's where I'm heading.\"",
     next: "team_portal_victory4",
   },
   team_portal_victory4: {
@@ -2174,7 +2174,7 @@ export const adventurePages = {
     title: "The Silhouette",
     type: "text",
     src: "../assets/forest.webp",
-    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included *the Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halcyon Refract-- where they are strongest-- is close to home.",
+    text: "You look at Mitzi, who is using a purple stick to make the dead creature smile. You say, \"I want to join the Silhouette, actually.\"\n\n\"A bad boy, huh?\" Akemi is smiling, but you sense genuine interest behind her words. She also seems a little disappointed. \"I guess you don't intend to stick around then.\"\n\nYou shrug. In truth, you hadn't really thought that far ahead. Your priority is to the people back home-- Cale, Crixon, Ryke.\n\nYour siblings need you to come through for them, and being accepted into any guild or any faction would come with an impressive salary. That included the *Silhouette*, even though the group is often seen as dangerous by those outside it.\n\nUntil now, you hadn't imagined what actual membership would look like. Neither Blackspire nor Halcyon Refract-- where they are strongest-- is close to home.",
     next: "keep_moving",
   },
   guild_protocol_null: {

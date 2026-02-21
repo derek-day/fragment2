@@ -60,7 +60,7 @@ export const DATA_PACKETS = {
     updates: [
       {
         id: 'threx_pass',
-        title: 'Threx Pass',
+        title: 'Deceased',
         content: `Passed during the battle with the Camper.`,
         unlocksOnPage: 'solo_didnt_sacrifice',
         unlocksOnPage: 'together_didnt_sacrifice2'
@@ -83,7 +83,7 @@ export const DATA_PACKETS = {
     updates: [
       {
         id: 'harla_pass',
-        title: 'Harla Pass',
+        title: 'Deceased',
         content: `Passed during the battle with the Camper.`,
         unlocksOnPage: 'solo_didnt_sacrifice',
         unlocksOnPage: 'together_didnt_sacrifice2'
@@ -99,7 +99,7 @@ export const DATA_PACKETS = {
     updates: [
       {
         id: 'kaelion_pass',
-        title: 'Kaelion Pass',
+        title: 'Deceased',
         content: `Passed during the battle with the Camper.`,
         unlocksOnPage: 'solo_didnt_sacrifice',
         unlocksOnPage: 'together_didnt_sacrifice2'
@@ -115,7 +115,7 @@ export const DATA_PACKETS = {
     updates: [
       {
         id: 'sheemie_pass',
-        title: 'Sheemie Pass',
+        title: 'Deceased',
         content: `Passed during the battle with the Camper.`,
         unlocksOnPage: 'solo_didnt_sacrifice',
         unlocksOnPage: 'together_didnt_sacrifice2'
@@ -131,7 +131,7 @@ export const DATA_PACKETS = {
     updates: [
       {
         id: 'mitzi_pass',
-        title: 'Mitzi Pass',
+        title: 'Deceased',
         content: `Passed during the battle with the Camper.`,
         unlocksOnPage: 'solo_didnt_sacrifice',
         unlocksOnPage: 'together_didnt_sacrifice2'

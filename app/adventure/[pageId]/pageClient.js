@@ -25,6 +25,7 @@ import {
   recordNiceToAkemi,
   recordGaveToCale,
   recordTookEnvironmentalPotion,
+  recordTookHospitalNote,
   recordRemovedCamperMinions,
   updateBreakerClass,
   recordFailure

@@ -100,7 +100,7 @@ export default function RollPage({ userStats, page }) {
     <div className="fixed inset-0 z-10 flex items-center justify-center p-6 md:p-12 lg:p-16 pointer-events-none">
       
       {/* GLASS CARD */}
-      <div className="display w-full max-w-md md:max-w-2xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
+      <div className="display w-full max-w-md md:max-w-4xl max-h-full flex flex-col bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
         
         {/* Header */}
         <header className="bg-slate-900/50 border-b border-slate-700/50 p-4 shrink-0 flex justify-between items-center">

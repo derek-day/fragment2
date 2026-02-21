@@ -3629,7 +3629,7 @@ export const adventurePages = {
     title: "Family",
     type: "text",
     src: "../assets/hospital.webp",
-    text: "Before she can say more, the door to the hospital room flies open.\n\n\"{{characterName}}!\"\n\nRyke runs in, knocking the nurse aside, and jumps into bed with you.\n\n\"Ahhhhh!\" you scream.\n\nCrixon enters next, smiling widely. \"Thank God! I thought we'd have to start relying on Cale to pay rent!\"",
+    text: "Before she can say more, the door to the hospital room flies open, and your five-year-old sister runs inside.\n\n\"{{characterName}}!\"\n\nRyke knocks the nurse aside, and jumps into bed with you.\n\n\"Ahhhhh!\" you scream.\n\nCrixon enters next, smiling widely. \"Thank God! I thought we'd have to start relying on Cale to pay rent!\"",
     next: "family2"
   },
   family2: {

@@ -583,7 +583,7 @@ export default function PageClient({ page: initialPage, pageId }) {
 
         <StatLayout />
         <MenuButton />
-        <DebugPanel pageId={pageId} page={page} />
+        {/* <DebugPanel pageId={pageId} page={page} /> */}
 
         {page.type !== 'battle' && page.type !== 'roll' && page.type !== 'endCard' && (
           <motion.div 

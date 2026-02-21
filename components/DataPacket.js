@@ -227,7 +227,7 @@ export const DATA_PACKETS = {
     title: 'City States',
     category: 'Lore',
     content: `The collapse of global governments led to the rise of fortified city-states and mobile command zones, built around or near active Gates. These regions represent humanity’s desperate attempts to survive, weaponize, and regulate the phenomenon of dimensional incursion.\n\nEach city-state operates independently, often controlled by factions, corporate alliances, or rogue guild coalitions. Gates warp the terrain around them — altering climate, biology, and time in subtle or extreme ways. As a result, each region has a unique flavor, threat ecosystem, and Protocol fingerprint.`,
-    unlocksOnPage: 'chapter1_end_card',
+    unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },
   vanta_reach: {
@@ -235,7 +235,7 @@ export const DATA_PACKETS = {
     title: 'Vanta Reach',
     category: 'Regions',
     content: `Location: Arctic perimeter near collapsed Icelandic Gate\n\nControlled by: None (officially). Rumored Silhouette activity.\n\nFrozen overrun ruins of a former global research outpost\n\nSmall outpost called Blackspire operates as a forward base for Hunter raids and survivalist guilds`,
-    unlocksOnPage: 'chapter1_end_card',
+    unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },
   zariels_spine: {
@@ -243,7 +243,7 @@ export const DATA_PACKETS = {
     title: 'Zariel\'s Spine',
     category: 'Regions',
     content: `Location: Cracked mountain chain along South America’s equator\n\nControlled by: Epoch Corp and the World Hunter Association\n\nWalled megacity Aethervault, built into the mountain itself\n\nHome to elite Hunters, gear forges, and Protocol-linked research lab`,
-    unlocksOnPage: 'chapter1_end_card',
+    unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },
   cinderwake_expanse: {
@@ -251,7 +251,7 @@ export const DATA_PACKETS = {
     title: 'Cinderwake Expanse',
     category: 'Regions',
     content: `Location: Desertified ruins of central Africa\n\nControlled by: No central authority; local guilds rule by force\n\nScavenger stronghold Hollowpoint, built from repurposed drones and salvaged vehicles\n\nKnown for trading relics, illegal tech, and bio-mods`,
-    unlocksOnPage: 'chapter1_end_card',
+    unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },
   nimbus_verge: {
@@ -259,7 +259,7 @@ export const DATA_PACKETS = {
     title: 'Nimbus Verge',
     category: 'Regions',
     content: `Location: Floating urban arcology over collapsed sea Gates in the Pacific\n\nControlled by: The Veil Cult (covertly), with surface operations run by Association proxies\n\nUrban platform city known as Halcyon Refract, famed for luxury, paranoia, and sudden disappearances. Used to be Silicon Valley`,
-    unlocksOnPage: 'chapter1_end_card',
+    unlocksOnPage: 'page_1',
     updates: [] // Can have multiple updates
   },
 

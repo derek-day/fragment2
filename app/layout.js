@@ -14,6 +14,10 @@ export default function RootLayout({ children }) {
   return (
     // <html lang="en">
     <html lang="en" style={{backgroundImage: "url('../assets/black.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
+      <head>
+        <link rel="shortcut icon" type="image/jpeg" href="../assets/favicon_io/favicon.ico" />
+        <link rel="apple-touch-icon" href="../assets/favicon_io/favicon.ico" />
+      </head>
       <body>
         {children}
 

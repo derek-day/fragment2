@@ -752,7 +752,7 @@ const BattleSystem = ({ userStats, playerName, page, userId, pageId }) => {
       `}</style>
 
       <div className="fixed inset-0  flex items-center justify-center px-3 sm:p-6 md:p-12 lg:p-16 pointer-events-none z-20">
-        <div className="display h-auto w-full max-w-md md:max-w-5xl h-[100dvh] md:max-h-[90vh] flex flex-col bg-slate-950/95 md:bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
+        <div className="display h-auto w-full max-w-md md:max-w-3xl h-[100dvh] md:max-h-[90vh] flex flex-col bg-slate-950/95 md:bg-slate-950/80 backdrop-blur-md border border-slate-700/50 shadow-2xl overflow-hidden pointer-events-auto">
           
           {/* Header */}
           <header className="bg-slate-900/50 border-b border-slate-700/50 p-2 md:p-3 shrink-0 flex justify-between items-center">

@@ -3082,7 +3082,7 @@ export const adventurePages = {
   },
   sometimes_not_removed: {
     title: "Sometimes",
-    type: "choice",
+    type: "text",
     src: "../assets/shack.webp",
     text: "Red eyes stare out from the surrounding tree-things. The Tethered Being's pets have arrived. You sense their hunger and realize they intend to eat your fallen companion.\n\n*Us too,* you realize, *if we fail.*",
     next: "sometimes_camper3"
